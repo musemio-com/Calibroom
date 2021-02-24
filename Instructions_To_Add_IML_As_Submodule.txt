@@ -1,0 +1,18 @@
+# initiate git in here (if not done already by the GUI)
+git clone URL repo
+
+# add InteractML as a submodule
+git submodule add -b VRInterface --force https://github.com/Interactml/iml-unity.git Assets/iml-unity
+
+# go to submodule folder
+cd Assets/iml-unity/
+# set the iml submodule to only use the Assets folder
+git sparse-checkout init --cone
+git sparse-checkout set Assets
+# leave submodule folder
+cd ../..
+
+# Open the project in Unity 2020.1
+Go to Window > Package Manager
+Install Input System
+Install XR Interaction Toolkit (requires showing preview packages set to true)
