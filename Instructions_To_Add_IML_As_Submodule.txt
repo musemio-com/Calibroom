@@ -1,6 +1,9 @@
 # initiate git in here (if not done already by the GUI)
 git clone URL repo
 
+# go to repo's folder
+cd nameOfFolder
+
 # add InteractML as a submodule
 git submodule add -b VRInterface --force https://github.com/Interactml/iml-unity.git Assets/iml-unity
 
