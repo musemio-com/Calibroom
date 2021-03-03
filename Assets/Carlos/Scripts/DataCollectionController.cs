@@ -19,7 +19,7 @@ namespace MECM
         /// Events that fires the toggle data collection on/off (used outside of IMLGraph)
         /// </summary>
         [SerializeField]
-        private bool m_CollectDataEvent;
+        private bool m_ToggleCollectDataEvent;
 
         /// <summary>
         /// Toggles data collection on/off (used in IMLGraph)
@@ -40,12 +40,25 @@ namespace MECM
             }
 
             // If the event was fired, flag data collection toggle to true
-            if (m_CollectDataEvent || ToggleDataCollection)
+            if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
                 ToggleDataCollection = true;
-                m_CollectDataEvent = false;
+                m_ToggleCollectDataEvent = false;
             }
 
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Fires the collect data event (toggles on/off collecting data)
+        /// </summary>
+        /// <returns></returns>
+        public void FireToggleCollectDataEvent()
+        {
+            m_ToggleCollectDataEvent = true;
         }
 
         #endregion

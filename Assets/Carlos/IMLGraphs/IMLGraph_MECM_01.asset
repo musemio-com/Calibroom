@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   InputConnected: 0
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -98,7 +98,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -145,7 +145,7 @@ MonoBehaviour:
   id: f759eb09-aec5-4eea-9329-13888c4e7c59
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
+  state: 1
   GOHashCode: 16066
   CreatedDuringPlaymode: 0
 --- !u!114 &-3966539418009321199
@@ -303,7 +303,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 0
+  showWarning: 1
   canCollect: 1
   listNo: 0
 --- !u!114 &-3219005705289358105
@@ -340,7 +340,7 @@ MonoBehaviour:
   id: c9d31dc5-d16a-4169-af07-e014bbb56843
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
+  state: 1
   GOHashCode: 16020
   CreatedDuringPlaymode: 0
 --- !u!114 &-2753648013107953000
@@ -390,7 +390,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -425,6 +425,7 @@ MonoBehaviour:
   - {fileID: 4430898547025554715}
   - {fileID: 6761397498056281689}
   - {fileID: 4048473847388668640}
+  - {fileID: 0}
   SceneComponent: {fileID: 0}
 --- !u!114 &4048473847388668640
 MonoBehaviour:
@@ -471,15 +472,15 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   InputConnected: 0
-  Counter: 3
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 1
+  - 0
 --- !u!114 &4430898547025554715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +494,7 @@ MonoBehaviour:
   m_Name: DataCollectionController (Script)
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 120, y: 24}
+  position: {x: 152, y: -120}
   ports:
     keys:
     - ToggleDataCollection
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_Name: Boolean
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 504, y: -8}
+  position: {x: 504, y: -152}
   ports:
     keys:
     - m_In
@@ -582,7 +583,7 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
