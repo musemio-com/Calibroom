@@ -9,33 +9,42 @@ namespace MECM
     /// <summary>
     /// Controls when data starts being collected and when it stops being collected
     /// </summary>
+    [ExecuteAlways]
     public class DataCollectionController : MonoBehaviour
     {
 
         #region Variables
 
-        private bool m_StartDataCollection;
-
-        private bool m_StopDataCollection;
+        /// <summary>
+        /// Events that fires the toggle data collection on/off (used outside of IMLGraph)
+        /// </summary>
+        [SerializeField]
+        private bool m_CollectDataEvent;
 
         /// <summary>
-        /// Event that toggles data collection on/off
+        /// Toggles data collection on/off (used in IMLGraph)
         /// </summary>
-        [SendToIMLGraph]
+        [SendToIMLGraph, HideInInspector]
         public bool ToggleDataCollection;
 
         #endregion
 
         #region Unity Messages
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
+            // If we reach to this script with the toggle true, make sure to restart it
+            if (ToggleDataCollection)
+            {
+                ToggleDataCollection = false;
+            }
+
+            // If the event was fired, flag data collection toggle to true
+            if (m_CollectDataEvent || ToggleDataCollection)
+            {
+                ToggleDataCollection = true;
+                m_CollectDataEvent = false;
+            }
 
         }
 

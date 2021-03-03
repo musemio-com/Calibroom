@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   InputConnected: 0
-  Counter: 5
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 376, y: 408}
+  position: {x: 328, y: -888}
   ports:
     keys:
     - GameObjectDataIn
@@ -85,7 +85,10 @@ MonoBehaviour:
     - _fieldName: LiveDataOut
       _node: {fileID: -6820283873746699831}
       _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: InputFeatures
+        node: {fileID: -3966539418009321199}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -95,7 +98,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -121,7 +124,7 @@ MonoBehaviour:
   m_Name: LeftHand Controller (GameObject)
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: -344}
+  position: {x: 24, y: -1288}
   ports:
     keys:
     - GameObjectDataOut
@@ -143,7 +146,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 0
-  GOHashCode: 16056
+  GOHashCode: 16066
   CreatedDuringPlaymode: 0
 --- !u!114 &-3966539418009321199
 MonoBehaviour:
@@ -158,7 +161,7 @@ MonoBehaviour:
   m_Name: Single Training Examples
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 920, y: -472}
+  position: {x: 984, y: -520}
   ports:
     keys:
     - InputFeatures
@@ -177,7 +180,13 @@ MonoBehaviour:
       _typeQualifiedName: System.Collections.Generic.List`1[[XNode.Node, XNode, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: LiveDataOut
+        node: {fileID: -6820283873746699831}
+        reroutePoints: []
+      - fieldName: LiveDataOut
+        node: {fileID: -2753648013107953000}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -187,7 +196,10 @@ MonoBehaviour:
       _typeQualifiedName: System.Collections.Generic.List`1[[XNode.Node, XNode, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: m_Out
+        node: {fileID: 4048473847388668640}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -270,8 +282,11 @@ MonoBehaviour:
   DevMode: 0
   id: f4bdedba-b7eb-4e32-9512-76d97c781297
   numberInComponentList: -1
-  InputFeatures: []
-  TargetValues: []
+  InputFeatures:
+  - {fileID: -6820283873746699831}
+  - {fileID: -2753648013107953000}
+  TargetValues:
+  - {fileID: 4048473847388668640}
   RecordOneInputBool: 0
   ToggleRecordingInputBool: 0
   DeleteLastInputBool: 0
@@ -280,8 +295,8 @@ MonoBehaviour:
   ModeOfCollection: 0
   TrainingExamplesVector: []
   TrainingSeriesCollection: []
-  m_DesiredInputsConfig: 
-  m_DesiredOutputsConfig: 
+  m_DesiredInputsConfig: 0300000003000000
+  m_DesiredOutputsConfig: 00000000
   MLSystemNodesConnected: []
   StartDelay: 0
   CaptureRate: 10
@@ -289,7 +304,7 @@ MonoBehaviour:
   EnableKeyboardControl: 0
   RecordDataKey: 0
   showWarning: 0
-  canCollect: 0
+  canCollect: 1
   listNo: 0
 --- !u!114 &-3219005705289358105
 MonoBehaviour:
@@ -304,7 +319,7 @@ MonoBehaviour:
   m_Name: RightHand Controller (GameObject)
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -200, y: 328}
+  position: {x: 24, y: -888}
   ports:
     keys:
     - GameObjectDataOut
@@ -326,7 +341,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 0
-  GOHashCode: 16010
+  GOHashCode: 16020
   CreatedDuringPlaymode: 0
 --- !u!114 &-2753648013107953000
 MonoBehaviour:
@@ -341,7 +356,7 @@ MonoBehaviour:
   m_Name: Position
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 88, y: -120}
+  position: {x: 312, y: -1288}
   ports:
     keys:
     - GameObjectDataIn
@@ -362,7 +377,10 @@ MonoBehaviour:
     - _fieldName: LiveDataOut
       _node: {fileID: -2753648013107953000}
       _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: InputFeatures
+        node: {fileID: -3966539418009321199}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -372,7 +390,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -404,10 +422,64 @@ MonoBehaviour:
   - {fileID: -6820283873746699831}
   - {fileID: -3966539418009321199}
   - {fileID: -8754686349468216592}
-  - {fileID: 0}
   - {fileID: 4430898547025554715}
   - {fileID: 6761397498056281689}
+  - {fileID: 4048473847388668640}
   SceneComponent: {fileID: 0}
+--- !u!114 &4048473847388668640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a19e741e423c3c4abced594a9e6f303, type: 3}
+  m_Name: Float
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 312, y: -472}
+  ports:
+    keys:
+    - m_In
+    - m_Out
+    values:
+    - _fieldName: m_In
+      _node: {fileID: 4048473847388668640}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_Out
+      _node: {fileID: 4048473847388668640}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: TargetValues
+        node: {fileID: -3966539418009321199}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  DevMode: 0
+  id: 1ecf555b-cc71-4a46-a71a-def17f3045aa
+  numberInComponentList: -1
+  ValueName: 
+  m_In: 0
+  m_Value: 1
+  m_Out: 0
+  ReceivingData: 0
+  InputConnected: 0
+  Counter: 3
+  Count: 5
+  ToggleSwitches: 01
+  ReceivedValue:
+  - 1
 --- !u!114 &4430898547025554715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +493,7 @@ MonoBehaviour:
   m_Name: DataCollectionController (Script)
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: -680}
+  position: {x: 120, y: 24}
   ports:
     keys:
     - ToggleDataCollection
@@ -442,7 +514,7 @@ MonoBehaviour:
   id: fe17fcb9-80d4-400a-97e4-8123f97b25ac
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -2214
+  ScriptHashCode: 16006
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -471,7 +543,7 @@ MonoBehaviour:
   m_Name: Boolean
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 440, y: -552}
+  position: {x: 504, y: -8}
   ports:
     keys:
     - m_In
