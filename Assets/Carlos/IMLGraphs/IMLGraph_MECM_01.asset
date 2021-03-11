@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Value: 0
   m_Out: 0
   ReceivingData: 0
+  FeatureValueReceivingData: 00
   InputConnected: 0
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -98,7 +99,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -146,7 +147,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 16066
+  GOHashCode: 22022
   CreatedDuringPlaymode: 0
 --- !u!114 &-3966539418009321199
 MonoBehaviour:
@@ -303,7 +304,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
   listNo: 0
 --- !u!114 &-3219005705289358105
@@ -341,7 +342,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 16020
+  GOHashCode: 21976
   CreatedDuringPlaymode: 0
 --- !u!114 &-2753648013107953000
 MonoBehaviour:
@@ -390,7 +391,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -425,7 +426,6 @@ MonoBehaviour:
   - {fileID: 4430898547025554715}
   - {fileID: 6761397498056281689}
   - {fileID: 4048473847388668640}
-  - {fileID: 0}
   SceneComponent: {fileID: 0}
 --- !u!114 &4048473847388668640
 MonoBehaviour:
@@ -475,8 +475,9 @@ MonoBehaviour:
   m_Value: 0
   m_Out: 0
   ReceivingData: 0
+  FeatureValueReceivingData: 00
   InputConnected: 0
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -515,7 +516,7 @@ MonoBehaviour:
   id: fe17fcb9-80d4-400a-97e4-8123f97b25ac
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 16006
+  ScriptHashCode: 21962
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -582,8 +583,9 @@ MonoBehaviour:
   m_Value: 0
   m_Out: 0
   ReceivingData: 0
+  FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:

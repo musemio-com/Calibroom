@@ -27,6 +27,36 @@ namespace MECM
         [SendToIMLGraph, HideInInspector]
         public bool ToggleDataCollection;
 
+
+        /// <summary>
+        /// Events that fires the toggle run model on/off (used outside of IMLGraph)
+        /// </summary>
+        [SerializeField]
+        private bool m_ToggleTrainModelEvent;
+        /// <summary>
+        /// Toggles run model on/off (used in IMLGraph)
+        /// </summary>
+        [SendToIMLGraph, HideInInspector]
+        public bool ToggleTrainModel;
+
+
+        /// <summary>
+        /// Events that fires the toggle run model on/off (used outside of IMLGraph)
+        /// </summary>
+        [SerializeField]
+        private bool m_ToggleRunModelEvent;
+        /// <summary>
+        /// Toggles run model on/off (used in IMLGraph)
+        /// </summary>
+        [SendToIMLGraph, HideInInspector]
+        public bool ToggleRunModel;
+
+        /// <summary>
+        /// DIRTY VALUE TO SEND V3 DATA TO GRAPH
+        /// </summary>
+        [SendToIMLGraph]
+        public Vector3 ColorOut;
+
         #endregion
 
         #region Unity Messages
@@ -38,13 +68,35 @@ namespace MECM
             {
                 ToggleDataCollection = false;
             }
+            if (ToggleTrainModel)
+            {
+                ToggleTrainModel = false;
+            }
+            if (ToggleRunModel)
+            {
+                ToggleRunModel = false;
+            }
 
             // If the event was fired, flag data collection toggle to true
             if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
                 ToggleDataCollection = true;
                 m_ToggleCollectDataEvent = false;
+                Debug.Log("Toggling data collection!");
             }
+            if (m_ToggleTrainModelEvent || ToggleTrainModel)
+            {
+                ToggleTrainModel = true;
+                m_ToggleTrainModelEvent = false;
+                Debug.Log("Toggling Train Model!");
+            }
+            if (m_ToggleRunModelEvent || ToggleRunModel)
+            {
+                ToggleRunModel = true;
+                m_ToggleRunModelEvent = false;
+                Debug.Log("Toggling Run Model!");
+            }
+
 
         }
 
@@ -60,6 +112,25 @@ namespace MECM
         {
             m_ToggleCollectDataEvent = true;
         }
+
+        /// <summary>
+        /// Fires the Train model event (toggles on/off model inference)
+        /// </summary>
+        /// <returns></returns>
+        public void FireToggleTrainModelEvent()
+        {
+            m_ToggleTrainModelEvent = true;
+        }
+
+        /// <summary>
+        /// Fires the run model event (toggles on/off model inference)
+        /// </summary>
+        /// <returns></returns>
+        public void FireToggleRunModelEvent()
+        {
+            m_ToggleRunModelEvent = true;
+        }
+
 
         #endregion
 

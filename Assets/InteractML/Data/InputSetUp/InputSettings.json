@@ -1,0 +1,16 @@
+{
+  "isEnabled": false,
+  "device": 2,
+  "deleteAllButtonNo": 2,
+  "deleteAllButtonTT": 2,
+  "recordOneButtonNo": 0,
+  "recordOneButtonTT": 0,
+  "toggleRecordButtonNo": 3,
+  "toggleRecordButtonTT": 2,
+  "trainButtonNo": 4,
+  "trainButtonTT": 2,
+  "toggleRunButtonNo": 0,
+  "toggleRunButtonTT": 1,
+  "trainingSide": 0,
+  "mlsSide": 1
+}
