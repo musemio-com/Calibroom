@@ -35,7 +35,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 18916
+  GOHashCode: 16718
   CreatedDuringPlaymode: 0
 --- !u!114 &-4763416217499352384
 MonoBehaviour:
@@ -104,7 +104,7 @@ MonoBehaviour:
   id: 8a793b5f-25e0-41d8-a7f2-1b092ab79f1c
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 19000
+  ScriptHashCode: 16802
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -221,7 +221,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 000000
   InputConnected: 0
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue:
@@ -500,9 +500,9 @@ MonoBehaviour:
   ToggleTrainInputBool: 0
   ToggleRunInputBool: 0
   PredictedRapidlibOutput:
-  - 1
-  - 1
-  - 1
+  - 0
+  - 0
+  - 0
   DelayedPredictedOutput:
   - 1
   - 1
@@ -520,7 +520,7 @@ MonoBehaviour:
   matchLiveDataInputs: 1
   matchVectorLength: 1
   warning: You are in edit mode live data in from objects will only workin play mode
-  error: 0
+  error: 1
   trainOnLoad: 0
 --- !u!114 &-2775459176358772876
 MonoBehaviour:
@@ -570,18 +570,18 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: {x: 0, y: 0, z: 0}
-  m_Value: {x: 1, y: 1, z: 1}
-  m_Out: {x: 1, y: 1, z: 1}
+  m_Value: {x: 0, y: 0, z: 0}
+  m_Out: {x: 0, y: 0, z: 0}
   ReceivingData: 0
   FeatureValueReceivingData: 000000
   InputConnected: 1
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue:
-  - 1
-  - 1
-  - 1
+  - 0
+  - 0
+  - 0
 --- !u!114 &-2313512892006192339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 000000
   InputConnected: 1
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue:
@@ -891,7 +891,7 @@ MonoBehaviour:
   id: d2b633c1-8b1d-43c2-ad2e-97891427ab5a
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 19014
+  ScriptHashCode: 16816
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -993,7 +993,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1117,9 +1117,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
-    - 0.37549436
-    - 0.78794515
-    - 0.4388933
+    - 0
+    - 0
+    - 0
 --- !u!114 &4842357300378422877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   id: daf700f6-2686-4742-8ec1-d010ef28bb43
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 18906
+  ScriptHashCode: 16708
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: RGBColour
