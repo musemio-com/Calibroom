@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Carlos/Scenes/Carlos_MECM_Screen_Loader.unity
-    guid: d061035ab21fbdd41948cebf4cbcb36b
+    path: Assets/Carlos/Scenes/Scene01Tutorial_Carlos.unity
+    guid: 04d01f523d1dc704d8475b68af633353
   - enabled: 1
-    path: Assets/Carlos/Scenes/Carlos_MECM_InteractML_Regression_VR.unity
-    guid: 4562307edffeb014388f27c59c56c8f9
-  - enabled: 0
-    path: Assets/Carlos/Scenes/Carlos_MECM_Track_VR.unity
-    guid: 4872b9cdc3f131d45ac4c9d2ca1d80c8
+    path: Assets/Pierre/Scenes/scene02.unity
+    guid: 60d8701adbb1357419f31afddd8790b0
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9aea28526e7ae8c459c23c14e11745b1, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f0b9905f7fef8944ea38d2797c482f34, type: 2}

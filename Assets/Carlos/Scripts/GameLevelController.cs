@@ -98,6 +98,14 @@ public class GameLevelController : MonoBehaviour
             FindLevelsAsChildren(this.gameObject);
         }
 
+        // If we haven't found any levels...
+        if (m_GameLevels == null || m_GameLevels.Length < 1)
+        {
+            // Use the number of levels added in the settings as the number of the array
+            m_GameLevels = new GameObject[SceneManager.sceneCountInBuildSettings];
+        }
+
+
         // If the gameLevels array is define and contain any levels...
         if (m_GameLevels != null && m_GameLevels.Length > 0)
         {
