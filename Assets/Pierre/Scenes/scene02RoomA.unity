@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4331666352199311283, guid: ed0ff95b2ce7d6d4781a538b57caeda3, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4331666352199311286, guid: ed0ff95b2ce7d6d4781a538b57caeda3, type: 3}
       propertyPath: m_RootOrder
       value: 0
