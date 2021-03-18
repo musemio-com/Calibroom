@@ -22,7 +22,7 @@ public class PuzzlePieceSensor : MonoBehaviour
     /// <summary>
     /// Are all the correct pieces detected?
     /// </summary>
-    public bool AllPiecesSensed;
+    public bool ObjectivesSensed;
 
     /// <summary>
     /// Which piece is the detector looking for?
@@ -66,13 +66,13 @@ public class PuzzlePieceSensor : MonoBehaviour
                             }
                         }
 
-                        AllPiecesSensed = true;
+                        ObjectivesSensed = true;
                         // Iterate again all expected pieces to check if all are in place
                         foreach (var expectedPiece in PuzzlePiecesExpected)
                         {
                             // If one is not in place, we force false for overall flag
                             if (expectedPiece.InPlace == false)
-                                AllPiecesSensed = false;
+                                ObjectivesSensed = false;
                         }
 
                     }
@@ -83,7 +83,7 @@ public class PuzzlePieceSensor : MonoBehaviour
                     // If the puzzle board entered the trigger...
                     if (board != null)
                     {
-                        AllPiecesSensed = true;
+                        ObjectivesSensed = true;
                     }
                     break;
                 default:
@@ -121,7 +121,7 @@ public class PuzzlePieceSensor : MonoBehaviour
                                 // If so, remove flag
                                 expectedPiece.InPlace = false;
                                 // since at least one piece is not in place, the overall flag can't be true
-                                AllPiecesSensed = false;
+                                ObjectivesSensed = false;
                             }
                         }
                     }
@@ -132,7 +132,7 @@ public class PuzzlePieceSensor : MonoBehaviour
                     // If the puzzle board entered the trigger...
                     if (board != null)
                     {
-                        AllPiecesSensed = false;
+                        ObjectivesSensed = false;
                     }
                     break;
                 default:

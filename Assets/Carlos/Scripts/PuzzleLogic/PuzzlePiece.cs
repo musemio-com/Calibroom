@@ -94,16 +94,26 @@ public class PuzzlePiece : MonoBehaviour
     private bool CheckInPlace(List<PuzzlePieceSensor> sensors)
     {
         bool inPlace = false;
+        int numberOfPiecesWanted = 2;
+        int numberOfPiecesSensed = 0;
         // Iterate over list of sensors
         if (sensors != null && sensors.Count > 0)
         {
             foreach (var sensor in m_Sensors)
             {
                 // VERY RELAXED CONDITION: with at least one sensor reporting OK we consider the piece in place
-                if (sensor.AllPiecesSensed)
+                if (sensor.ObjectivesSensed)
+                {
+                    // We increase by 1 the number of pieces 
+                    numberOfPiecesSensed++;
+
+                }
+
+                // If we have reached two sensors reporting OK, then we stop looking and consider the piece in place
+                if (numberOfPiecesSensed == numberOfPiecesWanted)
                 {
                     inPlace = true;
-                    // Stop searching as this is a relaxed condition
+                    // Stop execution to save computation time
                     return inPlace;
                 }
             }
