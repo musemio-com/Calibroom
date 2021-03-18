@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Carlos/Scenes/Scene01Tutorial_Carlos.unity
     guid: 04d01f523d1dc704d8475b68af633353
   - enabled: 1
-    path: Assets/Pierre/Scenes/scene02.unity
-    guid: 60d8701adbb1357419f31afddd8790b0
+    path: Assets/Pierre/Scenes/scene01Tutorial.unity
+    guid: 2d77acc1db3669c459a066c654f33741
+  - enabled: 1
+    path: Assets/Pierre/Scenes/scene02RoomA.unity
+    guid: 025ceddae01d9fa4592509ed6a4b1831
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9aea28526e7ae8c459c23c14e11745b1, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f0b9905f7fef8944ea38d2797c482f34, type: 2}
