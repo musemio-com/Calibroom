@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1194423517258207336}
   - component: {fileID: 3224889461826960976}
   - component: {fileID: 1661319867828153351}
-  - component: {fileID: 38321774189601036}
   - component: {fileID: 4566554796466170012}
+  - component: {fileID: 4697759259990201086}
   - component: {fileID: 5465935109883419891}
   m_Layer: 0
   m_Name: PiecePink
@@ -103,19 +103,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &38321774189601036
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8294547938730095947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.10019997, y: 0.39894626, z: 0.100200005}
-  m_Center: {x: 0.00000005778841, y: -0.0010331082, z: 0.050000243}
 --- !u!54 &4566554796466170012
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,6 +119,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &4697759259990201086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294547938730095947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.302, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!114 &5465935109883419891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5388709707467848381, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}
@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5388709707467848381, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}
@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5388709707467848381, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfa4253dc3465fb4e8799b36c599e577, type: 3}

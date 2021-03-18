@@ -47,7 +47,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 0
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -99,7 +99,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -147,7 +147,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19222
+  GOHashCode: 19058
   CreatedDuringPlaymode: 0
 --- !u!114 &-3966539418009321199
 MonoBehaviour:
@@ -342,7 +342,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19176
+  GOHashCode: 19012
   CreatedDuringPlaymode: 0
 --- !u!114 &-2753648013107953000
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -477,7 +477,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 0
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -546,7 +546,7 @@ MonoBehaviour:
   id: fe17fcb9-80d4-400a-97e4-8123f97b25ac
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 19162
+  ScriptHashCode: 18998
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -642,7 +642,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
