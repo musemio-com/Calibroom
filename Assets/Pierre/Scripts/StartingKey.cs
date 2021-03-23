@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +7,10 @@ using UnityEngine;
 
 public class StartingKey : MonoBehaviour
 {
-    public bool pieceColor = false;
 
-    /// <summary>
-    /// Saved info from original transform
-    /// </summary>
     private Vector3 m_OriginalPosition;
     private Quaternion m_OriginalRotation;
+   
 
     private void Start()
     {
@@ -21,16 +19,14 @@ public class StartingKey : MonoBehaviour
         m_OriginalRotation = transform.rotation;
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
-        //PuzzleBoard table = collision.gameObject.GetComponent<PuzzleBoard>();
-        //// If we have collided with the table...
-        //if (table != null)
-        //{
-        //    // Set flag to true
-        //    OnTable = true;
-        //}
+        StartingHole hole = collision.gameObject.GetComponent<StartingHole>();
+        // If starting Key collide with StartingHole, then show puzzlepieces.
+        if (hole != null)
+        {
+
+        }
 
         DeadLimit deadLimit = collision.gameObject.GetComponent<DeadLimit>();
         // If we collide with a dead limit...
@@ -40,5 +36,5 @@ public class StartingKey : MonoBehaviour
             transform.position = m_OriginalPosition;
             transform.rotation = m_OriginalRotation;
         }
-    }//
+    }
 }
