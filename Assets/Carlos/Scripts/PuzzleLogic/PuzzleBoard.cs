@@ -10,6 +10,10 @@ public class PuzzleBoard : MonoBehaviour
     public PuzzlePiece[] Pieces;
     public bool PuzzleComplete;
     private GameLevelController m_LevelLoader;
+    /// <summary>
+    /// Flag that handles if the puzzle was completed at least once
+    /// </summary>
+    private bool m_PuzzleCompletedOnce;
 
     private void Awake()
     {
@@ -35,11 +39,15 @@ public class PuzzleBoard : MonoBehaviour
                 }                    
             }
 
-            // If the puzzle is complete...
-            if (PuzzleComplete)
+            // If the puzzle is complete and the puzzle hasn't been completed before...
+            if (PuzzleComplete && !m_PuzzleCompletedOnce)
             {
+                // Load Level
                 if (m_LevelLoader != null)
                     m_LevelLoader.LoadNextLevel();
+
+                // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
+                m_PuzzleCompletedOnce = true;
             }
         }
     }
