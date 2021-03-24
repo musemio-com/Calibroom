@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the behaviour of the UI Canvas that fades to Black
@@ -22,18 +23,29 @@ public class UIFadeToBlack : MonoBehaviour
     /// </summary>
     private int m_LoadNextLevelAnimatorID;
 
+    /// <summary>
+    /// Black image to perform fading to/from black animations
+    /// </summary>
+    private Image m_BlackImage;
+
     private void OnEnable()
     {
         m_MainCamera = null;
         // Try and find the main camera
         m_MainCamera = Camera.main.gameObject;
-
+        
         // If we found a camera...
         if (m_MainCamera != null)
         {
             // Position the UI canvas a bit further away of the main camera so it can be properly visible
             this.transform.SetParent(m_MainCamera.transform);
             this.transform.localPosition = Vector3.forward * 0.5f;
+
+            // Try and find black image
+            m_BlackImage = GetComponentInChildren<Image>();
+            // Make the blaack image bigger so that it can be seen by main camera (by default it is set to .001)
+            if (m_BlackImage != null)
+                m_BlackImage.transform.localScale *= 100f;
         }
 
         // Try and find animator

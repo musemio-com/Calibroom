@@ -9,7 +9,10 @@ public class PuzzleBoard : MonoBehaviour
 {
     public PuzzlePiece[] Pieces;
     public bool PuzzleComplete;
-    private GameLevelController m_LevelLoader;
+    /// <summary>
+    /// Fades to black the scene and loads next level
+    /// </summary>
+    private UIFadeToBlack m_LevelFader;
     /// <summary>
     /// Flag that handles if the puzzle was completed at least once
     /// </summary>
@@ -19,7 +22,7 @@ public class PuzzleBoard : MonoBehaviour
     {
         // Get all pieces in that are children to the board
         Pieces = FindObjectsOfType<PuzzlePiece>();
-        m_LevelLoader = FindObjectOfType<GameLevelController>();
+        m_LevelFader = FindObjectOfType<UIFadeToBlack>();
     }
 
     private void Update()
@@ -43,8 +46,8 @@ public class PuzzleBoard : MonoBehaviour
             if (PuzzleComplete && !m_PuzzleCompletedOnce)
             {
                 // Load Level
-                if (m_LevelLoader != null)
-                    m_LevelLoader.LoadNextLevel();
+                if (m_LevelFader != null)
+                    m_LevelFader.FadeToBlackAndLoadNextLevel();
 
                 // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
                 m_PuzzleCompletedOnce = true;
