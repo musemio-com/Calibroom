@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StartingHole : MonoBehaviour
 {
-    public bool startKeyInPlace;
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-
-   
-    }
-    private void Update()
-    {
-        // if start Key collides with strating hole, then startkey is in place
-
+        
     }
 
-
-
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

@@ -1746,6 +1746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1953437979}
+  - component: {fileID: 1953437980}
   m_Layer: 0
   m_Name: Puzzle01
   m_TagString: Untagged
@@ -1771,6 +1772,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1953437980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953437978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f708a2fa491504894e288797f26104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4157520725837316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2200593988021585504, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
@@ -1930,6 +1943,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 385022677}
+    - target: {fileID: 1691170357, guid: b42ef9d616fe41548979b32c7a43aab9, type: 3}
+      propertyPath: puzzle
+      value: 
+      objectReference: {fileID: 1953437980}
     - target: {fileID: 1786206951389706, guid: b42ef9d616fe41548979b32c7a43aab9, type: 3}
       propertyPath: m_Name
       value: startKey
