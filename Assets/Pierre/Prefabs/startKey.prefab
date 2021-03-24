@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f664af5fb3b86541a12d1d32342504c, type: 2}
+  - {fileID: 2100000, guid: 58f42fa9f7e0e9f4d8aa3b9c3aa5ef29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,4 +200,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374ad03dbaa6e8d4789f2940f4561b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceColor: 0
+  puzzle: {fileID: 0}

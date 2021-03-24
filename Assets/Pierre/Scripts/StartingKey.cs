@@ -7,10 +7,9 @@ using UnityEngine;
 
 public class StartingKey : MonoBehaviour
 {
-
     private Vector3 m_OriginalPosition;
     private Quaternion m_OriginalRotation;
-   
+    public Puzzle puzzle;
 
     private void Start()
     {
@@ -21,13 +20,6 @@ public class StartingKey : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartingHole hole = collision.gameObject.GetComponent<StartingHole>();
-        // If starting Key collide with StartingHole, then show puzzlepieces.
-        if (hole != null)
-        {
-
-        }
-
         DeadLimit deadLimit = collision.gameObject.GetComponent<DeadLimit>();
         // If we collide with a dead limit...
         if (deadLimit != null)
@@ -35,6 +27,14 @@ public class StartingKey : MonoBehaviour
             // Reset piece to original transform
             transform.position = m_OriginalPosition;
             transform.rotation = m_OriginalRotation;
+        }
+
+        // If starting Key collide with StartingHole, then puzzleActive is true.
+        StartingHole hole = collision.gameObject.GetComponent<StartingHole>();  
+        if (hole != null)
+        {
+            puzzle.PuzzleActive(true);
+        //    Debug.Log("collision detected");
         }
     }
 }
