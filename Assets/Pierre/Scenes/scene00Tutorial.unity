@@ -1589,6 +1589,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 385022677}
+    - target: {fileID: 5058694508831836, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
+      propertyPath: m_RetainTransformParent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2198104266721773002, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
       propertyPath: m_Name
       value: PiecePurple01
@@ -1599,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200593988021585504, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.465
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: 2200593988021585504, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1607,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200593988021585504, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.818
+      value: -0.806
       objectReference: {fileID: 0}
     - target: {fileID: 2200593988021585504, guid: a51f773933c336e44961aade8ad4abe1, type: 3}
       propertyPath: m_LocalRotation.w
