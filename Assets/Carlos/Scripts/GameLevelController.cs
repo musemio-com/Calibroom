@@ -8,7 +8,6 @@ using System;
 /// <summary>
 /// Controls all logic related to the game levels, how to transit them and store them
 /// </summary>
-[AddComponentMenu("CarlosFramework/GameLevelController")]
 public class GameLevelController : MonoBehaviour
 {
 
@@ -71,6 +70,12 @@ public class GameLevelController : MonoBehaviour
     [SerializeField]
     private GameObject m_LoadingBar;
 
+    /// <summary>
+    /// 1 is fully loaded
+    /// </summary>
+    public float LoadingProgress { get { return m_LoadingProgress; } }
+    private float m_LoadingProgress;
+
 
     // Use this for initialization
     void Start()
@@ -112,6 +117,13 @@ public class GameLevelController : MonoBehaviour
             // We set all the levels to false
             Arrays.SetActiveAllArray(ref m_GameLevels, false);
 
+        }
+
+        // If there is a loading screen...
+        if (m_LoadingScreen != null)
+        {
+            // We hide it
+            ShowLoadingScreen(false);
         }
     }
 
@@ -292,11 +304,14 @@ public class GameLevelController : MonoBehaviour
         switch (m_SceneLoadOption)
         {
             case SceneLoadOptionEnum.Synchronous:
-                //ShowLoadingScreen(true);
+                ShowLoadingScreen(true);
+                m_LoadingProgress = 0f;
                 SceneManager.LoadScene(index);
-                //ShowLoadingScreen(false);
+                m_LoadingProgress = 1f;
+                ShowLoadingScreen(false);
                 break;
             case SceneLoadOptionEnum.Async:
+                m_LoadingProgress = 0f;
                 StartCoroutine(AsynchronousLoad(index));
                 break;
             default:
@@ -342,6 +357,7 @@ public class GameLevelController : MonoBehaviour
             //float progress = Mathf.Clamp01(ao.progress / 0.9f);
             //Debug.Log("Loading progress: " + (ao.progress));
 
+            m_LoadingProgress = ao.progress;
             // We show a loading screen showing the progress
             ShowLoadingScreen(true, ao.progress);
 
@@ -362,6 +378,7 @@ public class GameLevelController : MonoBehaviour
         // We wait one frame
         yield return null;
 
+        m_LoadingProgress = 1f;
         // We then hide the loading screen and set the bar to 0
         ShowLoadingScreen(false, 0f);
     }
@@ -372,6 +389,9 @@ public class GameLevelController : MonoBehaviour
     /// <param name="value"> The value to show the loading screen. True for showing</param>
     public void ShowLoadingScreen(bool value)
     {
+        if (m_LoadingScreen == null)
+            return;
+
         // If the value is true...
         if (value)
         {
@@ -397,7 +417,7 @@ public class GameLevelController : MonoBehaviour
     /// <param name="loadBarProgress"> The porgress of the loading bar</param>
     public void ShowLoadingScreen(bool value, float loadBarProgress)
     {
-        if (m_LoadingScreen == null || m_LoadingBar == null )
+        if (m_LoadingScreen == null)
         {
             return;
         }
