@@ -1,0 +1,33 @@
+{
+    "name": "CalibroomInputActions",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "9abc1b2f-3667-4d2e-bd33-850370ee2d6a",
+            "actions": [
+                {
+                    "name": "ExitGame",
+                    "type": "Button",
+                    "id": "fe83f3ba-d781-462d-a97d-320340f9c858",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3a3f0b1e-c770-4a8d-b08d-a88685a21231",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
