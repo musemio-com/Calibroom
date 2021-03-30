@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
   UserIDInt: 0
-  UserIDString: 
+  UserIDString: scene01RoomA
 --- !u!4 &1380984904
 Transform:
   m_ObjectHideFlags: 0
