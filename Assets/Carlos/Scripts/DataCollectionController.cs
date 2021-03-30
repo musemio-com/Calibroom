@@ -55,7 +55,10 @@ namespace MECM
         /// User ID that we are collecting data from
         /// </summary>
         [SendToIMLGraph]
-        public int UserID;
+        public int UserIDInt;
+
+        [SendToIMLGraph]
+        public string UserIDString;
 
         #endregion
 

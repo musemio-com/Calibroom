@@ -860,7 +860,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserID: 0
+  UserIDInt: 2
+  UserIDString: PioPio
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
@@ -1265,7 +1266,7 @@ MonoBehaviour:
   - {fileID: 8486834769789631379, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   - {fileID: 7960228141402078304, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   m_ScriptNodesList:
-  - {fileID: 8540115292674843417, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+  - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -1275,7 +1276,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1191979481}
     m_values:
-    - {fileID: 8540115292674843417, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+    - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &1580813943

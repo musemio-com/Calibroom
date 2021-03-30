@@ -1,5 +1,145 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8147833963324794456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e955aaefcc0cc3438b670a24cf66a3a, type: 3}
+  m_Name: DataCollectionController (Script)
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 88, y: 648}
+  ports:
+    keys:
+    - ToggleDataCollection
+    - ToggleTrainModel
+    - ToggleRunModel
+    - UserIDInt
+    - UserIDString
+    values:
+    - _fieldName: ToggleDataCollection
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleTrainModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleRunModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDInt
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 1359123611355374594}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDString
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: SubFolderDataPathStringPorth
+        node: {fileID: 4507404358264307083}
+        reroutePoints:
+        - {x: 942.5257, y: 807.6188}
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 4507404358264307083}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  DevMode: 0
+  id: 95828b2b-7371-4bc9-a243-3eab3821dbb2
+  numberInComponentList: -1
+  m_ScriptInternal: {fileID: 0}
+  ScriptHashCode: -1206478
+  m_PortsPerFieldInfo:
+    m_keys:
+    - _fieldName: ToggleDataCollection
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleTrainModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleRunModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDInt
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 1359123611355374594}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDString
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: SubFolderDataPathStringPorth
+        node: {fileID: 4507404358264307083}
+        reroutePoints:
+        - {x: 942.5257, y: 807.6188}
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 4507404358264307083}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  CreatedDuringPlaymode: 0
 --- !u!114 &-6025471660088047012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +187,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -79,9 +219,9 @@ MonoBehaviour:
   - {fileID: -6025471660088047012}
   - {fileID: 2009041098298715880}
   - {fileID: 898389062201068671}
-  - {fileID: 8540115292674843417}
   - {fileID: 1359123611355374594}
   - {fileID: 4507404358264307083}
+  - {fileID: -8147833963324794456}
   SceneComponent: {fileID: 0}
 --- !u!114 &898389062201068671
 MonoBehaviour:
@@ -130,7 +270,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -156,7 +296,7 @@ MonoBehaviour:
   m_Name: Integer
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 664}
+  position: {x: 520, y: 248}
   ports:
     keys:
     - m_In
@@ -167,8 +307,8 @@ MonoBehaviour:
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: UserID
-        node: {fileID: 8540115292674843417}
+      - fieldName: UserIDInt
+        node: {fileID: -8147833963324794456}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -191,16 +331,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 2
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 2
 --- !u!114 &1890556346929941501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +425,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -324,6 +464,8 @@ MonoBehaviour:
     - RecordOneInputBoolPort
     - ToggleRecordingInputBoolPort
     - DeleteAllExamplesBoolPort
+    - SubFolderDataPathStringPorth
+    - SubFolderDataPathStringPort
     values:
     - _fieldName: InputFeatures
       _node: {fileID: 4507404358264307083}
@@ -415,10 +557,7 @@ MonoBehaviour:
       _node: {fileID: 4507404358264307083}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: 8540115292674843417}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -428,6 +567,30 @@ MonoBehaviour:
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 1
+      _dynamic: 1
+    - _fieldName: SubFolderDataPathStringPorth
+      _node: {fileID: 4507404358264307083}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: UserIDString
+        node: {fileID: -8147833963324794456}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 1
+      _dynamic: 1
+    - _fieldName: SubFolderDataPathStringPort
+      _node: {fileID: 4507404358264307083}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: UserIDString
+        node: {fileID: -8147833963324794456}
+        reroutePoints: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -458,6 +621,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 0
+  SubFolderDataPath: 
 --- !u!114 &7960228141402078304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,117 +695,4 @@ MonoBehaviour:
   GameObjectDataOut: {fileID: 0}
   state: 0
   GOHashCode: -1130290
-  CreatedDuringPlaymode: 0
---- !u!114 &8540115292674843417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e955aaefcc0cc3438b670a24cf66a3a, type: 3}
-  m_Name: DataCollectionController (Script)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 120, y: 648}
-  ports:
-    keys:
-    - ToggleDataCollection
-    - ToggleTrainModel
-    - ToggleRunModel
-    - UserID
-    values:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4507404358264307083}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserID
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 1359123611355374594}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-  DevMode: 0
-  id: 26815574-cf68-4df8-86b4-c6954c5021a6
-  numberInComponentList: -1
-  m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -1206478
-  m_PortsPerFieldInfo:
-    m_keys:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4507404358264307083}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserID
-      _node: {fileID: 8540115292674843417}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 1359123611355374594}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   CreatedDuringPlaymode: 0
