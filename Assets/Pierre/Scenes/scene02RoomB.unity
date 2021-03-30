@@ -1377,6 +1377,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
     - target: {fileID: 6227743859330789859, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227743859330789859, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 385022677}
@@ -1437,6 +1441,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
+    - target: {fileID: 3508250335665792231, guid: 13f177b5a6750864c973e5b42f1097e5, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3508250335665792231, guid: 13f177b5a6750864c973e5b42f1097e5, type: 3}
       propertyPath: m_InteractionManager
       value: 
