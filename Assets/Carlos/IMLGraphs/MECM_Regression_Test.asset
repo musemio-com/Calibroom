@@ -35,7 +35,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 18378
+  GOHashCode: 17600
   CreatedDuringPlaymode: 0
 --- !u!114 &-4763416217499352384
 MonoBehaviour:
@@ -104,7 +104,7 @@ MonoBehaviour:
   id: 8a793b5f-25e0-41d8-a7f2-1b092ab79f1c
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 18462
+  ScriptHashCode: 17684
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -372,8 +372,6 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: -3485763463359513330}
   ModeOfCollection: 0
-  TrainingExamplesVector: []
-  TrainingSeriesCollection: []
   m_DesiredInputsConfig: 03000000
   m_DesiredOutputsConfig: 03000000
   MLSystemNodesConnected:
@@ -779,8 +777,6 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: -1922556921918363040}
   ModeOfCollection: 0
-  TrainingExamplesVector: []
-  TrainingSeriesCollection: []
   m_DesiredInputsConfig: 
   m_DesiredOutputsConfig: 03000000
   MLSystemNodesConnected: []
@@ -791,7 +787,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 0
-  listNo: 1
+  listNo: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,7 +887,7 @@ MonoBehaviour:
   id: d2b633c1-8b1d-43c2-ad2e-97891427ab5a
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 18476
+  ScriptHashCode: 17698
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -1154,7 +1150,7 @@ MonoBehaviour:
   id: daf700f6-2686-4742-8ec1-d010ef28bb43
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 18368
+  ScriptHashCode: 17590
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: RGBColour

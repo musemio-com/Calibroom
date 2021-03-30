@@ -52,10 +52,10 @@ namespace MECM
         public bool ToggleRunModel;
 
         /// <summary>
-        /// DIRTY VALUE TO SEND V3 DATA TO GRAPH
+        /// User ID that we are collecting data from
         /// </summary>
         [SendToIMLGraph]
-        public Vector3 ColorOut;
+        public int UserID;
 
         #endregion
 

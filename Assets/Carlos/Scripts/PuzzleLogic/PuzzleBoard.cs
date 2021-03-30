@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MECM;
 
 /// <summary>
 /// Manages behaviour of puzzle table
@@ -13,16 +14,28 @@ public class PuzzleBoard : MonoBehaviour
     /// Fades to black the scene and loads next level
     /// </summary>
     private UIFadeToBlack m_LevelFader;
+
+    /// <summary>
+    /// Handles whether the puzzle should run its logic or not
+    /// </summary>
+    private bool m_PuzzleStarted;
     /// <summary>
     /// Flag that handles if the puzzle was completed at least once
     /// </summary>
     private bool m_PuzzleCompletedOnce;
+
+    /// <summary>
+    /// Used to trigger data collection on/off
+    /// </summary>
+    private DataCollectionController m_DataCtrlr;
 
     private void Awake()
     {
         // Get all pieces in that are children to the board
         Pieces = FindObjectsOfType<PuzzlePiece>();
         m_LevelFader = FindObjectOfType<UIFadeToBlack>();
+        // Get data controller
+        m_DataCtrlr = FindObjectOfType<DataCollectionController>();
     }
 
     private void Update()
@@ -45,13 +58,44 @@ public class PuzzleBoard : MonoBehaviour
             // If the puzzle is complete and the puzzle hasn't been completed before...
             if (PuzzleComplete && !m_PuzzleCompletedOnce)
             {
-                // Load Level
-                if (m_LevelFader != null)
-                    m_LevelFader.FadeToBlackAndLoadNextLevel();
-
-                // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
-                m_PuzzleCompletedOnce = true;
+                StopPuzzle();
             }
         }
+    }
+
+    /// <summary>
+    /// Flags the puzzle as started
+    /// </summary>
+    public void StartPuzzle()
+    {
+        // Start the puzzle only once
+        if (!m_PuzzleStarted)
+        {
+            PuzzleComplete = false;
+            // Starts data collection
+            if (m_DataCtrlr != null)
+                m_DataCtrlr.FireToggleCollectDataEvent();
+
+            m_PuzzleStarted = true;
+        }
+
+    }
+
+    /// <summary>
+    /// Flags the puzzle as completed, loads new level, and stops data collection
+    /// </summary>
+    public void StopPuzzle()
+    {
+        // Stop data collection
+        if (m_DataCtrlr != null)
+            m_DataCtrlr.FireToggleCollectDataEvent();
+
+        // Load Level
+        if (m_LevelFader != null)
+            m_LevelFader.FadeToBlackAndLoadNextLevel();
+
+        // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
+        m_PuzzleCompletedOnce = true;
+
     }
 }
