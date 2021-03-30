@@ -11,6 +11,11 @@ public class StartingKey : MonoBehaviour
     private Quaternion m_OriginalRotation;
     public Puzzle puzzle;
 
+    private void Awake()
+    {
+        puzzle = FindObjectOfType<Puzzle>();
+    }
+
     private void Start()
     {
         // Save original transform if piece needs to reset (i.e. out of room limits)

@@ -9,7 +9,12 @@ public class Puzzle : MonoBehaviour
     /// Used to let the puzzle board when the puzzle should start
     /// </summary>
     private PuzzleBoard m_Board;
-    
+
+    private void Awake()
+    {
+        m_Board = FindObjectOfType<PuzzleBoard>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
