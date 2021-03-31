@@ -81,9 +81,64 @@ MonoBehaviour:
   id: 95828b2b-7371-4bc9-a243-3eab3821dbb2
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 25070
+  ScriptHashCode: 18782
   m_PortsPerFieldInfo:
-    m_keys: []
+    m_keys:
+    - _fieldName: ToggleDataCollection
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleTrainModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleRunModel
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDInt
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 1359123611355374594}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDString
+      _node: {fileID: -8147833963324794456}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: SubFolderDataPathStringPorth
+        node: {fileID: 4507404358264307083}
+        reroutePoints:
+        - {x: 942.5257, y: 807.6188}
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 4507404358264307083}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   CreatedDuringPlaymode: 0
 --- !u!114 &-6025471660088047012
 MonoBehaviour:
@@ -130,9 +185,9 @@ MonoBehaviour:
   DevMode: 0
   id: 86ad8d17-f931-4f1a-bd2e-b1aa7458b4ba
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 2
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -142,9 +197,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.06688308
-    - 1.6233112
-    - 0.27217144
+    - 0
+    - 0
+    - 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,9 +268,9 @@ MonoBehaviour:
   DevMode: 0
   id: 489a581c-c805-46d4-9806-c736dd17eb80
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 2
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -225,9 +280,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.225852
-    - 1.221044
-    - 0.39601183
+    - 0
+    - 0
+    - 0
 --- !u!114 &1359123611355374594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +336,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -321,7 +376,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 0
-  GOHashCode: 25016
+  GOHashCode: 18728
   CreatedDuringPlaymode: 0
 --- !u!114 &2009041098298715880
 MonoBehaviour:
@@ -368,9 +423,9 @@ MonoBehaviour:
   DevMode: 0
   id: 808497a3-9456-4f28-a94f-7e83305bb7d9
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 2
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -380,9 +435,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.030145444
-    - 1.2156178
-    - 0.43565568
+    - 0
+    - 0
+    - 0
 --- !u!114 &4507404358264307083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +657,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 0
-  GOHashCode: 25012
+  GOHashCode: 18724
   CreatedDuringPlaymode: 0
 --- !u!114 &8486834769789631379
 MonoBehaviour:
@@ -639,5 +694,5 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 0
-  GOHashCode: 25014
+  GOHashCode: 18726
   CreatedDuringPlaymode: 0
