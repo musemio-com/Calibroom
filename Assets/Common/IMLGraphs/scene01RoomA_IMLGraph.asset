@@ -73,7 +73,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -249,7 +249,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -316,7 +316,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -474,7 +474,7 @@ MonoBehaviour:
   id: 938fb8d6-8e4e-49de-950c-660e629936d1
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 1
+  state: 0
   GOHashCode: 19350
   CreatedDuringPlaymode: 0
 --- !u!114 &-4696664850459308096
@@ -524,7 +524,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -587,7 +587,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -661,6 +661,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: ToggleRecordingInputBoolPort
         node: {fileID: 7187650241758250611}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 4999826832894318360}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -747,6 +750,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: ToggleRecordingInputBoolPort
         node: {fileID: 7187650241758250611}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 4999826832894318360}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -864,7 +870,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1016,7 +1022,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1076,7 +1082,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1264,7 +1270,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 1
   canCollect: 1
-  listNo: 3
+  listNo: 0
   SubFolderDataPath: scene01RoomA
 --- !u!114 &2971309970561483842
 MonoBehaviour:
@@ -1438,7 +1444,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 1
   SubFolderDataPath: scene01RoomA
 --- !u!114 &3399067939314817978
 MonoBehaviour:
@@ -1490,7 +1496,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1551,7 +1557,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1615,7 +1621,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1746,7 +1752,10 @@ MonoBehaviour:
       _node: {fileID: 4999826832894318360}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: ToggleDataCollection
+        node: {fileID: -485549255163155568}
+        reroutePoints: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -1846,7 +1855,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1930,7 +1939,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2044,7 +2053,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2221,7 +2230,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 2
   SubFolderDataPath: scene01RoomA
 --- !u!114 &8355691074961514796
 MonoBehaviour:
@@ -2260,6 +2269,6 @@ MonoBehaviour:
   id: e4ad9d64-103a-45e3-8328-5e4c26bbce34
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 1
+  state: 0
   GOHashCode: 19348
   CreatedDuringPlaymode: 0
