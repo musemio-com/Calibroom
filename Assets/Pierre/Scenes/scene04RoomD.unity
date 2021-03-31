@@ -1991,11 +1991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 730857773211355597, guid: 1ddacbe1577eec64b9a964d752f83af2, type: 3}
       propertyPath: m_Name
-      value: RoomB
-      objectReference: {fileID: 0}
-    - target: {fileID: 730857773211355597, guid: 1ddacbe1577eec64b9a964d752f83af2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: RoomD
       objectReference: {fileID: 0}
     - target: {fileID: 3365513831438994981, guid: 1ddacbe1577eec64b9a964d752f83af2, type: 3}
       propertyPath: m_LocalPosition.x
