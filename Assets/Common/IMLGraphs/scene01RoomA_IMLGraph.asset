@@ -45,9 +45,9 @@ MonoBehaviour:
   DevMode: 0
   id: 82e72311-ad4c-4813-a73c-f7a92fd550de
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 5
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -57,9 +57,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.5486586
-    - 1.5663846
-    - -0.025844827
+    - 0
+    - 0
+    - 0
 --- !u!114 &-6795849123384569624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -174,7 +174,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19388
+  GOHashCode: 26244
   CreatedDuringPlaymode: 0
 --- !u!114 &-485549255163155568
 MonoBehaviour:
@@ -257,7 +257,7 @@ MonoBehaviour:
   id: 547553fd-ebfa-4c6b-8fec-552398fa3d92
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 19410
+  ScriptHashCode: 26292
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -376,7 +376,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19390
+  GOHashCode: 26246
   CreatedDuringPlaymode: 0
 --- !u!114 &1032819020571496605
 MonoBehaviour:
@@ -423,9 +423,9 @@ MonoBehaviour:
   DevMode: 0
   id: 4a97ee43-597d-4582-ba65-6134853ecfd2
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 5
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -435,9 +435,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.73937523
-    - 0.7304715
-    - 0.15012968
+    - 0
+    - 0
+    - 0
 --- !u!114 &2934718194934204058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 0
+  showWarning: 1
   canCollect: 1
   listNo: 0
   SubFolderDataPath: scene01RoomA
@@ -657,9 +657,9 @@ MonoBehaviour:
   DevMode: 0
   id: 07dbcfee-f04b-446e-bea8-59534484fe0f
   numberInComponentList: -1
-  ReceivingData: 1
-  FeatureValueReceivingData: 010101
-  Counter: 5
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -669,9 +669,9 @@ MonoBehaviour:
   GameObjInputMissing: 0
   m_PositionExtracted:
     m_Values:
-    - 0.48651785
-    - 0.7583755
-    - -0.28403437
+    - 0
+    - 0
+    - 0
 --- !u!114 &6622420231454165351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,5 +730,5 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19386
+  GOHashCode: 26242
   CreatedDuringPlaymode: 0

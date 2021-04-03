@@ -10,6 +10,7 @@ public class StartingKey : MonoBehaviour
     private Vector3 m_OriginalPosition;
     private Quaternion m_OriginalRotation;
     public Puzzle puzzle;
+    private float? m_startTimer = null;
 
     private void Awake()
     {
@@ -23,9 +24,11 @@ public class StartingKey : MonoBehaviour
         m_OriginalRotation = transform.rotation;
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter (Collider other)
     {
-        DeadLimit deadLimit = collision.gameObject.GetComponent<DeadLimit>();
+        DeadLimit deadLimit = other.gameObject.GetComponent<DeadLimit>();
+        
         // If we collide with a dead limit...
         if (deadLimit != null)
         {
@@ -35,11 +38,29 @@ public class StartingKey : MonoBehaviour
         }
 
         // If starting Key collide with StartingHole, then puzzleActive is true.
-        StartingHole hole = collision.gameObject.GetComponent<StartingHole>();  
-        if (hole != null)
+        if (other.gameObject.GetComponent<StartingHole>())
+            {            
+            m_startTimer = 0;
+            }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (m_startTimer != null)
         {
-            puzzle.PuzzleActive(true);
-        //    Debug.Log("collision detected");
+            m_startTimer += Time.deltaTime;
+            if (m_startTimer > 1)
+            {
+                puzzle.PuzzleActive(true); 
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<StartingHole>())
+        {
+            m_startTimer = null;
         }
     }
 }
