@@ -598,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7910076758895292648, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
 --- !u!1 &349423690
@@ -930,8 +934,8 @@ Transform:
   m_Children:
   - {fileID: 905352582}
   - {fileID: 4332551026992597}
-  - {fileID: 244263163}
   - {fileID: 9031084238916676848}
+  - {fileID: 244263163}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -962,8 +966,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1474451815}
   - {fileID: 1953437979}
+  - {fileID: 1474451815}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2214,7 +2218,7 @@ Transform:
   - {fileID: 8006895709996383571}
   - {fileID: 446899379}
   m_Father: {fileID: 661885089}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1953437980
 MonoBehaviour:
@@ -2826,7 +2830,7 @@ Transform:
   - {fileID: 842467932}
   - {fileID: 325554525}
   m_Father: {fileID: 492845517}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &9031084238916676849
 GameObject:

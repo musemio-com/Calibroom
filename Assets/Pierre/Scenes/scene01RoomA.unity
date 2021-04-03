@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lights
       objectReference: {fileID: 0}
+    - target: {fileID: 7910076758895292648, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
 --- !u!1 &1953437978

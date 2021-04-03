@@ -370,8 +370,8 @@ Transform:
   m_Children:
   - {fileID: 905352582}
   - {fileID: 4332551026992597}
-  - {fileID: 860800247}
   - {fileID: 522253341}
+  - {fileID: 860800247}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -860,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 7910076758493996968, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910076758895292648, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7910076758895292649, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
       propertyPath: m_StaticEditorFlags

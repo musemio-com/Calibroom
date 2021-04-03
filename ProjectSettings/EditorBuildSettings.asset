@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Pierre/Scenes/scene02RoomB.unity
     guid: 70a97270287bf074aaeb6246cd7bcee2
   - enabled: 1
+    path: Assets/Pierre/Scenes/scene03RoomC.unity
+    guid: 04c2ba14cfac30c41b3a7450b155aada
+  - enabled: 1
+    path: Assets/Pierre/Scenes/scene04RoomD.unity
+    guid: c8e43456e10134d4aba3775927b3c983
+  - enabled: 1
     path: Assets/Pierre/Scenes/sceneEnd.unity
     guid: a455add757182d24b8ec9111e58d34e6
   m_configObjects:
