@@ -73,7 +73,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -249,7 +249,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -316,7 +316,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -374,7 +374,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -432,7 +432,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -474,8 +474,8 @@ MonoBehaviour:
   id: 938fb8d6-8e4e-49de-950c-660e629936d1
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 23404
+  state: 1
+  GOHashCode: 31608
   CreatedDuringPlaymode: 0
 --- !u!114 &-4696664850459308096
 MonoBehaviour:
@@ -524,7 +524,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -587,7 +587,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -734,7 +734,7 @@ MonoBehaviour:
   id: 547553fd-ebfa-4c6b-8fec-552398fa3d92
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 23434
+  ScriptHashCode: 31638
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -870,7 +870,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -970,7 +970,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 23406
+  GOHashCode: 31610
   CreatedDuringPlaymode: 0
 --- !u!114 &1032819020571496605
 MonoBehaviour:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2053,7 +2053,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 5
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2269,6 +2269,6 @@ MonoBehaviour:
   id: e4ad9d64-103a-45e3-8328-5e4c26bbce34
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 23402
+  state: 1
+  GOHashCode: 31606
   CreatedDuringPlaymode: 0

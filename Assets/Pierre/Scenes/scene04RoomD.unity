@@ -1974,7 +1974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4749634748647601022, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_IndexCurrentLevel
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4749634748647601023, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_RootOrder
