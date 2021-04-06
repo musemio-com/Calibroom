@@ -1803,8 +1803,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 2
-  UserIDString: scene02RoomB
+  UserIDInt: 40
+  UserIDString: 40
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c477b3f40f547843930edfdcbde5951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graph: {fileID: 11400000, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+  graph: {fileID: 11400000, guid: e166d881ab5021444acc42e250636c06, type: 2}
   GameObjectsToUse:
   - {fileID: 129995855}
   - {fileID: 129995854}
@@ -1925,15 +1925,19 @@ MonoBehaviour:
     - {fileID: 129995854}
     - {fileID: 129995853}
     m_values:
-    - {fileID: 1890556346929941501, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-    - {fileID: 8486834769789631379, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-    - {fileID: 7960228141402078304, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+    - {fileID: 869432433781809531, guid: e166d881ab5021444acc42e250636c06, type: 2}
+    - {fileID: -4812269215504820012, guid: e166d881ab5021444acc42e250636c06, type: 2}
+    - {fileID: 8355691074961514796, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_GameObjectNodeList:
   - {fileID: 1890556346929941501, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   - {fileID: 8486834769789631379, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   - {fileID: 7960228141402078304, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+  - {fileID: -4812269215504820012, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 869432433781809531, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 8355691074961514796, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_ScriptNodesList:
   - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+  - {fileID: -485549255163155568, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:

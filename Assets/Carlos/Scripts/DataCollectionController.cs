@@ -60,9 +60,33 @@ namespace MECM
         [SendToIMLGraph]
         public string UserIDString;
 
+        /// <summary>
+        /// Used to interface with the user details SO (get persistent userID)
+        /// </summary>
+        private UserDetailsController m_UserDetailsCtrlr;
+
         #endregion
 
         #region Unity Messages
+        // Called before start
+        private void Awake()
+        {
+            // Load UserID (used in graph for data storage and identification of training set)
+            m_UserDetailsCtrlr = FindObjectOfType<UserDetailsController>();
+            if (m_UserDetailsCtrlr != null)
+            {
+                UserIDInt = m_UserDetailsCtrlr.LoadUserID();
+                UserIDString = UserIDInt.ToString();
+            }
+        }
+
+        // Called once in first frame
+        private void Start()
+        {
+            // Make sure to delete all training examples
+            IMLEventDispatcher.DeleteAllTrainingExamplesInGraphCallback();
+        }
+
         // Update is called once per frame
         void Update()
         {

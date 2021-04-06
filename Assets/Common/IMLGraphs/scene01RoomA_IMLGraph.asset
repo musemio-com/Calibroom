@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8777488842248126080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137e83599788d424eb27a7264acd4b03, type: 3}
+  m_Name: Text Note
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -808, y: -744}
+  ports:
+    keys: []
+    values: []
+  DevMode: 0
+  id: 2b51be5e-8e44-442c-b324-9b20c06d735f
+  numberInComponentList: -1
+  note: 'RIGHT HAND
+
+'
 --- !u!114 &-8670816164160630059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +96,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -130,6 +153,29 @@ MonoBehaviour:
   id: 4aaf874a-f5a4-4eb6-9aa9-25ece1b737c3
   numberInComponentList: -1
   note: 'POSTION
+
+'
+--- !u!114 &-7642727791711309055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137e83599788d424eb27a7264acd4b03, type: 3}
+  m_Name: Text Note
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -808, y: -1128}
+  ports:
+    keys: []
+    values: []
+  DevMode: 0
+  id: bf9ef710-0e28-46f9-b580-25eb4b007d6b
+  numberInComponentList: -1
+  note: 'MAIN CAMERA
 
 '
 --- !u!114 &-7199485815897903547
@@ -249,7 +295,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -316,7 +362,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -374,7 +420,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -432,7 +478,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -475,7 +521,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 31608
+  GOHashCode: 39860
   CreatedDuringPlaymode: 0
 --- !u!114 &-4696664850459308096
 MonoBehaviour:
@@ -524,7 +570,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -587,7 +633,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -715,8 +761,7 @@ MonoBehaviour:
       connections:
       - fieldName: SubFolderDataPathStringPort
         node: {fileID: 2934718194934204058}
-        reroutePoints:
-        - {x: 864, y: 32}
+        reroutePoints: []
       - fieldName: SubFolderDataPathStringPort
         node: {fileID: 2971309970561483842}
         reroutePoints: []
@@ -734,7 +779,7 @@ MonoBehaviour:
   id: 547553fd-ebfa-4c6b-8fec-552398fa3d92
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 31638
+  ScriptHashCode: 39706
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -804,8 +849,7 @@ MonoBehaviour:
       connections:
       - fieldName: SubFolderDataPathStringPort
         node: {fileID: 2934718194934204058}
-        reroutePoints:
-        - {x: 864, y: 32}
+        reroutePoints: []
       - fieldName: SubFolderDataPathStringPort
         node: {fileID: 2971309970561483842}
         reroutePoints: []
@@ -870,7 +914,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -898,16 +942,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 2934718194934204058}
-  - {fileID: 869432433781809531}
-  - {fileID: -4812269215504820012}
-  - {fileID: 8355691074961514796}
   - {fileID: -8455490087892766180}
   - {fileID: 1032819020571496605}
   - {fileID: 4986208765111962427}
   - {fileID: -5236977748829002683}
   - {fileID: -6795849123384569624}
   - {fileID: 6622420231454165351}
-  - {fileID: -485549255163155568}
   - {fileID: -7199485815897903547}
   - {fileID: 2971309970561483842}
   - {fileID: 5194999953489358972}
@@ -931,6 +971,13 @@ MonoBehaviour:
   - {fileID: 6735675760645403819}
   - {fileID: -7054563960753322893}
   - {fileID: 5556540523460259539}
+  - {fileID: -485549255163155568}
+  - {fileID: -4812269215504820012}
+  - {fileID: 869432433781809531}
+  - {fileID: 8355691074961514796}
+  - {fileID: -7642727791711309055}
+  - {fileID: -8777488842248126080}
+  - {fileID: 5588612720660005465}
   SceneComponent: {fileID: 0}
 --- !u!114 &869432433781809531
 MonoBehaviour:
@@ -970,7 +1017,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 31610
+  GOHashCode: 39862
   CreatedDuringPlaymode: 0
 --- !u!114 &1032819020571496605
 MonoBehaviour:
@@ -1022,7 +1069,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1082,7 +1129,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1268,10 +1315,10 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
-  SubFolderDataPath: scene01RoomA
+  listNo: 4
+  SubFolderDataPath: 
 --- !u!114 &2971309970561483842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,10 +1489,10 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
-  SubFolderDataPath: scene01RoomA
+  listNo: 4
+  SubFolderDataPath: 
 --- !u!114 &3399067939314817978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1543,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1557,7 +1604,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1621,7 +1668,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1804,10 +1851,10 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
-  SubFolderDataPath: scene01RoomA
+  listNo: 4
+  SubFolderDataPath: 
 --- !u!114 &5194999953489358972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,7 +1902,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1890,6 +1937,29 @@ MonoBehaviour:
   id: 968f1075-8b03-4fc1-8450-fe2aa85e456b
   numberInComponentList: -1
   note: 'VELOCITY OF ROTATIONS DATA
+
+'
+--- !u!114 &5588612720660005465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137e83599788d424eb27a7264acd4b03, type: 3}
+  m_Name: Text Note
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -808, y: -408}
+  ports:
+    keys: []
+    values: []
+  DevMode: 0
+  id: f03aa2ad-063b-4b6d-871c-b55c2decb0b4
+  numberInComponentList: -1
+  note: 'LEFT HAND
 
 '
 --- !u!114 &6188361751147843481
@@ -1939,7 +2009,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2053,7 +2123,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2228,10 +2298,10 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
-  SubFolderDataPath: scene01RoomA
+  listNo: 4
+  SubFolderDataPath: 
 --- !u!114 &8355691074961514796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,5 +2340,5 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 31606
+  GOHashCode: 39858
   CreatedDuringPlaymode: 0
