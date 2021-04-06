@@ -12,7 +12,7 @@ public class UIFadeToBlack : MonoBehaviour
     /// <summary>
     /// Used to get the loading progress
     /// </summary>
-    private GameLevelController m_LevelLoader;
+    private MECM.MECMLevelController m_LevelLoader;
     /// <summary>
     /// Used to send data to the animator about loading progress
     /// </summary>
@@ -57,7 +57,7 @@ public class UIFadeToBlack : MonoBehaviour
         }
 
         // Try and find the level loader
-        m_LevelLoader = FindObjectOfType<GameLevelController>();
+        m_LevelLoader = FindObjectOfType<MECM.MECMLevelController>();
     }
 
     private void Update()

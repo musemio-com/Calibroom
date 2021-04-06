@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 /// <summary>
 /// Manages logic of Select ID UI Screen
@@ -29,6 +30,11 @@ public class UISelectIDController : MonoBehaviour
             return userID;
         }
         return "0";
+    }
+
+    public int GetUserIDInt()
+    {        
+        return int.Parse(GetUserID());
     }
 
 }
