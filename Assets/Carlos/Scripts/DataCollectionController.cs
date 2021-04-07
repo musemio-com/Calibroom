@@ -83,8 +83,8 @@ namespace MECM
         // Called once in first frame
         private void Start()
         {
-            // Make sure to delete all training examples
-            IMLEventDispatcher.DeleteAllTrainingExamplesInGraphCallback();
+            // Make sure to delete all training examples, but don't delete from disk to avoid data loss
+            IMLEventDispatcher.DeleteAllTrainingExamplesInGraphCallback(deleteFromDisk: false);
         }
 
         // Update is called once per frame
