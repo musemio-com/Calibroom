@@ -16,6 +16,11 @@ namespace MECM
         public Puzzle puzzle;
         private float? m_startTimer = null;
 
+        /// <summary>
+        /// Starts the puzzle when ticked on the inspector (Debug purpose only)
+        /// </summary>
+        public bool StartPuzzleDebug;
+
         private void Awake()
         {
             puzzle = FindObjectOfType<Puzzle>();
@@ -65,6 +70,15 @@ namespace MECM
             if (other.gameObject.GetComponent<StartingHole>())
             {
                 m_startTimer = null;
+            }
+        }
+
+        // Called when something changes in the editor
+        private void OnValidate()
+        {
+            if (StartPuzzleDebug)
+            {
+                puzzle.PuzzleActive(true);
             }
         }
     }

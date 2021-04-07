@@ -76,7 +76,7 @@ namespace MECM
             if (m_UserDetailsCtrlr != null)
             {
                 UserIDInt = m_UserDetailsCtrlr.LoadUserID();
-                UserIDString = UserIDInt.ToString();
+                UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
         }
 
