@@ -282,10 +282,6 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8614346922481664607, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.94000006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614346922481664607, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.775
       objectReference: {fileID: 0}
@@ -786,8 +782,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 0
-  UserIDString: 0/scene02RoomB
+  UserIDInt: 6
+  UserIDString: 6/scene02RoomB
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
@@ -856,30 +852,6 @@ PrefabInstance:
     - target: {fileID: 7910076758493996968, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
       propertyPath: m_Name
       value: Lights
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076758493996968, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076758895292648, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_Intensity
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076758895292649, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076759675404923, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076759769541063, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910076760469161278, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e4c82bd2c4e7148ad81085285fac8f, type: 3}
@@ -1265,14 +1237,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
-    - target: {fileID: 6227743859330789859, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
-      propertyPath: m_MovementType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227743859330789859, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 385022677}
     - target: {fileID: 8137313912068218388, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
       propertyPath: m_Name
       value: PieceOrange1

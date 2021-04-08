@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 2067247294513600236}
   - component: {fileID: 3455372931676875533}
   - component: {fileID: 3486138489080340524}
+  - component: {fileID: 7087479879385717285}
+  - component: {fileID: 4948565936652792302}
   m_Layer: 0
   m_Name: PieceOrange
   m_TagString: Untagged
@@ -157,7 +159,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8137313912068218388}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
@@ -264,6 +266,32 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 0.25
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!65 &7087479879385717285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137313912068218388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1008165, y: 0.10199999, z: 0.202}
+  m_Center: {x: -0.035, y: 0, z: 0.015}
+--- !u!65 &4948565936652792302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137313912068218388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0.065, y: 0, z: -0.035}
 --- !u!1001 &3498745979294243726
 PrefabInstance:
   m_ObjectHideFlags: 0
