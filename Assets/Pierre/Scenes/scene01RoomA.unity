@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 5227969869961237873, guid: e166d881ab5021444acc42e250636c06, type: 2}
   - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_ScriptNodesList:
-  - {fileID: 4698529197557472097, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -181,7 +181,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1380984903}
     m_values:
-    - {fileID: 4698529197557472097, guid: e166d881ab5021444acc42e250636c06, type: 2}
+    - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &233036246
@@ -1528,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 385022677}
+    - target: {fileID: 2689498390053694409, guid: 48202c73ac134e34693d53185093f357, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48202c73ac134e34693d53185093f357, type: 3}
 --- !u!4 &1852223728956433775 stripped
