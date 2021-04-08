@@ -26,10 +26,7 @@ MonoBehaviour:
       _node: {fileID: -8147833963324794456}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4507404358264307083}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -84,7 +81,7 @@ MonoBehaviour:
   id: 95828b2b-7371-4bc9-a243-3eab3821dbb2
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 30822
+  ScriptHashCode: 29736
   m_PortsPerFieldInfo:
     m_keys: []
   CreatedDuringPlaymode: 0
@@ -456,10 +453,7 @@ MonoBehaviour:
       _node: {fileID: 4507404358264307083}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8147833963324794456}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1

@@ -276,14 +276,6 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 385022677}
-    - target: {fileID: 8026219608820154109, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8026219608820154110, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 8026219609205493781, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -331,14 +323,6 @@ PrefabInstance:
     - target: {fileID: 8026219609205493782, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
       propertyPath: m_Name
       value: XR Rig
-      objectReference: {fileID: 0}
-    - target: {fileID: 8026219609461195783, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8026219609461195784, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}

@@ -786,8 +786,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 40
-  UserIDString: 40
+  UserIDInt: 0
+  UserIDString: 0/scene02RoomB
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
@@ -989,16 +989,15 @@ MonoBehaviour:
     - {fileID: 129995854}
     - {fileID: 129995853}
     m_values:
-    - {fileID: 1890556346929941501, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-    - {fileID: 8486834769789631379, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-    - {fileID: 7960228141402078304, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+    - {fileID: 6198230257095529886, guid: e166d881ab5021444acc42e250636c06, type: 2}
+    - {fileID: 5227969869961237873, guid: e166d881ab5021444acc42e250636c06, type: 2}
+    - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_GameObjectNodeList:
-  - {fileID: 1890556346929941501, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-  - {fileID: 8486834769789631379, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-  - {fileID: 7960228141402078304, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+  - {fileID: 6198230257095529886, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 5227969869961237873, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_ScriptNodesList:
-  - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
-  - {fileID: -485549255163155568, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -1008,7 +1007,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1191979481}
     m_values:
-    - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
+    - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &1580813943
@@ -1151,10 +1150,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
-    - target: {fileID: 6227743859330789859, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 385022677}
     - target: {fileID: 8137313912068218388, guid: 8625a26e6f099e9469fe71e6482e4fb1, type: 3}
       propertyPath: m_Name
       value: PieceOrange2
@@ -1335,14 +1330,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
-    - target: {fileID: 3508250335665792231, guid: 13f177b5a6750864c973e5b42f1097e5, type: 3}
-      propertyPath: m_MovementType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3508250335665792231, guid: 13f177b5a6750864c973e5b42f1097e5, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 385022677}
     - target: {fileID: 3675749038356607751, guid: 13f177b5a6750864c973e5b42f1097e5, type: 3}
       propertyPath: m_RootOrder
       value: 0

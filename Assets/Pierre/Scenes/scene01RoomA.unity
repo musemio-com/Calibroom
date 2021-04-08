@@ -1383,42 +1383,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1953437979}
     m_Modifications:
-    - target: {fileID: 13563177164701762, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 385022677}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Size.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Size.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498223323069425068, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5814796799874640635, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5814796799874640635, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8614346922481664607, guid: f0d35d3f70fa9b04bbdb2836dc625b5c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1523,14 +1487,6 @@ PrefabInstance:
     - target: {fileID: 841125323929072898, guid: 48202c73ac134e34693d53185093f357, type: 3}
       propertyPath: m_Name
       value: PiecePink1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216678036493229303, guid: 48202c73ac134e34693d53185093f357, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 385022677}
-    - target: {fileID: 2689498390053694409, guid: 48202c73ac134e34693d53185093f357, type: 3}
-      propertyPath: m_MovementType
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48202c73ac134e34693d53185093f357, type: 3}
