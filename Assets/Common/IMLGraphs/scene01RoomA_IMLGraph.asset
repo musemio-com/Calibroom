@@ -94,9 +94,9 @@ MonoBehaviour:
   DevMode: 0
   id: 82e72311-ad4c-4813-a73c-f7a92fd550de
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -106,9 +106,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - 0.28953454
+    - 1.6686063
+    - 0.5022504
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,9 +293,9 @@ MonoBehaviour:
   DevMode: 0
   id: 7159019a-48c4-4529-8008-868e19386616
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -304,10 +304,10 @@ MonoBehaviour:
   LocalSpace: 0
   m_RotationQuaternionExtracted:
     m_Values:
-    - -0
-    - -0
-    - -0
-    - 1
+    - 0.066184014
+    - 0.77687895
+    - -0.043964487
+    - 0.62461656
   GameObjInputMissing: 0
 --- !u!114 &-5236977748829002683
 MonoBehaviour:
@@ -357,16 +357,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 9
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 9
 --- !u!114 &-5217429012867526943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,16 +415,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 9
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 9
 --- !u!114 &-5062080398253273272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,16 +473,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 9
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 9
 --- !u!114 &-4696664850459308096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,24 +528,24 @@ MonoBehaviour:
   DevMode: 0
   id: 28384267-4c86-493a-9854-e0f6c95f12f2
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
-    - 0
+    - -0.005754104
+    - -0.08262656
+    - 0.020824252
+    - 0.10570049
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - 0.066184014
+  - 0.77687895
+  - -0.043964487
+  - 0.62461656
 --- !u!114 &-4650658788332496420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,24 +591,24 @@ MonoBehaviour:
   DevMode: 0
   id: 7ba712b3-cd2f-49d9-a80c-47e53a4c250b
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
-    - 0
+    - 0.019769222
+    - -0.0075831227
+    - 0.005315273
+    - 0.012876826
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - -0.23287547
+  - 0.530062
+  - -0.2523621
+  - 0.77531713
 --- !u!114 &-843474021899456219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,9 +680,9 @@ MonoBehaviour:
   DevMode: 0
   id: 8173f688-5ccc-4771-8d2d-bd64163bfb39
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -691,10 +691,10 @@ MonoBehaviour:
   LocalSpace: 0
   m_RotationQuaternionExtracted:
     m_Values:
-    - -0
-    - -0
-    - -0
-    - 1
+    - -0.23287547
+    - 0.530062
+    - -0.2523621
+    - 0.77531713
   GameObjInputMissing: 0
 --- !u!114 &-208045810780281780
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27090
+  GOHashCode: 22448
   CreatedDuringPlaymode: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -835,9 +835,9 @@ MonoBehaviour:
   DevMode: 0
   id: 4a97ee43-597d-4582-ba65-6134853ecfd2
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -847,9 +847,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - 0.45966876
+    - 1.1535931
+    - 0.68981224
 --- !u!114 &1848439845424214320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,90 +957,9 @@ MonoBehaviour:
   id: 1635d3b0-4c7d-4eb6-a9e5-31483bade9ab
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 27338
+  ScriptHashCode: 22504
   m_PortsPerFieldInfo:
-    m_keys:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2971309970561483842}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2934718194934204058}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 7187650241758250611}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4999826832894318360}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDInt
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -5217429012867526943}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5236977748829002683}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5062080398253273272}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: 6735675760645403819}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDString
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 7187650241758250611}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 4999826832894318360}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 2934718194934204058}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 2971309970561483842}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
+    m_keys: []
   CreatedDuringPlaymode: 0
 --- !u!114 &2631581793184111883
 MonoBehaviour:
@@ -1087,24 +1006,24 @@ MonoBehaviour:
   DevMode: 0
   id: 0bd5b249-7be5-4fa5-88fa-77f621d15bfa
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
-    - 0
+    - 0.15057552
+    - 0.05088488
+    - 0.19426899
+    - -0.0223375
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - -0.039783992
+  - 0.7023447
+  - -0.062237985
+  - 0.70799404
 --- !u!114 &2934718194934204058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,7 +1197,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 0
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 9/scene02RoomB
 --- !u!114 &2971309970561483842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,7 +1371,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 1
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 9/scene02RoomB
 --- !u!114 &3399067939314817978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,9 +1420,9 @@ MonoBehaviour:
   DevMode: 0
   id: bbeda9f7-a97c-4686-84f8-40201c246d3f
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1512,10 +1431,10 @@ MonoBehaviour:
   LocalSpace: 0
   m_RotationQuaternionExtracted:
     m_Values:
-    - -0
-    - -0
-    - -0
-    - 1
+    - -0.039783992
+    - 0.7023447
+    - -0.062237985
+    - 0.70799404
   GameObjInputMissing: 0
 --- !u!114 &4633002086136143776
 MonoBehaviour:
@@ -1562,22 +1481,22 @@ MonoBehaviour:
   DevMode: 0
   id: 648900e4-7338-49d2-ad03-a78462db1d6f
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - -0.01412476
+    - 0.0014050809
+    - 0.022193704
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
+  - 0.45966876
+  - 1.1535931
+  - 0.68981224
 --- !u!114 &4986208765111962427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,9 +1545,9 @@ MonoBehaviour:
   DevMode: 0
   id: 07dbcfee-f04b-446e-bea8-59534484fe0f
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 3
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1638,9 +1557,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - 0.46945223
+    - 1.22457
+    - 0.3449594
 --- !u!114 &4999826832894318360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,7 +1733,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 3
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 9/scene02RoomB
 --- !u!114 &5194999953489358972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,22 +1779,22 @@ MonoBehaviour:
   DevMode: 0
   id: 698d3323-3239-4dea-aebf-c8eb791752f7
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - -0.012568695
+    - 0.00027937282
+    - 0.05924398
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
+  - 0.28953454
+  - 1.6686063
+  - 0.5022504
 --- !u!114 &5227969869961237873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,7 +1833,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27092
+  GOHashCode: 22450
   CreatedDuringPlaymode: 0
 --- !u!114 &5556540523460259539
 MonoBehaviour:
@@ -2007,22 +1926,22 @@ MonoBehaviour:
   DevMode: 0
   id: 98142f8d-5eea-4878-aba1-b0e9dad96093
   numberInComponentList: -1
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 1
+  ReceivingData: 1
+  FeatureValueReceivingData: 010101
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
   VelocityExtracted: {fileID: 0}
   m_VelocityExtracted:
     m_Values:
-    - 0
-    - 0
-    - 0
+    - 0.0056172423
+    - 0.021737669
+    - 0.1025329
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
+  - 0.46945223
+  - 1.22457
+  - 0.3449594
 --- !u!114 &6198230257095529886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +1980,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27094
+  GOHashCode: 22452
   CreatedDuringPlaymode: 0
 --- !u!114 &6622420231454165351
 MonoBehaviour:
@@ -2158,16 +2077,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 9
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 9
 --- !u!114 &7187650241758250611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,4 +2260,4 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 2
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 9/scene02RoomB
