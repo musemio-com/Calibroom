@@ -1808,7 +1808,6 @@ MonoBehaviour:
   - {fileID: 5227969869961237873, guid: e166d881ab5021444acc42e250636c06, type: 2}
   - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_ScriptNodesList:
-  - {fileID: -8147833963324794456, guid: 47073111ab084ae4a8bf8d862f566dc8, type: 2}
   - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0

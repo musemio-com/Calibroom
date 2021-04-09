@@ -65,6 +65,26 @@ namespace MECM
         /// </summary>
         private UserDetailsController m_UserDetailsCtrlr;
 
+        /// <summary>
+        /// Extractor for grabbing info left hand
+        /// </summary>
+        public GrabbingPieceFeatureExtractor LeftHandGrabbingExtractor;
+        /// <summary>
+        /// Extractor for grabbing info right hand
+        /// </summary>
+        public GrabbingPieceFeatureExtractor RightHandGrabbingExtractor;
+
+        /// <summary>
+        /// Is the left hand grabbing a piece?
+        /// </summary>
+        [SendToIMLGraph]
+        public bool LeftHandGrabbing;
+        /// <summary>
+        /// Is the right hand grabbing a piece?
+        /// </summary>
+        [SendToIMLGraph]
+        public bool RightHandGrabbing;
+
         #endregion
 
         #region Unity Messages
@@ -77,6 +97,20 @@ namespace MECM
             {
                 UserIDInt = m_UserDetailsCtrlr.LoadUserID();
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            }
+
+            // Get reference to grabbing piece feature extractors and assign them to correct hands
+            var grabbingExtractors = FindObjectsOfType<GrabbingPieceFeatureExtractor>();
+            if (grabbingExtractors != null && grabbingExtractors.Length > 0)
+            {
+                // Assign leftHand and rightHand extractors
+                foreach (var grabbingExtractor in grabbingExtractors)
+                {
+                    if (grabbingExtractor.XRControllerType == GrabbingPieceFeatureExtractor.ControllerType.LeftHand)
+                        LeftHandGrabbingExtractor = grabbingExtractor;
+                    else if (grabbingExtractor.XRControllerType == GrabbingPieceFeatureExtractor.ControllerType.RightHand)
+                        RightHandGrabbingExtractor = grabbingExtractor;
+                }
             }
         }
 
@@ -124,7 +158,11 @@ namespace MECM
                 Debug.Log("Toggling Run Model!");
             }
 
-
+            // Pull grabbing feature extractors
+            if (LeftHandGrabbingExtractor != null)
+                LeftHandGrabbing = LeftHandGrabbingExtractor.GrabbingPiece;
+            if (RightHandGrabbingExtractor != null)
+                RightHandGrabbing = RightHandGrabbingExtractor.GrabbingPiece;
         }
 
         #endregion
