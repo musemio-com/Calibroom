@@ -72,7 +72,7 @@ public class PuzzleBoard : MonoBehaviour
         {
             // Load Level
             if (m_LevelFader != null)
-                m_LevelFader.FadeToBlackAndLoadNextLevel();
+                m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection(debug: true);
 
             // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
             m_PuzzleCompletedOnce = true;
@@ -103,13 +103,9 @@ public class PuzzleBoard : MonoBehaviour
     /// </summary>
     public void StopPuzzle()
     {
-        // Stop data collection
-        if (m_DataCtrlr != null)
-            m_DataCtrlr.FireToggleCollectDataEvent();
-
         // Load Level
         if (m_LevelFader != null)
-            m_LevelFader.FadeToBlackAndLoadNextLevel();
+            m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection();
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
         m_PuzzleCompletedOnce = true;
