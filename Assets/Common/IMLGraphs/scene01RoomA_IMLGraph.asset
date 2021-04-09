@@ -95,8 +95,8 @@ MonoBehaviour:
   id: 82e72311-ad4c-4813-a73c-f7a92fd550de
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
-  Counter: 1
+  FeatureValueReceivingData: 000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -294,8 +294,8 @@ MonoBehaviour:
   id: 7159019a-48c4-4529-8008-868e19386616
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
-  Counter: 1
+  FeatureValueReceivingData: 00000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -362,7 +362,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -420,7 +420,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -478,7 +478,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -530,7 +530,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -542,10 +542,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &-4650658788332496420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -605,10 +605,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &-843474021899456219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,8 +681,8 @@ MonoBehaviour:
   id: 8173f688-5ccc-4771-8d2d-bd64163bfb39
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
-  Counter: 1
+  FeatureValueReceivingData: 00000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -734,7 +734,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26552
+  GOHashCode: 27090
   CreatedDuringPlaymode: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -836,8 +836,8 @@ MonoBehaviour:
   id: 4a97ee43-597d-4582-ba65-6134853ecfd2
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
-  Counter: 1
+  FeatureValueReceivingData: 000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -957,7 +957,7 @@ MonoBehaviour:
   id: 1635d3b0-4c7d-4eb6-a9e5-31483bade9ab
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 26698
+  ScriptHashCode: 27338
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1101,10 +1101,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &2934718194934204058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,9 +1275,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 0
   SubFolderDataPath: 0/scene01RoomA
 --- !u!114 &2971309970561483842
 MonoBehaviour:
@@ -1449,9 +1449,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 1
   SubFolderDataPath: 0/scene01RoomA
 --- !u!114 &3399067939314817978
 MonoBehaviour:
@@ -1502,8 +1502,8 @@ MonoBehaviour:
   id: bbeda9f7-a97c-4686-84f8-40201c246d3f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
-  Counter: 1
+  FeatureValueReceivingData: 00000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1627,8 +1627,8 @@ MonoBehaviour:
   id: 07dbcfee-f04b-446e-bea8-59534484fe0f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
-  Counter: 1
+  FeatureValueReceivingData: 000000
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
   listNo: 3
   SubFolderDataPath: 0/scene01RoomA
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26554
+  GOHashCode: 27092
   CreatedDuringPlaymode: 0
 --- !u!114 &5556540523460259539
 MonoBehaviour:
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2061,7 +2061,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26556
+  GOHashCode: 27094
   CreatedDuringPlaymode: 0
 --- !u!114 &6622420231454165351
 MonoBehaviour:
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2338,7 +2338,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 2
   SubFolderDataPath: 0/scene01RoomA
