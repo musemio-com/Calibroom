@@ -178,6 +178,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 8026219609394434478, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026219609394434478, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.597
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026219609394434478, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026219609394434478, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026219609394434478, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
 --- !u!1 &129995853 stripped
@@ -782,8 +802,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 6
-  UserIDString: 6/scene02RoomB
+  UserIDInt: 0
+  UserIDString: 0/scene02RoomB
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
