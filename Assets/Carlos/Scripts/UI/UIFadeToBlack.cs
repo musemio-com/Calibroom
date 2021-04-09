@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MECM;
 
 /// <summary>
 /// Manages the behaviour of the UI Canvas that fades to Black
@@ -27,6 +28,16 @@ public class UIFadeToBlack : MonoBehaviour
     /// Black image to perform fading to/from black animations
     /// </summary>
     private Image m_BlackImage;
+
+    /// <summary>
+    /// Used to trigger data collection on/off
+    /// </summary>
+    private DataCollectionController m_DataCtrlr;
+
+    /// <summary>
+    /// Are we in debug mode?
+    /// </summary>
+    private bool m_Debug;
 
     private void OnEnable()
     {
@@ -58,6 +69,10 @@ public class UIFadeToBlack : MonoBehaviour
 
         // Try and find the level loader
         m_LevelLoader = FindObjectOfType<MECM.MECMLevelController>();
+
+        // Get data controller
+        m_DataCtrlr = FindObjectOfType<DataCollectionController>();
+
     }
 
     private void Update()
@@ -72,6 +87,10 @@ public class UIFadeToBlack : MonoBehaviour
             {
                 m_LevelLoader.LoadNextLevel();
                 m_FadeToBlackAnimator.SetBool(m_LoadNextLevelAnimatorID, false);
+                // Stop data collection (if in debug mode we should never be collecting data, no need to stop)
+                if (m_DataCtrlr != null && m_Debug == false)
+                    m_DataCtrlr.FireToggleCollectDataEvent();
+
             }
 
         }
@@ -82,10 +101,12 @@ public class UIFadeToBlack : MonoBehaviour
     /// <summary>
     /// Triggers the Fade To Black (when that ends, fade to black will set the Loadnextlevel flag to true)
     /// </summary>
-    public void FadeToBlackAndLoadNextLevel()
+    public void FadeToBlackLoadNextLevelStopDataCollection(bool debug = false)
     {
         if (m_FadeToBlackAnimator != null)
         {
+            // Set debug flag
+            m_Debug = false;
             // This trigger will launch the animation
             m_FadeToBlackAnimator.SetTrigger("FadeToBlackTrigger");
             // When the animation is over, the animator LoadNextLevel bool will be set to true by a custom behaviour
