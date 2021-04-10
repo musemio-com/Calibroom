@@ -242,6 +242,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+--- !u!1 &223054107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2957365612673068251, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+  m_PrefabInstance: {fileID: 223054106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &223054108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2957365612359540467, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+  m_PrefabInstance: {fileID: 223054106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &233036244
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +691,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8026219608368492397, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
   m_PrefabInstance: {fileID: 793838389}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &793838393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2241253793719344332, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+  m_PrefabInstance: {fileID: 793838389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793838390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6c5cf2f54be54491a38ea1f5a25eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &793838394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4774072862145580307, guid: 0f8a93641b48e77468dc6a42a97441a1, type: 3}
+  m_PrefabInstance: {fileID: 793838389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793838391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6c5cf2f54be54491a38ea1f5a25eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &905352581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1102,8 +1134,12 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 3
-  UserIDString: 3/scene03RoomC
+  UserIDInt: 31
+  UserIDString: 31/scene03RoomC
+  LeftHandGrabbingExtractor: {fileID: 793838394}
+  RightHandGrabbingExtractor: {fileID: 793838393}
+  LeftHandGrabbing: 0
+  RightHandGrabbing: 0
 --- !u!4 &1380984904
 Transform:
   m_ObjectHideFlags: 0
@@ -1728,6 +1764,10 @@ PrefabInstance:
       propertyPath: puzzle
       value: 
       objectReference: {fileID: 1953437980}
+    - target: {fileID: 6924730770133894139, guid: 145912cc3b6d1344896f573cd793d5f1, type: 3}
+      propertyPath: StartKeyFX
+      value: 
+      objectReference: {fileID: 223054108}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145912cc3b6d1344896f573cd793d5f1, type: 3}
 --- !u!4 &2054533439 stripped
@@ -1958,6 +1998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleTable
       objectReference: {fileID: 0}
+    - target: {fileID: 5669970070080181727, guid: b738d579b24569848bb2b3672a2b8015, type: 3}
+      propertyPath: PuzzleCompletedFX
+      value: 
+      objectReference: {fileID: 223054107}
     - target: {fileID: 5690799867355268388, guid: b738d579b24569848bb2b3672a2b8015, type: 3}
       propertyPath: m_Enabled
       value: 0
