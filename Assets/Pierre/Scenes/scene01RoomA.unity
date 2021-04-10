@@ -841,6 +841,63 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1001 &1270618395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261232, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957365613044261247, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
+      propertyPath: m_Name
+      value: SoundFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc4a92053e468e6468494e9b3ce41b5f, type: 3}
 --- !u!1 &1380984902
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,8 +933,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 0
-  UserIDString: 0/scene01RoomA
+  UserIDInt: 3
+  UserIDString: 3/scene01RoomA
 --- !u!4 &1380984904
 Transform:
   m_ObjectHideFlags: 0

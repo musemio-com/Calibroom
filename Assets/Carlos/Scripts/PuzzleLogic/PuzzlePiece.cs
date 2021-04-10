@@ -36,6 +36,9 @@ public class PuzzlePiece : MonoBehaviour
     private Vector3 m_OriginalPosition;
     private Quaternion m_OriginalRotation;
 
+    public AudioSource playSound;
+
+
     private void Start()
     {
         // Save original transform if piece needs to reset (i.e. out of room limits)
@@ -93,9 +96,11 @@ public class PuzzlePiece : MonoBehaviour
     /// </summary>
     private bool CheckInPlace(List<PuzzlePieceSensor> sensors)
     {
+        
         bool inPlace = false;
         int numberOfPiecesWanted = 2;
         int numberOfPiecesSensed = 0;
+
         // Iterate over list of sensors
         if (sensors != null && sensors.Count > 0)
         {
@@ -113,12 +118,15 @@ public class PuzzlePiece : MonoBehaviour
                 if (numberOfPiecesSensed == numberOfPiecesWanted)
                 {
                     inPlace = true;
+
+                
                     // Stop execution to save computation time
-                    return inPlace;
+                    return inPlace;         
                 }
             }
         }
         // Returns false if we reach here
         return inPlace;
+       
     }
 }

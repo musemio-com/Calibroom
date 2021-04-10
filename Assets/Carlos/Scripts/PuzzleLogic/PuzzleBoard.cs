@@ -12,6 +12,7 @@ public class PuzzleBoard : MonoBehaviour
     public bool PuzzleComplete;
     [Tooltip("Complete the puzzle immediately. Doesn't trigger data collection")]
     public bool PuzzleCompleteDebug;
+    public GameObject PuzzleCompletedFX;
     /// <summary>
     /// Fades to black the scene and loads next level
     /// </summary>
@@ -109,6 +110,6 @@ public class PuzzleBoard : MonoBehaviour
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
         m_PuzzleCompletedOnce = true;
-
+        PuzzleCompletedFX.SetActive(true);
     }
 }

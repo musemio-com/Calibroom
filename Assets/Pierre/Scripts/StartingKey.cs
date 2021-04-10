@@ -15,6 +15,7 @@ namespace MECM
         private Quaternion m_OriginalRotation;
         public Puzzle puzzle;
         private float? m_startTimer = null;
+        public GameObject StartKeyFX;
 
         /// <summary>
         /// Starts the puzzle when ticked on the inspector (Debug purpose only)
@@ -61,6 +62,7 @@ namespace MECM
                 if (m_startTimer > 1)
                 {
                     puzzle.PuzzleActive(true);
+                    StartKeyFX.SetActive(true);
                 }
             }
         }

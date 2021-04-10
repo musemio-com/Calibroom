@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 0}
+  StartKeyFX: {fileID: 0}
   StartPuzzleDebug: 0
 --- !u!114 &8144277734102187650
 MonoBehaviour:

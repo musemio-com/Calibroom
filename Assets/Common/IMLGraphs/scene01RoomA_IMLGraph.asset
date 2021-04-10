@@ -96,7 +96,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -106,9 +106,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
+    - 0.082
     - 0
-    - 0
-    - 0
+    - 0.597
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -305,9 +305,9 @@ MonoBehaviour:
   m_RotationQuaternionExtracted:
     m_Values:
     - -0
+    - 0.7071068
     - -0
-    - -0
-    - 1
+    - 0.7071068
   GameObjInputMissing: 0
 --- !u!114 &-5236977748829002683
 MonoBehaviour:
@@ -357,16 +357,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 3
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 3
 --- !u!114 &-5217429012867526943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,16 +415,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 3
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 3
 --- !u!114 &-5062080398253273272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,16 +473,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 3
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 3
 --- !u!114 &-4696664850459308096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -543,9 +543,9 @@ MonoBehaviour:
     - 0
   m_LastFrameFeatureValue:
   - -0
+  - 0.7071068
   - -0
-  - -0
-  - 1
+  - 0.7071068
 --- !u!114 &-4650658788332496420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -606,9 +606,9 @@ MonoBehaviour:
     - 0
   m_LastFrameFeatureValue:
   - -0
+  - 0.7071068
   - -0
-  - -0
-  - 1
+  - 0.7071068
 --- !u!114 &-843474021899456219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -692,9 +692,9 @@ MonoBehaviour:
   m_RotationQuaternionExtracted:
     m_Values:
     - -0
+    - 0.7071068
     - -0
-    - -0
-    - 1
+    - 0.7071068
   GameObjInputMissing: 0
 --- !u!114 &-208045810780281780
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27090
+  GOHashCode: 40328
   CreatedDuringPlaymode: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -837,7 +837,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -847,9 +847,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
+    - 0.082
     - 0
-    - 0
-    - 0
+    - 0.597
 --- !u!114 &1848439845424214320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   id: 1635d3b0-4c7d-4eb6-a9e5-31483bade9ab
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 27338
+  ScriptHashCode: 40386
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1102,9 +1102,9 @@ MonoBehaviour:
     - 0
   m_LastFrameFeatureValue:
   - -0
+  - 0.7071068
   - -0
-  - -0
-  - 1
+  - 0.7071068
 --- !u!114 &2934718194934204058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 0
-  SubFolderDataPath: 0/scene01RoomA
+  listNo: 3
+  SubFolderDataPath: 3/scene02RoomB
 --- !u!114 &2971309970561483842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,8 +1451,8 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 1
-  SubFolderDataPath: 0/scene01RoomA
+  listNo: 3
+  SubFolderDataPath: 3/scene02RoomB
 --- !u!114 &3399067939314817978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,7 +1503,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1513,9 +1513,9 @@ MonoBehaviour:
   m_RotationQuaternionExtracted:
     m_Values:
     - -0
+    - 0.7071068
     - -0
-    - -0
-    - 1
+    - 0.7071068
   GameObjInputMissing: 0
 --- !u!114 &4633002086136143776
 MonoBehaviour:
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1575,9 +1575,9 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
+  - 0.082
   - 0
-  - 0
-  - 0
+  - 0.597
 --- !u!114 &4986208765111962427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1628,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1638,9 +1638,9 @@ MonoBehaviour:
   GameObjInputMissing: 1
   m_PositionExtracted:
     m_Values:
+    - 0.082
     - 0
-    - 0
-    - 0
+    - 0.597
 --- !u!114 &4999826832894318360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,7 +1814,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 3
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 3/scene02RoomB
 --- !u!114 &5194999953489358972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1873,9 +1873,9 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
+  - 0.082
   - 0
-  - 0
-  - 0
+  - 0.597
 --- !u!114 &5227969869961237873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27092
+  GOHashCode: 40330
   CreatedDuringPlaymode: 0
 --- !u!114 &5556540523460259539
 MonoBehaviour:
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2020,9 +2020,9 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
+  - 0.082
   - 0
-  - 0
-  - 0
+  - 0.597
 --- !u!114 &6198230257095529886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2061,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 27094
+  GOHashCode: 40332
   CreatedDuringPlaymode: 0
 --- !u!114 &6622420231454165351
 MonoBehaviour:
@@ -2158,16 +2158,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 3
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 4
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 3
 --- !u!114 &7187650241758250611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2340,5 +2340,5 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 2
-  SubFolderDataPath: 0/scene01RoomA
+  listNo: 3
+  SubFolderDataPath: 3/scene02RoomB
