@@ -34,11 +34,9 @@ namespace MECM
             m_OriginalRotation = transform.rotation;
         }
 
-
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            DeadLimit deadLimit = other.gameObject.GetComponent<DeadLimit>();
-
+            DeadLimit deadLimit = collision.gameObject.GetComponent<DeadLimit>();
             // If we collide with a dead limit...
             if (deadLimit != null)
             {
@@ -46,7 +44,9 @@ namespace MECM
                 transform.position = m_OriginalPosition;
                 transform.rotation = m_OriginalRotation;
             }
-
+        }
+        private void OnTriggerEnter(Collider other)
+        {
             // If starting Key collide with StartingHole, then puzzleActive is true.
             if (other.gameObject.GetComponent<StartingHole>())
             {
