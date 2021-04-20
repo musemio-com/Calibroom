@@ -81,7 +81,7 @@ namespace MECM
         {
 
             // Load next level, depending on the userID
-            if (userID <= 30)
+            if (userID <= 30 || userID > 80)
             {
                 // Check in which scene are we in
                 switch (index)
@@ -106,7 +106,7 @@ namespace MECM
                         break;
                 }
             }
-            else if (userID > 30)
+            else if (userID > 30 )
             {
                 // Check in which scene are we in
                 switch (index)
