@@ -95,8 +95,8 @@ MonoBehaviour:
   id: 82e72311-ad4c-4813-a73c-f7a92fd550de
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 4
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -282,7 +282,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,12 +377,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -526,8 +526,8 @@ MonoBehaviour:
   id: 7159019a-48c4-4529-8008-868e19386616
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 4
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -720,7 +720,7 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: 0}
   ModeOfCollection: 0
-  m_DesiredInputsConfig: 0000000000000000
+  m_DesiredInputsConfig: 0600000006000000
   m_DesiredOutputsConfig: 01000000
   MLSystemNodesConnected: []
   StartDelay: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &-5241599210727268339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,12 +803,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -861,12 +861,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -919,12 +919,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -979,7 +979,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -991,10 +991,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &-4650658788332496420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1057,10 +1057,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &-3772011256000267261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1172,12 +1172,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1253,12 +1253,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1396,8 +1396,8 @@ MonoBehaviour:
   id: 8173f688-5ccc-4771-8d2d-bd64163bfb39
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 4
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19654
+  GOHashCode: 32516
   CreatedDuringPlaymode: 0
 --- !u!114 &-89334033706042137
 MonoBehaviour:
@@ -1593,8 +1593,8 @@ MonoBehaviour:
   id: 4a97ee43-597d-4582-ba65-6134853ecfd2
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 4
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1767,141 +1767,9 @@ MonoBehaviour:
   id: 1635d3b0-4c7d-4eb6-a9e5-31483bade9ab
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 19686
+  ScriptHashCode: 32652
   m_PortsPerFieldInfo:
-    m_keys:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2971309970561483842}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2934718194934204058}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 7187650241758250611}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4999826832894318360}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 3016547567234896727}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: -8361734387492210087}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: -5340486417022691672}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDInt
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -5217429012867526943}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5236977748829002683}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5062080398253273272}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: 6735675760645403819}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -7666064903572236465}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -1240539982526520871}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -3575440482919122759}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDString
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 7187650241758250611}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 4999826832894318360}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 2934718194934204058}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 2971309970561483842}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: 3016547567234896727}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: -8361734387492210087}
-        reroutePoints: []
-      - fieldName: SubFolderDataPathStringPort
-        node: {fileID: -5340486417022691672}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: LeftHandGrabbing
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 6615940582139774334}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: RightHandGrabbing
-      _node: {fileID: 1848439845424214320}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 5775310249324294137}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
+    m_keys: []
   CreatedDuringPlaymode: 0
 --- !u!114 &2487219081868204845
 MonoBehaviour:
@@ -1976,7 +1844,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1988,10 +1856,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - -0
-  - -0
-  - -0
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &2677929601234127478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,7 +1907,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2228,7 +2096,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &2971309970561483842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,7 +2270,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &3016547567234896727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2576,7 +2444,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &3399067939314817978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,8 +2494,8 @@ MonoBehaviour:
   id: bbeda9f7-a97c-4686-84f8-40201c246d3f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 00000000
-  Counter: 4
+  FeatureValueReceivingData: 01010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2688,7 +2556,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2777,7 +2645,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2840,8 +2708,8 @@ MonoBehaviour:
   id: 07dbcfee-f04b-446e-bea8-59534484fe0f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 000000
-  Counter: 4
+  FeatureValueReceivingData: 010101
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3027,7 +2895,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD
 --- !u!114 &5194999953489358972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +2946,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3130,7 +2998,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19656
+  GOHashCode: 32518
   CreatedDuringPlaymode: 0
 --- !u!114 &5428180131493729531
 MonoBehaviour:
@@ -3179,7 +3047,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3315,7 +3183,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3370,7 +3238,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3422,7 +3290,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 19658
+  GOHashCode: 32520
   CreatedDuringPlaymode: 0
 --- !u!114 &6615940582139774334
 MonoBehaviour:
@@ -3477,7 +3345,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3577,12 +3445,12 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
+  m_Value: 1
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3634,7 +3502,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 4
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3821,4 +3689,4 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 0/scene01RoomA
+  SubFolderDataPath: 1/scene04RoomD

@@ -44,7 +44,7 @@ PlayerSettings:
     duration: 2
   - logo: {fileID: 21300000, guid: 236efbb38d8898b4091e73e93092cc7c, type: 3}
     duration: 2
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 793dd7d3d2b544f4b9b770e039826250, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -130,7 +130,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 0.7
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -141,7 +141,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 11400000, guid: f74c8afb4e94e9541aebd1e951ba6200, type: 2}
   - {fileID: 11400000, guid: c5df10e2244105c4184a75daf2ff0335, type: 2}
-  - {fileID: -5299761290919356311, guid: f0b9905f7fef8944ea38d2797c482f34, type: 2}
+  - {fileID: -5839583348422471205, guid: f0b9905f7fef8944ea38d2797c482f34, type: 2}
   - {fileID: 11400000, guid: 9aea28526e7ae8c459c23c14e11745b1, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -185,7 +185,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Musemio.CalibroomTest
+    Android: com.Musemio.Calibroom
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -674,7 +674,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: ff53a108380a7924ba2d7c4d14241a31, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 0}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
