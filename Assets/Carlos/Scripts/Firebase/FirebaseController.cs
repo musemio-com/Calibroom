@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -12,6 +13,8 @@ using Firebase.Extensions;
 /// </summary>
 public class FirebaseController : MonoBehaviour
 {
+    #region Variables
+
     /// <summary>
     /// Instance firebase authentication class
     /// </summary>
@@ -20,39 +23,70 @@ public class FirebaseController : MonoBehaviour
     /// Instance firebase cloud storage class
     /// </summary>
     FirebaseStorage FStorage;
+    /// <summary>
+    /// Reference to a file in store
+    /// </summary>
     StorageReference FStorageRef;
+    /// <summary>
+    /// Needed to check when a task is available
+    /// </summary>
     private DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
+    /// <summary>
+    /// Let other scripts know if Firebase is successfully initialized
+    /// </summary>
     protected bool isFirebaseInitialized = false;
-    protected string MyStorageBucket = "gs://fir-test-b6418.appspot.com";
-    // Currently enabled logging verbosity.
+    /// <summary>
+    /// Address of storage bucket
+    /// </summary>
+    public string StorageBucket = "gs://fir-test-b6418.appspot.com";
+    /// <summary>
+    /// Currently enabled logging verbosity.
+    /// </summary>
     protected Firebase.LogLevel logLevel = Firebase.LogLevel.Info;
 
+    /// <summary>
+    /// Has the file been sent? Used to allow sending files only once
+    /// </summary>
     bool fileSent = false;
 
+    /// <summary>
+    /// File with encrypted credentials
+    /// </summary>
+    public string CredentialsPath = "/Common/AuthCredentials/FirebaseUserCredentials.json.aes";
+
+    /// <summary>
+    /// Path of file or folder to upload
+    /// </summary>
+    public string PathToUpload;
+
+    #endregion
+
+    #region Unity Messages
 
     // Start is called before the first frame update
     void Start()
     {
         // Create sign in credentials for firebase
         //FirebaseUserCredentials credentials = new FirebaseUserCredentials("email", "password");
-        
+
         //// Convert to json, and store in disk
         //string credentialsJson = JsonUtility.ToJson(credentials);
         //File.WriteAllText(Application.dataPath + "/FirebaseUserCredentials.json", credentialsJson);
-        
+
         //// Encrypt json file
         //encryptor.FileEncryptAsync(Application.dataPath + "/FirebaseUserCredentials.json", "patata");
 
         // Decrypt json file into file
-        Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Application.dataPath + "/FirebaseUserCredentials.json.aes", Application.dataPath + "/FirebaseUserCredentialsDecrypted.json", "patata");
+        string decryptedCredentialsFilePath = "/Common/AuthCredentials/FirebaseUserCredentialsDecrypted.json";
+        Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Application.dataPath + CredentialsPath, Application.dataPath + decryptedCredentialsFilePath, "patata");
         while (resultDecryption.Result == false)
         {
             // it will exit this loop once result is true
         }
         // Read from file and delete
-        string credentialsReadJson = File.ReadAllText(Application.dataPath + "/FirebaseUserCredentialsDecrypted.json");
+        string credentialsReadJson = File.ReadAllText(Application.dataPath + decryptedCredentialsFilePath);
         // Delete json file
-        File.Delete(Application.dataPath + "/FirebaseUserCredentialsDecrypted.json");
+        File.Delete(Application.dataPath + decryptedCredentialsFilePath);
         // Parse into Json
         UserCredentials credentialsRead = JsonUtility.FromJson<UserCredentials>(credentialsReadJson);
 
@@ -81,7 +115,7 @@ public class FirebaseController : MonoBehaviour
     {
         if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
         {
-            UploadFile(FStorage);
+            UploadFile(FStorage, PathToUpload);
             fileSent = true;
         }
     }
@@ -91,6 +125,10 @@ public class FirebaseController : MonoBehaviour
         SignOutFirebase(FAuth);
     }
 
+    #endregion
+
+
+    #region Private Methods
 
     protected void InitializeFirebase()
     {
@@ -98,7 +136,7 @@ public class FirebaseController : MonoBehaviour
         var appBucket = FirebaseApp.DefaultInstance.Options.StorageBucket;
         if (!String.IsNullOrEmpty(appBucket))
         {
-            MyStorageBucket = String.Format("gs://{0}/", appBucket);
+            StorageBucket = String.Format("gs://{0}/", appBucket);
         }
 
         // Get a reference to authentication 
@@ -151,27 +189,43 @@ public class FirebaseController : MonoBehaviour
 
     }
 
-    private void UploadFile(FirebaseStorage storage)
+    private void UploadFile(FirebaseStorage storage, string filePath)
     {
         if (storage == null)
         {
+            Debug.LogError("Firebase Storage couldn't be initalized");
+            return;
+        }
+        if (System.String.IsNullOrEmpty(filePath))
+        {
+            Debug.LogError("No file specified but uploadFile called!");
             return;
         }
 
         // Create a storage reference from our storage service
         StorageReference storageRef =
-            storage.GetReferenceFromUrl(MyStorageBucket);
+            storage.GetReferenceFromUrl(StorageBucket);
 
+        string localFilePath = Application.dataPath + filePath;
+
+        // Is it a file or a folder?
+        bool fileDetected = false;
+        bool directoryDetected = false;
+        FileAttributes attr = File.GetAttributes(localFilePath);
+        //detect whether its a directory or file
+        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            directoryDetected = true;
+        else
+            fileDetected = true;
 
         // Upload a file on start
         // Locate file
-        string localFilePath = Application.dataPath + "/testFile.json";
-        if (File.Exists(localFilePath) && storageRef != null)
+        if (fileDetected && File.Exists(localFilePath) && storageRef != null)
         {
             Debug.Log("Attempting file upload...");
 
             // Create a firebase reference to the file 
-            StorageReference testFileRef = storageRef.Child("test/testFile.json");
+            StorageReference testFileRef = storageRef.Child("test/" + filePath);
 
             // Upload the file to the path "images/rivers.jpg"
             testFileRef.PutFileAsync(localFilePath)
@@ -193,6 +247,49 @@ public class FirebaseController : MonoBehaviour
 
 
         }
+        else if (directoryDetected && Directory.Exists(localFilePath) && storageRef != null)
+        {
+            Debug.Log("Attempting directory upload...");
+
+            // First, find all the folders
+            // Iterate to upload all files in folder, including subdirectories
+            string[] files = Directory.GetFiles(localFilePath, "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                if (Path.GetExtension(file) == ".meta")
+                {
+                    // Skip meta files
+                    continue;
+                }
+                // Create a firebase reference to the file 
+                StorageReference testFileRef = storageRef.Child("test/" + file);
+
+                // Upload the file to the path "images/rivers.jpg"
+                testFileRef.PutFileAsync(file)
+                    .ContinueWith((Task<StorageMetadata> task) => {
+                        if (task.IsFaulted || task.IsCanceled)
+                        {
+                            Debug.Log(task.Exception.ToString());
+                        // Uh-oh, an error occurred!
+                    }
+                        else
+                        {
+                        // Metadata contains file metadata such as size, content-type, and download URL.
+                        StorageMetadata metadata = task.Result;
+                            string md5Hash = metadata.Md5Hash;
+                            Debug.Log("Finished uploading: " + file);
+                            Debug.Log("md5 hash = " + md5Hash);
+                        }
+                    });
+
+            }
+
+
+
+        }
     }
+
+    #endregion
+
 
 }
