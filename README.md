@@ -32,7 +32,7 @@ cd ../..
 1. Download the required firebase Unity **.tgz** packages from here (currently using v7.1.0): https://developers.google.com/unity/archive 
 2. Install the following packages using the Package Manager window in the **correct order** ([see here to install .tgz packages](https://docs.unity.cn/2020.1/Documentation/Manual/upm-ui-tarball.html) ):
 
-⋅⋅⋅1. External Dependency Manager [`com.google.external-dependency-manager`](https://dl.google.com/games/registry/unity/com.google.external-dependency-manager/com.google.external-dependency-manager-1.2.164.tgz) ⋅⋅  
-⋅⋅⋅2. Firebase Core [`com.google.firebase.app`](https://dl.google.com/games/registry/unity/com.google.firebase.app/com.google.firebase.app-7.1.0.tgz) ⋅⋅  
-⋅⋅⋅3. Firebase Auth [`com.google.firebase.auth`](https://dl.google.com/games/registry/unity/com.google.firebase.auth/com.google.firebase.auth-7.1.0.tgz) ⋅⋅  
-⋅⋅⋅4. Firebase Cloud Storage [`com.google.firebase.storage`](https://dl.google.com/games/registry/unity/com.google.firebase.storage/com.google.firebase.storage-7.1.0.tgz) ⋅⋅  
+   ⋅⋅⋅1. External Dependency Manager [`com.google.external-dependency-manager`](https://dl.google.com/games/registry/unity/com.google.external-dependency-manager/com.google.external-dependency-manager-1.2.164.tgz) ⋅⋅  
+   ⋅⋅⋅2. Firebase Core [`com.google.firebase.app`](https://dl.google.com/games/registry/unity/com.google.firebase.app/com.google.firebase.app-7.1.0.tgz) ⋅⋅  
+   ⋅⋅⋅3. Firebase Auth [`com.google.firebase.auth`](https://dl.google.com/games/registry/unity/com.google.firebase.auth/com.google.firebase.auth-7.1.0.tgz) ⋅⋅  
+   ⋅⋅⋅4. Firebase Cloud Storage [`com.google.firebase.storage`](https://dl.google.com/games/registry/unity/com.google.firebase.storage/com.google.firebase.storage-7.1.0.tgz) ⋅⋅  
