@@ -113,11 +113,12 @@ public class FirebaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
-        {
-            UploadFile(FStorage, PathToUpload);
-            fileSent = true;
-        }
+        //if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
+        //{
+        //    UploadAsyncPrivate(FStorage, PathToUpload);
+        //    fileSent = true;
+        //}
+
     }
 
     private void OnDestroy()
@@ -127,6 +128,33 @@ public class FirebaseController : MonoBehaviour
 
     #endregion
 
+    #region Public Methods
+
+    /// <summary>
+    /// Uploads a file or directory to the firebase server
+    /// </summary>
+    /// <param name="localFilePath">path in disk</param>
+    /// <param name="serverFilePath">path we want to upload to in the server</param>
+    public void UploadAsync(string localFilePath, string serverFilePath)
+    {
+        if (FAuth == null && FAuth.CurrentUser == null)
+        {
+            Debug.LogError("Upload to Firebase failed! The app is not authenticated.");
+        }
+        if (fileSent)
+        {
+            Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
+        }
+
+        if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
+        {
+            UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
+            fileSent = true;
+        }
+
+    }
+
+    #endregion
 
     #region Private Methods
 
@@ -189,14 +217,14 @@ public class FirebaseController : MonoBehaviour
 
     }
 
-    private void UploadFile(FirebaseStorage storage, string filePath)
+    private void UploadAsyncPrivate(FirebaseStorage storage, string localFilePath, string serverPath)
     {
         if (storage == null)
         {
             Debug.LogError("Firebase Storage couldn't be initalized");
             return;
         }
-        if (System.String.IsNullOrEmpty(filePath))
+        if (System.String.IsNullOrEmpty(localFilePath))
         {
             Debug.LogError("No file specified but uploadFile called!");
             return;
@@ -205,8 +233,6 @@ public class FirebaseController : MonoBehaviour
         // Create a storage reference from our storage service
         StorageReference storageRef =
             storage.GetReferenceFromUrl(StorageBucket);
-
-        string localFilePath = Application.dataPath + filePath;
 
         // Is it a file or a folder?
         bool fileDetected = false;
@@ -224,10 +250,10 @@ public class FirebaseController : MonoBehaviour
         {
             Debug.Log("Attempting file upload...");
 
-            // Create a firebase reference to the file 
-            StorageReference testFileRef = storageRef.Child("test/" + filePath);
+            // Create a firebase reference based on the path wanted by the user with serverPath
+            StorageReference testFileRef = storageRef.Child(serverPath);
 
-            // Upload the file to the path "images/rivers.jpg"
+            // Upload the file to the path 
             testFileRef.PutFileAsync(localFilePath)
                 .ContinueWith((Task<StorageMetadata> task) => {
                     if (task.IsFaulted || task.IsCanceled)
@@ -262,9 +288,9 @@ public class FirebaseController : MonoBehaviour
                     continue;
                 }
                 // Create a firebase reference to the file 
-                StorageReference testFileRef = storageRef.Child("test/" + file);
+                StorageReference testFileRef = storageRef.Child(serverPath + Path.GetFileName(file));
 
-                // Upload the file to the path "images/rivers.jpg"
+                // Upload the file to the path 
                 testFileRef.PutFileAsync(file)
                     .ContinueWith((Task<StorageMetadata> task) => {
                         if (task.IsFaulted || task.IsCanceled)
