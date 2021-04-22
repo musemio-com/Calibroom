@@ -16,6 +16,11 @@ namespace MECM
         #region Variables
 
         /// <summary>
+        /// Is the class collecting data?
+        /// </summary>
+        public bool CollectingData;
+
+        /// <summary>
         /// Events that fires the toggle data collection on/off (used outside of IMLGraph)
         /// </summary>
         [SerializeField]
@@ -57,6 +62,9 @@ namespace MECM
         [SendToIMLGraph]
         public int UserIDInt;
 
+        /// <summary>
+        /// Contains the ID + Scene as a directory where to store data
+        /// </summary>
         [SendToIMLGraph]
         public string UserIDString;
 
@@ -64,6 +72,11 @@ namespace MECM
         /// Used to interface with the user details SO (get persistent userID)
         /// </summary>
         private UserDetailsController m_UserDetailsCtrlr;
+
+        /// <summary>
+        /// Handles uploads to firebase server
+        /// </summary>
+        private FirebaseController m_FirebaseController;
 
         /// <summary>
         /// Extractor for grabbing info left hand
@@ -96,8 +109,12 @@ namespace MECM
             if (m_UserDetailsCtrlr != null)
             {
                 UserIDInt = m_UserDetailsCtrlr.LoadUserID();
+                // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
+
+            // Get reference to firebase controller
+            m_FirebaseController = FindObjectOfType<FirebaseController>();
 
             // Get reference to grabbing piece feature extractors and assign them to correct hands
             var grabbingExtractors = FindObjectsOfType<GrabbingPieceFeatureExtractor>();
@@ -144,6 +161,17 @@ namespace MECM
                 ToggleDataCollection = true;
                 m_ToggleCollectDataEvent = false;
                 Debug.Log("Toggling data collection!");
+
+                // Update whether we are starting or stopping collecting data
+                CollectingData = !CollectingData;
+                // If we have stopped collecting data
+                if (!CollectingData)
+                {
+                    string userDataSetPath = IMLDataSerialization.GetDataPath() + "/" + UserIDString;
+                    Debug.Log($"userDataSetPath is: {userDataSetPath}");
+                    // Upload files from our IDString directory to firebase server
+                    m_FirebaseController.UploadAsync(userDataSetPath, UserIDString);
+                }
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)
             {

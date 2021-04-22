@@ -77,11 +77,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-  DevMode: 0
   id: 95828b2b-7371-4bc9-a243-3eab3821dbb2
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 32652
+  ScriptHashCode: 22448
   m_PortsPerFieldInfo:
     m_keys: []
   CreatedDuringPlaymode: 0
@@ -124,7 +123,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 86ad8d17-f931-4f1a-bd2e-b1aa7458b4ba
   numberInComponentList: -1
   ReceivingData: 0
@@ -201,7 +199,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 489a581c-c805-46d4-9806-c736dd17eb80
   numberInComponentList: -1
   ReceivingData: 0
@@ -262,7 +259,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 34ee3126-3578-4608-be73-4e67f6613585
   numberInComponentList: -1
   ValueName: 
@@ -316,7 +312,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 808497a3-9456-4f28-a94f-7e83305bb7d9
   numberInComponentList: -1
   ReceivingData: 0
@@ -491,7 +486,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: 27698eec-451d-4211-b44f-d39b2bceb0fa
   numberInComponentList: -1
   InputFeatures:

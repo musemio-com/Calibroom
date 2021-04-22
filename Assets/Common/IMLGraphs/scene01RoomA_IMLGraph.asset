@@ -17,7 +17,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 2b51be5e-8e44-442c-b324-9b20c06d735f
   numberInComponentList: -1
   note: 'RIGHT HAND
@@ -40,7 +39,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: c4a13d20-269f-43e1-973f-2ff5b1e3befe
   numberInComponentList: -1
   note: 'ROTATION DATA
@@ -91,11 +89,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 82e72311-ad4c-4813-a73c-f7a92fd550de
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
+  FeatureValueReceivingData: 000000
   Counter: 2
   Count: 5
   ToggleSwitches: 010101
@@ -256,7 +253,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: efe83634-706e-4f18-b909-9982df9c2cc1
   numberInComponentList: -1
   InputFeatures:
@@ -282,7 +278,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +296,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: f784d95b-6c3d-46bc-bed3-21127f9e5691
   numberInComponentList: -1
   note: 'VELOCITIES POSITION
@@ -323,7 +318,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 4aaf874a-f5a4-4eb6-9aa9-25ece1b737c3
   numberInComponentList: -1
   note: 'POSTION
@@ -372,17 +366,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 10b38843-f787-4e90-b7f9-9eb2370e4885
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -404,7 +397,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: bf9ef710-0e28-46f9-b580-25eb4b007d6b
   numberInComponentList: -1
   note: 'MAIN CAMERA
@@ -427,7 +419,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 510407cd-d72f-4ae1-aa31-99abbc131d3f
   numberInComponentList: -1
   note: 'POSITION DATA
@@ -450,7 +441,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: ec528227-b311-47a1-86fd-d9aef05b7a0d
   numberInComponentList: -1
   note: 'VELOCITY OF ROTATIONS
@@ -473,7 +463,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 057f35e5-e4af-4cef-a44c-3db81404d764
   numberInComponentList: -1
   note: USER ID
@@ -522,11 +511,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 7159019a-48c4-4529-8008-868e19386616
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
+  FeatureValueReceivingData: 00000000
   Counter: 2
   Count: 5
   ToggleSwitches: 01010101
@@ -558,7 +546,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 61f80a52-ed8b-4e87-877e-f9c30959dd05
   numberInComponentList: -1
   note: "ACCELERATION OF ROTATIONS \n"
@@ -706,7 +693,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: 50740dc4-667d-43d3-8c8b-7812d605ecc9
   numberInComponentList: -1
   InputFeatures:
@@ -731,7 +717,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &-5241599210727268339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +735,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 9b888501-e308-47fe-8509-b13af2b025e5
   numberInComponentList: -1
   note: 'LEFT/RIGHT HAND GRABBING FEATURE DATA
@@ -798,17 +783,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 0b2698e5-5434-45db-9863-545c915054b2
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -856,17 +840,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 5df11976-f51b-4241-a5e2-3b7352bec47b
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -914,17 +897,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: a7a28c2d-6f60-4ba3-92f6-69a3d276eb2d
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -974,12 +956,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 28384267-4c86-493a-9854-e0f6c95f12f2
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -991,10 +972,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &-4650658788332496420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,12 +1021,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 7ba712b3-cd2f-49d9-a80c-47e53a4c250b
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1057,10 +1037,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &-3772011256000267261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,12 +1083,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 10eee071-a710-4deb-94fb-a18321133fb0
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1167,17 +1146,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 6b9b45a4-413e-48e7-bdd2-418ad5778fe6
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1199,7 +1177,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 3f98002a-959f-432e-a9a1-888aa6ffc157
   numberInComponentList: -1
   note: 'ACCELERATION OF POSITIONS DATA
@@ -1248,17 +1225,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 38780414-ad7f-43f4-a907-1b9d9375149c
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1280,7 +1256,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 4ee7e2f7-7b62-498d-9470-7d703dc7a2f9
   numberInComponentList: -1
   note: 'ROTATIONS
@@ -1328,12 +1303,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 18bd430b-caa9-4deb-b504-1b88d5f6e539
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1392,11 +1366,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 8173f688-5ccc-4771-8d2d-bd64163bfb39
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
+  FeatureValueReceivingData: 00000000
   Counter: 2
   Count: 5
   ToggleSwitches: 01010101
@@ -1444,12 +1417,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 3b3b0f36-b3ab-4f04-9b3d-708eda9f074f
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 32516
+  GOHashCode: 22312
   CreatedDuringPlaymode: 0
 --- !u!114 &-89334033706042137
 MonoBehaviour:
@@ -1468,7 +1440,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: ac83272c-4dbb-4c1f-9a48-50a5ac060251
   numberInComponentList: -1
   note: "ACCELERATION OF POSITIONS \n"
@@ -1589,11 +1560,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 4a97ee43-597d-4582-ba65-6134853ecfd2
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
+  FeatureValueReceivingData: 000000
   Counter: 2
   Count: 5
   ToggleSwitches: 010101
@@ -1763,13 +1733,144 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-  DevMode: 0
   id: 1635d3b0-4c7d-4eb6-a9e5-31483bade9ab
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 32652
+  ScriptHashCode: 22448
   m_PortsPerFieldInfo:
-    m_keys: []
+    m_keys:
+    - _fieldName: ToggleDataCollection
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 2971309970561483842}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 2934718194934204058}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 7187650241758250611}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 4999826832894318360}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: 3016547567234896727}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: -8361734387492210087}
+        reroutePoints: []
+      - fieldName: ToggleRecordingInputBoolPort
+        node: {fileID: -5340486417022691672}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleTrainModel
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: ToggleRunModel
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDInt
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -5217429012867526943}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: -5236977748829002683}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: -5062080398253273272}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: 6735675760645403819}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: -7666064903572236465}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: -1240539982526520871}
+        reroutePoints: []
+      - fieldName: m_In
+        node: {fileID: -3575440482919122759}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: UserIDString
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 7187650241758250611}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 4999826832894318360}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 2934718194934204058}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 2971309970561483842}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: 3016547567234896727}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: -8361734387492210087}
+        reroutePoints: []
+      - fieldName: SubFolderDataPathStringPort
+        node: {fileID: -5340486417022691672}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: LeftHandGrabbing
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 6615940582139774334}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: RightHandGrabbing
+      _node: {fileID: 1848439845424214320}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 5775310249324294137}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   CreatedDuringPlaymode: 0
 --- !u!114 &2487219081868204845
 MonoBehaviour:
@@ -1788,7 +1889,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 506f9b21-dab1-4e0e-9386-0e663f378f92
   numberInComponentList: -1
   note: 'RIGHT HAND GRAB
@@ -1839,12 +1939,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 0bd5b249-7be5-4fa5-88fa-77f621d15bfa
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1856,10 +1955,10 @@ MonoBehaviour:
     - 0
     - 0
   m_LastFrameFeatureValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - -0
+  - -0
+  - -0
+  - 1
 --- !u!114 &2677929601234127478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,12 +2001,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: ce00a122-9fb5-4e27-87d4-3490517f1aa2
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2070,7 +2168,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: b2accf43-eb94-4f24-be68-bffa39e2ea08
   numberInComponentList: -1
   InputFeatures:
@@ -2096,7 +2193,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &2971309970561483842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,7 +2341,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: 59188512-88bb-4f3b-a661-e904a1d7bfb1
   numberInComponentList: -1
   InputFeatures:
@@ -2270,7 +2366,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &3016547567234896727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2418,7 +2514,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: d1b74749-7cfd-4c68-85e2-6c4cbf758ad1
   numberInComponentList: -1
   InputFeatures:
@@ -2444,7 +2539,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &3399067939314817978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,11 +2585,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: bbeda9f7-a97c-4686-84f8-40201c246d3f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 01010101
+  FeatureValueReceivingData: 00000000
   Counter: 2
   Count: 5
   ToggleSwitches: 01010101
@@ -2551,12 +2645,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 0ddc0d4c-d938-4e9a-8be8-be00382957bf
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2589,7 +2682,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 175bed90-edba-47a6-88f6-0bc61468209e
   numberInComponentList: -1
   note: 'ACCELERATION OF ROTATIONS DATA
@@ -2640,12 +2732,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 648900e4-7338-49d2-ad03-a78462db1d6f
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2704,11 +2795,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 07dbcfee-f04b-446e-bea8-59534484fe0f
   numberInComponentList: -1
   ReceivingData: 0
-  FeatureValueReceivingData: 010101
+  FeatureValueReceivingData: 000000
   Counter: 2
   Count: 5
   ToggleSwitches: 010101
@@ -2869,7 +2959,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: 57469dcc-ac0f-4a14-8c85-29c2019db115
   numberInComponentList: -1
   InputFeatures:
@@ -2895,7 +2984,7 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
 --- !u!114 &5194999953489358972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2941,12 +3030,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 698d3323-3239-4dea-aebf-c8eb791752f7
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2993,12 +3081,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: e3279c61-0488-4325-a95f-2303f689affb
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 32518
+  GOHashCode: 22314
   CreatedDuringPlaymode: 0
 --- !u!114 &5428180131493729531
 MonoBehaviour:
@@ -3042,12 +3129,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 2b276d75-2012-49aa-9bb0-b9ccd87c4143
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3078,7 +3164,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 968f1075-8b03-4fc1-8450-fe2aa85e456b
   numberInComponentList: -1
   note: 'VELOCITY OF ROTATIONS DATA
@@ -3101,7 +3186,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: f03aa2ad-063b-4b6d-871c-b55c2decb0b4
   numberInComponentList: -1
   note: 'LEFT HAND
@@ -3124,7 +3208,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 47f0e51c-395f-4f43-85e3-984d06597691
   numberInComponentList: -1
   note: 'LEFT HAND GRAB
@@ -3173,7 +3256,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: e05e82b3-4801-4ec2-8e1d-ab01343b09d5
   numberInComponentList: -1
   ValueName: 
@@ -3183,7 +3265,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3233,12 +3315,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 98142f8d-5eea-4878-aba1-b0e9dad96093
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3285,12 +3366,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 6430ac14-0d05-4bbf-bcdc-7a11e2c1fd7f
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 32520
+  GOHashCode: 22316
   CreatedDuringPlaymode: 0
 --- !u!114 &6615940582139774334
 MonoBehaviour:
@@ -3335,7 +3415,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 222ec0ae-d030-44a7-ad11-3f34cd4351e9
   numberInComponentList: -1
   ValueName: 
@@ -3345,7 +3424,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3367,7 +3446,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: 14aad49c-1588-4d8c-8a0a-9b67b30988d4
   numberInComponentList: -1
   note: 'TOGGLES DATA COLLECTION ON/OFF
@@ -3390,7 +3468,6 @@ MonoBehaviour:
   ports:
     keys: []
     values: []
-  DevMode: 0
   id: a95c9a99-0991-45d7-a376-e19039a58cbc
   numberInComponentList: -1
   note: 'VELOCITY OF POSITIONS
@@ -3440,17 +3517,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: cee2b392-7610-4adf-b50c-ef5d365337d9
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3497,12 +3573,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  DevMode: 0
   id: 275d5d2b-8467-411b-bf0b-945702d4f700
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3663,7 +3738,6 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
-  DevMode: 0
   id: 194dccce-2f98-419b-807f-d01c74767790
   numberInComponentList: -1
   InputFeatures:
@@ -3689,4 +3763,4 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 6
-  SubFolderDataPath: 1/scene04RoomD
+  SubFolderDataPath: 0/scene04RoomD
