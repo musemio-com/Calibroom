@@ -76,36 +76,47 @@ public class FirebaseController : MonoBehaviour
         //// Encrypt json file
         //encryptor.FileEncryptAsync(Application.dataPath + "/FirebaseUserCredentials.json", "patata");
 
-        // Decrypt json file into file
-        string decryptedCredentialsFilePath = "/Common/AuthCredentials/FirebaseUserCredentialsDecrypted.json";
-        Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Application.dataPath + CredentialsPath, Application.dataPath + decryptedCredentialsFilePath, "patata");
-        while (resultDecryption.Result == false)
+        // Do we have a credentials file?
+        if (File.Exists(CredentialsPath))
         {
-            // it will exit this loop once result is true
-        }
-        // Read from file and delete
-        string credentialsReadJson = File.ReadAllText(Application.dataPath + decryptedCredentialsFilePath);
-        // Delete json file
-        File.Delete(Application.dataPath + decryptedCredentialsFilePath);
-        // Parse into Json
-        UserCredentials credentialsRead = JsonUtility.FromJson<UserCredentials>(credentialsReadJson);
+            // Decrypt json file into file
+            string decryptedCredentialsFilePath = "/Common/AuthCredentials/FirebaseUserCredentialsDecrypted.json";
+            Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Application.dataPath + CredentialsPath, Application.dataPath + decryptedCredentialsFilePath, "patata");
+            while (resultDecryption.Result == false)
+            {
+                // it will exit this loop once result is true
+            }
+            // Read from file and delete
+            string credentialsReadJson = File.ReadAllText(Application.dataPath + decryptedCredentialsFilePath);
+            // Delete json file
+            File.Delete(Application.dataPath + decryptedCredentialsFilePath);
+            // Parse into Json
+            UserCredentials credentialsRead = JsonUtility.FromJson<UserCredentials>(credentialsReadJson);
 
-        // One-off call to check and fix dependencies
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
-            dependencyStatus = task.Result;
-            if (dependencyStatus == DependencyStatus.Available)
-            {
-                // Init firebase
-                InitializeFirebase();
-                // SignIn
-                SignInFirebase(FAuth, credentialsRead.email, credentialsRead.password);
-            }
-            else
-            {
-                Debug.LogError(
-                  "Could not resolve all Firebase dependencies: " + dependencyStatus);
-            }
-        });
+            // One-off call to check and fix dependencies
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
+                dependencyStatus = task.Result;
+                if (dependencyStatus == DependencyStatus.Available)
+                {
+                    // Init firebase
+                    InitializeFirebase();
+                    // SignIn
+                    SignInFirebase(FAuth, credentialsRead.email, credentialsRead.password);
+                }
+                else
+                {
+                    Debug.LogError(
+                      "Could not resolve all Firebase dependencies: " + dependencyStatus);
+                }
+            });
+
+        }
+        // If there is not a credentials file present...
+        else
+        {
+            Debug.LogError($"There are no server credentials under {CredentialsPath}");
+        }
+
 
 
     }
