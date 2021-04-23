@@ -32,7 +32,7 @@ public class AESEncryptor
     /// <param name="password"></param>
     public static void FileEncryptAsync (string inputFile, string password)
     {
-        new Task(() => { FileEncryptPrivate(inputFile, password); }).Start();
+        Task encryptTask = Task.Run(() => { FileEncryptPrivate(inputFile, password); });
     }
 
     /// <summary>
