@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEditor;
+using InteractML;
 
 namespace MECM
 {
@@ -17,9 +18,9 @@ namespace MECM
         /// </summary>
         public static void CopyFirebaseCredentialsToBuild(BuildPlayerOptions options)
         {
-            string credentialsPath = "/Common/AuthCredentials/FirebaseUserCredentials.json.aes";
-            string credentialsDirectory = "/Common/AuthCredentials";
-            string credentialsName = "FirebaseUserCredentials.json.aes";
+            string credentialsPath = Path.Combine(IMLDataSerialization.GetAssetsPath(), "Common/AuthCredentials/FirebaseUserCredentials.json.aes");
+            string credentialsDirectory = "Common/AuthCredentials";
+            string credentialsName =  "FirebaseUserCredentials.json.aes";
             string buildDataPath = IMLBuildManager.GetBuildDataPath(options);
 
             // If the credentials file exists in current project...
