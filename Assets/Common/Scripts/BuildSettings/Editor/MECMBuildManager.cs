@@ -14,10 +14,11 @@ namespace MECM
         }
 
         /// <summary>
-        /// To be called from the unity editor, copies firebase credentials to build
+        /// To be called from the unity editor, copies firebase credentials to windows build
         /// </summary>
         public static void CopyFirebaseCredentialsToBuild(BuildPlayerOptions options)
         {
+        #if UNITY_STANDALONE
             string credentialsPath = Path.Combine(IMLDataSerialization.GetAssetsPath(), "Common/AuthCredentials/FirebaseUserCredentials.json.aes");
             string credentialsDirectory = "Common/AuthCredentials";
             string credentialsName =  "FirebaseUserCredentials.json.aes";
@@ -40,6 +41,8 @@ namespace MECM
                     File.Copy(credentialsPath, buildCredentialsPath, true);
                 }
             }
+        #endif
+
         }
 
     }

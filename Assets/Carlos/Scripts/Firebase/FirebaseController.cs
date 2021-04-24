@@ -7,6 +7,8 @@ using Firebase;
 using Firebase.Storage;
 using Firebase.Auth;
 using Firebase.Extensions;
+using InteractML;
+using System.Collections;
 
 /// <summary>
 /// Handles read/write logic from firebase cloud storage
@@ -52,7 +54,7 @@ public class FirebaseController : MonoBehaviour
     /// <summary>
     /// File with encrypted credentials
     /// </summary>
-    public string CredentialsPath = "/Common/AuthCredentials/FirebaseUserCredentials.json.aes";
+    public string CredentialsPath = "Common/AuthCredentials/FirebaseUserCredentials.json.aes";
 
     /// <summary>
     /// Path of file or folder to upload
@@ -76,23 +78,48 @@ public class FirebaseController : MonoBehaviour
         //// Encrypt json file
         //encryptor.FileEncryptAsync(Application.dataPath + "/FirebaseUserCredentials.json", "patata");
 
+        UserCredentials credentialsRead = null;
+
+#if UNITY_ANDROID     
+        // Use encrypted credentials from resources folder
+        var encryptedCredentialsResources = Resources.Load<TextAsset>("FirebaseUserCredentials");
+        if (encryptedCredentialsResources != null)
+        {
+            // Save the encrypted as a .json.aes file in android assets data path
+            string encryptedCredentialsPath = Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath);
+            File.WriteAllBytes(encryptedCredentialsPath, encryptedCredentialsResources.bytes);
+
+        }
+#endif
+
         // Do we have a credentials file?
-        if (File.Exists(CredentialsPath))
+        if (File.Exists(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath)))
         {
             // Decrypt json file into file
-            string decryptedCredentialsFilePath = "/Common/AuthCredentials/FirebaseUserCredentialsDecrypted.json";
-            Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Application.dataPath + CredentialsPath, Application.dataPath + decryptedCredentialsFilePath, "patata");
+            string decryptedCredentialsFilePath = "Common/AuthCredentials/FirebaseUserCredentialsDecrypted.json";
+            Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath), Path.Combine(IMLDataSerialization.GetAssetsPath(), decryptedCredentialsFilePath), "patata");
             while (resultDecryption.Result == false)
             {
                 // it will exit this loop once result is true
             }
             // Read from file and delete
-            string credentialsReadJson = File.ReadAllText(Application.dataPath + decryptedCredentialsFilePath);
+            string credentialsReadJson = File.ReadAllText(Path.Combine(IMLDataSerialization.GetAssetsPath(), decryptedCredentialsFilePath));
             // Delete json file
-            File.Delete(Application.dataPath + decryptedCredentialsFilePath);
+            File.Delete(Path.Combine(IMLDataSerialization.GetAssetsPath(), decryptedCredentialsFilePath));
             // Parse into Json
-            UserCredentials credentialsRead = JsonUtility.FromJson<UserCredentials>(credentialsReadJson);
+            credentialsRead = JsonUtility.FromJson<UserCredentials>(credentialsReadJson);
+        }
+        // If there is not a credentials file present...
+        else
+        {
+            Debug.LogError($"There are no server credentials under {CredentialsPath}");
+        }
 
+
+
+        // Did we load any credentials?
+        if (credentialsRead != null)
+        {
             // One-off call to check and fix dependencies
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
                 dependencyStatus = task.Result;
@@ -111,10 +138,9 @@ public class FirebaseController : MonoBehaviour
             });
 
         }
-        // If there is not a credentials file present...
         else
         {
-            Debug.LogError($"There are no server credentials under {CredentialsPath}");
+            Debug.LogError("Credentials couldn't be loaded!");
         }
 
 
@@ -159,7 +185,8 @@ public class FirebaseController : MonoBehaviour
 
         if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
         {
-            UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
+            var uploadCoroutine = UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
+            StartCoroutine(uploadCoroutine);            
             fileSent = true;
         }
 
@@ -228,17 +255,17 @@ public class FirebaseController : MonoBehaviour
 
     }
 
-    private void UploadAsyncPrivate(FirebaseStorage storage, string localFilePath, string serverPath)
+    private IEnumerator UploadAsyncPrivate(FirebaseStorage storage, string localFilePath, string serverPath)
     {
         if (storage == null)
         {
             Debug.LogError("Firebase Storage couldn't be initalized");
-            return;
+            yield break;
         }
         if (System.String.IsNullOrEmpty(localFilePath))
         {
             Debug.LogError("No file specified but uploadFile called!");
-            return;
+            yield break;
         }
 
         // Create a storage reference from our storage service
@@ -254,6 +281,9 @@ public class FirebaseController : MonoBehaviour
             directoryDetected = true;
         else
             fileDetected = true;
+
+        // Wait for a few miliseconds, to allow the training examples to be fully written in disk
+        yield return new WaitForSeconds(0.1f);
 
         // Upload a file on start
         // Locate file
