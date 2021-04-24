@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "722384152379",
+    "project_id": "fir-test-b6418",
+    "storage_bucket": "fir-test-b6418.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722384152379:android:d1334b5b36aec7ea5ab91e",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.Firebase_Test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2pRMK-9WDD7fe61NpNMBkSAlY9UnS6xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722384152379:android:126321173b9f4d955ab91e",
+        "android_client_info": {
+          "package_name": "com.Musemio.Calibroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2pRMK-9WDD7fe61NpNMBkSAlY9UnS6xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

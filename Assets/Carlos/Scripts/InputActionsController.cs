@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using MECM;
 
 /// <summary>
 /// Manages the behaviour of Input Actions
@@ -12,6 +13,8 @@ public class InputActionsController : MonoBehaviour
     /// Collection of action events available in the input system (generated through the editor)
     /// </summary>
     public CalibroomInputActions CalibroomActions;
+    private PuzzleBoard BoardGame;
+    private DataCollectionController CollectionController;
 
     private void Awake()
     {
@@ -19,8 +22,15 @@ public class InputActionsController : MonoBehaviour
         if (CalibroomActions == null)
             CalibroomActions = new CalibroomInputActions();
 
+        // Get refs 
+        BoardGame = FindObjectOfType<PuzzleBoard>();
+        CollectionController = FindObjectOfType<DataCollectionController>();
+
         // Assign a delegate with the ExitGame() method to the ExitGame action
         CalibroomActions.Menu.ExitGame.performed += x => QuitGame();
+        // Assign delegates for other actions
+        CalibroomActions.Menu.CompletePuzzle.performed += x => CompletePuzzle();
+        CalibroomActions.Menu.ToggleDataCollection.performed += x => ToggleDataCollection();
     }
 
     private void OnEnable()
@@ -45,5 +55,24 @@ public class InputActionsController : MonoBehaviour
         // Account for editor applications by forcing to leave playmode
         UnityEditor.EditorApplication.ExitPlaymode();
 #endif
+    }
+
+    /// <summary>
+    /// Completes the puzzle 
+    /// </summary>
+    private void CompletePuzzle()
+    {
+        if (BoardGame != null)
+            BoardGame.StopPuzzle();
+
+        if (CollectionController != null && CollectionController.CollectingData)
+            CollectionController.FireToggleCollectDataEvent();
+            
+    }
+
+    private void ToggleDataCollection()
+    {
+        if (CollectionController != null)
+            CollectionController.FireToggleCollectDataEvent();
     }
 }

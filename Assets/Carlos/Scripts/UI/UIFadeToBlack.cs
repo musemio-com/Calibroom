@@ -85,11 +85,13 @@ public class UIFadeToBlack : MonoBehaviour
             // Loadnextlevel flag will be called from the animator behaviour, at the end of the FadeToBlackAnimation
             if (m_FadeToBlackAnimator.GetBool(m_LoadNextLevelAnimatorID))
             {
-                m_LevelLoader.LoadNextLevel();
-                m_FadeToBlackAnimator.SetBool(m_LoadNextLevelAnimatorID, false);
                 // Stop data collection (if in debug mode we should never be collecting data, no need to stop)
                 if (m_DataCtrlr != null && m_Debug == false)
                     m_DataCtrlr.FireToggleCollectDataEvent();
+                // Load next level
+                m_LevelLoader.LoadNextLevel();
+                // Stop the animation since we are already in black
+                m_FadeToBlackAnimator.SetBool(m_LoadNextLevelAnimatorID, false);
 
             }
 
@@ -110,7 +112,7 @@ public class UIFadeToBlack : MonoBehaviour
             // This trigger will launch the animation
             m_FadeToBlackAnimator.SetTrigger("FadeToBlackTrigger");
             // When the animation is over, the animator LoadNextLevel bool will be set to true by a custom behaviour
-            // When animator.LoadNextLevel bool is true, the Update loop will handle that and call LevelLoader.LoadNextLevel()
+            // When animator bool is true, the Update loop will handle that and call LevelLoader.LoadNextLevel()
         }
     }
 }
