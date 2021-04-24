@@ -25,6 +25,22 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CompletePuzzle"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d309663-7c53-4855-8038-afaeea7b1f4b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToggleDataCollection"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfd13600-9f06-41d3-a92e-5b0e468096b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -38,6 +54,28 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
                     ""action"": ""ExitGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfb7bca1-3573-406f-9baf-ad66fd946f44"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CompletePuzzle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74a78dc5-7d42-4fa4-8ada-197a2d5e78aa"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleDataCollection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -47,6 +85,8 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_ExitGame = m_Menu.FindAction("ExitGame", throwIfNotFound: true);
+        m_Menu_CompletePuzzle = m_Menu.FindAction("CompletePuzzle", throwIfNotFound: true);
+        m_Menu_ToggleDataCollection = m_Menu.FindAction("ToggleDataCollection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -97,11 +137,15 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_ExitGame;
+    private readonly InputAction m_Menu_CompletePuzzle;
+    private readonly InputAction m_Menu_ToggleDataCollection;
     public struct MenuActions
     {
         private @CalibroomInputActions m_Wrapper;
         public MenuActions(@CalibroomInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ExitGame => m_Wrapper.m_Menu_ExitGame;
+        public InputAction @CompletePuzzle => m_Wrapper.m_Menu_CompletePuzzle;
+        public InputAction @ToggleDataCollection => m_Wrapper.m_Menu_ToggleDataCollection;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -114,6 +158,12 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
                 @ExitGame.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnExitGame;
                 @ExitGame.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnExitGame;
                 @ExitGame.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnExitGame;
+                @CompletePuzzle.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnCompletePuzzle;
+                @CompletePuzzle.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnCompletePuzzle;
+                @CompletePuzzle.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnCompletePuzzle;
+                @ToggleDataCollection.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleDataCollection;
+                @ToggleDataCollection.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleDataCollection;
+                @ToggleDataCollection.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggleDataCollection;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -121,6 +171,12 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
                 @ExitGame.started += instance.OnExitGame;
                 @ExitGame.performed += instance.OnExitGame;
                 @ExitGame.canceled += instance.OnExitGame;
+                @CompletePuzzle.started += instance.OnCompletePuzzle;
+                @CompletePuzzle.performed += instance.OnCompletePuzzle;
+                @CompletePuzzle.canceled += instance.OnCompletePuzzle;
+                @ToggleDataCollection.started += instance.OnToggleDataCollection;
+                @ToggleDataCollection.performed += instance.OnToggleDataCollection;
+                @ToggleDataCollection.canceled += instance.OnToggleDataCollection;
             }
         }
     }
@@ -128,5 +184,7 @@ public class @CalibroomInputActions : IInputActionCollection, IDisposable
     public interface IMenuActions
     {
         void OnExitGame(InputAction.CallbackContext context);
+        void OnCompletePuzzle(InputAction.CallbackContext context);
+        void OnToggleDataCollection(InputAction.CallbackContext context);
     }
 }
