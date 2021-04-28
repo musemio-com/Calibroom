@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StorageBucket: gs://fir-test-b6418.appspot.com
-  CredentialsPath: /Common/AuthCredentials/FirebaseUserCredentials.json.aes
-  PathToUpload: /InteractML/Data/Training_Examples
+  CredentialsPath: Common/AuthCredentials/FirebaseUserCredentials.json.aes
+  PathToUpload: /InteractML/Data/Training_Examples/

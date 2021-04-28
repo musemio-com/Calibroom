@@ -68,6 +68,141 @@ public class FirebaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(LoadCredentialsSignIn());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
+        //{
+        //    UploadAsyncPrivate(FStorage, PathToUpload);
+        //    fileSent = true;
+        //}
+
+    }
+
+    private void OnDestroy()
+    {
+        SignOutFirebase(FAuth);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Triggers sign in event
+    /// </summary>
+    public void SignIn()
+    {
+        StartCoroutine(LoadCredentialsSignIn());
+    }
+
+    /// <summary>
+    /// Uploads a file or directory to the firebase server
+    /// </summary>
+    /// <param name="localFilePath">path in disk</param>
+    /// <param name="serverFilePath">path we want to upload to in the server</param>
+    public void UploadAsync(string localFilePath, string serverFilePath)
+    {
+        if (FAuth == null || FAuth.CurrentUser == null)
+        {
+            Debug.LogError("Upload to Firebase failed! The app is not authenticated.");
+        }
+        if (fileSent)
+        {
+            Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
+        }
+
+        if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
+        {
+            var uploadCoroutine = UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
+            StartCoroutine(uploadCoroutine);            
+            fileSent = true;
+        }
+
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    protected void InitializeFirebase()
+    {
+        Debug.Log("Attempting to init Firebase...");
+
+        // Get ref to storage bucket address
+        var appBucket = FirebaseApp.DefaultInstance.Options.StorageBucket;
+        if (!String.IsNullOrEmpty(appBucket))
+        {
+            StorageBucket = String.Format("gs://{0}/", appBucket);
+        }
+
+        // Get a reference to authentication 
+        FAuth = FirebaseAuth.DefaultInstance;
+
+        // Get a reference to the storage service, using the default Firebase App
+        FStorage = FirebaseStorage.DefaultInstance;
+        FStorage.LogLevel = logLevel;
+
+
+        // Update flag so other scripts are aware that firebase is init
+        isFirebaseInitialized = true;
+
+        Debug.Log("Firebase init!");
+
+    }
+
+    private void SignInFirebase(FirebaseAuth auth, string email, string password)
+    {
+        Debug.Log("Attempting to Sign into Firebase...");
+
+        if (auth == null)
+        {
+            return;
+        }
+        {
+            Debug.LogError("Auth object is null! Signing In aborted!");
+        }
+
+        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.FirebaseUser newUser = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})",
+                newUser.DisplayName, newUser.UserId);
+
+        });
+
+    }
+
+    private void SignOutFirebase(FirebaseAuth auth)
+    {
+        if (auth == null)
+        {
+            return;
+        }
+
+        auth.SignOut();
+
+    }
+
+    /// <summary>
+    /// Loads credentials and signs into firebase over a coroutine
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator LoadCredentialsSignIn()
+    {
         // Create sign in credentials for firebase
         //FirebaseUserCredentials credentials = new FirebaseUserCredentials("email", "password");
 
@@ -85,10 +220,41 @@ public class FirebaseController : MonoBehaviour
         var encryptedCredentialsResources = Resources.Load<TextAsset>("FirebaseUserCredentials");
         if (encryptedCredentialsResources != null)
         {
+            // We read the encrypted credentials! Proceed to 
+
             // Save the encrypted as a .json.aes file in android assets data path
             string encryptedCredentialsPath = Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath);
-            File.WriteAllBytes(encryptedCredentialsPath, encryptedCredentialsResources.bytes);
+            Debug.Log($"Writing credentials to {encryptedCredentialsPath}");
+            var dirName = Path.GetDirectoryName(encryptedCredentialsPath);
+            var fileName = Path.GetFileName(encryptedCredentialsPath);
+            // Create local credentials directory if it doesn't exist
+            if (!Directory.Exists(dirName))
+                Directory.CreateDirectory(dirName);
+            // Create crypto credentials file
+            var fs = File.Create(encryptedCredentialsPath);
+            // close filestream before writing
+            fs.Close();
+            // wait a frame
+            yield return null;
+            
+            Debug.Log($"Attempting to read into folder {dirName}, searching or file {fileName}");            
+            var files = Directory.GetFiles(dirName);
+            Debug.Log("Files found are: ");
+            foreach (var file in files)
+            {
+                Debug.Log(file);
+            }
 
+            // Write all bytes into file
+            File.WriteAllBytes(encryptedCredentialsPath, encryptedCredentialsResources.bytes);
+            // wait a frame
+            yield return null;
+            // waiting between frames until the file is fully written
+            while (!File.Exists(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath)))
+            {
+                Debug.Log($"Waiting for {encryptedCredentialsPath} to be fully written before signing into firebase...");
+                yield return null;
+            }
         }
 #endif
 
@@ -134,6 +300,13 @@ public class FirebaseController : MonoBehaviour
                 {
                     Debug.LogError(
                       "Could not resolve all Firebase dependencies: " + dependencyStatus);
+                    Debug.Log(
+                      "Still, going ahead with firebase init since google play services are not required anymore on android " );
+                    // Init firebase
+                    InitializeFirebase();
+                    // SignIn
+                    SignInFirebase(FAuth, credentialsRead.email, credentialsRead.password);
+
                 }
             });
 
@@ -143,115 +316,6 @@ public class FirebaseController : MonoBehaviour
             Debug.LogError("Credentials couldn't be loaded!");
         }
 
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
-        //{
-        //    UploadAsyncPrivate(FStorage, PathToUpload);
-        //    fileSent = true;
-        //}
-
-    }
-
-    private void OnDestroy()
-    {
-        SignOutFirebase(FAuth);
-    }
-
-    #endregion
-
-    #region Public Methods
-
-    /// <summary>
-    /// Uploads a file or directory to the firebase server
-    /// </summary>
-    /// <param name="localFilePath">path in disk</param>
-    /// <param name="serverFilePath">path we want to upload to in the server</param>
-    public void UploadAsync(string localFilePath, string serverFilePath)
-    {
-        if (FAuth == null && FAuth.CurrentUser == null)
-        {
-            Debug.LogError("Upload to Firebase failed! The app is not authenticated.");
-        }
-        if (fileSent)
-        {
-            Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
-        }
-
-        if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
-        {
-            var uploadCoroutine = UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
-            StartCoroutine(uploadCoroutine);            
-            fileSent = true;
-        }
-
-    }
-
-    #endregion
-
-    #region Private Methods
-
-    protected void InitializeFirebase()
-    {
-        // Get ref to storage bucket address
-        var appBucket = FirebaseApp.DefaultInstance.Options.StorageBucket;
-        if (!String.IsNullOrEmpty(appBucket))
-        {
-            StorageBucket = String.Format("gs://{0}/", appBucket);
-        }
-
-        // Get a reference to authentication 
-        FAuth = FirebaseAuth.DefaultInstance;
-
-        // Get a reference to the storage service, using the default Firebase App
-        FStorage = FirebaseStorage.DefaultInstance;
-        FStorage.LogLevel = logLevel;
-
-
-        // Update flag so other scripts are aware that firebase is init
-        isFirebaseInitialized = true;
-    }
-
-    private void SignInFirebase(FirebaseAuth auth, string email, string password)
-    {
-        if (auth == null)
-        {
-            return;
-        }
-
-        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
-            if (task.IsCanceled)
-            {
-                Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
-                return;
-            }
-            if (task.IsFaulted)
-            {
-                Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                return;
-            }
-
-            Firebase.Auth.FirebaseUser newUser = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
-
-        });
-
-    }
-
-    private void SignOutFirebase(FirebaseAuth auth)
-    {
-        if (auth == null)
-        {
-            return;
-        }
-
-        auth.SignOut();
 
     }
 
@@ -268,6 +332,9 @@ public class FirebaseController : MonoBehaviour
             yield break;
         }
 
+        // Wait for a few miliseconds, to allow the training examples to be fully written in disk
+        yield return new WaitForSeconds(0.2f);
+
         // Create a storage reference from our storage service
         StorageReference storageRef =
             storage.GetReferenceFromUrl(StorageBucket);
@@ -282,8 +349,6 @@ public class FirebaseController : MonoBehaviour
         else
             fileDetected = true;
 
-        // Wait for a few miliseconds, to allow the training examples to be fully written in disk
-        yield return new WaitForSeconds(0.1f);
 
         // Upload a file on start
         // Locate file

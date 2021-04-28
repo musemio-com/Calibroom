@@ -55,6 +55,25 @@ public class AESEncryptor
     }
 
     /// <summary>
+    /// Decrypts an encrypted file with the FileEncrypt method through its path and the plain password.
+    /// </summary>
+    /// <param name="inputFile"></param>
+    /// <param name="outputFile"></param>
+    /// <param name="password"></param>
+    /// <returns>Listen to task.result to see when the file is decrypted</returns>
+    public static Task<bool> FileDecryptAsync(FileStream inputFile, string outputFile, string password)
+    {   
+        Task<bool> resultTask  = Task.Run(() => 
+        {
+            return FileDecryptPrivate(inputFile, outputFile, password);
+        });
+
+        return resultTask;
+        //new Task(() => { FileDecryptPrivate(inputFile, outputFile, password); }).Start();
+
+    }
+
+    /// <summary>
     /// Encrypts a file from its path and a plain password.
     /// </summary>
     /// <param name="inputFile"></param>
@@ -126,6 +145,64 @@ public class AESEncryptor
     /// <param name="inputFile"></param>
     /// <param name="outputFile"></param>
     /// <param name="password"></param>
+    private static bool FileDecryptPrivate(FileStream fsCrypt, string outputFile, string password)
+    {
+        bool result = false;
+        byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
+        byte[] salt = new byte[32];
+
+        fsCrypt.Read(salt, 0, salt.Length);
+
+        RijndaelManaged AES = new RijndaelManaged();
+        AES.KeySize = 256;
+        AES.BlockSize = 128;
+        var key = new Rfc2898DeriveBytes(passwordBytes, salt, 50000);
+        AES.Key = key.GetBytes(AES.KeySize / 8);
+        AES.IV = key.GetBytes(AES.BlockSize / 8);
+        AES.Padding = PaddingMode.PKCS7;
+        AES.Mode = CipherMode.CFB;
+
+        CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateDecryptor(), CryptoStreamMode.Read);
+
+        FileStream fsOut = new FileStream(outputFile, FileMode.Create);
+
+        int read;
+        byte[] buffer = new byte[1048576];
+
+        try
+        {
+            while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                //Application.DoEvents();
+                fsOut.Write(buffer, 0, read);
+            }
+        }
+        catch (CryptographicException ex_CryptographicException)
+        {
+            Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+
+        try
+        {
+            cs.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error by closing CryptoStream: " + ex.Message);
+        }
+        finally
+        {
+            fsOut.Close();
+            fsCrypt.Close();
+            result = true;
+        }
+
+        return result;
+    }
     private static bool FileDecryptPrivate(string inputFile, string outputFile, string password)
     {
         bool result = false;
