@@ -9,6 +9,7 @@ using Firebase.Auth;
 using Firebase.Extensions;
 using InteractML;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handles read/write logic from firebase cloud storage
@@ -61,6 +62,9 @@ public class FirebaseController : MonoBehaviour
     /// </summary>
     public string PathToUpload;
 
+    public Image AuthStateDisplay;
+    public bool authSuccess;
+
     #endregion
 
     #region Unity Messages
@@ -80,6 +84,14 @@ public class FirebaseController : MonoBehaviour
         //    fileSent = true;
         //}
 
+        if (authSuccess)
+        {
+            if (AuthStateDisplay != null)
+            {
+                AuthStateDisplay.color = Color.green;
+            }
+
+        }
     }
 
     private void OnDestroy()
@@ -160,10 +172,8 @@ public class FirebaseController : MonoBehaviour
 
         if (auth == null)
         {
-            return;
-        }
-        {
             Debug.LogError("Auth object is null! Signing In aborted!");
+            return;
         }
 
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
@@ -182,6 +192,7 @@ public class FirebaseController : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
 
+            authSuccess = true;
         });
 
     }
