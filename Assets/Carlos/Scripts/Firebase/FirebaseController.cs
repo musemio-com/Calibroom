@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Net;
 using UnityEngine;
 using Firebase;
 using Firebase.Storage;
@@ -66,6 +67,11 @@ public class FirebaseController : MonoBehaviour
     public Image AuthStateDisplay;
     public bool authSuccess;
 
+    /// <summary>
+    /// Specifies the implementation to use when doing a REST upload
+    /// </summary>
+    public enum UploadRESTOptions { DotNetWebRequest, UnityWebRequest, WWW }
+
     #endregion
 
     #region Unity Messages
@@ -112,13 +118,13 @@ public class FirebaseController : MonoBehaviour
 
         // Get timestamp
         //string date = DateTime.Today.ToString("f");
-        string date = DateTime.Now.ToLocalTime().ToString("s");
+        string date = DateTime.Now.ToLocalTime().ToString("s") + "/"; // prepared for path
 
         // Add timestampt to serverfilepath
-        serverFilePath = serverFilePath + "/" + date ;
+        serverFilePath = Path.Combine(serverFilePath, date);
 
 #if UNITY_ANDROID
-        var uploadCoroutine = UploadREST(localFilePath, serverFilePath);
+        var uploadCoroutine = UploadREST(localFilePath, serverFilePath, UploadRESTOptions.DotNetWebRequest);
         StartCoroutine(uploadCoroutine);
         fileSent = true;
 #elif UNITY_STANDALONE
@@ -439,7 +445,7 @@ public class FirebaseController : MonoBehaviour
     /// <param name="localFilePath"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private IEnumerator UploadREST(string localFilePath, string serverFilePath)
+    private IEnumerator UploadREST(string localFilePath, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest)
     {
         if (string.IsNullOrEmpty(localFilePath))
         {
@@ -466,7 +472,7 @@ public class FirebaseController : MonoBehaviour
         if (fileDetected && File.Exists(localFilePath))
         {
             Debug.Log("Attempting file upload...");
-            StartCoroutine(UploadFileREST(localFilePath, serverFilePath));
+            StartCoroutine(UploadFileREST(localFilePath, serverFilePath, options));
 
         }
         else if (directoryDetected && Directory.Exists(localFilePath))
@@ -483,7 +489,7 @@ public class FirebaseController : MonoBehaviour
                     // Skip meta files
                     continue;
                 }
-                StartCoroutine(UploadFileREST(file, serverFilePath));
+                StartCoroutine(UploadFileREST(file, serverFilePath, options));
 
             }
 
@@ -501,10 +507,8 @@ public class FirebaseController : MonoBehaviour
     /// <param name="fileToUpload"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private IEnumerator UploadFileREST(string fileToUpload, string serverFilePath)
+    private IEnumerator UploadFileREST(string fileToUpload, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest)
     {
-
-
         string fileName = Path.GetFileName(fileToUpload);
         string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
         string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
@@ -514,47 +518,70 @@ public class FirebaseController : MonoBehaviour
         string firebaseProjectID = "fir-test-b6418.appspot.com";
         string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
             firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
+        string contentType = "application/force-download";
 
-        // UNITYWEBREQUEST 
-        // Post file to server
-        // Define a filled in upload handler
-        UploadHandlerRaw uploadHandler = new UploadHandlerRaw(fileBinary);
-        uploadHandler.contentType = "application/force-download";
-        // Empty downloadHandler since we are only posting
-        DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
-        // Prepare post request with data
-        UnityWebRequest webRequest = new UnityWebRequest(urlFirebase, "POST", downloadHandlerBuffer, uploadHandler);
-        //UnityWebRequest webRequest = UnityWebRequest.Post(urlFirebase, fileText);
-        //webRequest.SetRequestHeader("Content-type", "text/plain");
-        // Send
-        yield return webRequest.SendWebRequest();
-
-        // WWW
-        //Dictionary<string, string> wwwHeaders = new Dictionary<string, string>();
-        //wwwHeaders.Add("Content-type", "text/plain");
-        //WWW www = new WWW(urlFirebase, fileBinary, wwwHeaders);
-        //yield return www;
-
-        // wait a frame
-        yield return null;
-
-        // UNITYWEBREQUEST
-        if (webRequest.result != UnityWebRequest.Result.Success)
+        switch (options)
         {
-            Debug.LogError(webRequest.error);
+            case UploadRESTOptions.DotNetWebRequest:
+                // C# WEBREQUEST
+                WebRequest request = WebRequest.Create(urlFirebase);
+                request.Method = "POST";
+                request.ContentLength = fileBinary.Length;
+                request.ContentType = contentType;
+                request.Proxy = null; // this is known to speed up requests
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(fileBinary, 0, fileBinary.Length);
+                dataStream.Close();
+                // wait a frame
+                yield return null;
+                // Send request to server
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                // wait a frame
+                yield return null;
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    Debug.LogError($"Upload failed! {response.StatusDescription}");
+                }
+                else
+                    Debug.Log($"Upload succeeded! {response.StatusDescription}");
+                // releases resources of response
+                response.Close();
+                break;
+
+            case UploadRESTOptions.UnityWebRequest:
+                // UNITYWEBREQUEST 
+                // Post file to server
+                // Define a filled in upload handler
+                UploadHandlerRaw uploadHandler = new UploadHandlerRaw(fileBinary);
+                uploadHandler.contentType = contentType;
+                // Empty downloadHandler since we are only posting
+                DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
+                // Prepare post request with data
+                UnityWebRequest webRequest = new UnityWebRequest(urlFirebase, "POST", downloadHandlerBuffer, uploadHandler);
+                //UnityWebRequest webRequest = UnityWebRequest.Post(urlFirebase, fileText);
+                //webRequest.SetRequestHeader("Content-type", "text/plain");
+                // Send
+                yield return webRequest.SendWebRequest();
+                // errors?
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                    Debug.LogError(webRequest.error);
+                break;
+
+            case UploadRESTOptions.WWW:
+                // WWW
+                Dictionary<string, string> wwwHeaders = new Dictionary<string, string>();
+                wwwHeaders.Add("Content-type", contentType);
+                WWW www = new WWW(urlFirebase, fileBinary, wwwHeaders);
+                yield return www;
+                // Any errors?
+                if (www.error != null)
+                    Debug.LogError(www.error);
+                // wait a frame
+                yield return null;
+                break;
+            default:
+                break;
         }
-
-        //// WWW
-        //if (www.error == null)
-        //{
-        //    Debug.Log("Upload of test file complete!");
-
-        //}
-        //else
-        //{
-        //    Debug.LogError(www.error);
-        //}
-
 
         // wait a frame
         yield return null;
