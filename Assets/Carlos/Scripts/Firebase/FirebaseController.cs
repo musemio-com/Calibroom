@@ -132,6 +132,13 @@ public class FirebaseController : MonoBehaviour
             //return;
         }
 
+        // Get timestamp
+        //string date = DateTime.Today.ToString("f");
+        string date = DateTime.Now.ToLocalTime().ToString("s");
+
+        // Add timestampt to serverfilepath
+        serverFilePath = date + "/" + serverFilePath;
+
 #if UNITY_ANDROID
         var uploadCoroutine = UploadREST(localFilePath, serverFilePath);
         StartCoroutine(uploadCoroutine);
