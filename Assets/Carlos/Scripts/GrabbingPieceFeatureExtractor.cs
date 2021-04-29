@@ -202,7 +202,7 @@ namespace MECM
                 var XRControllerGrabbingPiece = interactor.GetComponent<XRController>();
                 if (XRControllerGrabbingPiece != null && m_XRController != null)
                 {
-                    Debug.Log(XRControllerGrabbingPiece.controllerNode.ToString());
+                    //Debug.Log(XRControllerGrabbingPiece.controllerNode.ToString());
 
                     // Only set the grabbing if the controller that is interacting with the piece matches with our controller
                     if (XRControllerGrabbingPiece.controllerNode == m_XRController.controllerNode)

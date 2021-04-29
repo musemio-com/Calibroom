@@ -73,38 +73,16 @@ public class FirebaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(LoadCredentialsSignIn());
-
-        //var file = Resources.Load<TextAsset>("testfile");
-        //var file2 = Resources.Load<TextAsset>("testfile2");
-        //var file3 = Resources.Load<TextAsset>("testfile3");
-        //StartCoroutine(UploadFileREST(file.bytes, "testfile.json", ""));
-        //StartCoroutine(UploadFileREST(file2.bytes, "testfile2.json", ""));
-        //StartCoroutine(UploadFileREST(file3.bytes, "testfile3.json", ""));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
-        //{
-        //    UploadAsyncPrivate(FStorage, PathToUpload);
-        //    fileSent = true;
-        //}
-
-        if (authSuccess)
-        {
-            if (AuthStateDisplay != null)
-            {
-                AuthStateDisplay.color = Color.green;
-            }
-
-        }
+#if UNITY_STANDALONE
+        StartCoroutine(LoadCredentialsSignIn());
+#endif
     }
 
     private void OnDestroy()
     {
+#if UNITY_STANDALONE
         SignOutFirebase(FAuth);
+#endif
     }
 
     #endregion
@@ -129,7 +107,7 @@ public class FirebaseController : MonoBehaviour
         if (fileSent)
         {
             Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
-            //return;
+            return;
         }
 
         // Get timestamp
@@ -137,7 +115,7 @@ public class FirebaseController : MonoBehaviour
         string date = DateTime.Now.ToLocalTime().ToString("s");
 
         // Add timestampt to serverfilepath
-        serverFilePath = date + "/" + serverFilePath;
+        serverFilePath = serverFilePath + "/" + date ;
 
 #if UNITY_ANDROID
         var uploadCoroutine = UploadREST(localFilePath, serverFilePath);
@@ -164,7 +142,7 @@ public class FirebaseController : MonoBehaviour
 
     protected void InitializeFirebase()
     {
-        Debug.Log("Attempting to init Firebase...");
+        //Debug.Log("Attempting to init Firebase...");
 
         // Get ref to storage bucket address
         var appBucket = FirebaseApp.DefaultInstance.Options.StorageBucket;
@@ -184,13 +162,13 @@ public class FirebaseController : MonoBehaviour
         // Update flag so other scripts are aware that firebase is init
         isFirebaseInitialized = true;
 
-        Debug.Log("Firebase init!");
+        //Debug.Log("Firebase init!");
 
     }
 
     private void SignInFirebase(FirebaseAuth auth, string email, string password)
     {
-        Debug.Log("Attempting to Sign into Firebase...");
+        //Debug.Log("Attempting to Sign into Firebase...");
 
         if (auth == null)
         {
@@ -212,8 +190,7 @@ public class FirebaseController : MonoBehaviour
             }
 
             Firebase.Auth.FirebaseUser newUser = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+            //Debug.LogFormat("User signed in successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
 
             authSuccess = true;
         });
@@ -258,7 +235,7 @@ public class FirebaseController : MonoBehaviour
 
             // Save the encrypted as a .json.aes file in android assets data path
             string encryptedCredentialsPath = Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath);
-            Debug.Log($"Writing credentials to {encryptedCredentialsPath}");
+            //Debug.Log($"Writing credentials to {encryptedCredentialsPath}");
             var dirName = Path.GetDirectoryName(encryptedCredentialsPath);
             var fileName = Path.GetFileName(encryptedCredentialsPath);
             // Create local credentials directory if it doesn't exist
@@ -271,13 +248,8 @@ public class FirebaseController : MonoBehaviour
             // wait a frame
             yield return null;
 
-            Debug.Log($"Attempting to read into folder {dirName}, searching or file {fileName}");
-            var files = Directory.GetFiles(dirName);
-            Debug.Log("Files found are: ");
-            foreach (var file in files)
-            {
-                Debug.Log(file);
-            }
+            //Debug.Log($"Attempting to read into folder {dirName}, searching or file {fileName}");
+
             // wait a frame
             yield return null;
             // Write all bytes into file
@@ -285,7 +257,7 @@ public class FirebaseController : MonoBehaviour
             // waiting between frames until the file is fully written
             while (!File.Exists(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath)))
             {
-                Debug.Log($"Waiting for {encryptedCredentialsPath} to be fully written before signing into firebase...");
+                //Debug.Log($"Waiting for {encryptedCredentialsPath} to be fully written before signing into firebase...");
                 yield return null;
             }
         }
@@ -337,12 +309,6 @@ public class FirebaseController : MonoBehaviour
                 {
                     Debug.LogError(
                       "Could not resolve all Firebase dependencies: " + dependencyStatus);
-                    Debug.Log(
-                      "Still, going ahead with firebase init since google play services are not required anymore on android ");
-                    // Init firebase
-                    InitializeFirebase();
-                    // SignIn
-                    SignInFirebase(FAuth, credentialsRead.email, credentialsRead.password);
 
                 }
             });
@@ -398,7 +364,7 @@ public class FirebaseController : MonoBehaviour
         // Locate file
         if (fileDetected && File.Exists(localFilePath) && storageRef != null)
         {
-            Debug.Log("Attempting file upload...");
+            //Debug.Log("Attempting file upload...");
 
             // Create a firebase reference based on the path wanted by the user with serverPath
             StorageReference testFileRef = storageRef.Child(serverPath);
@@ -409,7 +375,7 @@ public class FirebaseController : MonoBehaviour
                 {
                     if (task.IsFaulted || task.IsCanceled)
                     {
-                        Debug.Log(task.Exception.ToString());
+                        Debug.LogError(task.Exception.ToString());
                         // Uh-oh, an error occurred!
                     }
                     else
@@ -417,8 +383,8 @@ public class FirebaseController : MonoBehaviour
                         // Metadata contains file metadata such as size, content-type, and download URL.
                         StorageMetadata metadata = task.Result;
                         string md5Hash = metadata.Md5Hash;
-                        Debug.Log("Finished uploading...");
-                        Debug.Log("md5 hash = " + md5Hash);
+                        //Debug.Log("Finished uploading...");
+                        //Debug.Log("md5 hash = " + md5Hash);
                     }
                 });
 
@@ -505,7 +471,7 @@ public class FirebaseController : MonoBehaviour
         }
         else if (directoryDetected && Directory.Exists(localFilePath))
         {
-            Debug.Log("Attempting directory upload...");
+            //Debug.Log("Attempting directory upload...");
 
             // First, find all the folders
             // Iterate to upload all files in folder, including subdirectories
@@ -538,9 +504,6 @@ public class FirebaseController : MonoBehaviour
     private IEnumerator UploadFileREST(string fileToUpload, string serverFilePath)
     {
 
-        //string fileName = "testfile.json";
-        //string fileToUpload = Path.Combine(IMLDataSerialization.GetAssetsPath(), fileName);
-        //string fileText = File.ReadAllText(fileToUpload);
 
         string fileName = Path.GetFileName(fileToUpload);
         string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
@@ -579,10 +542,6 @@ public class FirebaseController : MonoBehaviour
         if (webRequest.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError(webRequest.error);
-        }
-        else
-        {
-            Debug.Log("Upload of test file complete!");
         }
 
         //// WWW
@@ -650,10 +609,6 @@ public class FirebaseController : MonoBehaviour
         if (webRequest.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError(webRequest.error);
-        }
-        else
-        {
-            Debug.Log("Upload of test file complete!");
         }
 
         //// WWW

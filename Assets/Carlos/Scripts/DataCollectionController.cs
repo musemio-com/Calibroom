@@ -168,7 +168,6 @@ namespace MECM
                 if (!CollectingData)
                 {
                     string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
-                    Debug.Log($"userDataSetPath is: {userDataSetPath}");
                     // Upload files from our IDString directory to firebase server
                     m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/");
                 }
