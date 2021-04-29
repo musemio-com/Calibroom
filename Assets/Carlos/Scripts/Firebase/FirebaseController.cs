@@ -10,6 +10,7 @@ using Firebase.Extensions;
 using InteractML;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Handles read/write logic from firebase cloud storage
@@ -72,7 +73,14 @@ public class FirebaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(LoadCredentialsSignIn());
+        //StartCoroutine(LoadCredentialsSignIn());
+
+        //var file = Resources.Load<TextAsset>("testfile");
+        //var file2 = Resources.Load<TextAsset>("testfile2");
+        //var file3 = Resources.Load<TextAsset>("testfile3");
+        //StartCoroutine(UploadFileREST(file.bytes, "testfile.json", ""));
+        //StartCoroutine(UploadFileREST(file2.bytes, "testfile2.json", ""));
+        //StartCoroutine(UploadFileREST(file3.bytes, "testfile3.json", ""));
     }
 
     // Update is called once per frame
@@ -118,21 +126,28 @@ public class FirebaseController : MonoBehaviour
     /// <param name="serverFilePath">path we want to upload to in the server</param>
     public void UploadAsync(string localFilePath, string serverFilePath)
     {
+        if (fileSent)
+        {
+            Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
+            //return;
+        }
+
+#if UNITY_ANDROID
+        var uploadCoroutine = UploadREST(localFilePath, serverFilePath);
+        StartCoroutine(uploadCoroutine);
+        fileSent = true;
+#elif UNITY_STANDALONE
         if (FAuth == null || FAuth.CurrentUser == null)
         {
             Debug.LogError("Upload to Firebase failed! The app is not authenticated.");
         }
-        if (fileSent)
-        {
-            Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
-        }
-
         if (FAuth != null && FAuth.CurrentUser != null && !fileSent)
         {
             var uploadCoroutine = UploadAsyncPrivate(FStorage, localFilePath, serverFilePath);
             StartCoroutine(uploadCoroutine);            
             fileSent = true;
         }
+#endif
 
     }
 
@@ -176,7 +191,8 @@ public class FirebaseController : MonoBehaviour
             return;
         }
 
-        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
+        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
+        {
             if (task.IsCanceled)
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
@@ -226,7 +242,7 @@ public class FirebaseController : MonoBehaviour
 
         UserCredentials credentialsRead = null;
 
-#if UNITY_ANDROID     
+#if UNITY_ANDROID
         // Use encrypted credentials from resources folder
         var encryptedCredentialsResources = Resources.Load<TextAsset>("FirebaseUserCredentials");
         if (encryptedCredentialsResources != null)
@@ -247,19 +263,18 @@ public class FirebaseController : MonoBehaviour
             fs.Close();
             // wait a frame
             yield return null;
-            
-            Debug.Log($"Attempting to read into folder {dirName}, searching or file {fileName}");            
+
+            Debug.Log($"Attempting to read into folder {dirName}, searching or file {fileName}");
             var files = Directory.GetFiles(dirName);
             Debug.Log("Files found are: ");
             foreach (var file in files)
             {
                 Debug.Log(file);
             }
-
-            // Write all bytes into file
-            File.WriteAllBytes(encryptedCredentialsPath, encryptedCredentialsResources.bytes);
             // wait a frame
             yield return null;
+            // Write all bytes into file
+            File.WriteAllBytes(encryptedCredentialsPath, encryptedCredentialsResources.bytes);
             // waiting between frames until the file is fully written
             while (!File.Exists(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath)))
             {
@@ -269,6 +284,7 @@ public class FirebaseController : MonoBehaviour
         }
 #endif
 
+
         // Do we have a credentials file?
         if (File.Exists(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath)))
         {
@@ -277,6 +293,8 @@ public class FirebaseController : MonoBehaviour
             Task<bool> resultDecryption = AESEncryptor.FileDecryptAsync(Path.Combine(IMLDataSerialization.GetAssetsPath(), CredentialsPath), Path.Combine(IMLDataSerialization.GetAssetsPath(), decryptedCredentialsFilePath), "patata");
             while (resultDecryption.Result == false)
             {
+                // wait a frame
+                yield return null;
                 // it will exit this loop once result is true
             }
             // Read from file and delete
@@ -298,7 +316,8 @@ public class FirebaseController : MonoBehaviour
         if (credentialsRead != null)
         {
             // One-off call to check and fix dependencies
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+            {
                 dependencyStatus = task.Result;
                 if (dependencyStatus == DependencyStatus.Available)
                 {
@@ -312,7 +331,7 @@ public class FirebaseController : MonoBehaviour
                     Debug.LogError(
                       "Could not resolve all Firebase dependencies: " + dependencyStatus);
                     Debug.Log(
-                      "Still, going ahead with firebase init since google play services are not required anymore on android " );
+                      "Still, going ahead with firebase init since google play services are not required anymore on android ");
                     // Init firebase
                     InitializeFirebase();
                     // SignIn
@@ -330,6 +349,13 @@ public class FirebaseController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Upload files using Firebase SDK (not supported on Quest)
+    /// </summary>
+    /// <param name="storage"></param>
+    /// <param name="localFilePath"></param>
+    /// <param name="serverPath"></param>
+    /// <returns></returns>
     private IEnumerator UploadAsyncPrivate(FirebaseStorage storage, string localFilePath, string serverPath)
     {
         if (storage == null)
@@ -372,7 +398,8 @@ public class FirebaseController : MonoBehaviour
 
             // Upload the file to the path 
             testFileRef.PutFileAsync(localFilePath)
-                .ContinueWith((Task<StorageMetadata> task) => {
+                .ContinueWith((Task<StorageMetadata> task) =>
+                {
                     if (task.IsFaulted || task.IsCanceled)
                     {
                         Debug.Log(task.Exception.ToString());
@@ -409,16 +436,17 @@ public class FirebaseController : MonoBehaviour
 
                 // Upload the file to the path 
                 testFileRef.PutFileAsync(file)
-                    .ContinueWith((Task<StorageMetadata> task) => {
+                    .ContinueWith((Task<StorageMetadata> task) =>
+                    {
                         if (task.IsFaulted || task.IsCanceled)
                         {
                             Debug.Log(task.Exception.ToString());
-                        // Uh-oh, an error occurred!
-                    }
+                            // Uh-oh, an error occurred!
+                        }
                         else
                         {
-                        // Metadata contains file metadata such as size, content-type, and download URL.
-                        StorageMetadata metadata = task.Result;
+                            // Metadata contains file metadata such as size, content-type, and download URL.
+                            StorageMetadata metadata = task.Result;
                             string md5Hash = metadata.Md5Hash;
                             Debug.Log("Finished uploading: " + file);
                             Debug.Log("md5 hash = " + md5Hash);
@@ -432,7 +460,209 @@ public class FirebaseController : MonoBehaviour
         }
     }
 
-    #endregion
+    /// <summary>
+    /// Upload files using REST API (all platforms, slower)
+    /// </summary>
+    /// <param name="localFilePath"></param>
+    /// <param name="serverFilePath"></param>
+    /// <returns></returns>
+    private IEnumerator UploadREST(string localFilePath, string serverFilePath)
+    {
+        if (string.IsNullOrEmpty(localFilePath))
+        {
+            Debug.LogError("No file specified but uploadFile called!");
+            yield break;
+        }
+
+        // Wait for a few miliseconds, to allow the training examples to be fully written in disk
+        yield return new WaitForSeconds(0.2f);
+
+        // Is it a file or a folder?
+        bool fileDetected = false;
+        bool directoryDetected = false;
+        FileAttributes attr = File.GetAttributes(localFilePath);
+        //detect whether its a directory or file
+        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            directoryDetected = true;
+        else
+            fileDetected = true;
 
 
+        // Upload a file on start
+        // Locate file
+        if (fileDetected && File.Exists(localFilePath))
+        {
+            Debug.Log("Attempting file upload...");
+            StartCoroutine(UploadFileREST(localFilePath, serverFilePath));
+
+        }
+        else if (directoryDetected && Directory.Exists(localFilePath))
+        {
+            Debug.Log("Attempting directory upload...");
+
+            // First, find all the folders
+            // Iterate to upload all files in folder, including subdirectories
+            string[] files = Directory.GetFiles(localFilePath, "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                if (Path.GetExtension(file) == ".meta")
+                {
+                    // Skip meta files
+                    continue;
+                }
+                StartCoroutine(UploadFileREST(file, serverFilePath));
+
+            }
+
+        }
+
+
+        #endregion
+
+
+    }
+
+    /// <summary>
+    /// Uploads a single file using REST API (all platforms, slower)
+    /// </summary>
+    /// <param name="fileToUpload"></param>
+    /// <param name="serverFilePath"></param>
+    /// <returns></returns>
+    private IEnumerator UploadFileREST(string fileToUpload, string serverFilePath)
+    {
+
+        //string fileName = "testfile.json";
+        //string fileToUpload = Path.Combine(IMLDataSerialization.GetAssetsPath(), fileName);
+        //string fileText = File.ReadAllText(fileToUpload);
+
+        string fileName = Path.GetFileName(fileToUpload);
+        string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
+        string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
+        byte[] fileBinary = File.ReadAllBytes(fileToUpload);
+
+        // HTTP
+        string firebaseProjectID = "fir-test-b6418.appspot.com";
+        string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
+            firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
+
+        // UNITYWEBREQUEST 
+        // Post file to server
+        // Define a filled in upload handler
+        UploadHandlerRaw uploadHandler = new UploadHandlerRaw(fileBinary);
+        uploadHandler.contentType = "application/force-download";
+        // Empty downloadHandler since we are only posting
+        DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
+        // Prepare post request with data
+        UnityWebRequest webRequest = new UnityWebRequest(urlFirebase, "POST", downloadHandlerBuffer, uploadHandler);
+        //UnityWebRequest webRequest = UnityWebRequest.Post(urlFirebase, fileText);
+        //webRequest.SetRequestHeader("Content-type", "text/plain");
+        // Send
+        yield return webRequest.SendWebRequest();
+
+        // WWW
+        //Dictionary<string, string> wwwHeaders = new Dictionary<string, string>();
+        //wwwHeaders.Add("Content-type", "text/plain");
+        //WWW www = new WWW(urlFirebase, fileBinary, wwwHeaders);
+        //yield return www;
+
+        // wait a frame
+        yield return null;
+
+        // UNITYWEBREQUEST
+        if (webRequest.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(webRequest.error);
+        }
+        else
+        {
+            Debug.Log("Upload of test file complete!");
+        }
+
+        //// WWW
+        //if (www.error == null)
+        //{
+        //    Debug.Log("Upload of test file complete!");
+
+        //}
+        //else
+        //{
+        //    Debug.LogError(www.error);
+        //}
+
+
+        // wait a frame
+        yield return null;
+
+    }
+    /// <summary>
+    /// Uploads a single file using REST API (all platforms, slower)
+    /// </summary>
+    /// <param name="fileToUpload"></param>
+    /// <param name="serverFilePath"></param>
+    /// <returns></returns>
+    private IEnumerator UploadFileREST(byte[] fileToUpload, string fileName, string serverFilePath)
+    {
+
+        //string fileName = "testfile.json";
+        //string fileToUpload = Path.Combine(IMLDataSerialization.GetAssetsPath(), fileName);
+        //string fileText = File.ReadAllText(fileToUpload);
+
+        string fileNameEscaped = Uri.EscapeUriString(fileName);
+        string serverFilePathEscaped = Uri.EscapeUriString(serverFilePath);
+        byte[] fileBinary = fileToUpload;
+
+        // HTTP
+        string firebaseProjectID = "fir-test-b6418.appspot.com";
+        string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
+            firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
+
+        // UNITYWEBREQUEST 
+        // Post file to server
+        // Define a filled in upload handler
+        UploadHandlerRaw uploadHandler = new UploadHandlerRaw(fileBinary);
+        uploadHandler.contentType = "application/force-download";
+        // Empty downloadHandler since we are only posting
+        DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
+        // Prepare post request with data
+        UnityWebRequest webRequest = new UnityWebRequest(urlFirebase, "POST", downloadHandlerBuffer, uploadHandler);
+        //UnityWebRequest webRequest = UnityWebRequest.Post(urlFirebase, fileText);
+        //webRequest.SetRequestHeader("Content-type", "text/plain");
+        // Send
+        yield return webRequest.SendWebRequest();
+
+        //// WWW
+        //Dictionary<string, string> wwwHeaders = new Dictionary<string, string>();
+        //wwwHeaders.Add("Content-type", "application/force-download");
+        //WWW www = new WWW(urlFirebase, fileBinary, wwwHeaders);
+        //yield return www;
+
+        //// wait a frame
+        //yield return null;
+
+        // UNITYWEBREQUEST
+        if (webRequest.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError(webRequest.error);
+        }
+        else
+        {
+            Debug.Log("Upload of test file complete!");
+        }
+
+        //// WWW
+        //if (www.error == null)
+        //{
+        //    Debug.Log("Upload of test file complete!");
+
+        //}
+        //else
+        //{
+        //    Debug.LogError(www.error);
+        //}
+
+
+        // wait a frame
+        yield return null;
+
+    }
 }
