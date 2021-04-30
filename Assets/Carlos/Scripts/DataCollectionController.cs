@@ -103,6 +103,9 @@ namespace MECM
         /// </summary>
         [SerializeField, Header("Upload Options")]
         private bool m_UploadData = false;
+        [SerializeField]
+        private bool m_UseTasksOnUpload = true;
+
 
         #endregion
 
@@ -175,7 +178,7 @@ namespace MECM
                 {
                     string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                     // Upload files from our IDString directory to firebase server
-                    m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/");
+                    m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
                 }
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)

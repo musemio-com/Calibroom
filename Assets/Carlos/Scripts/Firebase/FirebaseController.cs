@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dasync.Collections;
 using System.IO;
 using System.Threading.Tasks;
 using System.Net;
@@ -12,6 +13,8 @@ using InteractML;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Net.Http;
+using System.Threading;
 
 /// <summary>
 /// Handles read/write logic from firebase cloud storage
@@ -108,12 +111,12 @@ public class FirebaseController : MonoBehaviour
     /// </summary>
     /// <param name="localFilePath">path in disk</param>
     /// <param name="serverFilePath">path we want to upload to in the server</param>
-    public void UploadAsync(string localFilePath, string serverFilePath)
+    public void UploadAsync(string localFilePath, string serverFilePath, bool useTasks = true)
     {
         if (fileSent)
         {
             Debug.LogError("Already uploaded to server, it won't upload again with the same instance (to avoid uploading twice when not needed)");
-            return;
+            //return;
         }
 
         // Get timestamp
@@ -124,7 +127,7 @@ public class FirebaseController : MonoBehaviour
         serverFilePath = Path.Combine(serverFilePath, date);
 
 #if UNITY_ANDROID
-        var uploadCoroutine = UploadREST(localFilePath, serverFilePath, UploadRESTOptions.DotNetWebRequest);
+        var uploadCoroutine = UploadREST(localFilePath, serverFilePath, UploadRESTOptions.DotNetWebRequest, useTasks);
         StartCoroutine(uploadCoroutine);
         fileSent = true;
 #elif UNITY_STANDALONE
@@ -445,7 +448,7 @@ public class FirebaseController : MonoBehaviour
     /// <param name="localFilePath"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private IEnumerator UploadREST(string localFilePath, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest, bool async = true)
+    private IEnumerator UploadREST(string localFilePath, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest, bool useTasks = true)
     {
         if (string.IsNullOrEmpty(localFilePath))
         {
@@ -456,9 +459,23 @@ public class FirebaseController : MonoBehaviour
         // Wait for a few miliseconds, to allow the training examples to be fully written in disk
         yield return new WaitForSeconds(0.2f);
 
-        if (async)
+        if (useTasks)
         {
-            Task.Run(async () => await UploadRESTAsync(localFilePath, serverFilePath));
+            Task.Run(async () => await UploadRESTAsync(localFilePath, serverFilePath, isDirectory: true));
+
+            //Task.Factory.StartNew(() => UploadRESTAsync(localFilePath, serverFilePath, isDirectory: true), TaskCreationOptions.LongRunning);
+
+            //Thread t = new Thread(async () => 
+            //{
+            //    Thread.CurrentThread.IsBackground = true;
+            //    await UploadRESTAsync(localFilePath, serverFilePath, isDirectory: true);
+            //});
+            //t.Start();
+            //Debug.Log("Thread started!");
+
+
+            // wait a frame
+            yield return null;
         }
         else
         {
@@ -509,45 +526,68 @@ public class FirebaseController : MonoBehaviour
     /// <param name="localFilePath"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private async Task UploadRESTAsync(string localFilePath, string serverFilePath)
+    private async Task UploadRESTAsync(string localFilePath, string serverFilePath, bool isDirectory = false)
     {
-        // Is it a file or a folder?
-        bool fileDetected = false;
-        bool directoryDetected = false;
-        FileAttributes attr = File.GetAttributes(localFilePath);
-        //detect whether its a directory or file
-        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
-            directoryDetected = true;
-        else
-            fileDetected = true;
-
-        // Upload a file on start
-        // Locate file
-        if (fileDetected && File.Exists(localFilePath))
+        await Task.Run(async () => 
         {
-            //Debug.Log("Attempting file upload...");
-            await UploadFileRESTAsync(localFilePath, serverFilePath);
-        }
-        else if (directoryDetected && Directory.Exists(localFilePath))
-        {
-            //Debug.Log("Attempting directory upload...");
+            if (isDirectory && Directory.Exists(localFilePath))
+            {
+                //Debug.Log("Attempting directory upload...");
+                await UploadFolderRESTAsync(localFilePath, serverFilePath);
+            }
+            else
+            {
+                // Is it a file or a folder?
+                bool fileDetected = false;
+                bool directoryDetected = false;
+                FileAttributes attr = File.GetAttributes(localFilePath);
+                //detect whether its a directory or file
+                if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                    directoryDetected = true;
+                else
+                    fileDetected = true;
 
-            await UploadFolderRESTAsync(localFilePath, serverFilePath);
-        }
+                // Upload a file on start
+                // Locate file
+                if (fileDetected && File.Exists(localFilePath))
+                {
+                    //Debug.Log("Attempting file upload...");
+                    await UploadFileRESTAsync(localFilePath, serverFilePath);
+                }
+                else if (directoryDetected && Directory.Exists(localFilePath))
+                {
+                    //Debug.Log("Attempting directory upload...");
+
+                    await UploadFolderRESTAsync(localFilePath, serverFilePath);
+                }
+
+
+            }
+        });
 
     }
 
-    private async Task<ParallelLoopResult> UploadFolderRESTAsync(string localFilePath, string serverFilePath)
-    {       
+    /// <summary>
+    /// Uploads a folder using REST API
+    /// </summary>
+    /// <param name="localFilePath"></param>
+    /// <param name="serverFilePath"></param>
+    /// <returns></returns>
+    private async Task UploadFolderRESTAsync(string localFilePath, string serverFilePath)
+    {
+        await Task.Run(async () => 
+        {
             // First, find all the folders
             // Iterate to upload all files in folder, including subdirectories
             string[] files = Directory.GetFiles(localFilePath, "*", SearchOption.AllDirectories);
-            return Parallel.ForEach(files, async file =>
+            await files.ParallelForEachAsync(async file =>
             {
                 if (Path.GetExtension(file) != ".meta")
                     await UploadFileRESTAsync(file, serverFilePath);
+            },
+            maxDegreeOfParallelism: 5);
 
-            });
+        });
 
     }
 
@@ -719,10 +759,10 @@ public class FirebaseController : MonoBehaviour
     /// </summary>
     /// <param name="fileToUpload"></param>
     /// <param name="serverFilePath"></param>
-    private async Task<Task> UploadFileRESTAsync(string fileToUpload, string serverFilePath)
+    private async Task UploadFileRESTAsync(string fileToUpload, string serverFilePath)
     {
         // Runs the async task in a background thread pool (as per https://docs.microsoft.com/en-us/archive/msdn-magazine/2015/july/async-programming-brownfield-async-development)
-        return await UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath);
+        await Task.Run(() => UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath));        
 
     }
 
@@ -732,53 +772,68 @@ public class FirebaseController : MonoBehaviour
     /// <param name="fileToUpload"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private async Task<Task> UploadFileRESTDotNetWebRequestAsync(string fileToUpload, string serverFilePath, bool debug = true)
+    private async Task UploadFileRESTDotNetWebRequestAsync(string fileToUpload, string serverFilePath, bool debug = true)
     {
-        var result = Task.Run(async () =>
+        string fileName = Path.GetFileName(fileToUpload);
+        string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
+        string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
+        //byte[] fileBinary = File.ReadAllBytes(fileToUpload);
+        byte[] fileBinary;
+        // Async binary read
+        using (FileStream SourceStream = File.Open(fileToUpload, FileMode.Open))
         {
-            string fileName = Path.GetFileName(fileToUpload);
-            string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
-            string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
-            byte[] fileBinary = File.ReadAllBytes(fileToUpload);
+            fileBinary = new byte[SourceStream.Length];
+            await SourceStream.ReadAsync(fileBinary, 0, (int)SourceStream.Length);
+            SourceStream.Close();            
+        }
 
-            // HTTP
-            string firebaseProjectID = "fir-test-b6418.appspot.com";
-            string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
-                firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
-            string contentType = "application/force-download";
+        // HTTP
+        string firebaseProjectID = "fir-test-b6418.appspot.com";
+        string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
+            firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
+        string contentType = "application/force-download";
 
-            // C# WEBREQUEST async
-            WebRequest request = WebRequest.CreateHttp(urlFirebase);
-            request.Method = "POST";
-            request.ContentLength = fileBinary.Length;
-            request.ContentType = contentType;
-            request.Proxy = null; // this is known to speed up requests
-            Stream dataStream = await request.GetRequestStreamAsync();
-            await dataStream.WriteAsync(fileBinary, 0, fileBinary.Length);
-            dataStream.Close();
-            // Send request to server
-            var response = await request.GetResponseAsync();
+        // C# HTTPCLIENT
+        //string jsonResponse;
+        //using (var client = new HttpClient())
+        //{
+        //    HttpResponseMessage response = await client.PostAsync(urlFirebase, new ByteArrayContent(fileBinary));
+        //    response.EnsureSuccessStatusCode();
+        //    jsonResponse = await response.Content.ReadAsStringAsync(); // async sending as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as
+        //    Debug.Log(jsonResponse);
+        //}
 
-            if (debug)
+        // C# WEBREQUEST async ---> I never got it to work without freezing the main thread
+        WebRequest request = WebRequest.CreateHttp(urlFirebase);
+        request.Method = "POST";
+        request.ContentLength = fileBinary.Length;
+        request.ContentType = contentType;
+        request.Proxy = null; // this is known to speed up requests
+        Stream dataStream = await request.GetRequestStreamAsync();
+        await dataStream.WriteAsync(fileBinary, 0, fileBinary.Length);
+        dataStream.Close();
+        // Send request to server
+        // We need to use task factory since "getresponseasync" is actually synchronous (as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as)
+        await Task.Factory.FromAsync(request.BeginGetResponse,
+            request.EndGetResponse, null).ContinueWith(task =>
             {
-                // Prepare to read response
-                var responseStream = response.GetResponseStream();
-                byte[] resultRequest = new byte[responseStream.Length];
-                // Read response
-                await responseStream.ReadAsync(resultRequest, 0, (int)responseStream.Length);
-                Debug.Log(System.Text.Encoding.ASCII.GetString(resultRequest));
-                // Close response stream
-                responseStream.Close();
+                var response = (HttpWebResponse)task.Result;
 
-            }
+                if (debug)
+                {
+                    if (response.StatusCode != HttpStatusCode.OK)
+                    {
+                        Debug.LogError($"Upload failed! {response.StatusDescription}");
+                    }
 
-            // releases resources of response
-            response.Close();
+                }
 
-        });
+                // releases resources of response
+                response.Close();
 
-        await result;
-        return result;
+            });
+
+
     }
     
 #endregion
