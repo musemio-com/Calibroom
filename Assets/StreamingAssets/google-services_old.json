@@ -62,35 +62,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:722384152379:android:6238223ca69ec43a5ab91e",
-        "android_client_info": {
-          "package_name": "com.musemio.calibroomfire"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC2pRMK-9WDD7fe61NpNMBkSAlY9UnS6xQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "722384152379-lk077m5o98sb73tq1etn22pjsk0grlbu.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"
