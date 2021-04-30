@@ -458,7 +458,7 @@ public class FirebaseController : MonoBehaviour
 
         if (async)
         {
-            Task.Run(() => UploadRESTAsync(localFilePath, serverFilePath));
+            Task.Run(async () => await UploadRESTAsync(localFilePath, serverFilePath));
         }
         else
         {
@@ -509,7 +509,7 @@ public class FirebaseController : MonoBehaviour
     /// <param name="localFilePath"></param>
     /// <param name="serverFilePath"></param>
     /// <returns></returns>
-    private async void UploadRESTAsync(string localFilePath, string serverFilePath)
+    private async Task UploadRESTAsync(string localFilePath, string serverFilePath)
     {
         // Is it a file or a folder?
         bool fileDetected = false;
@@ -521,22 +521,18 @@ public class FirebaseController : MonoBehaviour
         else
             fileDetected = true;
 
-
         // Upload a file on start
         // Locate file
         if (fileDetected && File.Exists(localFilePath))
         {
             //Debug.Log("Attempting file upload...");
             await UploadFileRESTAsync(localFilePath, serverFilePath);
-
         }
         else if (directoryDetected && Directory.Exists(localFilePath))
         {
             //Debug.Log("Attempting directory upload...");
 
-            await Task.Run(async () => 
-            await UploadFolderRESTAsync(localFilePath, serverFilePath)
-            ); 
+            await UploadFolderRESTAsync(localFilePath, serverFilePath);
         }
 
     }
@@ -726,8 +722,7 @@ public class FirebaseController : MonoBehaviour
     private async Task<Task> UploadFileRESTAsync(string fileToUpload, string serverFilePath)
     {
         // Runs the async task in a background thread pool (as per https://docs.microsoft.com/en-us/archive/msdn-magazine/2015/july/async-programming-brownfield-async-development)
-        return  await Task.Run(async () =>
-       await UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath));
+        return await UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath);
 
     }
 
