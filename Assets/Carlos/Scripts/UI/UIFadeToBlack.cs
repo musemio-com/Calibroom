@@ -11,6 +11,11 @@ public class UIFadeToBlack : MonoBehaviour
 {
     private GameObject m_MainCamera;
     /// <summary>
+    /// How far away is the camera from the canvas?
+    /// </summary>
+    [SerializeField]
+    private float cameraDistance = 0.28f;
+    /// <summary>
     /// Used to get the loading progress
     /// </summary>
     private MECM.MECMLevelController m_LevelLoader;
@@ -50,7 +55,7 @@ public class UIFadeToBlack : MonoBehaviour
         {
             // Position the UI canvas a bit further away of the main camera so it can be properly visible
             this.transform.SetParent(m_MainCamera.transform);
-            this.transform.localPosition = Vector3.forward * 0.35f;
+            this.transform.localPosition = Vector3.forward * cameraDistance;
 
             // Try and find black image
             m_BlackImage = GetComponentInChildren<Image>();
