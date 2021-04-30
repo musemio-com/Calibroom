@@ -741,12 +741,14 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 0
-  UserIDString: 0/scene02RoomB
+  UserIDInt: 22
+  UserIDString: 22/scene02RoomB
   LeftHandGrabbingExtractor: {fileID: 129995857}
   RightHandGrabbingExtractor: {fileID: 129995856}
   LeftHandGrabbing: 0
   RightHandGrabbing: 0
+  m_UploadData: 0
+  m_UseTasksOnUpload: 1
 --- !u!4 &1191979482
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,6 +1092,10 @@ PrefabInstance:
     - target: {fileID: 4749634748647601023, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749634749174315139, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
+      propertyPath: cameraDistance
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}

@@ -14,7 +14,7 @@ public class UIFadeToBlack : MonoBehaviour
     /// How far away is the camera from the canvas?
     /// </summary>
     [SerializeField]
-    private float cameraDistance = 0.28f;
+    private float cameraDistance = 0.05f;
     /// <summary>
     /// Used to get the loading progress
     /// </summary>

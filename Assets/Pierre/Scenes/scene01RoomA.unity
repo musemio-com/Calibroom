@@ -1696,7 +1696,7 @@ MonoBehaviour:
   LeftHandGrabbing: 0
   RightHandGrabbing: 0
   m_UploadData: 1
-  m_UseTasksOnUpload: 0
+  m_UseTasksOnUpload: 1
 --- !u!4 &1380984904
 Transform:
   m_ObjectHideFlags: 0
@@ -2280,6 +2280,10 @@ PrefabInstance:
     - target: {fileID: 4749634748647601023, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749634749174315139, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
+      propertyPath: cameraDistance
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
