@@ -739,7 +739,6 @@ public class FirebaseController : MonoBehaviour
     /// <returns></returns>
     private async Task<Task> UploadFileRESTDotNetWebRequestAsync(string fileToUpload, string serverFilePath, bool debug = true)
     {
-
         var result = Task.Run(async () =>
         {
             string fileName = Path.GetFileName(fileToUpload);
@@ -764,7 +763,7 @@ public class FirebaseController : MonoBehaviour
             dataStream.Close();
             // Send request to server
             var response = await request.GetResponseAsync();
-            
+
             if (debug)
             {
                 // Prepare to read response
@@ -781,13 +780,10 @@ public class FirebaseController : MonoBehaviour
             // releases resources of response
             response.Close();
 
-
         });
 
         await result;
-
         return result;
-
     }
     
 #endregion

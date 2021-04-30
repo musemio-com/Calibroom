@@ -98,6 +98,12 @@ namespace MECM
         [SendToIMLGraph]
         public bool RightHandGrabbing;
 
+        /// <summary>
+        /// Upload data after collecting?
+        /// </summary>
+        [SerializeField, Header("Upload Options")]
+        private bool m_UploadData = false;
+
         #endregion
 
         #region Unity Messages
@@ -164,8 +170,8 @@ namespace MECM
 
                 // Update whether we are starting or stopping collecting data
                 CollectingData = !CollectingData;
-                // If we have stopped collecting data
-                if (!CollectingData)
+                // If we have stopped collecting data and we need to upload data...
+                if (!CollectingData && m_UploadData)
                 {
                     string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                     // Upload files from our IDString directory to firebase server
