@@ -21,6 +21,9 @@ namespace MECM
         /// </summary>
         private FirebaseController m_FirebaseController;
 
+        [SerializeField, Header("Upload Options")]
+        private bool m_UseTasks = true;
+
         private void Awake()
         {
             // Get refs to variables
@@ -45,7 +48,7 @@ namespace MECM
             // Load user ID
             if (m_UserDetailsController != null)
             {
-                userID = m_UserDetailsController.LoadUserID().ToString();
+                userID = m_UserDetailsController.LoadUserID().ToString() + "/"; // adding path symbol at the end
             }
             else
             {

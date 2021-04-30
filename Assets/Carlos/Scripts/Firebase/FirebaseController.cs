@@ -67,7 +67,6 @@ public class FirebaseController : MonoBehaviour
     /// </summary>
     public string PathToUpload;
 
-    public Image AuthStateDisplay;
     public bool authSuccess;
 
     /// <summary>
@@ -582,8 +581,12 @@ public class FirebaseController : MonoBehaviour
             string[] files = Directory.GetFiles(localFilePath, "*", SearchOption.AllDirectories);
             await files.ParallelForEachAsync(async file =>
             {
-                if (Path.GetExtension(file) != ".meta")
-                    await UploadFileRESTAsync(file, serverFilePath);
+                if (Path.GetExtension(file) != ".meta") 
+                {
+                    string folderName = new DirectoryInfo(@Path.GetDirectoryName(file)).Name + "/";
+                    string auxServerFilePath = Path.Combine(serverFilePath, folderName);
+                    await UploadFileRESTAsync(file, auxServerFilePath);
+                }
             },
             maxDegreeOfParallelism: 5);
 
@@ -762,7 +765,7 @@ public class FirebaseController : MonoBehaviour
     private async Task UploadFileRESTAsync(string fileToUpload, string serverFilePath)
     {
         // Runs the async task in a background thread pool (as per https://docs.microsoft.com/en-us/archive/msdn-magazine/2015/july/async-programming-brownfield-async-development)
-        await Task.Run(() => UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath));        
+        await UploadFileRESTDotNetWebRequestAsync(fileToUpload, serverFilePath);        
 
     }
 
@@ -774,65 +777,77 @@ public class FirebaseController : MonoBehaviour
     /// <returns></returns>
     private async Task UploadFileRESTDotNetWebRequestAsync(string fileToUpload, string serverFilePath, bool debug = true)
     {
-        string fileName = Path.GetFileName(fileToUpload);
-        string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName);
-        string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
-        //byte[] fileBinary = File.ReadAllBytes(fileToUpload);
-        byte[] fileBinary;
-        // Async binary read
-        using (FileStream SourceStream = File.Open(fileToUpload, FileMode.Open))
+        await Task.Run(async () =>
         {
-            fileBinary = new byte[SourceStream.Length];
-            await SourceStream.ReadAsync(fileBinary, 0, (int)SourceStream.Length);
-            SourceStream.Close();            
-        }
+            //Debug.Log("Attempting file upload...");
+            string fileName = Path.GetFileName(fileToUpload);
+            //string fileNameEscaped = System.Web.HttpUtility.UrlEncode(fileName); // THIS CAUSES THE SUDDENT STOP OF THE TASK ON OCULUS QUEST!! NEVER USE!!
+            //string serverFilePathEscaped = System.Web.HttpUtility.UrlEncode(serverFilePath);
+            string fileNameEscaped = UnityWebRequest.EscapeURL(fileName);
+            string serverFilePathEscaped = UnityWebRequest.EscapeURL(serverFilePath);
+            //Debug.Log("Name and url escaped for server upload");
+            //byte[] fileBinary = File.ReadAllBytes(fileToUpload);
+            byte[] fileBinary;
 
-        // HTTP
-        string firebaseProjectID = "fir-test-b6418.appspot.com";
-        string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
-            firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
-        string contentType = "application/force-download";
-
-        // C# HTTPCLIENT
-        //string jsonResponse;
-        //using (var client = new HttpClient())
-        //{
-        //    HttpResponseMessage response = await client.PostAsync(urlFirebase, new ByteArrayContent(fileBinary));
-        //    response.EnsureSuccessStatusCode();
-        //    jsonResponse = await response.Content.ReadAsStringAsync(); // async sending as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as
-        //    Debug.Log(jsonResponse);
-        //}
-
-        // C# WEBREQUEST async ---> I never got it to work without freezing the main thread
-        WebRequest request = WebRequest.CreateHttp(urlFirebase);
-        request.Method = "POST";
-        request.ContentLength = fileBinary.Length;
-        request.ContentType = contentType;
-        request.Proxy = null; // this is known to speed up requests
-        Stream dataStream = await request.GetRequestStreamAsync();
-        await dataStream.WriteAsync(fileBinary, 0, fileBinary.Length);
-        dataStream.Close();
-        // Send request to server
-        // We need to use task factory since "getresponseasync" is actually synchronous (as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as)
-        await Task.Factory.FromAsync(request.BeginGetResponse,
-            request.EndGetResponse, null).ContinueWith(task =>
+            //Debug.Log("Reading file...");
+            // Async binary read 
+            using (FileStream SourceStream = File.Open(fileToUpload, FileMode.Open))
             {
-                var response = (HttpWebResponse)task.Result;
+                fileBinary = new byte[SourceStream.Length];
+                await SourceStream.ReadAsync(fileBinary, 0, (int)SourceStream.Length);
+                SourceStream.Close();            
+            }
+            //Debug.Log("File read from disk, ready to upload...");
 
-                if (debug)
+            // HTTP
+            string firebaseProjectID = "fir-test-b6418.appspot.com";
+            string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
+                firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
+            string contentType = "application/force-download";
+
+            // C# HTTPCLIENT
+            //string jsonResponse;
+            //using (var client = new HttpClient())
+            //{
+            //    HttpResponseMessage response = await client.PostAsync(urlFirebase, new ByteArrayContent(fileBinary));
+            //    response.EnsureSuccessStatusCode();
+            //    jsonResponse = await response.Content.ReadAsStringAsync(); // async sending as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as
+            //    Debug.Log(jsonResponse);
+            //}
+
+            // C# WEBREQUEST async ---> I never got it to work without freezing the main thread
+            WebRequest request = WebRequest.CreateHttp(urlFirebase);
+            request.Method = "POST";
+            request.ContentLength = fileBinary.Length;
+            request.ContentType = contentType;
+            request.Proxy = null; // this is known to speed up requests
+            Stream dataStream = await request.GetRequestStreamAsync();
+            await dataStream.WriteAsync(fileBinary, 0, fileBinary.Length);
+            dataStream.Close();
+            //Debug.Log("Uploading...");
+            // Send request to server
+            // We need to use task factory since "getresponseasync" is actually synchronous (as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as)
+            await Task.Factory.FromAsync(request.BeginGetResponse,
+                request.EndGetResponse, null).ContinueWith(task =>
                 {
-                    if (response.StatusCode != HttpStatusCode.OK)
+                    var response = (HttpWebResponse)task.Result;
+
+                    if (debug)
                     {
-                        Debug.LogError($"Upload failed! {response.StatusDescription}");
+                        if (response.StatusCode != HttpStatusCode.OK)
+                            Debug.LogError($"Upload failed! {response.StatusDescription}");
+                        //else
+                        //    Debug.Log($"Upload successful! {response.StatusDescription}");
+
+
                     }
 
-                }
+                    // releases resources of response
+                    response.Close();
 
-                // releases resources of response
-                response.Close();
+                });
 
-            });
-
+        });
 
     }
     

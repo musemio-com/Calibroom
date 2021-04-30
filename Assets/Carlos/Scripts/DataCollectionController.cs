@@ -201,6 +201,13 @@ namespace MECM
                 RightHandGrabbing = RightHandGrabbingExtractor.GrabbingPiece;
         }
 
+        void OnDisable()
+        {
+            // Make sure to stop data collection if the data controller gets disabled
+            if (CollectingData)
+                FireToggleCollectDataEvent();
+        }
+
         #endregion
 
         #region Public Methods
