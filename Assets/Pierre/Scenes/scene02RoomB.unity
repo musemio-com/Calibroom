@@ -741,8 +741,8 @@ MonoBehaviour:
   ToggleTrainModel: 0
   m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
-  UserIDInt: 11
-  UserIDString: 11/scene02RoomB
+  UserIDInt: 0
+  UserIDString: 0/scene02RoomB
   LeftHandGrabbingExtractor: {fileID: 129995857}
   RightHandGrabbingExtractor: {fileID: 129995856}
   LeftHandGrabbing: 0
