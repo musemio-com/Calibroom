@@ -1842,6 +1842,7 @@ namespace InteractML
             while (!nodesLoaded)
             {
                 yield return null;
+                Debug.Log("ERROR ERROR");
             }
 
             // run models marked run on awake
