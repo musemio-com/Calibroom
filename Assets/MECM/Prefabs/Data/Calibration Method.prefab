@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2375028721980230668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2375028721980230670}
+  - component: {fileID: 2375028721980230669}
+  m_Layer: 0
+  m_Name: IML System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2375028721980230670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375028721980230668}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2954465804142482626}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2375028721980230669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375028721980230668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c477b3f40f547843930edfdcbde5951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  GameObjectsToUse: []
+  m_GOsPerGONodes:
+    m_keys:
+    - {fileID: 0}
+    m_values:
+    - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  m_GameObjectNodeList:
+  - {fileID: 6198230257095529886, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 5227969869961237873, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -208045810780281780, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 8970105572054966981, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 956967307354493304, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -5313275989840630680, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: 5493156533929014291, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -6184181390150820645, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -4126940074568326009, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  - {fileID: -6056603556684117256, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  m_ScriptNodesList:
+  - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  m_CustomControllerList: []
+  FeaturesUpdated: 0
+  ComponentsWithIMLData:
+  - GameComponent: {fileID: 2375028723293928863}
+    ControlClones: 0
+  m_MonoBehavioursPerScriptNode:
+    m_keys:
+    - {fileID: 2375028723293928863}
+    m_values:
+    - {fileID: 1848439845424214320, guid: e166d881ab5021444acc42e250636c06, type: 2}
+  m_MonobehaviourClones: []
+  universalInputActive: 0
+--- !u!1 &2375028723293928862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2375028723293928848}
+  - component: {fileID: 2375028723293928863}
+  m_Layer: 0
+  m_Name: DataCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2375028723293928848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375028723293928862}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2954465804142482626}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2375028723293928863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375028723293928862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e866076c0ee771145af16d66f8593beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectingData: 0
+  m_ToggleCollectDataEvent: 0
+  ToggleDataCollection: 0
+  m_ToggleTrainModelEvent: 0
+  ToggleTrainModel: 0
+  m_ToggleRunModelEvent: 0
+  ToggleRunModel: 0
+  UserIDInt: 0
+  UserIDString: 
+  LeftHandGrabbingExtractor: {fileID: 0}
+  RightHandGrabbingExtractor: {fileID: 0}
+  LeftHandGrabbing: 0
+  RightHandGrabbing: 0
+  m_UploadData: 0
+  m_UseTasksOnUpload: 1
+--- !u!1 &9151425434900508055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2954465804142482626}
+  - component: {fileID: 3541898190488849505}
+  m_Layer: 0
+  m_Name: Calibration Method
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2954465804142482626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151425434900508055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2375028721980230670}
+  - {fileID: 2375028723293928848}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3541898190488849505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151425434900508055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890b6d40888d25e48abfc5b48fa7ff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UserID: 0
+  trackedObjects:
+    RightHand: {fileID: 0}
+    LeftHand: {fileID: 0}
+    HMD: {fileID: 0}
+  UploadToFirebase: 0
+  FirebaseCredentials:
+    StorageBucket: 
+    CredentialsPath: 
+    PathToUpload: 

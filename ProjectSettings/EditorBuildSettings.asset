@@ -6,25 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Common/Scenes/Main/sceneOpen.unity
+    path: Assets/MECM/Scenes/sceneOpen.unity
     guid: d2e6a9241fa1bab4d87637ff96955e2f
   - enabled: 1
-    path: Assets/Common/Scenes/Main/scene00Tutorial.unity
+    path: Assets/MECM/Scenes/scene00Tutorial.unity
     guid: 14ac44d9e3ae0604f8a8eb6c49c2bf0a
   - enabled: 1
-    path: Assets/Common/Scenes/Main/scene01RoomA.unity
+    path: Assets/MECM/Scenes/MECM Room.unity
+    guid: 463c927b5fb63fb4cb08f864b30e9d0a
+  - enabled: 1
+    path: Assets/MECM/Scenes/scene01RoomA.unity
     guid: 025ceddae01d9fa4592509ed6a4b1831
   - enabled: 1
-    path: Assets/Common/Scenes/Main/scene02RoomB.unity
+    path: Assets/MECM/Scenes/scene02RoomB.unity
     guid: 70a97270287bf074aaeb6246cd7bcee2
   - enabled: 1
-    path: Assets/Common/Scenes/Main/scene03RoomC.unity
+    path: Assets/MECM/Scenes/scene03RoomC.unity
     guid: 04c2ba14cfac30c41b3a7450b155aada
   - enabled: 1
-    path: Assets/Common/Scenes/Main/scene04RoomD.unity
+    path: Assets/MECM/Scenes/scene04RoomD.unity
     guid: c8e43456e10134d4aba3775927b3c983
   - enabled: 1
-    path: Assets/Common/Scenes/Main/sceneEnd.unity
+    path: Assets/MECM/Scenes/sceneEnd.unity
     guid: a455add757182d24b8ec9111e58d34e6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9aea28526e7ae8c459c23c14e11745b1, type: 2}
