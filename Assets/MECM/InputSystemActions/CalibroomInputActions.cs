@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Carlos/Input/CalibroomInputActions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/MECM/InputSystemActions/CalibroomInputActions.inputactions'
 
 using System;
 using System.Collections;

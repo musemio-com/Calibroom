@@ -72,8 +72,9 @@ public class PuzzleBoard : MonoBehaviour
         if (PuzzleCompleteDebug)
         {
             // Load Level
-            if (m_LevelFader != null)
-                m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection(debug: true);
+            //if (m_LevelFader != null)
+            //    m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection(debug: true);
+            FindObjectOfType<VrSceneTransition>().loadEndScene();
 
             // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
             m_PuzzleCompletedOnce = true;
@@ -105,8 +106,9 @@ public class PuzzleBoard : MonoBehaviour
     public void StopPuzzle()
     {
         // Load Level
-        if (m_LevelFader != null)
-            m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection();
+        //if (m_LevelFader != null)
+        //    m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection();
+        FindObjectOfType<VrSceneTransition>().loadEndScene();
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
         m_PuzzleCompletedOnce = true;

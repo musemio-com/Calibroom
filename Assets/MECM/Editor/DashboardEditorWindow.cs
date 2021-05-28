@@ -10,26 +10,43 @@ public class DashboardEditorWindow : EditorWindow
     GameObject HMD;
     GameObject customTrackingTriggerObject;
     string userID;
-    AnimBool SpawnStartEndObjects;
-    bool StartTrackingWhenSceneActive;
-    AnimBool customTrackingTrigger;
+    AnimBool StartTrackingWhenSceneActive;
     Color StartObjectColor;
     Color EndObjectColor;
+    AnimBool customTrackingTrigger;
+    AnimBool SpawnStartEndObjects;
     AnimBool UploadData;
     AnimBool firebaseEnabled;
     AnimBool RestEnabled;
     string firebaseStorage;
     string CredentialsPath;
     string PathToUpload;
+    float taskCompletionTime;
 
     [MenuItem("MECM/Dashboard")]
     public static void ShowWindow()
     {
-        GetWindow(typeof(DashboardEditorWindow));
+        GetWindow(typeof(DashboardEditorWindow),false,"Calibration Method Dashboard");
+    }
+    private void OnEnable()
+    {
+        StartTrackingWhenSceneActive = new AnimBool(false);
+        StartTrackingWhenSceneActive.valueChanged.AddListener(Repaint);
+        UploadData = new AnimBool(false);
+        UploadData.valueChanged.AddListener(Repaint);
+        customTrackingTrigger = new AnimBool(false);
+        customTrackingTrigger.valueChanged.AddListener(Repaint);
+        SpawnStartEndObjects = new AnimBool(false);
+        SpawnStartEndObjects.valueChanged.AddListener(Repaint);
+        firebaseEnabled = new AnimBool(false);
+        firebaseEnabled.valueChanged.AddListener(Repaint);
+        RestEnabled = new AnimBool(false);
+        RestEnabled.valueChanged.AddListener(Repaint);
+
     }
     private void OnGUI()
     {
-        GUILayout.Label("DASHBOARD", EditorStyles.boldLabel);
+        GUILayout.Label("Calibration Settings", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
         GUILayout.Label("User ID", EditorStyles.boldLabel);
@@ -70,18 +87,22 @@ public class DashboardEditorWindow : EditorWindow
 
         GUILayout.Label("Tracking", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        StartTrackingWhenSceneActive = EditorGUILayout.ToggleLeft("Start Tracking when scene starts", StartTrackingWhenSceneActive);
+        StartTrackingWhenSceneActive.target = EditorGUILayout.ToggleLeft("Start Tracking when scene starts", StartTrackingWhenSceneActive.target);
+        if (EditorGUILayout.BeginFadeGroup(StartTrackingWhenSceneActive.faded))
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.HelpBox("To stop Collecting Data, Call StopTracking method", MessageType.Info);
+            EditorGUI.indentLevel--;
+        }
+        EditorGUILayout.EndFadeGroup();
         SpawnStartEndObjects.target = EditorGUILayout.ToggleLeft("Spawn Start Stop Tracking Objects", SpawnStartEndObjects.target);
-
         if (EditorGUILayout.BeginFadeGroup(SpawnStartEndObjects.faded))
         {
             EditorGUI.indentLevel++;
             StartObjectColor = EditorGUILayout.ColorField("Start Object Color", StartObjectColor);
             EndObjectColor = EditorGUILayout.ColorField("Stop Object Color", EndObjectColor);
-            EditorGUILayout.HelpBox("You can also Start/Stop tracking in code", MessageType.Info);
             EditorGUI.indentLevel--;
         }
-
         EditorGUILayout.EndFadeGroup();
 
         customTrackingTrigger.target = EditorGUILayout.ToggleLeft("Custom Trigger Object", customTrackingTrigger.target);
@@ -89,6 +110,7 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel++;
             customTrackingTriggerObject = EditorGUILayout.ObjectField("Custom Object", customTrackingTriggerObject, typeof(GameObject), false) as GameObject;
+            EditorGUILayout.HelpBox("To stop Collecting Data, Call StopTracking method", MessageType.Info);
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
@@ -97,13 +119,13 @@ public class DashboardEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        GUILayout.Label("Upload Data to server", EditorStyles.boldLabel);
+        GUILayout.Label("Upload Data to Firebase", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
         UploadData.target = EditorGUILayout.ToggleLeft("Upload Data", UploadData.target);
         if (EditorGUILayout.BeginFadeGroup(UploadData.faded))
         {
             EditorGUI.indentLevel++;
-            firebaseEnabled.target = EditorGUILayout.ToggleLeft("Firebase", firebaseEnabled.target);
+            firebaseEnabled.target = EditorGUILayout.ToggleLeft("Using Firebase API", firebaseEnabled.target);
             if (EditorGUILayout.BeginFadeGroup(firebaseEnabled.faded))
             {
                 EditorGUI.indentLevel++;
@@ -115,7 +137,7 @@ public class DashboardEditorWindow : EditorWindow
             }
             EditorGUILayout.EndFadeGroup();
 
-            RestEnabled.target = EditorGUILayout.ToggleLeft("REST API", RestEnabled.target);
+            RestEnabled.target = EditorGUILayout.ToggleLeft("Using REST API", RestEnabled.target);
             if (EditorGUILayout.BeginFadeGroup(RestEnabled.faded))
             {
                 EditorGUI.indentLevel++;
@@ -131,7 +153,9 @@ public class DashboardEditorWindow : EditorWindow
         }
         EditorGUILayout.EndFadeGroup();
         EditorGUI.indentLevel--;
-        //EditorGUILayout.EndToggleGroup();
-
+        GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
+        EditorGUI.indentLevel++;
+        taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
+        EditorGUI.indentLevel--;
     }
 }

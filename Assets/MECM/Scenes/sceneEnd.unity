@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1180,6 +1180,10 @@ PrefabInstance:
     - target: {fileID: 7123041666678492766, guid: 3ecd564ef76f1314d880149d8be64726, type: 3}
       propertyPath: m_Name
       value: Firebase_Uploader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123041666678492766, guid: 3ecd564ef76f1314d880149d8be64726, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7123041666678492767, guid: 3ecd564ef76f1314d880149d8be64726, type: 3}
       propertyPath: CredentialsPath

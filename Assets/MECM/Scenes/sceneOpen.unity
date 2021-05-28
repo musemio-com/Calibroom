@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3794,10 +3794,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2048596717}
-        m_TargetAssemblyTypeName: UIFadeToBlack, Assembly-CSharp
-        m_MethodName: FadeToBlackLoadNextLevelStopDataCollection
-        m_Mode: 6
+      - m_Target: {fileID: 5705625573706374041}
+        m_TargetAssemblyTypeName: VrSceneTransition, Assembly-CSharp
+        m_MethodName: loadMECMScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4244,17 +4244,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042910881}
   m_CullTransparentMesh: 0
---- !u!114 &2048596717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4749634749174315139, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
-  m_PrefabInstance: {fileID: 4749634749075153518}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb567fc1494eaf47ae9c3b30fab5ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2141262169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4394,6 +4383,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5666937372214018700, guid: b738d579b24569848bb2b3672a2b8015, type: 3}
   m_PrefabInstance: {fileID: 5668455150920705881}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1046064438408843142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1772806917282532289, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1695696005}
+    - target: {fileID: 4731640721497396253, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_Name
+      value: VrSceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.41066188
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8573805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.31902987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731640721497396254, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
 --- !u!1001 &4331666352057562136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4473,6 +4523,10 @@ PrefabInstance:
     - target: {fileID: 4749634748647600993, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_Name
       value: Level_Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749634748647600993, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4749634748647601023, guid: f314affeb4fa54b499de8d3fe9481709, type: 3}
       propertyPath: m_RootOrder
@@ -4609,3 +4663,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 10caedb19710e1b4fb01d862af4fdc69, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b738d579b24569848bb2b3672a2b8015, type: 3}
+--- !u!114 &5705625573706374041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4731640721497396255, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+  m_PrefabInstance: {fileID: 1046064438408843142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9c88fa142a0f346b5bc9c170501f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
