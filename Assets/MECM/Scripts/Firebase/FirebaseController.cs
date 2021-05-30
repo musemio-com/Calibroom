@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Dasync.Collections;
 using System.IO;
@@ -705,7 +705,7 @@ namespace MECM
             //string fileToUpload = Path.Combine(IMLDataSerialization.GetAssetsPath(), fileName);
             //string fileText = File.ReadAllText(fileToUpload);
 
-            string fileNameEscaped = Uri.EscapeUriString(fileName);
+            string fileNameEscaped = U²ri.EscapeUriString(fileName);
             string serverFilePathEscaped = Uri.EscapeUriString(serverFilePath);
             byte[] fileBinary = fileToUpload;
 

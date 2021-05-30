@@ -68,6 +68,27 @@ namespace MECM
         [SendToIMLGraph]
         public string UserIDString;
 
+
+        [SendToIMLGraph,HideInInspector]
+        public bool R_usePosition;
+        [SendToIMLGraph,HideInInspector]
+        public bool R_useRotation;
+        [SendToIMLGraph,HideInInspector]
+        public bool R_useGrabbedObjects;
+
+        [SendToIMLGraph,HideInInspector]
+        public bool L_usePostion;
+        [SendToIMLGraph,HideInInspector]
+        public bool L_useRotaion;
+        [SendToIMLGraph,HideInInspector]
+        public bool L_useGrabbedObjects;
+
+        [SendToIMLGraph,HideInInspector]
+        public bool HMD_usePostion;
+        [SendToIMLGraph,HideInInspector]
+        public bool HMD_useRotation;
+         
+
         /// <summary>
         /// Used to interface with the user details SO (get persistent userID)
         /// </summary>
