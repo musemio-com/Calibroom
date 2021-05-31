@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
+using MECM;
 public class DashboardEditorWindow : EditorWindow
 {
-    string userID;
+    int userID;
     GameObject LeftController;
     GameObject RightController;
     GameObject HMD;
     GameObject customTrackingTriggerObject;
     AnimBool StartTrackingWhenSceneActive;
     GameObject StartCollectingObject;
-    GameObject StopCollectingObject;
     AnimBool customTrackingTrigger;
     AnimBool SpawnStartEndObjects;
     AnimBool UploadData;
@@ -31,9 +31,7 @@ public class DashboardEditorWindow : EditorWindow
 
     bool HMD_UsePos;
     bool HMD_UseRot;
-    string FirebaseURL;
     string FirebaseID;
-    string PathToUpload;
     float taskCompletionTime;
     bool UploadWhenCollectingDone;
 
@@ -70,7 +68,7 @@ public class DashboardEditorWindow : EditorWindow
 
         GUILayout.Label("User ID", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        userID = EditorGUILayout.TextField("User ID", userID);
+        userID = EditorGUILayout.IntField("User ID", userID);
         EditorGUI.indentLevel--;
         EditorGUILayout.Space();
 
@@ -137,7 +135,7 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUI.indentLevel--;
         EditorGUILayout.Space();
 
-        GUILayout.Label("Tracking", EditorStyles.boldLabel);
+        GUILayout.Label("Tracking Settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
         StartTrackingWhenSceneActive.target = EditorGUILayout.ToggleLeft("Start Tracking when scene starts", StartTrackingWhenSceneActive.target);
         if (EditorGUILayout.BeginFadeGroup(StartTrackingWhenSceneActive.faded))
@@ -148,12 +146,12 @@ public class DashboardEditorWindow : EditorWindow
         }
         EditorGUILayout.EndFadeGroup();
 
-        SpawnStartEndObjects.target = EditorGUILayout.ToggleLeft("Use GameObjects to trigger tracking", SpawnStartEndObjects.target);
+        SpawnStartEndObjects.target = EditorGUILayout.ToggleLeft("Use GameObjects to trigger manually", SpawnStartEndObjects.target);
         if (EditorGUILayout.BeginFadeGroup(SpawnStartEndObjects.faded))
         {
             EditorGUI.indentLevel++;
             StartCollectingObject = EditorGUILayout.ObjectField("Start Collecting", StartCollectingObject, typeof(GameObject), true) as GameObject;
-            StopCollectingObject = EditorGUILayout.ObjectField("Stop Collecting", StopCollectingObject, typeof(GameObject), true) as GameObject;
+            EditorGUILayout.HelpBox("Grab the same object to stop collecting data", MessageType.Info);
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
@@ -164,15 +162,13 @@ public class DashboardEditorWindow : EditorWindow
 
         GUILayout.Label("Upload Data to Server", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        UploadData.target = EditorGUILayout.ToggleLeft("Upload to Firebase", UploadData.target);
+        UploadData.target = EditorGUILayout.ToggleLeft("Upload to Firebase Cloud Storage", UploadData.target);
         if (EditorGUILayout.BeginFadeGroup(UploadData.faded))
         {
             EditorGUI.indentLevel++;
-                EditorGUILayout.HelpBox("Using REST API, Slow but supported on all platforms", MessageType.Info);
-                FirebaseURL = EditorGUILayout.TextField("Firebase URL", FirebaseURL);
                 FirebaseID = EditorGUILayout.TextField("Firebase Project ID", FirebaseID);
-                PathToUpload = EditorGUILayout.TextField("Path To Upload", PathToUpload);
                 UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
+                EditorGUILayout.HelpBox("Using REST API, Slow but supported on all platforms", MessageType.Info);
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
@@ -184,7 +180,55 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.Space();
         if (GUILayout.Button("Setup"))
         {
-            
+            setupUserID();
+            setupUploadSettings();
         }
     }
+
+
+    void setupSystems()
+    {
+        Resources.Load("DataCollection.prefab");
+        Resources.Load("IML System.prefab");
+    }
+
+    void setupControllerTrackers()
+    {
+        HMD.AddComponent<GrabbingPieceFeatureExtractor>();
+        RightController.AddComponent<GrabbingPieceFeatureExtractor>();
+        LeftController.AddComponent<GrabbingPieceFeatureExtractor>();
+
+        TrackersInfoScriptableObject trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
+
+
+
+        //Spawn DataCollector & IMLComponent Gameobjects
+        // add grabbing extractor to both scripts
+        // set a custom attribute to force choosing which is left and which is right.
+        // check the enabled fields of each controller and set em up in the data collection controller (to be sent to IML Graph)
+        // Send the controllers to the IML Component
+
+    }
+    void setupUserID()
+    {
+        UserDetails userInfo = ScriptableObject.CreateInstance<UserDetails>();
+        userInfo.UserID = userID;
+        AssetDatabase.CreateAsset(userInfo,"Assets/MECM/Resources/UserDetailsObject.asset");
+        AssetDatabase.SaveAssets();
+    }
+    void setupDataCollectionSettings()
+    {
+        //setup how datacollector can start collecting when scene Start
+        // Setup custom game objects to start/stop Tracking
+    }
+    void setupUploadSettings()
+    {
+        UploadInfoScriptableObject uploadInfo = ScriptableObject.CreateInstance<UploadInfoScriptableObject>();
+        uploadInfo.UploadOnTrackingDone = UploadWhenCollectingDone;
+        uploadInfo.FirebaseID = FirebaseID;
+        uploadInfo.UploadEnabled = UploadData.target;
+        AssetDatabase.CreateAsset(uploadInfo,"Assets/MECM/Resources/UploadInfoObject.asset");
+        AssetDatabase.SaveAssets();
+    }
+
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using InteractML;
 
-
 namespace MECM
 {
     /// <summary>
@@ -59,14 +58,14 @@ namespace MECM
         /// <summary>
         /// User ID that we are collecting data from
         /// </summary>
-        [SendToIMLGraph]
-        public int UserIDInt;
+        [SendToIMLGraph,HideInInspector]
+        public int UserIDInt = 0;
 
         /// <summary>
         /// Contains the ID + Scene as a directory where to store data
         /// </summary>
-        [SendToIMLGraph]
-        public string UserIDString;
+        [SendToIMLGraph,HideInInspector]
+        public string UserIDString = "userID/SceneName";
 
 
         [SendToIMLGraph,HideInInspector]
@@ -92,7 +91,8 @@ namespace MECM
         /// <summary>
         /// Used to interface with the user details SO (get persistent userID)
         /// </summary>
-        private UserDetailsController m_UserDetailsCtrlr;
+        // private UserDetailsController m_UserDetailsCtrlr;
+        private UserDetails userDetails;
 
         /// <summary>
         /// Handles uploads to firebase server
@@ -135,10 +135,11 @@ namespace MECM
         private void Awake()
         {
             // Load UserID (used in graph for data storage and identification of training set)
-            m_UserDetailsCtrlr = FindObjectOfType<UserDetailsController>();
-            if (m_UserDetailsCtrlr != null)
+            // m_UserDetailsCtrlr = FindObjectOfType<UserDetailsController>();
+            userDetails = (UserDetails)Resources.Load("UserDetailsObject.asset",typeof(UserDetails));
+            if (userDetails != null)
             {
-                UserIDInt = m_UserDetailsCtrlr.LoadUserID();
+                UserIDInt = userDetails.UserID;
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
