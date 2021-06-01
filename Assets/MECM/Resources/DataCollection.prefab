@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8305867299306346129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8305867299306346143}
+  - component: {fileID: 8305867299306346128}
+  m_Layer: 0
+  m_Name: DataCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8305867299306346143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305867299306346129}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8305867299306346128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305867299306346129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e866076c0ee771145af16d66f8593beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectingData: 0
+  m_ToggleCollectDataEvent: 0
+  ToggleDataCollection: 0
+  m_ToggleTrainModelEvent: 0
+  ToggleTrainModel: 0
+  m_ToggleRunModelEvent: 0
+  ToggleRunModel: 0
+  UserIDInt: 0
+  UserIDString: 0/MECM Room
+  _R_UsePosition: 0
+  _R_UsePostionVelocity: 0
+  _R_UsePositionAcceleration: 0
+  _R_UseRotation: 0
+  _R_UseRotationVelocity: 0
+  _R_UseRotationAcceleration: 0
+  _R_UseGrabbedObject: 0
+  _L_UsePosition: 0
+  _L_UsePostionVelocity: 0
+  _L_UsePositionAcceleration: 0
+  _L_UseRotation: 0
+  _L_UseRotationVelocity: 0
+  _L_UseRotationAcceleration: 0
+  _L_UseGrabbedObject: 0
+  _HMD_UsePosition: 0
+  _HMD_UsePostionVelocity: 0
+  _HMD_UsePositionAcceleration: 0
+  _HMD_UseRotation: 0
+  _HMD_UseRotationVelocity: 0
+  _HMD_UseRotationAcceleration: 0
+  LeftHandGrabbingExtractor: {fileID: 0}
+  RightHandGrabbingExtractor: {fileID: 0}
+  LeftHandGrabbing: 0
+  RightHandGrabbing: 0
+  m_UploadData: 0
+  m_UseTasksOnUpload: 1

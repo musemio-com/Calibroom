@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using MECM;
+using UnityEngine.XR.Interaction.Toolkit;
+using InteractML;
 public class DashboardEditorWindow : EditorWindow
 {
     int userID;
@@ -16,21 +18,12 @@ public class DashboardEditorWindow : EditorWindow
     AnimBool customTrackingTrigger;
     AnimBool SpawnStartEndObjects;
     AnimBool UploadData;
-
     AnimBool R_ExposeParameters;
     AnimBool L_ExposeParameters;
     AnimBool HMD_ExposeParameters;
 
-    bool R_UsePos;
-    bool R_UseRot;
-    bool R_UseObjs;
 
-    bool L_UsePos;
-    bool L_UseRot;
-    bool L_UseObjs;
 
-    bool HMD_UsePos;
-    bool HMD_UseRot;
     string FirebaseID;
     float taskCompletionTime;
     bool UploadWhenCollectingDone;
@@ -75,62 +68,31 @@ public class DashboardEditorWindow : EditorWindow
         GUILayout.Label("Controllers To Track",EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
 
-        EditorGUILayout.BeginVertical();
+        EditorGUILayout.BeginHorizontal();
         RightController = EditorGUILayout.ObjectField("Right Controller", RightController, typeof(GameObject), true) as GameObject;
-        if(RightController != null)
-        {    
-            R_ExposeParameters.target = true;
-            if(EditorGUILayout.BeginFadeGroup(R_ExposeParameters.faded))
-            {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.BeginVertical();
-                R_UsePos = EditorGUILayout.ToggleLeft("Use Position",R_UsePos);
-                R_UseRot = EditorGUILayout.ToggleLeft("Use Rotaion",R_UseRot);
-                R_UseObjs = EditorGUILayout.ToggleLeft("Use Grabbed Objects",R_UseObjs);  
-                EditorGUILayout.EndVertical();
-                EditorGUI.indentLevel--;
-            }
-            EditorGUILayout.EndFadeGroup(); 
+        if(GUILayout.Button("Settings"))
+        {
+            RightHandSettingsEditorWindow.ShowWindow();
         }
-        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
 
-        EditorGUILayout.BeginVertical();
+
+        EditorGUILayout.BeginHorizontal();
         LeftController = EditorGUILayout.ObjectField("Left Controller", LeftController, typeof(GameObject), true) as GameObject;
-        if(LeftController != null)
-        {    
-            L_ExposeParameters.target = true;
-            if(EditorGUILayout.BeginFadeGroup(L_ExposeParameters.faded))
-            {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.BeginVertical();
-                L_UsePos = EditorGUILayout.ToggleLeft("Use Position",L_UsePos);
-                L_UseRot = EditorGUILayout.ToggleLeft("Use Rotaion",L_UseRot);
-                L_UseObjs = EditorGUILayout.ToggleLeft("Use Grabbed Objects",L_UseObjs);  
-                EditorGUILayout.EndVertical();
-                EditorGUI.indentLevel--;
-            }
-            EditorGUILayout.EndFadeGroup(); 
+        if(GUILayout.Button("Settings"))
+        {
+            LefttHandSettingsEditorWindow.ShowWindow();
         }
-        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
 
 
-        EditorGUILayout.BeginVertical();
+        EditorGUILayout.BeginHorizontal();
         HMD = EditorGUILayout.ObjectField("Head Mounted Display", HMD, typeof(GameObject), true) as GameObject;
-        if(HMD != null)
-        {    
-            HMD_ExposeParameters.target = true;
-            if(EditorGUILayout.BeginFadeGroup(HMD_ExposeParameters.faded))
-            {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.BeginVertical();
-                HMD_UsePos = EditorGUILayout.ToggleLeft("Use Position",HMD_UsePos);
-                HMD_UseRot = EditorGUILayout.ToggleLeft("Use Rotaion",HMD_UseRot);
-                EditorGUILayout.EndVertical();
-                EditorGUI.indentLevel--;
-            }
-            EditorGUILayout.EndFadeGroup(); 
+        if(GUILayout.Button("Settings"))
+        {
+            HMDSettingsEditorWindow.ShowWindow();
         }
-        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
 
         EditorGUI.indentLevel--;
         EditorGUILayout.Space();
@@ -141,7 +103,7 @@ public class DashboardEditorWindow : EditorWindow
         if (EditorGUILayout.BeginFadeGroup(StartTrackingWhenSceneActive.faded))
         {
             EditorGUI.indentLevel++;
-            EditorGUILayout.HelpBox("To stop Collecting Data, Call StopTracking method", MessageType.Info);
+            EditorGUILayout.HelpBox("To stop Collecting Data, Call FireToggleCollectDataEvent method in DataCollectionController", MessageType.Info);
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
@@ -167,7 +129,7 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel++;
                 FirebaseID = EditorGUILayout.TextField("Firebase Project ID", FirebaseID);
-                UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
+                // UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
                 EditorGUILayout.HelpBox("Using REST API, Slow but supported on all platforms", MessageType.Info);
             EditorGUI.indentLevel--;
         }
@@ -181,6 +143,9 @@ public class DashboardEditorWindow : EditorWindow
         if (GUILayout.Button("Setup"))
         {
             setupUserID();
+            setupSystems();
+            setupControllers();
+            setupDataCollectionSettings();
             setupUploadSettings();
         }
     }
@@ -188,47 +153,75 @@ public class DashboardEditorWindow : EditorWindow
 
     void setupSystems()
     {
-        Resources.Load("DataCollection.prefab");
-        Resources.Load("IML System.prefab");
+        GameObject DataController = Instantiate(Resources.Load<GameObject>("DataCollection"));;
+        GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("IML System"));
+        DataController.name = "DataCollection";
+        IMLSystem.name = "IML System";
+        IMLSystem.GetComponent<IMLComponent>().enabled = true;
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(RightController);
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(LeftController);
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(HMD);
+
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData[0].GameComponent = DataController.GetComponent<DataCollectionController>();
+
+        
+        
     }
 
-    void setupControllerTrackers()
+    void setupControllers()
     {
-        HMD.AddComponent<GrabbingPieceFeatureExtractor>();
-        RightController.AddComponent<GrabbingPieceFeatureExtractor>();
-        LeftController.AddComponent<GrabbingPieceFeatureExtractor>();
-
-        TrackersInfoScriptableObject trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
-
-
-
-        //Spawn DataCollector & IMLComponent Gameobjects
-        // add grabbing extractor to both scripts
-        // set a custom attribute to force choosing which is left and which is right.
-        // check the enabled fields of each controller and set em up in the data collection controller (to be sent to IML Graph)
-        // Send the controllers to the IML Component
-
+        RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
+        LeftController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.LeftHand;
     }
     void setupUserID()
     {
-        UserDetails userInfo = ScriptableObject.CreateInstance<UserDetails>();
+        UserDetails userInfo = Resources.Load<UserDetails>("UserDetailsObject");
+        if(userInfo == null)
+        {
+           userInfo = ScriptableObject.CreateInstance<UserDetails>();
+           AssetDatabase.CreateAsset(userInfo,"Assets/MECM/Resources/UserDetailsObject.asset");
+           AssetDatabase.SaveAssets();
+        }
         userInfo.UserID = userID;
-        AssetDatabase.CreateAsset(userInfo,"Assets/MECM/Resources/UserDetailsObject.asset");
-        AssetDatabase.SaveAssets();
     }
     void setupDataCollectionSettings()
     {
-        //setup how datacollector can start collecting when scene Start
-        // Setup custom game objects to start/stop Tracking
+        if(StartTrackingWhenSceneActive.target)
+        {
+            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
+            if(trackersInfo == null)
+            {
+               trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
+               AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
+               AssetDatabase.SaveAssets();
+            }
+            trackersInfo.StartTrackingOnSceneStart = StartTrackingWhenSceneActive.target;
+        }
+
+        if(SpawnStartEndObjects.target && StartCollectingObject != null)
+        {
+            DataCollectionController dataCollectionController = FindObjectOfType<DataCollectionController>();
+            // StartCollectingObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener
+
+        }
     }
     void setupUploadSettings()
     {
-        UploadInfoScriptableObject uploadInfo = ScriptableObject.CreateInstance<UploadInfoScriptableObject>();
-        uploadInfo.UploadOnTrackingDone = UploadWhenCollectingDone;
-        uploadInfo.FirebaseID = FirebaseID;
+        UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("UploadInfoObject");
+        if(uploadInfo == null)
+        {
+           uploadInfo = ScriptableObject.CreateInstance<UploadInfoScriptableObject>();
+           AssetDatabase.CreateAsset(uploadInfo,"Assets/MECM/Resources/UploadInfoObject.asset");
+           AssetDatabase.SaveAssets();
+        }
         uploadInfo.UploadEnabled = UploadData.target;
-        AssetDatabase.CreateAsset(uploadInfo,"Assets/MECM/Resources/UploadInfoObject.asset");
-        AssetDatabase.SaveAssets();
+        uploadInfo.FirebaseID = FirebaseID; 
+
+        if(UploadData.target)
+        {
+            GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("UploadManager"));
+            _uploadManager.name = "UploadManager";
+        }
     }
 
 }

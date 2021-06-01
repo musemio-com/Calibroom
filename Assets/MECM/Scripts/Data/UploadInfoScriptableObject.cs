@@ -7,5 +7,4 @@ public class UploadInfoScriptableObject : ScriptableObject
 {
     public bool UploadEnabled;
     public string FirebaseID;
-    public bool UploadOnTrackingDone;
 }

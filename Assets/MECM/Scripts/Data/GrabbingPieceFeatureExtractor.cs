@@ -43,8 +43,7 @@ namespace MECM
             }
             set { m_XRControllerType = value; }
         }
-        [SerializeField]
-        private ControllerType m_XRControllerType;
+        public ControllerType m_XRControllerType; // return to private
 
         private XRController m_XRController;
 

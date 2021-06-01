@@ -67,26 +67,71 @@ namespace MECM
         [SendToIMLGraph,HideInInspector]
         public string UserIDString = "userID/SceneName";
 
+    #region Right Hand Settings
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UsePosition;
 
-        [SendToIMLGraph,HideInInspector]
-        public bool R_usePosition;
-        [SendToIMLGraph,HideInInspector]
-        public bool R_useRotation;
-        [SendToIMLGraph,HideInInspector]
-        public bool R_useGrabbedObjects;
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UsePostionVelocity;
 
-        [SendToIMLGraph,HideInInspector]
-        public bool L_usePostion;
-        [SendToIMLGraph,HideInInspector]
-        public bool L_useRotaion;
-        [SendToIMLGraph,HideInInspector]
-        public bool L_useGrabbedObjects;
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UsePositionAcceleration;
 
-        [SendToIMLGraph,HideInInspector]
-        public bool HMD_usePostion;
-        [SendToIMLGraph,HideInInspector]
-        public bool HMD_useRotation;
-         
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UseRotation;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UseRotationVelocity;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UseRotationAcceleration;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _R_UseGrabbedObject;
+    #endregion
+
+    #region Left Hand Settings
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UsePosition;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UsePostionVelocity;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UsePositionAcceleration;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UseRotation;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UseRotationVelocity;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UseRotationAcceleration;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _L_UseGrabbedObject;
+    #endregion
+
+    #region HMD Settings
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UsePosition;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UsePostionVelocity;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UsePositionAcceleration;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UseRotation;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UseRotationVelocity;
+
+    [SendToIMLGraph,HideInInspector]
+    public bool _HMD_UseRotationAcceleration;
+    #endregion
 
         /// <summary>
         /// Used to interface with the user details SO (get persistent userID)
@@ -98,6 +143,7 @@ namespace MECM
         /// Handles uploads to firebase server
         /// </summary>
         private FirebaseController m_FirebaseController;
+        private UploadManager _UploadManager;
 
         /// <summary>
         /// Extractor for grabbing info left hand
@@ -127,6 +173,8 @@ namespace MECM
         [SerializeField]
         private bool m_UseTasksOnUpload = true;
 
+        private string FirebaseProjectID;
+
 
         #endregion
 
@@ -143,9 +191,9 @@ namespace MECM
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
-
             // Get reference to firebase controller
-            m_FirebaseController = FindObjectOfType<FirebaseController>();
+            // m_FirebaseController = FindObjectOfType<FirebaseController>();
+            _UploadManager = FindObjectOfType<UploadManager>();
 
             // Get reference to grabbing piece feature extractors and assign them to correct hands
             var grabbingExtractors = FindObjectsOfType<GrabbingPieceFeatureExtractor>();
@@ -160,6 +208,19 @@ namespace MECM
                         RightHandGrabbingExtractor = grabbingExtractor;
                 }
             }
+            UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("UploadInfoObject");
+            if(uploadInfo != null)
+            {
+               m_UploadData = uploadInfo.UploadEnabled;
+               FirebaseProjectID = uploadInfo.FirebaseID;
+            }
+
+            TrackersInfoScriptableObject trackingInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
+            if(trackingInfo != null)
+            {
+                m_ToggleCollectDataEvent = trackingInfo.StartTrackingOnSceneStart;
+            }
+
         }
 
         // Called once in first frame
@@ -200,7 +261,8 @@ namespace MECM
                 {
                     string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                     // Upload files from our IDString directory to firebase server
-                    m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                    //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                    _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
                 }
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)
@@ -222,7 +284,6 @@ namespace MECM
             if (RightHandGrabbingExtractor != null)
                 RightHandGrabbing = RightHandGrabbingExtractor.GrabbingPiece;
         }
-
         void OnDisable()
         {
             // Make sure to stop data collection if the data controller gets disabled
