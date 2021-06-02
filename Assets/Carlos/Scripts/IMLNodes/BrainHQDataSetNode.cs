@@ -52,7 +52,7 @@ namespace MECM
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
         {
-            return null; // Replace this
+            return BrainHQDataSet;
         }
 
         #region Public Methods
