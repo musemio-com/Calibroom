@@ -142,7 +142,7 @@ namespace MECM
         /// <summary>
         /// Handles uploads to firebase server
         /// </summary>
-        private FirebaseController m_FirebaseController;
+        // private FirebaseController m_FirebaseController;
         private UploadManager _UploadManager;
 
         /// <summary>

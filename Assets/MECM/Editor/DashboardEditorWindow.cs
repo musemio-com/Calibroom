@@ -21,6 +21,10 @@ public class DashboardEditorWindow : EditorWindow
     AnimBool R_ExposeParameters;
     AnimBool L_ExposeParameters;
     AnimBool HMD_ExposeParameters;
+    string OverallScore = "Overal Score";
+    string VisuoSpatial = "Visuo-Spatial";
+    string SpeedProcessing = "Speed Processing";
+    string CycleTime = "Cycle Time";
 
 
 
@@ -148,6 +152,32 @@ public class DashboardEditorWindow : EditorWindow
             setupDataCollectionSettings();
             setupUploadSettings();
         }
+
+        EditorGUILayout.Space();
+        GUILayout.Label("OUTPUT", EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+        EditorGUI.indentLevel++;
+
+        EditorGUILayout.BeginVertical();
+        if(GUILayout.Button(OverallScore))
+        {
+            OverallScore = "Overall Score: " + Random.Range(0,1000);
+        }
+        if(GUILayout.Button(VisuoSpatial))
+        {
+            VisuoSpatial = "Visuo-Spatial: " + Random.Range(0,1000);
+        }
+        if(GUILayout.Button(SpeedProcessing))
+        {
+            SpeedProcessing = "Speed Processing: " + Random.Range(0,1000);
+        }
+        if(GUILayout.Button(CycleTime))
+        {
+            CycleTime = "Cycle Time: " + Random.Range(0,1000);
+        }
+        EditorGUILayout.EndVertical();
+
+        EditorGUI.indentLevel--;
     }
 
 
@@ -161,11 +191,7 @@ public class DashboardEditorWindow : EditorWindow
         IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(RightController);
         IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(LeftController);
         IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(HMD);
-
-        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData[0].GameComponent = DataController.GetComponent<DataCollectionController>();
-
-        
-        
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData[0].GameComponent = DataController.GetComponent<DataCollectionController>();  
     }
 
     void setupControllers()
@@ -197,12 +223,10 @@ public class DashboardEditorWindow : EditorWindow
             }
             trackersInfo.StartTrackingOnSceneStart = StartTrackingWhenSceneActive.target;
         }
-
         if(SpawnStartEndObjects.target && StartCollectingObject != null)
         {
             DataCollectionController dataCollectionController = FindObjectOfType<DataCollectionController>();
-            // StartCollectingObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener
-
+            StartCollectingObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataCollectionController.FireToggleCollectDataEvent());
         }
     }
     void setupUploadSettings()
