@@ -49,7 +49,7 @@ namespace MECM
                 if (m_LevelLoader.IndexCurrentLevel == 0)
                 {
                     // Save User ID
-                    int userID = 0;
+                    int userID = 0285;
                     if (m_UISelectIDCtrlr != null)
                     {
                         userID = m_UISelectIDCtrlr.GetUserIDInt();

@@ -27,7 +27,8 @@ public class VrSceneTransition : MonoBehaviour
 
     public void loadMECMScene()
     {
-        GetComponent<UserDetailsController>().SaveUserID(FindObjectOfType<UISelectIDController>().GetUserIDInt());
+        UserDetails userInfo = Resources.Load<UserDetails>("UserDetailsObject");
+        userInfo.UserID = FindObjectOfType<UISelectIDController>().GetUserIDInt();
         LoadScene("MECM Room");
     }
 

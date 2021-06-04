@@ -184,7 +184,7 @@ namespace MECM
         {
             // Load UserID (used in graph for data storage and identification of training set)
             // m_UserDetailsCtrlr = FindObjectOfType<UserDetailsController>();
-            userDetails = (UserDetails)Resources.Load("UserDetailsObject.asset",typeof(UserDetails));
+            userDetails = (UserDetails)Resources.Load<UserDetails>("ScriptableObjects/UserDetailsObject");
             if (userDetails != null)
             {
                 UserIDInt = userDetails.UserID;
@@ -208,14 +208,14 @@ namespace MECM
                         RightHandGrabbingExtractor = grabbingExtractor;
                 }
             }
-            UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("UploadInfoObject");
+            UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("ScriptableObjects/UploadInfoObject");
             if(uploadInfo != null)
             {
                m_UploadData = uploadInfo.UploadEnabled;
                FirebaseProjectID = uploadInfo.FirebaseID;
             }
 
-            TrackersInfoScriptableObject trackingInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
+            TrackersInfoScriptableObject trackingInfo = Resources.Load<TrackersInfoScriptableObject>("ScriptableObjects/TrackersInfoObject");
             if(trackingInfo != null)
             {
                 m_ToggleCollectDataEvent = trackingInfo.StartTrackingOnSceneStart;

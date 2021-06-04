@@ -15,6 +15,7 @@ public class DashboardEditorWindow : EditorWindow
     GameObject customTrackingTriggerObject;
     AnimBool StartTrackingWhenSceneActive;
     GameObject StartCollectingObject;
+    GameObject StopCollectingObject;
     AnimBool customTrackingTrigger;
     AnimBool SpawnStartEndObjects;
     AnimBool UploadData;
@@ -117,7 +118,7 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel++;
             StartCollectingObject = EditorGUILayout.ObjectField("Start Collecting", StartCollectingObject, typeof(GameObject), true) as GameObject;
-            EditorGUILayout.HelpBox("Grab the same object to stop collecting data", MessageType.Info);
+            StopCollectingObject = EditorGUILayout.ObjectField("Stop Collecting", StopCollectingObject, typeof(GameObject), true) as GameObject;
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
@@ -133,7 +134,7 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel++;
                 FirebaseID = EditorGUILayout.TextField("Firebase Project ID", FirebaseID);
-                // UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
+                UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
                 EditorGUILayout.HelpBox("Using REST API, Slow but supported on all platforms", MessageType.Info);
             EditorGUI.indentLevel--;
         }
@@ -183,8 +184,8 @@ public class DashboardEditorWindow : EditorWindow
 
     void setupSystems()
     {
-        GameObject DataController = Instantiate(Resources.Load<GameObject>("DataCollection"));;
-        GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("IML System"));
+        GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));;
+        GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
         IMLSystem.GetComponent<IMLComponent>().enabled = true;
@@ -201,11 +202,11 @@ public class DashboardEditorWindow : EditorWindow
     }
     void setupUserID()
     {
-        UserDetails userInfo = Resources.Load<UserDetails>("UserDetailsObject");
+        UserDetails userInfo = Resources.Load<UserDetails>("ScriptableObjects/UserDetailsObject");
         if(userInfo == null)
         {
            userInfo = ScriptableObject.CreateInstance<UserDetails>();
-           AssetDatabase.CreateAsset(userInfo,"Assets/MECM/Resources/UserDetailsObject.asset");
+           AssetDatabase.CreateAsset(userInfo, "Assets/MECM/Resources/ScriptableObjectsScriptableObjects/UserDetailsObject.asset");
            AssetDatabase.SaveAssets();
         }
         userInfo.UserID = userID;
@@ -214,11 +215,11 @@ public class DashboardEditorWindow : EditorWindow
     {
         if(StartTrackingWhenSceneActive.target)
         {
-            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
+            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("ScriptableObjects/TrackersInfoObject");
             if(trackersInfo == null)
             {
                trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
-               AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
+               AssetDatabase.CreateAsset(trackersInfo, "Assets/MECM/Resources/ScriptableObjects/TrackersInfoObject.asset");
                AssetDatabase.SaveAssets();
             }
             trackersInfo.StartTrackingOnSceneStart = StartTrackingWhenSceneActive.target;
@@ -231,11 +232,11 @@ public class DashboardEditorWindow : EditorWindow
     }
     void setupUploadSettings()
     {
-        UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("UploadInfoObject");
+        UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("ScriptableObjects/UploadInfoObject");
         if(uploadInfo == null)
         {
            uploadInfo = ScriptableObject.CreateInstance<UploadInfoScriptableObject>();
-           AssetDatabase.CreateAsset(uploadInfo,"Assets/MECM/Resources/UploadInfoObject.asset");
+           AssetDatabase.CreateAsset(uploadInfo, "Assets/MECM/Resources/ScriptableObjects/UploadInfoObject.asset");
            AssetDatabase.SaveAssets();
         }
         uploadInfo.UploadEnabled = UploadData.target;
@@ -243,7 +244,7 @@ public class DashboardEditorWindow : EditorWindow
 
         if(UploadData.target)
         {
-            GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("UploadManager"));
+            GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
     }
