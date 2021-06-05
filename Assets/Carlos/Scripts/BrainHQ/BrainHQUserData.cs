@@ -20,11 +20,11 @@
 
         public float RightTurnScore;
 
-        public int MentalMapScore;
+        public float MentalMapScore;
 
         public float TargetTracker;
 
-        public BrainHQUserData(int iD, float doubleDecisionScore, float mindBenderScore, float rightTurnScore, int mentalMapScore, float targetTracker)
+        public BrainHQUserData(int iD, float doubleDecisionScore, float mindBenderScore, float rightTurnScore, float mentalMapScore, float targetTracker)
         {
             ID = iD;
             DoubleDecisionScore = doubleDecisionScore;

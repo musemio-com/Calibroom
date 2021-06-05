@@ -63,7 +63,13 @@ namespace MECM
             EditorGUI.indentLevel++;
 
             // Button LoadDataSets
-            if (GUILayout.Button("Load BrainHQ Files", m_NodeSkin.GetStyle("Run")))
+            string buttonText = "";
+            if (m_NodeDataSet.LoadingStarted)
+                buttonText = $"Loading... ({m_NodeDataSet.BrainHQDataSet.Count} entries)";
+            else
+                buttonText = "Load BrainHQ Files";
+
+            if (GUILayout.Button(buttonText, m_NodeSkin.GetStyle("Run")))
             {
                 m_NodeDataSet.LoadDataSets(m_NodeDataSet.FolderPath);
 

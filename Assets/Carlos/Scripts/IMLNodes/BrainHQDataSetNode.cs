@@ -90,7 +90,7 @@ namespace MECM
 
                     Parallel.ForEach(files, async file => 
                     {
-                        // If there is a json file, attempt to load
+                        // If there is a csv file, attempt to load
                         if (Path.GetExtension(file) == ".csv")
                         {
                             // The entire CSV in one line
@@ -149,7 +149,7 @@ namespace MECM
                                     // Store brainHQ user data
                                     BrainHQUserData data = new BrainHQUserData(int.Parse(userID),
                                         float.Parse(doubleDecision), float.Parse(mindBender),
-                                        float.Parse(rightTurn), int.Parse(mentalMap), float.Parse(targetTracker));
+                                        float.Parse(rightTurn), float.Parse(mentalMap), float.Parse(targetTracker));
 
                                     // Add to list if not null
                                     if (BrainHQDataSet != null)
