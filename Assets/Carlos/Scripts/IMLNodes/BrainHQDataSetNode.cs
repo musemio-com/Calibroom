@@ -88,7 +88,7 @@ namespace MECM
                     string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
                     Debug.Log($"{files.Length + 1} files found. Loading BrainHQ data sets, please wait...");
 
-                    Parallel.ForEach(files, async file => 
+                    foreach (var file in files)
                     {
                         // If there is a csv file, attempt to load
                         if (Path.GetExtension(file) == ".csv")
@@ -168,101 +168,7 @@ namespace MECM
 
                         }
 
-                    });
-
-                    #region ForEach normal
-                    //foreach (string file in files)
-                    //{
-                    //    // If there is a json file, attempt to load
-                    //    if (Path.GetExtension(file) == ".csv")
-                    //    {
-                    //        // Are we looking for a specific ID?
-                    //        if (string.IsNullOrEmpty(specificID))
-                    //        {
-                    //            // skip if the file doesn't contain the ID we want
-                    //            if (!file.Contains(specificID))
-                    //                continue;
-                    //        }
-
-                    //        // The entire CSV in one line
-                    //        string line = "";
-                    //        // File ID
-                    //        string fileName = Path.GetFileNameWithoutExtension(file);
-                    //        string userID = new String(fileName.Where(Char.IsDigit).ToArray());
-
-                    //        // Async read and extracting relevant brainhq entries from file
-                    //        using (var reader = File.OpenText(file))
-                    //        {
-                    //            Debug.Log($"Opening file {fileName}");
-                    //            line = await reader.ReadToEndAsync();
-                    //            // Do something with fileText...
-                    //            if (!string.IsNullOrEmpty(line))
-                    //            {
-                    //                var rows = line.Split('\n');
-
-                    //                // BrainHQ vars
-                    //                string doubleDecision = "";
-                    //                string mindBender = "";
-                    //                string rightTurn = "";
-                    //                string mentalMap = "";
-                    //                string targetTracker = "";
-
-                    //                // Extract the desired values from each column
-                    //                foreach (var row in rows)
-                    //                {
-                    //                    if (!string.IsNullOrEmpty(row))
-                    //                    {
-                    //                        // Speed/Processing Task //
-                    //                        // Double Decision
-                    //                        if (row.Contains("Double Decision"))
-                    //                            doubleDecision = GetValueFromRow(row, 5);
-
-                    //                        // Mind Bender
-                    //                        if (row.Contains("Mind Bender"))
-                    //                            mindBender = GetValueFromRow(row, 5);
-
-                    //                        // Visuo-Spatial Processing //
-                    //                        // Right Turn
-                    //                        if (row.Contains("Right Turn"))
-                    //                            rightTurn = GetValueFromRow(row, 5);
-
-                    //                        // Mental Map
-                    //                        if (row.Contains("Mental Map"))
-                    //                            mentalMap = GetValueFromRow(row, 5);
-
-                    //                        // Target Tracker
-                    //                        if (row.Contains("Target Tracker"))
-                    //                            targetTracker = GetValueFromRow(row, 5);
-
-                    //                    }
-                    //                }
-
-                    //                // Store brainHQ user data
-                    //                BrainHQUserData data = new BrainHQUserData(int.Parse(userID),
-                    //                    float.Parse(doubleDecision), float.Parse(mindBender),
-                    //                    float.Parse(rightTurn), int.Parse(mentalMap), float.Parse(targetTracker));
-
-                    //                // Add to list if not null
-                    //                if (BrainHQDataSet != null)
-                    //                {
-                    //                    BrainHQDataSet.Add(data);
-                    //                    m_DataSetSize++;
-                    //                    Debug.Log($"Added brainHQ data to list {fileName}");
-
-                    //                }
-
-                    //            }
-                    //            // close file
-                    //            reader.Close();
-                    //            Debug.Log($"Closing file {fileName}");
-
-                    //        }
-
-                    //    }
-
-                    //}
-                    #endregion
-
+                    }
 
                     if (BrainHQDataSet.Count == 0)
                     {
