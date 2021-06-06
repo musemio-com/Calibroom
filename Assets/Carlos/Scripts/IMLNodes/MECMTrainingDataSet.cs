@@ -13,8 +13,8 @@ namespace MECM
     /// <summary>
     /// Holds a Training Data Set for MECM purposes
     /// </summary>
-    [NodeWidth(300)]
-    public class MECMTrainingDataSet : IMLNode
+    [NodeWidth(400)]
+    public class MECMTrainingDataSet : TrainingExamplesNode
     {
         #region Variables
 
@@ -30,9 +30,9 @@ namespace MECM
         [Input]
         public List<BrainHQUserData> BrainHQDataSet;
         
-        public int DataSetsProcessed;
-        private bool m_ProcessingStarted;
-        private bool m_ProcessingFinished;
+        public int NumDataSetsProcessed;
+        public bool ProcessingStarted;
+        public bool ProcessingFinished;
 
         #endregion
 
@@ -42,6 +42,8 @@ namespace MECM
         protected override void Init()
         {
             base.Init();
+            // Init code for training examples
+            Initialize();
 
         }
 
@@ -49,6 +51,43 @@ namespace MECM
         public override object GetValue(NodePort port)
         {
             return null; // Replace this
+        }
+
+        #endregion
+
+        #region TrainingExamples Overrides
+
+        /// <summary>
+        /// Sets Data Collection Type 
+        /// </summary>
+        protected override void SetDataCollection()
+        {
+            ModeOfCollection = CollectionMode.SingleExample;
+        }
+        /// <summary>
+        /// Save IML Training Data to Disk 
+        /// </summary>
+        public override void SaveDataToDisk()
+        {
+            IMLDataSerialization.SaveTrainingSetToDisk(m_TrainingExamplesVector, GetJSONFileName());
+        }
+        /// <summary>
+        /// Returns the file name we want for the regular training examples list in JSON format, both for read and write
+        /// </summary>
+        /// <returns></returns>
+        public override string GetJSONFileName()
+        {
+            if (this.graph != null)
+            {
+                string fileName = "MECMTrainingDataSet" + this.id;
+
+                // If we have a subfolder specified for the data...
+                if (!String.IsNullOrEmpty(SubFolderDataPath))
+                    fileName = String.Concat(SubFolderDataPath, "/", fileName);
+
+                return fileName;
+            }
+            return null;
         }
 
         #endregion
@@ -63,7 +102,13 @@ namespace MECM
         /// <param name="lengthWindow"></param>
         public void DataToWindows()
         {
-            Task.Run(async () => await DataToWindowsAsync(MovementData, BrainHQDataSet) );
+            MovementData = GetInputValue<List<List<IMLTrainingExample>>>("MovementData");
+            BrainHQDataSet = GetInputValue<List<BrainHQUserData>>("BrainHQDataSet");
+            Task.Run(async () => 
+            {
+                m_TrainingExamplesVector = new List<IMLTrainingExample>();
+                m_TrainingExamplesVector = await DataToWindowsAsync(MovementData, BrainHQDataSet);
+            });
         }
 
         #endregion
@@ -76,7 +121,7 @@ namespace MECM
         /// </summary>
         /// <param name="inputData"></param>
         /// <param name="lengthWindow"></param>
-        private async Task<List<List<IMLTrainingExample>>> DataToWindowsAsync(List<List<IMLTrainingExample>> inputData, List<BrainHQUserData> outputData, int lengthWindow = 10)
+        private async Task<List<IMLTrainingExample>> DataToWindowsAsync(List<List<IMLTrainingExample>> inputData, List<BrainHQUserData> outputData, int lengthWindow = 10)
         {
             if (inputData == null)
             {
@@ -88,32 +133,36 @@ namespace MECM
                 NodeDebug.LogWarning("Output Data is null!", this);
                 return null;
             }
-            if (m_ProcessingStarted)
-            {
-                NodeDebug.LogWarning("Data is already processing! Cannot start twice", this);
-                return null;
-            }
+            //if (ProcessingStarted)
+            //{
+            //    NodeDebug.LogWarning("Data is already processing! Cannot start twice", this);
+            //    return null;
+            //}
 
-            DataSetsProcessed = 0;
-            m_ProcessingStarted = true;
-            m_ProcessingFinished = false;
-            List<List<IMLTrainingExample>> windowedData = new List<List<IMLTrainingExample>>();
+            NumDataSetsProcessed = 0;
+            ProcessingStarted = true;
+            ProcessingFinished = false;
+            // Chunk training Examples in new list
+            List<IMLTrainingExample> windowedDataSet = new List<IMLTrainingExample>();
+
+            Debug.Log($"Starting to process data. {inputData.Count} DataSets detected.");
             // Iterate through one dataset at a time
             foreach (List<IMLTrainingExample> trainingExamples in inputData)
             {
+
                 if (trainingExamples == null)
                 {
                     NodeDebug.LogWarning("There is a null DataSet in collection! Aborting processing", this);
-                    m_ProcessingStarted = false;
+                    ProcessingStarted = false;
                     return null;
                 }
 
                 // Select the BrainHQ dataset that matches the user ID of this dataset
                 var brainHQLabel = outputData.First(x => x.ID == trainingExamples[0].Outputs[0].OutputData.Values[0]);
-                
-                // Chunk training Examples in new list
-                List<IMLTrainingExample> windowedDataSet = new List<IMLTrainingExample>();
-                
+
+                Debug.Log($"Processing dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} and ID {brainHQLabel.ID}...");
+
+                int numWindowsCreated = 0;
                 // We chunk N examples together in one window (newExampleWindow). Move the index up the size of the window 
                 for (int i = 0; i < trainingExamples.Count; i += lengthWindow)
                 {
@@ -122,7 +171,10 @@ namespace MECM
                     int localLengthWindow = i + lengthWindow;
                     // Check that there are enough inputs left for window (in case this is the last window). If not, we skip this window
                     if (localLengthWindow > trainingExamples.Count)
-                        break;
+                    {
+                        Debug.Log($"Window for dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} and ID {brainHQLabel.ID} is too big, skipping a total of {localLengthWindow - trainingExamples.Count} examples and moving to next dataSet...");
+                        continue;
+                    }
 
                     // Add examples to window (start on last entry of dataset list)
                     for (int j = i; j < localLengthWindow; j++)
@@ -139,7 +191,7 @@ namespace MECM
                         else
                         {
                             NodeDebug.LogWarning("Null training example in DataSet! Aborting processing", this);
-                            m_ProcessingStarted = false;
+                            ProcessingStarted = false;
                             return null;
 
                         }
@@ -155,23 +207,26 @@ namespace MECM
                             newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.MindBenderScore));
                             // Visuo-Spatial Processing //
                             newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.RightTurnScore));
-                            newExampleWindow.AddOutputExample(new IMLInteger(brainHQLabel.MentalMapScore));
+                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.MentalMapScore));
                             newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.TargetTracker));
                         }
                     }
 
                     // Add window to training data set
                     windowedDataSet.Add(newExampleWindow);
-                    DataSetsProcessed++;
+                    numWindowsCreated++;
+                    Debug.Log($"Added window with ID {brainHQLabel.ID}. Examples in window = {newExampleWindow.Inputs.Count}.");
+
                 }
 
-                // Add windowed dataSet to collection of dataSets
-                windowedData.Add(windowedDataSet);
+                Debug.Log($"Processed dataset with ID {brainHQLabel.ID}. Created {numWindowsCreated} windows!");
+                NumDataSetsProcessed++;
+
             }
 
-            m_ProcessingFinished = true;
-            m_ProcessingStarted = false;
-            return windowedData;
+            ProcessingFinished = true;
+            ProcessingStarted = false;
+            return windowedDataSet;
         }
 
         #endregion
