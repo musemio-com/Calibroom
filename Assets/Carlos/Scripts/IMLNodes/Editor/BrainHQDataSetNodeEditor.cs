@@ -127,13 +127,8 @@ namespace MECM
 
                 EditorGUI.indentLevel++;
 
-                if (m_NodeDataSet.BrainHQDataSet == null)
-                    return;
-
-                if (m_NodeDataSet.BrainHQDataSet.Count < 0)
-                {
+                if (m_NodeDataSet.BrainHQDataSet == null || m_NodeDataSet.BrainHQDataSet.Count == 0)
                     EditorGUILayout.LabelField("BrainHQ Data Set is empty", m_FoldoutEmptyStyle);
-                }
                 else
                 {
                     // Begins Vertical Scroll
@@ -204,6 +199,7 @@ namespace MECM
                     EditorGUILayout.EndVertical();
                 }
 
+                EditorGUI.indentLevel--;
 
 
             }
