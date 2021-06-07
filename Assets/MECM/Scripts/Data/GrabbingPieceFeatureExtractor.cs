@@ -15,6 +15,11 @@ namespace MECM
         /// </summary>
         public bool GrabbingPiece;
 
+        /// <summary>
+        /// will be called by a unity event when using a different system than XRinteractions (VRTK for example)
+        /// </summary>
+        public bool GrabbingPieceProperty{ get => GrabbingPiece; set => GrabbingPiece = value; } 
+
         public enum ControllerType { None, LeftHand, RightHand}
         public ControllerType XRControllerType 
         { 
@@ -87,7 +92,7 @@ namespace MECM
             }
             else
             {
-                m_XRControllerType = ControllerType.None;
+                // m_XRControllerType = ControllerType.None;
             }
 
 

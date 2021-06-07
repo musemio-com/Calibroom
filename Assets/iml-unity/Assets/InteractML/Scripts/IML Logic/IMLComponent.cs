@@ -153,6 +153,15 @@ namespace InteractML
 
         private void OnEnable()
         {
+            // Make sure to have the current scene updated
+#if UNITY_EDITOR
+            m_OurScene = EditorSceneManager.GetActiveScene();
+
+            // Subscribe to the editor manager so that our update loop gets called
+            IMLEditorManager.SubscribeIMLComponent(this);
+#else
+            m_OurScene = SceneManager.GetActiveScene();
+#endif
 
 #if !UNITY_EDITOR
             SubscribeToDelegates();
@@ -206,7 +215,7 @@ namespace InteractML
 #endif
             
         }
-
+        
         // Update is called once per frame
         void Update()
         {
@@ -1842,7 +1851,6 @@ namespace InteractML
             while (!nodesLoaded)
             {
                 yield return null;
-                Debug.Log("ERROR ERROR");
             }
 
             // run models marked run on awake
@@ -2285,10 +2293,28 @@ namespace InteractML
             bool nodeAdded = false;
             if (node != null)
             {
+                // init lists
+                // GONodes list
                 if (m_GameObjectNodeList == null) m_GameObjectNodeList = new List<GameObjectNode>();
-                // Add node if it is not contained in list
+                // GOs per GONodes dictionary
+                if (m_GOsPerGONodes == null) m_GOsPerGONodes = new GOPerGONodeDictionary();
+
+                // Add node to graph and list if it is not contained in list
                 if (!m_GameObjectNodeList.Contains(node))
                 {
+                    // Add to dictionary (if possible)
+                    if (node.GameObjectDataOut != null) 
+                    {
+                        if (!m_GOsPerGONodes.ContainsKey(node.GameObjectDataOut))
+                            m_GOsPerGONodes.Add(node.GameObjectDataOut, node);
+                        else
+                        {
+                            Debug.LogError($"GameObject {node.GameObjectDataOut.name} is already in internal dictionary! Aborting");
+                            return false;
+                        }
+                    }
+                    
+
                     m_GameObjectNodeList.Add(node);
                     nodeAdded = true;
 #if UNITY_EDITOR
@@ -2304,6 +2330,75 @@ namespace InteractML
 
             }
             return nodeAdded;
+        }
+
+        /// <summary>
+        /// Adds a GameObjectNode internally to the graph 
+        /// </summary>
+        /// <param name="GO"></param>
+        /// <returns></returns>
+        public GameObjectNode AddGameObjectNode(GameObject GO)
+        {
+            if (GO != null)
+            {
+                if (GameObjectsToUse.Contains(GO))
+                {
+                    Debug.LogError($"GameObject {GO.name} is already in graph! We don't need a new node for it");
+                    return null;
+                }
+
+                // Setup node to add
+                //GameObjectNode goNode = ScriptableObject.CreateInstance<GameObjectNode>();
+                // This will add the node to the internal list, but not the dictionary
+                GameObjectNode goNode = (GameObjectNode) (graph as IMLGraph).AddNode(typeof(GameObjectNode));
+
+                if (goNode != null)
+                {
+                    goNode.SetGameObject(GO);
+                    // set graph of node if needed
+                    if (graph != null && goNode.graph == null)
+                        goNode.graph = this.graph;
+
+                    // Add node to graph and list if it is not contained in list
+                    if (!m_GameObjectNodeList.Contains(goNode))
+                        m_GameObjectNodeList.Add(goNode);
+                    // Add to dictionary
+                    if (!m_GOsPerGONodes.ContainsKey(goNode.GameObjectDataOut))
+                        m_GOsPerGONodes.Add(goNode.GameObjectDataOut, goNode);
+                    else
+                    {
+                        Debug.LogError($"GameObject {goNode.GameObjectDataOut.name} is already in internal dictionary! Aborting");
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    Debug.LogError($"Failed to add GameObject {GO.name}!");
+                    return goNode;
+
+                }
+
+                return goNode;
+
+                //// Add goNode to graph                
+                //if (AddGameObjectNode(goNode))
+                //{
+                //    return goNode;
+                //}
+                //else
+                //{
+                //    Debug.LogError($"Failed to add GameObject {GO.name}!");
+                //    return null;
+                //}
+
+            }
+            else
+            {
+                Debug.LogError($"Can't add a null GameObject to IMLGraph");
+
+                return null;
+            }
         }
 
 #endregion

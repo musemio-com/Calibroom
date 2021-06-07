@@ -37,6 +37,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: c7e8f0f6-e2d8-4fa3-8fa0-a1ecb7352e92
   numberInComponentList: -1
   ValueName: 
@@ -93,6 +94,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: 6bc4c140-aff5-4e85-bd20-a54eff46a857
   numberInComponentList: -1
   ReceivingData: 0
@@ -140,6 +142,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: f759eb09-aec5-4eea-9329-13888c4e7c59
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
@@ -277,6 +280,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+  DevMode: 0
   id: f4bdedba-b7eb-4e32-9512-76d97c781297
   numberInComponentList: -1
   InputFeatures:
@@ -301,7 +305,6 @@ MonoBehaviour:
   showWarning: 0
   canCollect: 1
   listNo: 0
-  SubFolderDataPath: 
 --- !u!114 &-3219005705289358105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +335,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: c9d31dc5-d16a-4169-af07-e014bbb56843
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
@@ -380,6 +384,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: 57c6a792-7317-4b7c-8759-86b3322c877d
   numberInComponentList: -1
   ReceivingData: 0
@@ -460,6 +465,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: 1ecf555b-cc71-4a46-a71a-def17f3045aa
   numberInComponentList: -1
   ValueName: 
@@ -534,6 +540,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+  DevMode: 0
   id: fe17fcb9-80d4-400a-97e4-8123f97b25ac
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
@@ -584,6 +591,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+  DevMode: 0
   id: a4305c38-69df-4e8c-932f-d84c206cd8fb
   numberInComponentList: -1
   ValueName: 

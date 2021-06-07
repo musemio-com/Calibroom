@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2862134731984181864
+--- !u!1 &4630428434307941082
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2862134731984181866}
-  - component: {fileID: 2862134731984181865}
+  - component: {fileID: 4630428434307941080}
+  - component: {fileID: 4630428434307941083}
   m_Layer: 0
   m_Name: IML System
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2862134731984181866
+--- !u!4 &4630428434307941080
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862134731984181864}
+  m_GameObject: {fileID: 4630428434307941082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,14 +31,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2862134731984181865
+--- !u!114 &4630428434307941083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862134731984181864}
-  m_Enabled: 0
+  m_GameObject: {fileID: 4630428434307941082}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c477b3f40f547843930edfdcbde5951, type: 3}
   m_Name: 
@@ -50,12 +50,9 @@ MonoBehaviour:
     - {fileID: 0}
     m_values:
     - {fileID: 0}
-  m_GameObjectNodeList:
-  - {fileID: -8348546761230653430, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: -7203651895621669136, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 2037824471503765706, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  m_GameObjectNodeList: []
   m_ScriptNodesList:
-  - {fileID: 1848439845424214320, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 4437612054814885165, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -65,6 +62,6 @@ MonoBehaviour:
     m_keys:
     - {fileID: 8305867299306346128, guid: 798e43d2f50525542b268ea706b34c11, type: 3}
     m_values:
-    - {fileID: 1848439845424214320, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 4437612054814885165, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0

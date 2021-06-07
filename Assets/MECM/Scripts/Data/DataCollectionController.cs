@@ -59,13 +59,13 @@ namespace MECM
         /// User ID that we are collecting data from
         /// </summary>
         [SendToIMLGraph,HideInInspector]
-        public int UserIDInt = 0;
+        public int UserIDInt;
 
         /// <summary>
         /// Contains the ID + Scene as a directory where to store data
         /// </summary>
         [SendToIMLGraph,HideInInspector]
-        public string UserIDString = "userID/SceneName";
+        public string UserIDString;
 
     #region Right Hand Settings
     [SendToIMLGraph,HideInInspector]
@@ -137,7 +137,7 @@ namespace MECM
         /// Used to interface with the user details SO (get persistent userID)
         /// </summary>
         // private UserDetailsController m_UserDetailsCtrlr;
-        private UserDetails userDetails;
+        private DashboardRefs dashboardRefs;
 
         /// <summary>
         /// Handles uploads to firebase server
@@ -184,12 +184,19 @@ namespace MECM
         {
             // Load UserID (used in graph for data storage and identification of training set)
             // m_UserDetailsCtrlr = FindObjectOfType<UserDetailsController>();
-            userDetails = (UserDetails)Resources.Load<UserDetails>("ScriptableObjects/UserDetailsObject");
-            if (userDetails != null)
+            dashboardRefs = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
+            if (dashboardRefs != null)
             {
-                UserIDInt = userDetails.UserID;
-                // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
+                UserIDInt = dashboardRefs.userID;
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+                m_UploadData = dashboardRefs.uploadSettings.enable;
+                FirebaseProjectID = dashboardRefs.uploadSettings.firebaseStorageID;
+
+                m_ToggleCollectDataEvent = dashboardRefs.trackingSettings.TrackOnSceneStart;
+                // UserIDInt = userDetails.UserID;
+                // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
+                // UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
             // Get reference to firebase controller
             // m_FirebaseController = FindObjectOfType<FirebaseController>();
@@ -208,19 +215,6 @@ namespace MECM
                         RightHandGrabbingExtractor = grabbingExtractor;
                 }
             }
-            UploadInfoScriptableObject uploadInfo = Resources.Load<UploadInfoScriptableObject>("ScriptableObjects/UploadInfoObject");
-            if(uploadInfo != null)
-            {
-               m_UploadData = uploadInfo.UploadEnabled;
-               FirebaseProjectID = uploadInfo.FirebaseID;
-            }
-
-            TrackersInfoScriptableObject trackingInfo = Resources.Load<TrackersInfoScriptableObject>("ScriptableObjects/TrackersInfoObject");
-            if(trackingInfo != null)
-            {
-                m_ToggleCollectDataEvent = trackingInfo.StartTrackingOnSceneStart;
-            }
-
         }
 
         // Called once in first frame

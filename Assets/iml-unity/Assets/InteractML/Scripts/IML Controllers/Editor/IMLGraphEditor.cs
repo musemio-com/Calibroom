@@ -104,6 +104,13 @@ namespace InteractML
             {
                 return base.GetNodeMenuName(type).Replace("InteractML", "");
             }
+
+            // Node to hold several single training Examples
+            if (type.PrettyName() == "InteractML.TraningDataSetsNode")
+            {
+                return base.GetNodeMenuName(type).Replace("InteractML", "");
+            }
+
             if (type.PrettyName() == "InteractML.TextNote")
             {
                 return base.GetNodeMenuName(type).Replace("InteractML", "");
@@ -176,7 +183,19 @@ namespace InteractML
             {
                 return base.GetNodeMenuName(type).Replace("InteractML", "");
             }
-            
+
+#if MECM
+            // This nodes are exclusive to the MECM that Carlos is working on part-time. It won't compile on any other InteractML version
+            if (type.PrettyName() == "MECM.BrainHQDataSetNode")
+            {
+                return base.GetNodeMenuName(type).Replace("InteractML", "");
+            }
+            if (type.PrettyName() == "MECM.MECMTrainingDataSet")
+            {
+                return base.GetNodeMenuName(type).Replace("InteractML", "");
+            }
+#endif
+
             else return null;
         }
 

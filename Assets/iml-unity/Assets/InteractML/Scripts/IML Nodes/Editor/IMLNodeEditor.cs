@@ -151,8 +151,19 @@ namespace InteractML
         /// </summary>
         protected float nodeSpace;
 
-        
 
+        /// <summary>
+        /// Total time to show a warning
+        /// </summary>
+        protected float showWarningTime = 200f;
+        /// <summary>
+        /// Current time when showing a warning (will disappear when reaching to 0f)
+        /// </summary>
+        protected float showWarningTimeCurrent;
+        /// <summary>
+        /// Text to show in the warning
+        /// </summary>
+        protected string warningText;
 
         #endregion
         #region Variables MachineLearningSystemNodes
@@ -208,7 +219,7 @@ namespace InteractML
                 m_NodeSkin = Resources.Load<GUISkin>("GUIStyles/InteractMLGUISkin");
 
             IMLGraph m_IMLGraph = target.graph as IMLGraph;
-            if (!m_IMLGraph.IsGraphRunning && Event.current.type == EventType.Repaint)
+            if ((m_IMLGraph == null) || (!m_IMLGraph.IsGraphRunning && Event.current.type == EventType.Repaint))
             {
                 HeaderRect.height = 500;
                 HeaderRect.width = 800;
@@ -223,8 +234,10 @@ namespace InteractML
                 if (UIReskinAuto)
                 {
                     // Get references
-                    m_IMLNode = target as IMLNode;
-                    m_IMLNodeSerialized = new SerializedObject(m_IMLNode);
+                    if (m_IMLNode == null)
+                        m_IMLNode = target as IMLNode;
+                    if (m_IMLNodeSerialized == null)
+                        m_IMLNodeSerialized = new SerializedObject(m_IMLNode);
 
                     NodeWidth = this.GetWidth();
 
@@ -276,7 +289,7 @@ namespace InteractML
         public override void OnBodyGUI()
         {
             IMLGraph graph = this.target.graph as IMLGraph;
-            if (graph.IsGraphRunning)
+            if (graph != null && graph.IsGraphRunning)
             {
                 // If we want to reskin the node
                 if (UIReskinAuto)
@@ -300,6 +313,26 @@ namespace InteractML
                     // if nodespace is not set in the node editor sets it to 100 
                     if (nodeSpace == 0)
                         nodeSpace = 100;
+
+                    // Draw warning box if needed
+                    if (NodeDebug.Logs.ContainsKey(m_IMLNode))
+                    {
+
+                        // Get text
+                        NodeDebug.Logs.TryGetValue(m_IMLNode, out warningText);
+                        ShowWarning(warningText);
+                        // time up for when to show a warning
+                        showWarningTimeCurrent++;
+                        // If we have reached the max amount of time
+                        if (showWarningTimeCurrent > showWarningTime)
+                        {
+                            // Reset timer
+                            showWarningTimeCurrent = 0f;
+                            // Delete warning text from debug
+                            NodeDebug.DeleteLogWarning(m_IMLNode);
+                        }
+                    }
+
                     GUILayout.Space(nodeSpace);
 
                     // Draw help button
