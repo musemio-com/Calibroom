@@ -23,8 +23,6 @@ public class VrSceneTransition : MonoBehaviour
     {
         SceneManager.activeSceneChanged -= OnSceneLoaded;
     }
-
-
     public void loadMECMScene()
     {
         DashboardRefs dashboardRefs = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
@@ -36,8 +34,6 @@ public class VrSceneTransition : MonoBehaviour
     {
         LoadScene("sceneEnd");
     }
-
-
     public void LoadScene(int sceneIndex, Action callback = null, bool noFadeOut = false)
     {
         Scene scene = SceneManager.GetSceneByBuildIndex(sceneIndex);

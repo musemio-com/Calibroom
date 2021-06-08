@@ -14,7 +14,7 @@ public class UploadManager : MonoBehaviour
 {
     public static UploadManager Instance;
 
-    UploadInfoScriptableObject uploadInfo;
+    DashboardRefs uploadInfo;
     bool fileSent = false;
     string PathToUpload;
     public enum UploadRESTOptions { DotNetWebRequest, UnityWebRequest, WWW }
@@ -24,7 +24,8 @@ public class UploadManager : MonoBehaviour
         Instance = this;
     }
     private void Start() {
-        uploadInfo = Resources.Load<UploadInfoScriptableObject>("UploadInfoObject");
+            uploadInfo = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
+            Debug.Log(uploadInfo.uploadSettings.firebaseStorageID);
     }
     public void UploadToServer(string localFilePath, string serverFilePath, bool useTasks = true)
     {
@@ -106,7 +107,7 @@ public class UploadManager : MonoBehaviour
             
             // HTTP
             //string firebaseProjectID = "fir-test-b6418.appspot.com"; // this'll be retrieved from a scriptable object
-            string firebaseProjectID = uploadInfo.FirebaseID;
+            string firebaseProjectID = uploadInfo.uploadSettings.firebaseStorageID;
             string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
                 firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
             string contentType = "application/force-download";
@@ -267,7 +268,7 @@ public class UploadManager : MonoBehaviour
 
             // HTTP
             // string firebaseProjectID = "fir-test-b6418.appspot.com";
-                string firebaseProjectID = uploadInfo.FirebaseID;
+                string firebaseProjectID = uploadInfo.uploadSettings.firebaseStorageID;
                 string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
                     firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
                 string contentType = "application/force-download";

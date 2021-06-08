@@ -62,7 +62,7 @@ namespace InteractML
         private List<GameObjectNode> m_GameObjectNodeList;
         public List<IFeatureIML> FeatureNodesList;
         [SerializeField, HideInInspector]
-        private List<ScriptNode> m_ScriptNodesList;
+        public List<ScriptNode> m_ScriptNodesList;
         //[SerializeField, HideInInspector]
         private InteractML.CustomControllers.InputSetUp m_inputSetUp;
         [SerializeField, HideInInspector]
@@ -2188,6 +2188,10 @@ namespace InteractML
                             m_MonoBehavioursPerScriptNode.Add(gameComponent, scriptNode);
                             // Save reference in our list of clones
                             m_MonobehaviourClones.Add(gameComponent);
+
+                            scriptNode.SetScript(gameComponent);// I added this
+                            if (!m_ScriptNodesList.Contains(scriptNode)) // I added this
+                                m_ScriptNodesList.Add(scriptNode);// I added this
                         }
                     }
                 }
@@ -2280,6 +2284,7 @@ namespace InteractML
 #endif
 
                 }
+
             }
             return nodeAdded;
         }
