@@ -643,7 +643,6 @@ namespace InteractML
                     //Debug.Log("Load training set from disk called! FolderDataPath: " + m_FolderDataPathName);
 
                     string subFolderPath = CheckOrCreateFoldersAndSubfoldersTrainingSet();
-
                     // We calculate the entire input/output list file name
                     auxFilePath = subFolderPath + "/" + m_FileTrainingSetName + "_Inputs_Outputs" + m_FileExtension;
                     //Debug.Log("File to load is: >>> " + auxFilePath);

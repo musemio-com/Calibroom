@@ -253,6 +253,7 @@ namespace MECM
                 // If we have stopped collecting data and we need to upload data...
                 if (!CollectingData && m_UploadData)
                 {
+                    Debug.Log("UPLOADING...");
                     string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                     // Upload files from our IDString directory to firebase server
                     //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
