@@ -20,8 +20,9 @@ public class DashboardEditorWindow : EditorWindow
     AnimBool TriggerTrackWithObjs;
     GameObject StartTrackObject;
     GameObject StopTrackObject;
-
     AnimBool UploadData;
+
+    DataCollectionController dataController;
 
 
 
@@ -221,15 +222,15 @@ public class DashboardEditorWindow : EditorWindow
 
         if(TriggerTrackWithObjs.target)
         {
-            // StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> DataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
-            // StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> DataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
+            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
+            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
         }
         if(UploadData.target)
         {
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
-        //SaveRefs();
+        SaveRefs();
     }
     void SaveRefs()
     {
@@ -257,23 +258,94 @@ public class DashboardEditorWindow : EditorWindow
     }
     IEnumerator SetupPorts()
     {
-        GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));;
+        GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));
         GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
+        dataController = DataController.GetComponent<DataCollectionController>();
 
-        // IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData[0].GameComponent = DataController.GetComponent<DataCollectionController>();
+
 
         yield return new WaitForSeconds(2f);
-
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
 
 
-        ScriptNode dataNode = new ScriptNode();
+
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
+        //ScriptNode dataNode = new ScriptNode();
+        //dataNode.SetScript(dataController);
+        //IMLSystem.GetComponent<IMLComponent>().AddScriptNode(dataNode);
+        ////IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode.Add(dataController, dataNode);
+        //dataNode.UpdatePorts();
+        //IMLSystem.GetComponent<IMLComponent>().FetchDataFromMonobehavioursSubscribed();
+        //dataNode.position.x = 120;
+        //dataNode.position.y = -40;
+        //var ToggleDataCollectionOutPort = dataNode.GetOutputPort("ToggleDataCollection");
+        //var userIdOutPort = dataNode.GetPort("UserIDInt");
+        //var leftGrabOutPort = dataNode.GetPort("LeftHandGrabbing");
+        //var rightGrabOutPort = dataNode.GetPort("RightHandGrabbing");
+
+        //var ml_GrabDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "50740dc4-667d-43d3-8c8b-7812d605ecc9");
+        //var GrabToggleRectPort = ml_GrabDataNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_PosDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "b2accf43-eb94-4f24-be68-bffa39e2ea08");
+        //var PosToggleRecPort = ml_PosDataNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_PosVelNode =  IMLGraph.nodes.First(x => (x as IMLNode).id == "59188512-88bb-4f3b-a661-e904a1d7bfb1");
+        //var PostVelToggleRecPort = ml_PosVelNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_PosAccNode =  IMLGraph.nodes.First(x => (x as IMLNode).id == "d1b74749-7cfd-4c68-85e2-6c4cbf758ad1");
+        //var PosAccToggleRecPort = ml_PosAccNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_RotDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "194dccce-2f98-419b-807f-d01c74767790");
+        //var RotToggleRecPort = ml_RotDataNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_RotVelNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "57469dcc-ac0f-4a14-8c85-29c2019db115");
+        //var RotVelToggleRecPort = ml_RotVelNode.GetPort("ToggleRecordingInputBoolPort");
+        //var ml_RotAccNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "efe83634-706e-4f18-b909-9982df9c2cc1");
+        //var RotAccToggleRecPort = ml_RotAccNode.GetPort("ToggleRecordingInputBoolPort");
+
+        //ToggleDataCollectionOutPort.Connect(PosToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(PostVelToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(PosAccToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(RotToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(RotVelToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(RotAccToggleRecPort);
+        //ToggleDataCollectionOutPort.Connect(GrabToggleRectPort);
+
+
+        //var IntGrabNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "6b9b45a4-413e-48e7-bdd2-418ad5778fe6");
+        //var IntGrabPort = IntGrabNode.GetPort("m_In");
+        //var IntPosNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "0b2698e5-5434-45db-9863-545c915054b2");
+        //var IntPosPort = IntPosNode.GetPort("m_In");
+        //var IntPosVelNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "a7a28c2d-6f60-4ba3-92f6-69a3d276eb2d");
+        //var IntPosVelPort = IntPosVelNode.GetPort("m_In");
+        //var IntPosAccNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "10b38843-f787-4e90-b7f9-9eb2370e4885");
+        //var IntPosAccPort = IntPosAccNode.GetPort("m_In");
+        //var IntRotNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "5df11976-f51b-4241-a5e2-3b7352bec47b");
+        //var IntRotPort = IntRotNode.GetPort("m_In");
+        //var IntRotVelNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "cee2b392-7610-4adf-b50c-ef5d365337d9");
+        //var IntRotVelPort = IntRotVelNode.GetPort("m_In");
+        //var IntRotAccNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "38780414-ad7f-43f4-a907-1b9d9375149c");
+        //var IntRotAccPort = IntRotAccNode.GetPort("m_In");
+
+        //userIdOutPort.Connect(IntGrabPort);
+        //userIdOutPort.Connect(IntPosPort);
+        //userIdOutPort.Connect(IntPosVelPort);
+        //userIdOutPort.Connect(IntPosAccPort);
+        //userIdOutPort.Connect(IntRotPort);
+        //userIdOutPort.Connect(IntRotVelPort);
+        //userIdOutPort.Connect(IntRotAccPort);
+
+        //var LeftBoolGrabNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "222ec0ae-d030-44a7-ad11-3f34cd4351e9");
+        //var LeftBoolGrabPort = LeftBoolGrabNode.GetPort("m_In");
+        //var RightBoolGrabNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "e05e82b3-4801-4ec2-8e1d-ab01343b09d5");
+        //var RightBoolGrabPort = RightBoolGrabNode.GetPort("m_In");
+
+        //leftGrabOutPort.Connect(LeftBoolGrabPort);
+        //rightGrabOutPort.Connect(RightBoolGrabPort);
+
+        
 
         GameObjectNode _CamNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(HMD);
-        _CamNode.position.x = -504;
-        _CamNode.position.y = -1224;
+        _CamNode.position.x = -456;
+        _CamNode.position.y = -1208;
         var _CamOutPort = _CamNode.GetPort("GameObjectDataOut");
         var mainCameraPositionNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "82e72311-ad4c-4813-a73c-f7a92fd550de");
         var mainCameraRotationNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "7159019a-48c4-4529-8008-868e19386616");
@@ -284,8 +356,8 @@ public class DashboardEditorWindow : EditorWindow
 
 
         GameObjectNode _LeftHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(LeftController);
-        _LeftHandNode.position.x = -504;
-        _LeftHandNode.position.y = -1650;
+        _LeftHandNode.position.x = -456;
+        _LeftHandNode.position.y = -856;
         var LeftOutPort = _LeftHandNode.GetPort("GameObjectDataOut");
         var leftHandPositionNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "4a97ee43-597d-4582-ba65-6134853ecfd2");
         var leftHandRotationNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "8173f688-5ccc-4771-8d2d-bd64163bfb39");
@@ -296,8 +368,8 @@ public class DashboardEditorWindow : EditorWindow
 
 
         GameObjectNode _RightHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(RightController);
-        _RightHandNode.position.x = -504;
-        _RightHandNode.position.y = -1850;
+        _RightHandNode.position.x = -456;
+        _RightHandNode.position.y = -504;
         var RightOutPort = _RightHandNode.GetPort("GameObjectDataOut");
         var rightHandPositionNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "07dbcfee-f04b-446e-bea8-59534484fe0f");
         var rightHandRotationNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "bbeda9f7-a97c-4686-84f8-40201c246d3f");
@@ -305,24 +377,5 @@ public class DashboardEditorWindow : EditorWindow
         var rightRotationPort = rightHandRotationNode.GetPort("GameObjectDataIn");
         RightOutPort.Connect(rightPositionPort);
         RightOutPort.Connect(rightRotationPort);
-
-
-        // GameObjectNode _LNode = new GameObjectNode();
-        // _LNode.SetGameObject(LeftController);
-        // IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_LNode);
-        // var _LOutPort = _LNode.GetPort("GameObjectDataOut");
-        // var LPositionNode = IMLGraph.nodes.First(x=>(x as IMLNode).id == "4a97ee43-597d-4582-ba65-6134853ecfd2");
-        // var _LPositionPort = LPositionNode.GetPort("GameObjectDataIn");
-        // _LOutPort.Connect(_LPositionPort);
-
-        // GameObjectNode _RNode = new GameObjectNode();
-        // _RNode.SetGameObject(RightController);
-        // IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_RNode);
-        // var _ROutPort = _RNode.GetPort("GameObjectDataOut");
-        // var RPositionNode = IMLGraph.nodes.First(x=>(x as IMLNode).id == "07dbcfee-f04b-446e-bea8-59534484fe0f");
-        // var _RPositionPort = RPositionNode.GetPort("GameObjectDataIn");
-        // _ROutPort.Connect(_RPositionPort);
     }
 }
-
-//(graph as IMLGraph).nodes.First(x => (x as GameObjectNode).GameObjectDataOut.Equals(ourGameObject));

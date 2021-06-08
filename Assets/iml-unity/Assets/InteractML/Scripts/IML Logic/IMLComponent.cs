@@ -125,7 +125,7 @@ namespace InteractML
         /// Dictionary to hold references of components with IML Data and which scriptNode manages them
         /// </summary>
         [SerializeField, HideInInspector]
-        private MonobehaviourScriptNodeDictionary m_MonoBehavioursPerScriptNode;
+        public MonobehaviourScriptNodeDictionary m_MonoBehavioursPerScriptNode;
         /// <summary>
         /// Clones of a monobehaviour subscribed to ComponentsWithIMLData that is marked as "controlClones'
         /// </summary>
@@ -1026,7 +1026,7 @@ namespace InteractML
         /// <summary>
         /// Gets and sets the data marked with the "SendToIMLController" and "PullFromIMLController" attributes in Monobehaviours subscribed
         /// </summary>
-        private void FetchDataFromMonobehavioursSubscribed()
+        public void FetchDataFromMonobehavioursSubscribed()
         {
             if (ComponentsWithIMLData == null || ComponentsWithIMLData.Count == 0)
             {

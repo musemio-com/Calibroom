@@ -50,18 +50,16 @@ MonoBehaviour:
     - {fileID: 0}
     m_values:
     - {fileID: 0}
-  m_GameObjectNodeList: []
-  m_ScriptNodesList:
-  - {fileID: 4437612054814885165, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  m_GameObjectNodeList:
+  - {fileID: -8605811765667474474, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -389624283621742450, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 4377346407317551911, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  m_ScriptNodesList: []
   m_CustomControllerList: []
   FeaturesUpdated: 0
-  ComponentsWithIMLData:
-  - GameComponent: {fileID: 8305867299306346128, guid: 798e43d2f50525542b268ea706b34c11, type: 3}
-    ControlClones: 0
+  ComponentsWithIMLData: []
   m_MonoBehavioursPerScriptNode:
-    m_keys:
-    - {fileID: 8305867299306346128, guid: 798e43d2f50525542b268ea706b34c11, type: 3}
-    m_values:
-    - {fileID: 4437612054814885165, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    m_keys: []
+    m_values: []
   m_MonobehaviourClones: []
   universalInputActive: 0
