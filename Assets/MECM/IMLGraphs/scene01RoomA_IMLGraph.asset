@@ -274,7 +274,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 5
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
@@ -525,7 +525,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &-6372562507217604362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,7 +884,7 @@ MonoBehaviour:
   id: 1b69a1d6-6d90-4f86-ae91-5fe398119bcb
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -162528
+  ScriptHashCode: 24116
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -2010,7 +2010,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &-89334033706042137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   id: 7f756955-69c8-4e58-8574-ce212ce578cb
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
+  state: 1
   GOHashCode: 24852
   CreatedDuringPlaymode: 0
 --- !u!114 &1032819020571496605
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 0
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &2971309970561483842
 MonoBehaviour:
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 1
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &3016547567234896727
 MonoBehaviour:
@@ -2861,7 +2861,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 4
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &3399067939314817978
 MonoBehaviour:
@@ -2925,7 +2925,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &3427558293763434188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3303,7 +3303,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 3
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &5194999953489358972
 MonoBehaviour:
@@ -3545,7 +3545,7 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 0
+  InputConnected: 1
   Counter: 3
   Count: 5
   ToggleSwitches: 01
@@ -4001,7 +4001,7 @@ MonoBehaviour:
   RecordDataKey: 0
   showWarning: 0
   canCollect: 1
-  listNo: 2
+  listNo: 6
   SubFolderDataPath: 
 --- !u!114 &8528735321340048088
 MonoBehaviour:
@@ -4039,7 +4039,7 @@ MonoBehaviour:
   id: 8a522993-3716-48ac-bd80-5d3eae53f635
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
+  state: 1
   GOHashCode: 24856
   CreatedDuringPlaymode: 0
 --- !u!114 &8962349475366729812
@@ -4078,6 +4078,6 @@ MonoBehaviour:
   id: 4cdea780-7374-4b19-bd7d-2e4b100d4dc5
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
+  state: 1
   GOHashCode: 24854
   CreatedDuringPlaymode: 0
