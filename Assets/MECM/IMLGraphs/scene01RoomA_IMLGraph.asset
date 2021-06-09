@@ -1,347 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8955461746503033413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e955aaefcc0cc3438b670a24cf66a3a, type: 3}
-  m_Name: DataCollectionController (Script)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 424, y: 104}
-  ports:
-    keys:
-    - ToggleDataCollection
-    - ToggleTrainModel
-    - ToggleRunModel
-    - UserIDInt
-    - UserIDString
-    - _R_UsePosition
-    - _R_UsePostionVelocity
-    - _R_UsePositionAcceleration
-    - _R_UseRotation
-    - _R_UseRotationVelocity
-    - _R_UseRotationAcceleration
-    - _R_UseGrabbedObject
-    - _L_UsePosition
-    - _L_UsePostionVelocity
-    - _L_UsePositionAcceleration
-    - _L_UseRotation
-    - _L_UseRotationVelocity
-    - _L_UseRotationAcceleration
-    - _L_UseGrabbedObject
-    - _HMD_UsePosition
-    - _HMD_UsePostionVelocity
-    - _HMD_UsePositionAcceleration
-    - _HMD_UseRotation
-    - _HMD_UseRotationVelocity
-    - _HMD_UseRotationAcceleration
-    - LeftHandGrabbing
-    - RightHandGrabbing
-    values:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2934718194934204058}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 2971309970561483842}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 3016547567234896727}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 7187650241758250611}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: 4999826832894318360}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: -8361734387492210087}
-        reroutePoints: []
-      - fieldName: ToggleRecordingInputBoolPort
-        node: {fileID: -5340486417022691672}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDInt
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -3575440482919122759}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5236977748829002683}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5062080398253273272}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -7666064903572236465}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -5217429012867526943}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: 6735675760645403819}
-        reroutePoints: []
-      - fieldName: m_In
-        node: {fileID: -1240539982526520871}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDString
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePosition
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePostionVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePositionAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotation
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseGrabbedObject
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePosition
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePostionVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePositionAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotation
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseGrabbedObject
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePosition
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePostionVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePositionAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotation
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationVelocity
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationAcceleration
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: LeftHandGrabbing
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 6615940582139774334}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: RightHandGrabbing
-      _node: {fileID: -8955461746503033413}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 5775310249324294137}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-  id: 7762c3eb-24d0-406a-9e1d-9b3498917d67
-  numberInComponentList: -1
-  m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -1330076
-  m_PortsPerFieldInfo:
-    m_keys: []
-  CreatedDuringPlaymode: 0
 --- !u!114 &-8777488842248126080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,10 +67,7 @@ MonoBehaviour:
       _node: {fileID: -8455490087892766180}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: -8279165069708148718}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -435,7 +90,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -566,10 +221,7 @@ MonoBehaviour:
       _node: {fileID: -8361734387492210087}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -640,45 +292,6 @@ MonoBehaviour:
   note: 'VELOCITIES POSITION
 
 '
---- !u!114 &-8279165069708148718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43fc602e16b045142bc5c26d2ce145a6, type: 3}
-  m_Name: Main Camera (GameObject)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -456, y: -1208}
-  ports:
-    keys:
-    - GameObjectDataOut
-    values:
-    - _fieldName: GameObjectDataOut
-      _node: {fileID: -8279165069708148718}
-      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataIn
-        node: {fileID: -8455490087892766180}
-        reroutePoints: []
-      - fieldName: GameObjectDataIn
-        node: {fileID: -6468938059255695432}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  id: 709ed825-fb7c-4618-bf66-6d05b03467ef
-  numberInComponentList: -1
-  GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 33350
-  CreatedDuringPlaymode: 0
 --- !u!114 &-7940001765640312504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,10 +337,7 @@ MonoBehaviour:
       _node: {fileID: -7666064903572236465}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -752,8 +362,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -867,10 +477,7 @@ MonoBehaviour:
       _node: {fileID: -6468938059255695432}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: -8279165069708148718}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -893,7 +500,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -906,7 +513,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &-6372562507217604362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,10 +649,7 @@ MonoBehaviour:
       _node: {fileID: -5340486417022691672}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -1093,45 +697,6 @@ MonoBehaviour:
   canCollect: 1
   listNo: 6
   SubFolderDataPath: 
---- !u!114 &-5260861273280013506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43fc602e16b045142bc5c26d2ce145a6, type: 3}
-  m_Name: RightHand Controller (GameObject)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -456, y: -504}
-  ports:
-    keys:
-    - GameObjectDataOut
-    values:
-    - _fieldName: GameObjectDataOut
-      _node: {fileID: -5260861273280013506}
-      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataIn
-        node: {fileID: 4986208765111962427}
-        reroutePoints: []
-      - fieldName: GameObjectDataIn
-        node: {fileID: 3399067939314817978}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  id: 117edd0a-23f0-4efe-9a2b-d8a25986cc68
-  numberInComponentList: -1
-  GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 33346
-  CreatedDuringPlaymode: 0
 --- !u!114 &-5241599210727268339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,10 +742,7 @@ MonoBehaviour:
       _node: {fileID: -5236977748829002683}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1205,8 +767,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1234,10 +796,7 @@ MonoBehaviour:
       _node: {fileID: -5217429012867526943}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1262,8 +821,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1291,10 +850,7 @@ MonoBehaviour:
       _node: {fileID: -5062080398253273272}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1319,8 +875,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1374,7 +930,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1439,7 +995,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1501,7 +1057,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1540,10 +1096,7 @@ MonoBehaviour:
       _node: {fileID: -3575440482919122759}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1568,8 +1121,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1619,10 +1172,7 @@ MonoBehaviour:
       _node: {fileID: -1240539982526520871}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1647,8 +1197,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1721,7 +1271,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1758,10 +1308,7 @@ MonoBehaviour:
       _node: {fileID: -333983464416495331}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: 2355475445047690174}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1784,7 +1331,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1797,7 +1344,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &-89334033706042137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,12 +1432,7 @@ MonoBehaviour:
   - {fileID: -5340486417022691672}
   - {fileID: -3575440482919122759}
   - {fileID: -5241599210727268339}
-  - {fileID: -8955461746503033413}
-  - {fileID: -8279165069708148718}
-  - {fileID: 2355475445047690174}
-  - {fileID: -5260861273280013506}
-  - {fileID: 4097028763986159928}
-  SceneComponent: {fileID: 4630428434307941083, guid: c696dfbe45d4ce64c8ba573eb91c3240, type: 3}
+  SceneComponent: {fileID: 0}
 --- !u!114 &1032819020571496605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,10 +1456,7 @@ MonoBehaviour:
       _node: {fileID: 1032819020571496605}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: 2355475445047690174}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1940,7 +1479,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -1953,45 +1492,6 @@ MonoBehaviour:
     - 0
     - 0
     - 0
---- !u!114 &2355475445047690174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43fc602e16b045142bc5c26d2ce145a6, type: 3}
-  m_Name: LeftHand Controller (GameObject)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -456, y: -856}
-  ports:
-    keys:
-    - GameObjectDataOut
-    values:
-    - _fieldName: GameObjectDataOut
-      _node: {fileID: 2355475445047690174}
-      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataIn
-        node: {fileID: 1032819020571496605}
-        reroutePoints: []
-      - fieldName: GameObjectDataIn
-        node: {fileID: -333983464416495331}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  id: e8a1c2ac-93a5-4862-ba92-bcae4f929b90
-  numberInComponentList: -1
-  GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 33348
-  CreatedDuringPlaymode: 0
 --- !u!114 &2487219081868204845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,7 +1563,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2125,7 +1625,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2259,10 +1759,7 @@ MonoBehaviour:
       _node: {fileID: 2934718194934204058}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -2429,10 +1926,7 @@ MonoBehaviour:
       _node: {fileID: 2971309970561483842}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -2599,10 +2093,7 @@ MonoBehaviour:
       _node: {fileID: 3016547567234896727}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -2674,10 +2165,7 @@ MonoBehaviour:
       _node: {fileID: 3399067939314817978}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: -5260861273280013506}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -2700,7 +2188,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2713,7 +2201,7 @@ MonoBehaviour:
     - -0
     - -0
     - 1
-  GameObjInputMissing: 0
+  GameObjInputMissing: 1
 --- !u!114 &3427558293763434188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,7 +2248,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2776,543 +2264,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
---- !u!114 &4097028763986159928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e955aaefcc0cc3438b670a24cf66a3a, type: 3}
-  m_Name: DataCollectionController (Script)
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
-  ports:
-    keys:
-    - ToggleDataCollection
-    - ToggleTrainModel
-    - ToggleRunModel
-    - UserIDInt
-    - UserIDString
-    - _R_UsePosition
-    - _R_UsePostionVelocity
-    - _R_UsePositionAcceleration
-    - _R_UseRotation
-    - _R_UseRotationVelocity
-    - _R_UseRotationAcceleration
-    - _R_UseGrabbedObject
-    - _L_UsePosition
-    - _L_UsePostionVelocity
-    - _L_UsePositionAcceleration
-    - _L_UseRotation
-    - _L_UseRotationVelocity
-    - _L_UseRotationAcceleration
-    - _L_UseGrabbedObject
-    - _HMD_UsePosition
-    - _HMD_UsePostionVelocity
-    - _HMD_UsePositionAcceleration
-    - _HMD_UseRotation
-    - _HMD_UseRotationVelocity
-    - _HMD_UseRotationAcceleration
-    - LeftHandGrabbing
-    - RightHandGrabbing
-    values:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDInt
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDString
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseGrabbedObject
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseGrabbedObject
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: LeftHandGrabbing
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: RightHandGrabbing
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-  id: c129b45c-f45b-48f2-9d40-144a29fe98a4
-  numberInComponentList: -1
-  m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -1330076
-  m_PortsPerFieldInfo:
-    m_keys:
-    - _fieldName: ToggleDataCollection
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleTrainModel
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: ToggleRunModel
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDInt
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: UserIDString
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _R_UseGrabbedObject
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _L_UseGrabbedObject
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePosition
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePostionVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UsePositionAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotation
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationVelocity
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: _HMD_UseRotationAcceleration
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: LeftHandGrabbing
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: RightHandGrabbing
-      _node: {fileID: 4097028763986159928}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-  CreatedDuringPlaymode: 0
 --- !u!114 &4238593749806582177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3384,7 +2335,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3421,10 +2372,7 @@ MonoBehaviour:
       _node: {fileID: 4986208765111962427}
       _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: GameObjectDataOut
-        node: {fileID: -5260861273280013506}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -3447,7 +2395,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3578,10 +2526,7 @@ MonoBehaviour:
       _node: {fileID: 4999826832894318360}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1
@@ -3679,7 +2624,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3739,7 +2684,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3842,10 +2787,7 @@ MonoBehaviour:
       _node: {fileID: 5775310249324294137}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: RightHandGrabbing
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -3870,8 +2812,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3925,7 +2867,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3962,10 +2904,7 @@ MonoBehaviour:
       _node: {fileID: 6615940582139774334}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: LeftHandGrabbing
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -3990,8 +2929,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -4064,10 +3003,7 @@ MonoBehaviour:
       _node: {fileID: 6735675760645403819}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: UserIDInt
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -4092,8 +3028,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 5
+  InputConnected: 0
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -4144,7 +3080,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -4276,10 +3212,7 @@ MonoBehaviour:
       _node: {fileID: 7187650241758250611}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: ToggleDataCollection
-        node: {fileID: -8955461746503033413}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 1

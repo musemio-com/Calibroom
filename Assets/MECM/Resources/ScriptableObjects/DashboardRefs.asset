@@ -51,4 +51,4 @@ MonoBehaviour:
       StopTracking: {fileID: 0}
   uploadSettings:
     enable: 0
-    firebaseStorageID: samples-fe455.appspot.com
+    firebaseStorageID: 

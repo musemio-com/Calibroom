@@ -8,7 +8,7 @@ namespace MECM
     /// <summary>
     /// Controls when data starts being collected and when it stops being collected
     /// </summary>
-    [ExecuteAlways]
+    //[ExecuteAlways]
     public class DataCollectionController : MonoBehaviour
     {
 
@@ -22,8 +22,8 @@ namespace MECM
         /// <summary>
         /// Events that fires the toggle data collection on/off (used outside of IMLGraph)
         /// </summary>
-        [SerializeField]
-        private bool m_ToggleCollectDataEvent;
+        //[SerializeField]
+        //private bool m_ToggleCollectDataEvent;
 
         /// <summary>
         /// Toggles data collection on/off (used in IMLGraph)
@@ -35,7 +35,7 @@ namespace MECM
         /// <summary>
         /// Events that fires the toggle run model on/off (used outside of IMLGraph)
         /// </summary>
-        [SerializeField]
+        //[SerializeField]
         private bool m_ToggleTrainModelEvent;
         /// <summary>
         /// Toggles run model on/off (used in IMLGraph)
@@ -47,7 +47,7 @@ namespace MECM
         /// <summary>
         /// Events that fires the toggle run model on/off (used outside of IMLGraph)
         /// </summary>
-        [SerializeField]
+        //[SerializeField]
         private bool m_ToggleRunModelEvent;
         /// <summary>
         /// Toggles run model on/off (used in IMLGraph)
@@ -168,7 +168,7 @@ namespace MECM
         /// <summary>
         /// Upload data after collecting?
         /// </summary>
-        [SerializeField, Header("Upload Options")]
+        //[SerializeField, Header("Upload Options")]
         private bool m_UploadData = false;
         [SerializeField]
         private bool m_UseTasksOnUpload = true;
@@ -193,7 +193,7 @@ namespace MECM
                 m_UploadData = dashboardRefs.uploadSettings.enable;
                 FirebaseProjectID = dashboardRefs.uploadSettings.firebaseStorageID;
 
-                m_ToggleCollectDataEvent = dashboardRefs.trackingSettings.TrackOnSceneStart;
+                CollectingData = dashboardRefs.trackingSettings.TrackOnSceneStart;
                 // UserIDInt = userDetails.UserID;
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 // UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -228,10 +228,10 @@ namespace MECM
         void Update()
         {
             // If we reach to this script with the toggle true, make sure to restart it
-            if (ToggleDataCollection)
-            {
-                ToggleDataCollection = false;
-            }
+            //if (ToggleDataCollection)
+            //{
+            //    ToggleDataCollection = false;
+            //}
             if (ToggleTrainModel)
             {
                 ToggleTrainModel = false;
@@ -242,23 +242,36 @@ namespace MECM
             }
 
             // If the event was fired, flag data collection toggle to true
-            if (m_ToggleCollectDataEvent || ToggleDataCollection)
+            if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
                 ToggleDataCollection = true;
-                m_ToggleCollectDataEvent = false;
-                Debug.Log("Toggling data collection!");
+                //ToggleDataCollection = true;
+                //m_ToggleCollectDataEvent = false;
+                
 
                 // Update whether we are starting or stopping collecting data
-                CollectingData = !CollectingData;
+                //CollectingData = !CollectingData;
                 // If we have stopped collecting data and we need to upload data...
-                if (!CollectingData && m_UploadData)
-                {
-                    Debug.Log("UPLOADING...");
-                    string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
-                    // Upload files from our IDString directory to firebase server
-                    //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
-                    _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
-                }
+                //if (!CollectingData && m_UploadData)
+                //{
+                //    Debug.Log("UPLOADING...");
+                //    string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
+                //    // Upload files from our IDString directory to firebase server
+                //    //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                //    _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                //}
+            }
+            if (!CollectingData)
+                ToggleDataCollection = false;
+                
+
+            if (!CollectingData && m_UploadData)
+            {
+                Debug.Log("UPLOADING...");
+                string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
+                // Upload files from our IDString directory to firebase server
+                //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)
             {
@@ -283,7 +296,7 @@ namespace MECM
         {
             // Make sure to stop data collection if the data controller gets disabled
             if (CollectingData)
-                FireToggleCollectDataEvent();
+                StopCollectingData();//FireToggleCollectDataEvent();
         }
 
         #endregion
@@ -296,9 +309,19 @@ namespace MECM
         /// <returns></returns>
         public void FireToggleCollectDataEvent()
         {
-            m_ToggleCollectDataEvent = true;
+            //m_ToggleCollectDataEvent = true;
         }
 
+        public void StartCollectingData()
+        {
+            CollectingData = true;
+            Debug.Log("Starting data collection!");
+        }
+        public void StopCollectingData()
+        {
+            CollectingData = false;
+            Debug.Log("Stopping data collection!");
+        }
         /// <summary>
         /// Fires the Train model event (toggles on/off model inference)
         /// </summary>

@@ -542,7 +542,7 @@ namespace InteractML
         private static void SetUpIMLDataPath() 
         {
             // Set up training Examples subfolder 
-            m_SubFolderTrainingSetPathName = m_FolderDataPathName + "/Training_Examples";
+            m_SubFolderTrainingSetPathName = m_FolderDataPathName + "/Tracking_Data/" + PlayerPrefs.GetInt("UserID", 0);
             m_SubFolderModelPathName = m_FolderDataPathName + "/Models";
 
             m_AppDataPath = "";
@@ -894,7 +894,7 @@ namespace InteractML
         public static string GetTrainingExamplesDataPath()
         {
             SetUpIMLDataPath();
-            return Path.Combine(m_AppDataPath, m_FolderDataPathName, "Training_Examples");
+            return Path.Combine(m_AppDataPath, m_FolderDataPathName, "Tracking_Data/" + PlayerPrefs.GetInt("UserID", 0));
         }
 
         /// <summary>

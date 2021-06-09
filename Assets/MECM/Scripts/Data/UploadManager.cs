@@ -10,8 +10,9 @@ using UnityEngine.Networking;
 
 namespace MECM
 {
-public class UploadManager : MonoBehaviour
-{
+    [ExecuteAlways]
+    public class UploadManager : MonoBehaviour
+    {
     public static UploadManager Instance;
 
     DashboardRefs uploadInfo;

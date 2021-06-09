@@ -78,6 +78,7 @@ public class DashboardEditorWindow : EditorWindow
     }
     private void OnDisable()
     {
+        SaveRefs();
         //save editor refs in editor prefs    
     }
 
@@ -124,6 +125,7 @@ public class DashboardEditorWindow : EditorWindow
 
         GUILayout.Label("Tracking Settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
+        EditorGUI.BeginDisabledGroup(TriggerTrackWithObjs.target);
         trackOnSceneStart.target = EditorGUILayout.ToggleLeft("Start Tracking when scene starts", trackOnSceneStart.target);
         if (EditorGUILayout.BeginFadeGroup(trackOnSceneStart.faded))
         {
@@ -132,7 +134,8 @@ public class DashboardEditorWindow : EditorWindow
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
-
+        EditorGUI.EndDisabledGroup();
+        EditorGUI.BeginDisabledGroup(trackOnSceneStart.target);
         TriggerTrackWithObjs.target = EditorGUILayout.ToggleLeft("Use GameObjects to trigger manually", TriggerTrackWithObjs.target);
         if (EditorGUILayout.BeginFadeGroup(TriggerTrackWithObjs.faded))
         {
@@ -142,6 +145,7 @@ public class DashboardEditorWindow : EditorWindow
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
+        EditorGUI.EndDisabledGroup();
 
         EditorGUI.indentLevel--;
 
@@ -160,10 +164,10 @@ public class DashboardEditorWindow : EditorWindow
         }
         EditorGUILayout.EndFadeGroup();
         EditorGUI.indentLevel--;
-        GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
-        EditorGUI.indentLevel++;
-        taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
-        EditorGUI.indentLevel--;
+        //GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
+        //EditorGUI.indentLevel++;
+        //taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
+        //EditorGUI.indentLevel--;
         EditorGUILayout.Space();
         if (GUILayout.Button("Setup") && (RightController != null && LeftController != null && HMD != null))
         {
@@ -185,7 +189,10 @@ public class DashboardEditorWindow : EditorWindow
         GUILayout.Label("OUTPUT", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         EditorGUI.indentLevel++;
-
+        GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
+        EditorGUI.indentLevel++;
+        taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
+        EditorGUI.indentLevel--;
         EditorGUILayout.BeginVertical();
         if(GUILayout.Button(OverallScore))
         {
@@ -222,19 +229,19 @@ public class DashboardEditorWindow : EditorWindow
 
         if(TriggerTrackWithObjs.target)
         {
-            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
-            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().FireToggleCollectDataEvent());
+            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().StartCollectingData());
+            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().StopCollectingData());
         }
         if(UploadData.target)
         {
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
-        SaveRefs();
+
     }
     void SaveRefs()
     {
-        _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRef");
+        _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
         if(_ref == null)
         {
             _ref = ScriptableObject.CreateInstance<DashboardRefs>();
@@ -242,7 +249,7 @@ public class DashboardEditorWindow : EditorWindow
             AssetDatabase.SaveAssets();
         }
         _ref.userID = userID;
-
+        PlayerPrefs.SetInt("UserID", userID);
 
         _ref.rightHandController.ControllerRef = RightController;
         _ref.leftHandController.ControllerRef = LeftController;
