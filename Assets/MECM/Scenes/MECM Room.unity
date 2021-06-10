@@ -973,18 +973,18 @@ MonoBehaviour:
     - {fileID: 793838390}
     m_values:
     - {fileID: 0}
-    - {fileID: 8115495316729228897, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: 7304083376751117386, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: -1491920402368983122, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_GameObjectNodeList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 8115495316729228897, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 7304083376751117386, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: -1491920402368983122, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_ScriptNodesList:
-  - {fileID: -4059582550126628557, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -7921480252347291370, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -994,7 +994,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1695794662}
     m_values:
-    - {fileID: -4059582550126628557, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: -7921480252347291370, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &1105749949
@@ -1023,21 +1023,9 @@ PrefabInstance:
       value: OnGrabLoadNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
-      propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
       propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 622926175}
-    - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
-      propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: loadEndScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
-      propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: VrSceneTransition, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 7237679687771049838, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
       propertyPath: m_RootOrder
       value: 10

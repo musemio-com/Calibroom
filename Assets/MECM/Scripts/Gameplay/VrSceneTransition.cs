@@ -71,8 +71,11 @@ public class VrSceneTransition : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Debug.Log("SELECTED USER ID : " + FindObjectOfType<UISelectIDController>().GetUserIDInt());
-            dashboardRefs.userID = FindObjectOfType<UISelectIDController>().GetUserIDInt();
+            if (dashboardRefs == null)
+                Debug.Log("this dashboard is not ref");
+
+            //Debug.Log("SELECTED USER ID : " + FindObjectOfType<UISelectIDController>().GetUserIDInt());
+            //dashboardRefs.userID = FindObjectOfType<UISelectIDController>().GetUserIDInt();
         }
         string path = SceneUtility.GetScenePathByBuildIndex(LevelToGo);
         string sceneName = path.Substring(0, path.Length - 6).Substring(path.LastIndexOf('/') + 1);

@@ -4394,14 +4394,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1695696005}
-    - target: {fileID: 1772806917282532289, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1772806918305574773, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4731640721497396253, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
       propertyPath: m_Name
       value: VrSceneTransition
@@ -4450,8 +4442,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1046064438408843140, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b2c972973dcfc4eb2afa48519769b7, type: 3}
 --- !u!1001 &4331666352057562136
 PrefabInstance:
