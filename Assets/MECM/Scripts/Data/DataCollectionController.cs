@@ -138,6 +138,7 @@ namespace MECM
         /// </summary>
         // private UserDetailsController m_UserDetailsCtrlr;
         private DashboardRefs dashboardRefs;
+        bool isUploading;
 
         /// <summary>
         /// Handles uploads to firebase server
@@ -194,6 +195,8 @@ namespace MECM
                 FirebaseProjectID = dashboardRefs.uploadSettings.firebaseStorageID;
 
                 CollectingData = dashboardRefs.trackingSettings.TrackOnSceneStart;
+                if (CollectingData)
+                    Debug.Log("Collecting Data OnSceneStart");
                 // UserIDInt = userDetails.UserID;
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 // UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -265,8 +268,9 @@ namespace MECM
                 ToggleDataCollection = false;
                 
 
-            if (!CollectingData && m_UploadData)
+            if (!CollectingData && m_UploadData && isUploading)
             {
+                isUploading = false;
                 Debug.Log("UPLOADING...");
                 string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                 // Upload files from our IDString directory to firebase server
@@ -296,7 +300,7 @@ namespace MECM
         {
             // Make sure to stop data collection if the data controller gets disabled
             if (CollectingData)
-                StopCollectingData();//FireToggleCollectDataEvent();
+                ToggleCollectingData();//FireToggleCollectDataEvent();
         }
 
         #endregion
@@ -312,15 +316,17 @@ namespace MECM
             //m_ToggleCollectDataEvent = true;
         }
 
-        public void StartCollectingData()
+        public void ToggleCollectingData()
         {
-            CollectingData = true;
-            Debug.Log("Starting data collection!");
-        }
-        public void StopCollectingData()
-        {
-            CollectingData = false;
-            Debug.Log("Stopping data collection!");
+            CollectingData = !CollectingData;
+            if (CollectingData)
+                Debug.Log("Starting data collection!");
+            else
+            {
+                isUploading = true;
+                Debug.Log("Stopping data collection!");
+            }
+                
         }
         /// <summary>
         /// Fires the Train model event (toggles on/off model inference)
@@ -344,5 +350,6 @@ namespace MECM
         #endregion
 
     }
+
 
 }

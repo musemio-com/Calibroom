@@ -64,13 +64,21 @@ public class DashboardEditorWindow : EditorWindow
         if(_ref == null)
            return;
         userID = _ref.userID;
-        RightController = _ref.rightHandController.ControllerRef;
-        LeftController = _ref.leftHandController.ControllerRef;
-        HMD = _ref.headMountedDisplay.ControllerRef;
+        if(GameObject.Find(_ref.rightHandController.ControllerNameRef))
+            RightController = GameObject.Find(_ref.rightHandController.ControllerNameRef);
+        if (GameObject.Find(_ref.leftHandController.ControllerNameRef))
+            LeftController = GameObject.Find(_ref.leftHandController.ControllerNameRef);
+        if (GameObject.Find(_ref.headMountedDisplay.ControllerNameRef))
+            HMD = GameObject.Find(_ref.headMountedDisplay.ControllerNameRef);
+
         trackOnSceneStart= new AnimBool(_ref.trackingSettings.TrackOnSceneStart);
         TriggerTrackWithObjs = new AnimBool(_ref.trackingSettings.TrackTriggerManually.enable);
-        StartTrackObject = _ref.trackingSettings.TrackTriggerManually.StartTracking;
-        StopTrackObject = _ref.trackingSettings.TrackTriggerManually.StopTracking;
+
+        if (GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName))
+            StartTrackObject = GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName);
+        if (GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName))
+            StopTrackObject = GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName);
+
         UploadData = new AnimBool(_ref.uploadSettings.enable);
         FirebaseID = _ref.uploadSettings.firebaseStorageID;
 
@@ -216,29 +224,33 @@ public class DashboardEditorWindow : EditorWindow
     }
     void Setup()
     {
-        if(FindObjectOfType<DataCollectionController>())
-            DestroyImmediate(FindObjectOfType<DataCollectionController>().gameObject);
-        if(FindObjectOfType<IMLComponent>())
-            DestroyImmediate(FindObjectOfType<IMLComponent>().gameObject);
+
+        EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(SetupPorts(),this);
+        if(!RightController.GetComponent<GrabbingPieceFeatureExtractor>())
+            RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
+        if(!LeftController.GetComponent<GrabbingPieceFeatureExtractor>())
+            LeftController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.LeftHand;
 
 
-        EditorCoroutine edCo = EditorCoroutineUtility.StartCoroutine(SetupPorts(),this);
-
-        RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
-        LeftController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.LeftHand;
-
-        if(TriggerTrackWithObjs.target)
+        if (TriggerTrackWithObjs.target)
         {
-            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().StartCollectingData());
-            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x=> dataController.GetComponent<DataCollectionController>().StopCollectingData());
+            //StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x => dataController.GetComponent<DataCollectionController>().StartCollectingData());
+            //StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x => dataController.GetComponent<DataCollectionController>().StopCollectingData());
+            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
+            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
         }
-        if(UploadData.target)
+        if (UploadData.target)
         {
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
-
+        SaveRefs();
     }
+    void ToggleCollectOnGrab(XRBaseInteractor interactor)
+    {
+        dataController.GetComponent<DataCollectionController>().ToggleCollectingData();
+    }
+
     void SaveRefs()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
@@ -246,39 +258,46 @@ public class DashboardEditorWindow : EditorWindow
         {
             _ref = ScriptableObject.CreateInstance<DashboardRefs>();
             AssetDatabase.CreateAsset(_ref,"Assets/MECM/Resources/ScriptableObjects/DashboardRefs.asset");
-            AssetDatabase.SaveAssets();
+            EditorApplication.delayCall += AssetDatabase.SaveAssets;
         }
         _ref.userID = userID;
         PlayerPrefs.SetInt("UserID", userID);
 
-        _ref.rightHandController.ControllerRef = RightController;
-        _ref.leftHandController.ControllerRef = LeftController;
-        _ref.headMountedDisplay.ControllerRef = HMD;
+        _ref.rightHandController.ControllerNameRef = RightController.name;
+        _ref.leftHandController.ControllerNameRef = LeftController.name;
+        _ref.headMountedDisplay.ControllerNameRef = HMD.name;
 
         _ref.trackingSettings.TrackOnSceneStart = trackOnSceneStart.target;
         _ref.trackingSettings.TrackTriggerManually.enable = TriggerTrackWithObjs.target;
-        _ref.trackingSettings.TrackTriggerManually.StartTracking = StartTrackObject;
-        _ref.trackingSettings.TrackTriggerManually.StopTracking = StopTrackObject;
-
+        if (TriggerTrackWithObjs.target)
+        {
+            _ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName = StartTrackObject.name;
+            _ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName = StopTrackObject.name;
+        }
         _ref.uploadSettings.enable = UploadData.target;
         _ref.uploadSettings.firebaseStorageID = FirebaseID;
     }
     IEnumerator SetupPorts()
     {
+        if (FindObjectOfType<DataCollectionController>())
+            DestroyImmediate(FindObjectOfType<DataCollectionController>().gameObject);
+        if (FindObjectOfType<IMLComponent>())
+            DestroyImmediate(FindObjectOfType<IMLComponent>().gameObject);
+
         GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));
         GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
         dataController = DataController.GetComponent<DataCollectionController>();
 
-        yield return new WaitForSeconds(2f);
-        var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+        
 
+        var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+        yield return new EditorWaitForSeconds(2f);
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
 
         ScriptNode goNode = (ScriptNode)(IMLGraph as IMLGraph).AddNode(typeof(ScriptNode));
-        
         if (goNode != null)
         {
             goNode.SetScript(dataController);

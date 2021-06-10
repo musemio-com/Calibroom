@@ -66,13 +66,13 @@ public class InputActionsController : MonoBehaviour
             BoardGame.StopPuzzle();
 
         if (CollectionController != null && CollectionController.CollectingData)
-            CollectionController.FireToggleCollectDataEvent();
+            CollectionController.ToggleCollectingData();
             
     }
 
     private void ToggleDataCollection()
     {
         if (CollectionController != null)
-            CollectionController.FireToggleCollectDataEvent();
+            CollectionController.ToggleCollectingData();
     }
 }

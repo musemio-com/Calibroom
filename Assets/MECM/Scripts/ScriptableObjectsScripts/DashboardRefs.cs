@@ -16,8 +16,7 @@ public class DashboardRefs : ScriptableObject
 [Serializable]
 public class Controller
 {
-    [SerializeField]
-    public GameObject ControllerRef;
+    public string ControllerNameRef;
     public AllowedAttributes allowedAttributes;
 }
 [Serializable]
@@ -52,8 +51,8 @@ public class TrackingSettings
 public class TrackingObjectsTriggers
 {
     public bool enable;
-    public GameObject StartTracking;
-    public GameObject StopTracking;
+    public string StartTrackingObjectName;
+    public string StopTrackingObjectName;
 }
 [Serializable]
 public class UploadSettings

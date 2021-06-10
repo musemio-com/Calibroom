@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEditor;
 using InteractML.ControllerCustomisers;
+using Unity.EditorCoroutines.Editor;
 #endif
 
 namespace InteractML
@@ -1760,8 +1761,12 @@ namespace InteractML
             if(this != null)
             {
                 // There will be waits for things to init. Take into account
-                IEnumerator coroutine = LoadDataForModelsCoroutine();
-                StartCoroutine(coroutine);
+                if (this.gameObject.activeSelf)
+                {
+                    EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(LoadDataForModelsCoroutine(), this);
+                    //IEnumerator coroutine = LoadDataForModelsCoroutine();
+                    //StartCoroutine(coroutine);
+                }
             }
             
         }
@@ -1832,9 +1837,13 @@ namespace InteractML
         {
             if (this != null)
             {
-                // There will be waits for things to init. Take into account
-                IEnumerator coroutine = RunModelsOnPlayCoroutine();
-                StartCoroutine(coroutine);
+                if (this.gameObject.activeSelf)
+                {
+                    EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(RunModelsOnPlayCoroutine(), this);
+                    // There will be waits for things to init. Take into account
+                    //IEnumerator coroutine = RunModelsOnPlayCoroutine();
+                    //StartCoroutine(coroutine);
+                }
             }
             
 

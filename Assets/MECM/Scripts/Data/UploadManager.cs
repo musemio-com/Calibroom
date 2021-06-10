@@ -15,7 +15,7 @@ namespace MECM
     {
     public static UploadManager Instance;
 
-    DashboardRefs uploadInfo;
+    DashboardRefs _ref;
     bool fileSent = false;
     string PathToUpload;
     public enum UploadRESTOptions { DotNetWebRequest, UnityWebRequest, WWW }
@@ -25,8 +25,7 @@ namespace MECM
         Instance = this;
     }
     private void Start() {
-            uploadInfo = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
-            Debug.Log(uploadInfo.uploadSettings.firebaseStorageID);
+            _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
     }
     public void UploadToServer(string localFilePath, string serverFilePath, bool useTasks = true)
     {
@@ -108,7 +107,7 @@ namespace MECM
             
             // HTTP
             //string firebaseProjectID = "fir-test-b6418.appspot.com"; // this'll be retrieved from a scriptable object
-            string firebaseProjectID = uploadInfo.uploadSettings.firebaseStorageID;
+            string firebaseProjectID = _ref.uploadSettings.firebaseStorageID;
             string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
                 firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
             string contentType = "application/force-download";
@@ -269,7 +268,7 @@ namespace MECM
 
             // HTTP
             // string firebaseProjectID = "fir-test-b6418.appspot.com";
-                string firebaseProjectID = uploadInfo.uploadSettings.firebaseStorageID;
+                string firebaseProjectID = _ref.uploadSettings.firebaseStorageID;
                 string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
                     firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;
                 string contentType = "application/force-download";
@@ -295,9 +294,9 @@ namespace MECM
                         {
                             if (response.StatusCode != HttpStatusCode.OK)
                                 Debug.LogError($"Upload failed! {response.StatusDescription}");
-                        //else
-                        //    Debug.Log($"Upload successful! {response.StatusDescription}");
-                    }
+                            else
+                                Debug.Log($"Upload successful! {response.StatusDescription}");
+                        }
 
                     // releases resources of response
                     response.Close();

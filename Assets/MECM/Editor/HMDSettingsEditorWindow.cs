@@ -70,21 +70,21 @@ public class HMDSettingsEditorWindow : EditorWindow
 
         if(GUILayout.Button("SAVE"))
         {
-            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
-            if(trackersInfo == null)
+            DashboardRefs _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
+            if (_ref == null)
             {
-                trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
-                AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
-                AssetDatabase.SaveAssets();
+                _ref = ScriptableObject.CreateInstance<DashboardRefs>();
+                AssetDatabase.CreateAsset(_ref, "Assets/MECM/Resources/ScriptableObjects/DashboardRefs.asset");
+                EditorApplication.delayCall += AssetDatabase.SaveAssets;
             }
-            trackersInfo.HeadMountedDisplayAllowedCoord = new AllowedCoord();
-            trackersInfo.HeadMountedDisplayAllowedCoord._Postion = HMD_UsePos;
-            trackersInfo.HeadMountedDisplayAllowedCoord._PositionVelocity = HMD_UsePositionVelocity;
-            trackersInfo.HeadMountedDisplayAllowedCoord._PositionAcceleration = HMD_UsePositionAcceleration;
+            //_ref.HeadMountedDisplayAllowedCoord = new AllowedCoord();
+            //trackersInfo.HeadMountedDisplayAllowedCoord._Postion = HMD_UsePos;
+            //trackersInfo.HeadMountedDisplayAllowedCoord._PositionVelocity = HMD_UsePositionVelocity;
+            //trackersInfo.HeadMountedDisplayAllowedCoord._PositionAcceleration = HMD_UsePositionAcceleration;
 
-            trackersInfo.HeadMountedDisplayAllowedCoord._Rotation = HMD_UseRot;
-            trackersInfo.HeadMountedDisplayAllowedCoord._RotationVelocity = HMD_UseRotationVelocity;
-            trackersInfo.HeadMountedDisplayAllowedCoord._RotationAcceleration = HMD_UseRotationAcceleration;
+            //trackersInfo.HeadMountedDisplayAllowedCoord._Rotation = HMD_UseRot;
+            //trackersInfo.HeadMountedDisplayAllowedCoord._RotationVelocity = HMD_UseRotationVelocity;
+            //trackersInfo.HeadMountedDisplayAllowedCoord._RotationAcceleration = HMD_UseRotationAcceleration;
         }
     }
 }

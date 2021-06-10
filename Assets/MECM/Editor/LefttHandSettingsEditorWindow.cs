@@ -78,23 +78,23 @@ public class LefttHandSettingsEditorWindow : EditorWindow
 
         if(GUILayout.Button("SAVE"))
         {
-            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
-            if(trackersInfo == null)
-            {
-                trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
-                AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
-                AssetDatabase.SaveAssets();
-            }
-            trackersInfo.leftHandAllowedCoord = new AllowedCoord();
-            trackersInfo.leftHandAllowedCoord._Postion = L_UsePos;
-            trackersInfo.leftHandAllowedCoord._PositionVelocity = L_UsePositionVelocity;
-            trackersInfo.leftHandAllowedCoord._PositionAcceleration = L_UsePositionAcceleration;
+            //TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
+            //if(trackersInfo == null)
+            //{
+            //    trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
+            //    AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
+            //    AssetDatabase.SaveAssets();
+            //}
+            //trackersInfo.leftHandAllowedCoord = new AllowedCoord();
+            //trackersInfo.leftHandAllowedCoord._Postion = L_UsePos;
+            //trackersInfo.leftHandAllowedCoord._PositionVelocity = L_UsePositionVelocity;
+            //trackersInfo.leftHandAllowedCoord._PositionAcceleration = L_UsePositionAcceleration;
 
-            trackersInfo.leftHandAllowedCoord._Rotation = L_UseRot;
-            trackersInfo.leftHandAllowedCoord._RotationVelocity = L_UseRotationVelocity;
-            trackersInfo.leftHandAllowedCoord._RotationAcceleration = L_UseRotationAcceleration;
+            //trackersInfo.leftHandAllowedCoord._Rotation = L_UseRot;
+            //trackersInfo.leftHandAllowedCoord._RotationVelocity = L_UseRotationVelocity;
+            //trackersInfo.leftHandAllowedCoord._RotationAcceleration = L_UseRotationAcceleration;
 
-            trackersInfo.leftHandAllowedCoord.GrabbedObject = L_UseGrabbedObject;
+            //trackersInfo.leftHandAllowedCoord.GrabbedObject = L_UseGrabbedObject;
         }
     }
 }

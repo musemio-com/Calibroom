@@ -74,7 +74,7 @@ public class PuzzleBoard : MonoBehaviour
             // Load Level
             //if (m_LevelFader != null)
             //    m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection(debug: true);
-            FindObjectOfType<VrSceneTransition>().loadEndScene();
+            FindObjectOfType<VrSceneTransition>().loadNextScene();
 
             // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
             m_PuzzleCompletedOnce = true;
@@ -93,7 +93,7 @@ public class PuzzleBoard : MonoBehaviour
             PuzzleComplete = false;
             // Starts data collection
             if (m_DataCtrlr != null)
-                m_DataCtrlr.StartCollectingData();
+                m_DataCtrlr.ToggleCollectingData();
 
             m_PuzzleStarted = true;
         }
@@ -108,8 +108,8 @@ public class PuzzleBoard : MonoBehaviour
         // Load Level
         //if (m_LevelFader != null)
         //    m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection();
-        m_DataCtrlr.StopCollectingData();
-        FindObjectOfType<VrSceneTransition>().loadEndScene();
+        m_DataCtrlr.ToggleCollectingData();
+        FindObjectOfType<VrSceneTransition>().loadNextScene();
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
         m_PuzzleCompletedOnce = true;
