@@ -33,7 +33,7 @@ public class UISelectIDController : MonoBehaviour
     }
 
     public int GetUserIDInt()
-    {        
+    {
         return int.Parse(GetUserID());
     }
 
