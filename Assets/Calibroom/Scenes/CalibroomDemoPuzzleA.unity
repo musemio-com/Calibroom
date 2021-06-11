@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 29ea0efac674c8548bca6baaee977744, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ba92b64fbed5c024688258f0050385a2, type: 2}
   m_LightingSettings: {fileID: 1076148290}
 --- !u!196 &4
 NavMeshSettings:
@@ -455,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1249,18 +1249,18 @@ MonoBehaviour:
     - {fileID: 793838390}
     m_values:
     - {fileID: 0}
-    - {fileID: 7700321761074622783, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: 4310361830934800944, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: 5090614186874150591, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_GameObjectNodeList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 7700321761074622783, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 4310361830934800944, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 5090614186874150591, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_ScriptNodesList:
-  - {fileID: -8142047811490318171, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -3340671077222823997, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1330927996}
     m_values:
-    - {fileID: -8142047811490318171, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: -3340671077222823997, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &1552093270
