@@ -36,24 +36,14 @@ public class VrSceneTransition : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.L))
-        //    loadNextScene();
+        if (Input.GetKeyDown(KeyCode.L))
+            loadNextScene();
     }
 
     private void OnDisable()
     {
         SceneManager.activeSceneChanged -= OnSceneLoaded;
     }
-    //public void loadMECMScene()
-    //{
-    //    dashboardRefs.userID = FindObjectOfType<UISelectIDController>().GetUserIDInt();
-    //    LoadScene("MECM Room");
-    //}
-
-    //public void loadEndScene()
-    //{
-    //    LoadScene("sceneEnd");
-    //}
     public void loadNextScene()
     {
         int LevelToGo = SceneManager.GetActiveScene().buildIndex + 1;
@@ -71,8 +61,12 @@ public class VrSceneTransition : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Debug.Log("SELECTED USER ID : " + FindObjectOfType<UISelectIDController>().GetUserIDInt());
-            dashboardRefs.userID = FindObjectOfType<UISelectIDController>().GetUserIDInt();
+            UISelectIDController ui_selectID = FindObjectOfType<UISelectIDController>();
+            if (ui_selectID != null && dashboardRefs != null)
+            {
+                Debug.Log("SELECTED USER ID : " + ui_selectID.GetUserIDInt());
+                dashboardRefs.userID = ui_selectID.GetUserIDInt();
+            }
         }
         string path = SceneUtility.GetScenePathByBuildIndex(LevelToGo);
         string sceneName = path.Substring(0, path.Length - 6).Substring(path.LastIndexOf('/') + 1);

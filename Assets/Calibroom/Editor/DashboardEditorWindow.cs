@@ -39,10 +39,10 @@ public class DashboardEditorWindow : EditorWindow
 
     static DashboardRefs _ref;
 
-    [MenuItem("MECM/Dashboard")]
+    [MenuItem("Calibroom/Dashboard")]
     public static void ShowWindow()
     {
-        GetWindow(typeof(DashboardEditorWindow),false,"Calibration Method");
+        GetWindow(typeof(DashboardEditorWindow),false,"Calibroom Dashboard");
     }
     private void OnEnable()
     {   
@@ -92,7 +92,6 @@ public class DashboardEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.Label("Calibration Dashboard", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
         GUILayout.Label("User ID", EditorStyles.boldLabel);
@@ -197,10 +196,10 @@ public class DashboardEditorWindow : EditorWindow
         GUILayout.Label("OUTPUT", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         EditorGUI.indentLevel++;
-        GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
-        EditorGUI.indentLevel++;
-        taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
-        EditorGUI.indentLevel--;
+        GUILayout.Label("Task Completion Time : 0", EditorStyles.boldLabel);
+        //EditorGUI.indentLevel++;
+        //taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
+        //EditorGUI.indentLevel--;
         EditorGUILayout.BeginVertical();
         if(GUILayout.Button(OverallScore))
         {
@@ -234,8 +233,7 @@ public class DashboardEditorWindow : EditorWindow
 
         if (TriggerTrackWithObjs.target)
         {
-            //StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x => dataController.GetComponent<DataCollectionController>().StartCollectingData());
-            //StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(x => dataController.GetComponent<DataCollectionController>().StopCollectingData());
+            Debug.Log("Setting up controllers");
             StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
             StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
         }
