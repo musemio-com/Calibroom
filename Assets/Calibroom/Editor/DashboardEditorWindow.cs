@@ -290,11 +290,12 @@ public class DashboardEditorWindow : EditorWindow
 
         
 
-        var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+        
         yield return new EditorWaitForSeconds(2f);
+        
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
-
+        var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
         ScriptNode goNode = (ScriptNode)(IMLGraph as IMLGraph).AddNode(typeof(ScriptNode));
         if (goNode != null)
         {

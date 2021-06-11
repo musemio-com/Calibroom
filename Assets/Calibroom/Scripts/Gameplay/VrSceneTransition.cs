@@ -17,14 +17,19 @@ public class VrSceneTransition : MonoBehaviour
     DashboardRefs dashboardRefs;
     [HideInInspector]
     public int currentLevelIndex;
+    LoadingOverlay overlay;
 
     private void OnEnable()
     {
         SceneManager.activeSceneChanged += OnSceneLoaded;
     }
-
+    private void OnDisable()
+    {
+        SceneManager.activeSceneChanged -= OnSceneLoaded;
+    }
     private void Start()
     {
+        overlay = GameObject.Find("LoadingOverlay").gameObject.GetComponent<LoadingOverlay>();
         dashboardRefs = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
         if (dashboardRefs == null)
         {
@@ -36,25 +41,31 @@ public class VrSceneTransition : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+            overlay.FadeIn(() =>
+            {
+
+            });
+        if (Input.GetKeyDown(KeyCode.O))
+            overlay.FadeOut(() =>
+            {
+
+            });
         if (Input.GetKeyDown(KeyCode.L))
             loadNextScene();
     }
 
-    private void OnDisable()
-    {
-        SceneManager.activeSceneChanged -= OnSceneLoaded;
-    }
+
     public void loadNextScene()
     {
         int LevelToGo = SceneManager.GetActiveScene().buildIndex + 1;
-
         if (SceneManager.sceneCountInBuildSettings < 1)
         {
             Debug.Log("There are no other levels to load in the build settings, Reloading this Scene");
             LevelToGo = 0;
         }
             
-        if (LevelToGo > SceneManager.sceneCountInBuildSettings)
+        if (LevelToGo > SceneManager.sceneCountInBuildSettings - 1)
         {
             Debug.Log("Scene Level is Out of range of levels added..Loading First Scene");
             LevelToGo = 0;
@@ -97,7 +108,9 @@ public class VrSceneTransition : MonoBehaviour
             }
             else
             {
-                fadeScreen.FadeOut(() => {
+                overlay.FadeOut(() =>
+                {
+                    Debug.Log("FadedOut");
                     SceneManager.LoadScene(sceneName);
                 });
             }
@@ -113,18 +126,22 @@ public class VrSceneTransition : MonoBehaviour
                 callback();
                 callback = null;
             }
-            StartCoroutine(WaitAndFadeIn());
+            overlay.FadeIn(() =>
+            {
+                Debug.Log("FadedIn");
+                sceneLoading = false;
+            });
         }
     }
 
-    private IEnumerator WaitAndFadeIn()
-    {
-        // Wait a few frames to avoid freeze (caused by Awake calls?).
-        yield return null;
-        yield return null;
-        yield return null;
-        fadeScreen.FadeIn(() => {
-            sceneLoading = false;
-        });
-    }
+    //private IEnumerator WaitAndFadeIn()
+    //{
+    //    // Wait a few frames to avoid freeze (caused by Awake calls?).
+    //    yield return null;
+    //    yield return null;
+    //    yield return null;
+    //    fadeScreen.FadeIn(() => {
+    //        sceneLoading = false;
+    //    });
+    //}
 }

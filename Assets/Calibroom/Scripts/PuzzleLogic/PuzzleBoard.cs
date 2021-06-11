@@ -36,7 +36,7 @@ public class PuzzleBoard : MonoBehaviour
     {
         // Get all pieces in that are children to the board
         Pieces = FindObjectsOfType<PuzzlePiece>();
-        m_LevelFader = FindObjectOfType<UIFadeToBlack>();
+        //m_LevelFader = FindObjectOfType<UIFadeToBlack>();
         // Get data controller
         m_DataCtrlr = FindObjectOfType<DataCollectionController>();
     }
