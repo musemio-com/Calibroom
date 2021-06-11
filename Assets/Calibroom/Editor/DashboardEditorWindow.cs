@@ -86,7 +86,7 @@ public class DashboardEditorWindow : EditorWindow
     }
     private void OnDisable()
     {
-        SaveRefs();
+        SaveDashboardData();
         //save editor refs in editor prefs    
     }
 
@@ -158,9 +158,9 @@ public class DashboardEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        GUILayout.Label("Upload Data to Server", EditorStyles.boldLabel);
+        GUILayout.Label("Upload to Firebase Cloud Storage", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        UploadData.target = EditorGUILayout.ToggleLeft("Upload to Firebase Cloud Storage", UploadData.target);
+        UploadData.target = EditorGUILayout.ToggleLeft("Upload data when Data Collection Finishes", UploadData.target);
         if (EditorGUILayout.BeginFadeGroup(UploadData.faded))
         {
             EditorGUI.indentLevel++;
@@ -171,14 +171,10 @@ public class DashboardEditorWindow : EditorWindow
         }
         EditorGUILayout.EndFadeGroup();
         EditorGUI.indentLevel--;
-        //GUILayout.Label("Task Completion Time", EditorStyles.boldLabel);
-        //EditorGUI.indentLevel++;
-        //taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
-        //EditorGUI.indentLevel--;
         EditorGUILayout.Space();
         if (GUILayout.Button("Setup") && (RightController != null && LeftController != null && HMD != null))
         {
-            Setup();        
+            DashboardSetup();        
         }
         if(RightController == null)
         {
@@ -221,10 +217,10 @@ public class DashboardEditorWindow : EditorWindow
 
         EditorGUI.indentLevel--;
     }
-    void Setup()
+    void DashboardSetup()
     {
 
-        EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(SetupPorts(),this);
+        EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(IMLDataSetupCouroutine(),this);
         if(!RightController.GetComponent<GrabbingPieceFeatureExtractor>())
             RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
         if(!LeftController.GetComponent<GrabbingPieceFeatureExtractor>())
@@ -242,14 +238,14 @@ public class DashboardEditorWindow : EditorWindow
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
-        SaveRefs();
+        SaveDashboardData();
     }
     void ToggleCollectOnGrab(XRBaseInteractor interactor)
     {
         dataController.GetComponent<DataCollectionController>().ToggleCollectingData();
     }
 
-    void SaveRefs()
+    void SaveDashboardData()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
         if(_ref == null)
@@ -261,9 +257,12 @@ public class DashboardEditorWindow : EditorWindow
         _ref.userID = userID;
         PlayerPrefs.SetInt("UserID", userID);
 
-        _ref.rightHandController.ControllerNameRef = RightController.name;
-        _ref.leftHandController.ControllerNameRef = LeftController.name;
-        _ref.headMountedDisplay.ControllerNameRef = HMD.name;
+        if(RightController != null)
+            _ref.rightHandController.ControllerNameRef = RightController.name;
+        if(LeftController != null)
+            _ref.leftHandController.ControllerNameRef = LeftController.name;
+        if(HMD != null)
+            _ref.headMountedDisplay.ControllerNameRef = HMD.name;
 
         _ref.trackingSettings.TrackOnSceneStart = trackOnSceneStart.target;
         _ref.trackingSettings.TrackTriggerManually.enable = TriggerTrackWithObjs.target;
@@ -275,7 +274,7 @@ public class DashboardEditorWindow : EditorWindow
         _ref.uploadSettings.enable = UploadData.target;
         _ref.uploadSettings.firebaseStorageID = FirebaseID;
     }
-    IEnumerator SetupPorts()
+    IEnumerator IMLDataSetupCouroutine()
     {
         if (FindObjectOfType<DataCollectionController>())
             DestroyImmediate(FindObjectOfType<DataCollectionController>().gameObject);
@@ -287,16 +286,13 @@ public class DashboardEditorWindow : EditorWindow
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
         dataController = DataController.GetComponent<DataCollectionController>();
-
-        
-
-        
-        yield return new EditorWaitForSeconds(2f);
-        
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
+
+        yield return new EditorWaitForSeconds(2f);
+
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
-        ScriptNode goNode = (ScriptNode)(IMLGraph as IMLGraph).AddNode(typeof(ScriptNode));
+        ScriptNode goNode = (ScriptNode)IMLGraph.AddNode(typeof(ScriptNode));
         if (goNode != null)
         {
             goNode.SetScript(dataController);
@@ -308,8 +304,6 @@ public class DashboardEditorWindow : EditorWindow
             if (!IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode.Contains(goNode))
                 IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode.Add(dataController,goNode);
             IMLSystem.GetComponent<IMLComponent>().FetchDataFromMonobehavioursSubscribed();
-
-
 
             goNode.position.x = 424;
             goNode.position.y = 104;

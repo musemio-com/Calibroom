@@ -16,7 +16,7 @@ public class LoadingOverlay : MonoBehaviour {
 
     void Start(){
         ReverseNormals(this.gameObject);
-        this.fading = false;
+        this.fading = true;
         this.fade_timer = 0;
 
         this.material = this.gameObject.GetComponent<Renderer>().material;
@@ -46,11 +46,14 @@ public class LoadingOverlay : MonoBehaviour {
         }
     }
 
-    public void FadeIn(Action callback){
+    public void FadeIn()
+    {
         // Fade the overlay to `in_alpha`.
+        Action callback = null;
         this.from_color.a = this.out_alpha;
         this.to_color.a = this.in_alpha;
-        if(this.to_color != this.material.color){
+        if (this.to_color != this.material.color)
+        {
             this.fading = true;
             StartCoroutine(FadeCoroutine(callback));
         }
@@ -65,7 +68,8 @@ public class LoadingOverlay : MonoBehaviour {
             {
                 this.fading = false;
                 this.fade_timer = 0;
-                callback();
+                if(callback != null)
+                    callback();
             }
             yield return null;
         }

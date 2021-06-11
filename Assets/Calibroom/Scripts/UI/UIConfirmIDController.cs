@@ -10,7 +10,7 @@ using TMPro;
 public class UIConfirmIDController : MonoBehaviour
 {
     public TMP_Text UserID;
-
+    int selectedUserID;
     /// <summary>
     /// Activates/Deactivates the screen
     /// </summary>
@@ -22,5 +22,13 @@ public class UIConfirmIDController : MonoBehaviour
             this.gameObject.SetActive(option);
             UserID.text = userID;
         }
+    }
+    public void setUserID(int _userID)
+    {
+        selectedUserID = _userID;
+    }
+    public int getUserID()
+    {
+        return selectedUserID;
     }
 }

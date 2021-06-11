@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
         if(SelectIDScreen != null && ConfirmIDScreen != null)
         {
             ConfirmIDScreen.SetActive(true, SelectIDScreen.GetUserID());
+            ConfirmIDScreen.setUserID(SelectIDScreen.GetUserIDInt());
             SelectIDScreen.SetActive(false);
         }
     }

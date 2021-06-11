@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 29ea0efac674c8548bca6baaee977744, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ba92b64fbed5c024688258f0050385a2, type: 2}
   m_LightingSettings: {fileID: 1076148290}
 --- !u!196 &4
 NavMeshSettings:
@@ -205,18 +205,18 @@ MonoBehaviour:
     - {fileID: 793838390}
     m_values:
     - {fileID: 0}
-    - {fileID: -7549898809943503005, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: -986355786182750570, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-    - {fileID: 1767764979803700207, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_GameObjectNodeList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: -7549898809943503005, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: -986355786182750570, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 1767764979803700207, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_ScriptNodesList:
-  - {fileID: -5268489172970737500, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -8981934669385734490, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -226,7 +226,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 1884114676}
     m_values:
-    - {fileID: -5268489172970737500, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: -8981934669385734490, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &532044547
@@ -1618,15 +1618,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407802, guid: 00ab2fb3ac7fe5d45ae09bc88299752a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 407802, guid: 00ab2fb3ac7fe5d45ae09bc88299752a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 407802, guid: 00ab2fb3ac7fe5d45ae09bc88299752a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 407802, guid: 00ab2fb3ac7fe5d45ae09bc88299752a, type: 3}
       propertyPath: m_LocalPosition.x
