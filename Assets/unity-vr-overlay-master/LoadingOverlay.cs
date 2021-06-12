@@ -25,15 +25,6 @@ public class LoadingOverlay : MonoBehaviour {
     }
     
     void Update(){
-        //if(this.fading == false)
-        //    return;
-
-        //this.fade_timer += Time.deltaTime;
-        //this.material.color = Color.Lerp(this.from_color, this.to_color, this.fade_timer);
-        //if(this.material.color == this.to_color){
-        //    this.fading = false;
-        //    this.fade_timer = 0;
-        //}
     }
 
     public void FadeOut(Action callback){

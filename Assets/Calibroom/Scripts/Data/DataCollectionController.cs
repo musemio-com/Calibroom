@@ -189,12 +189,10 @@ namespace MECM
             if (dashboardRefs != null)
             {
                 UserIDInt = dashboardRefs.userID;
-                UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-
                 m_UploadData = dashboardRefs.uploadSettings.enable;
                 FirebaseProjectID = dashboardRefs.uploadSettings.firebaseStorageID;
 
-                CollectingData = dashboardRefs.trackingSettings.TrackOnSceneStart;
+                CollectingData = dashboardRefs.TrackOnSceneActive;
                 if (CollectingData)
                     Debug.Log("Collecting Data OnSceneStart");
                 // UserIDInt = userDetails.UserID;
@@ -218,6 +216,7 @@ namespace MECM
                         RightHandGrabbingExtractor = grabbingExtractor;
                 }
             }
+            UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         }
 
         // Called once in first frame
@@ -230,11 +229,10 @@ namespace MECM
         // Update is called once per frame
         void Update()
         {
-            // If we reach to this script with the toggle true, make sure to restart it
-            //if (ToggleDataCollection)
-            //{
-            //    ToggleDataCollection = false;
-            //}
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                ToggleCollectingData();
+            }
             if (ToggleTrainModel)
             {
                 ToggleTrainModel = false;
@@ -248,21 +246,6 @@ namespace MECM
             if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
                 ToggleDataCollection = true;
-                //ToggleDataCollection = true;
-                //m_ToggleCollectDataEvent = false;
-                
-
-                // Update whether we are starting or stopping collecting data
-                //CollectingData = !CollectingData;
-                // If we have stopped collecting data and we need to upload data...
-                //if (!CollectingData && m_UploadData)
-                //{
-                //    Debug.Log("UPLOADING...");
-                //    string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
-                //    // Upload files from our IDString directory to firebase server
-                //    //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
-                //    _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
-                //}
             }
             if (!CollectingData)
                 ToggleDataCollection = false;
@@ -272,9 +255,8 @@ namespace MECM
             {
                 isUploading = false;
                 Debug.Log("UPLOADING...");
-                string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
-                // Upload files from our IDString directory to firebase server
-                //m_FirebaseController.UploadAsync(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                //string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
+                string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath();
                 _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)
@@ -311,10 +293,6 @@ namespace MECM
         /// Fires the collect data event (toggles on/off collecting data)
         /// </summary>
         /// <returns></returns>
-        public void FireToggleCollectDataEvent()
-        {
-            //m_ToggleCollectDataEvent = true;
-        }
 
         public void ToggleCollectingData()
         {

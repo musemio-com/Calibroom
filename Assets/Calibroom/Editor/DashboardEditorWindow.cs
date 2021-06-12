@@ -17,9 +17,6 @@ public class DashboardEditorWindow : EditorWindow
     GameObject RightController;
     GameObject HMD;
     AnimBool trackOnSceneStart;
-    AnimBool TriggerTrackWithObjs;
-    GameObject StartTrackObject;
-    GameObject StopTrackObject;
     AnimBool UploadData;
 
     DataCollectionController dataController;
@@ -48,12 +45,8 @@ public class DashboardEditorWindow : EditorWindow
     {   
         trackOnSceneStart = new AnimBool(false);
         trackOnSceneStart.valueChanged.AddListener(Repaint);
-
         UploadData = new AnimBool(false);
         UploadData.valueChanged.AddListener(Repaint);
-        
-        TriggerTrackWithObjs = new AnimBool(false);
-        TriggerTrackWithObjs.valueChanged.AddListener(Repaint);
 
         loadAllRefs();
     }
@@ -70,24 +63,9 @@ public class DashboardEditorWindow : EditorWindow
             LeftController = GameObject.Find(_ref.leftHandController.ControllerNameRef);
         if (GameObject.Find(_ref.headMountedDisplay.ControllerNameRef))
             HMD = GameObject.Find(_ref.headMountedDisplay.ControllerNameRef);
-
-        trackOnSceneStart= new AnimBool(_ref.trackingSettings.TrackOnSceneStart);
-        TriggerTrackWithObjs = new AnimBool(_ref.trackingSettings.TrackTriggerManually.enable);
-
-        if (GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName))
-            StartTrackObject = GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName);
-        if (GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName))
-            StopTrackObject = GameObject.Find(_ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName);
-
+        trackOnSceneStart = new AnimBool(_ref.TrackOnSceneActive);
         UploadData = new AnimBool(_ref.uploadSettings.enable);
         FirebaseID = _ref.uploadSettings.firebaseStorageID;
-
-
-    }
-    private void OnDisable()
-    {
-        SaveDashboardData();
-        //save editor refs in editor prefs    
     }
 
     private void OnGUI()
@@ -132,27 +110,14 @@ public class DashboardEditorWindow : EditorWindow
 
         GUILayout.Label("Tracking Settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        EditorGUI.BeginDisabledGroup(TriggerTrackWithObjs.target);
         trackOnSceneStart.target = EditorGUILayout.ToggleLeft("Start Tracking when scene starts", trackOnSceneStart.target);
         if (EditorGUILayout.BeginFadeGroup(trackOnSceneStart.faded))
         {
             EditorGUI.indentLevel++;
-            EditorGUILayout.HelpBox("To stop Collecting Data, Call FireToggleCollectDataEvent method in DataCollectionController", MessageType.Info);
+            EditorGUILayout.HelpBox("Call ToggleCollectingData To Stop Collecting Data", MessageType.Info);
             EditorGUI.indentLevel--;
         }
         EditorGUILayout.EndFadeGroup();
-        EditorGUI.EndDisabledGroup();
-        EditorGUI.BeginDisabledGroup(trackOnSceneStart.target);
-        TriggerTrackWithObjs.target = EditorGUILayout.ToggleLeft("Use GameObjects to trigger manually", TriggerTrackWithObjs.target);
-        if (EditorGUILayout.BeginFadeGroup(TriggerTrackWithObjs.faded))
-        {
-            EditorGUI.indentLevel++;
-            StartTrackObject = EditorGUILayout.ObjectField("Start Collecting", StartTrackObject, typeof(GameObject), true) as GameObject;
-            StopTrackObject = EditorGUILayout.ObjectField("Stop Collecting", StopTrackObject, typeof(GameObject), true) as GameObject;
-            EditorGUI.indentLevel--;
-        }
-        EditorGUILayout.EndFadeGroup();
-        EditorGUI.EndDisabledGroup();
 
         EditorGUI.indentLevel--;
 
@@ -165,7 +130,6 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel++;
             FirebaseID = EditorGUILayout.TextField("Firebase Project ID", FirebaseID);
-            // UploadWhenCollectingDone = EditorGUILayout.ToggleLeft("Upload when tracking stops",UploadWhenCollectingDone);
             EditorGUILayout.HelpBox("Using REST API, Slow but supported on all platforms", MessageType.Info);
             EditorGUI.indentLevel--;
         }
@@ -193,9 +157,6 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.Space();
         EditorGUI.indentLevel++;
         GUILayout.Label("Task Completion Time : 0", EditorStyles.boldLabel);
-        //EditorGUI.indentLevel++;
-        //taskCompletionTime = EditorGUILayout.FloatField("time", taskCompletionTime);
-        //EditorGUI.indentLevel--;
         EditorGUILayout.BeginVertical();
         if(GUILayout.Button(OverallScore))
         {
@@ -225,14 +186,6 @@ public class DashboardEditorWindow : EditorWindow
             RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
         if(!LeftController.GetComponent<GrabbingPieceFeatureExtractor>())
             LeftController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.LeftHand;
-
-
-        if (TriggerTrackWithObjs.target)
-        {
-            Debug.Log("Setting up controllers");
-            StopTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
-            StartTrackObject.GetComponent<XRGrabInteractable>().onSelectEnter.AddListener(ToggleCollectOnGrab);
-        }
         if (UploadData.target)
         {
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
@@ -250,8 +203,8 @@ public class DashboardEditorWindow : EditorWindow
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
         if(_ref == null)
         {
-            _ref = ScriptableObject.CreateInstance<DashboardRefs>();
-            AssetDatabase.CreateAsset(_ref,"Assets/MECM/Resources/ScriptableObjects/DashboardRefs.asset");
+            _ref = CreateInstance<DashboardRefs>();
+            AssetDatabase.CreateAsset(_ref, "Assets/Calibroom/Resources/ScriptableObjects/DashboardRefs.asset");
             EditorApplication.delayCall += AssetDatabase.SaveAssets;
         }
         _ref.userID = userID;
@@ -264,13 +217,7 @@ public class DashboardEditorWindow : EditorWindow
         if(HMD != null)
             _ref.headMountedDisplay.ControllerNameRef = HMD.name;
 
-        _ref.trackingSettings.TrackOnSceneStart = trackOnSceneStart.target;
-        _ref.trackingSettings.TrackTriggerManually.enable = TriggerTrackWithObjs.target;
-        if (TriggerTrackWithObjs.target)
-        {
-            _ref.trackingSettings.TrackTriggerManually.StartTrackingObjectName = StartTrackObject.name;
-            _ref.trackingSettings.TrackTriggerManually.StopTrackingObjectName = StopTrackObject.name;
-        }
+        _ref.TrackOnSceneActive = trackOnSceneStart.target;
         _ref.uploadSettings.enable = UploadData.target;
         _ref.uploadSettings.firebaseStorageID = FirebaseID;
     }
@@ -289,7 +236,7 @@ public class DashboardEditorWindow : EditorWindow
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
 
-        yield return new EditorWaitForSeconds(2f);
+        yield return new EditorWaitForSeconds(4f);
 
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
         ScriptNode goNode = (ScriptNode)IMLGraph.AddNode(typeof(ScriptNode));

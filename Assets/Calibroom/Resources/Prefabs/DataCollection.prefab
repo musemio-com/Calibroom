@@ -44,11 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollectingData: 0
-  m_ToggleCollectDataEvent: 0
   ToggleDataCollection: 0
-  m_ToggleTrainModelEvent: 0
   ToggleTrainModel: 0
-  m_ToggleRunModelEvent: 0
   ToggleRunModel: 0
   UserIDInt: 0
   UserIDString: 0/MECM Room
@@ -76,5 +73,4 @@ MonoBehaviour:
   RightHandGrabbingExtractor: {fileID: 0}
   LeftHandGrabbing: 0
   RightHandGrabbing: 0
-  m_UploadData: 0
-  m_UseTasksOnUpload: 1
+  m_UseTasksOnUpload: 0

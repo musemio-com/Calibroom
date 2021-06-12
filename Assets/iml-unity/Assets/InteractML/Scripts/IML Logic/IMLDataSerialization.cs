@@ -506,6 +506,7 @@ namespace InteractML
             {
                 // Get folder(s) names
                 folderInFileName = Path.GetDirectoryName(fileName);
+                Debug.Log(folderInFileName);
                 // Remove folder(s) from fileName
                 fileName = Path.GetFileName(fileName);
             }
@@ -542,7 +543,7 @@ namespace InteractML
         private static void SetUpIMLDataPath() 
         {
             // Set up training Examples subfolder 
-            m_SubFolderTrainingSetPathName = m_FolderDataPathName + "/Tracking_Data/" + PlayerPrefs.GetInt("UserID", 0);
+            m_SubFolderTrainingSetPathName = m_FolderDataPathName + "/Tracking_Data/" + PlayerPrefs.GetInt("UserID", -1) + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             m_SubFolderModelPathName = m_FolderDataPathName + "/Models";
 
             m_AppDataPath = "";
@@ -894,7 +895,7 @@ namespace InteractML
         public static string GetTrainingExamplesDataPath()
         {
             SetUpIMLDataPath();
-            return Path.Combine(m_AppDataPath, m_FolderDataPathName, "Tracking_Data/" + PlayerPrefs.GetInt("UserID", 0));
+            return Path.Combine(m_AppDataPath, m_FolderDataPathName, "Tracking_Data");
         }
 
         /// <summary>

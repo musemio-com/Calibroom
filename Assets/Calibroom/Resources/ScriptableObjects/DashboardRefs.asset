@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userID: 0
   rightHandController:
-    ControllerNameRef: RightHand Controller
+    ControllerNameRef: 
     allowedAttributes:
       _Postion: 0
       _PositionVelocity: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
       _RotationAcceleration: 0
       GrabbedObject: 0
   leftHandController:
-    ControllerNameRef: LeftHand Controller
+    ControllerNameRef: 
     allowedAttributes:
       _Postion: 0
       _PositionVelocity: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
       _RotationAcceleration: 0
       GrabbedObject: 0
   headMountedDisplay:
-    ControllerNameRef: Main Camera
+    ControllerNameRef: 
     allowedAttributes:
       _Postion: 0
       _PositionVelocity: 0
@@ -43,12 +43,7 @@ MonoBehaviour:
       _RotationVelocity: 0
       _RotationAcceleration: 0
       GrabbedObject: 0
-  trackingSettings:
-    TrackOnSceneStart: 0
-    TrackTriggerManually:
-      enable: 0
-      StartTrackingObjectName: 
-      StopTrackingObjectName: 
+  TrackOnSceneActive: 0
   uploadSettings:
     enable: 0
     firebaseStorageID: 

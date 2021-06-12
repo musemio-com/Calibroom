@@ -10,7 +10,6 @@ using UnityEngine.Networking;
 
 namespace MECM
 {
-    [ExecuteAlways]
     public class UploadManager : MonoBehaviour
     {
     public static UploadManager Instance;
@@ -24,10 +23,11 @@ namespace MECM
     {
         Instance = this;
     }
-    private void Start() {
+        private void Start()
+        {
             _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
-    }
-    public void UploadToServer(string localFilePath, string serverFilePath, bool useTasks = true)
+        }
+    public void UploadToServer(string localFilePath, string serverFilePath, bool useTasks = false)
     {
             if (fileSent)
             {
@@ -43,7 +43,7 @@ namespace MECM
             StartCoroutine(uploadCoroutine);
             fileSent = true;
     }
-    private IEnumerator UploadREST(string localFilePath, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest, bool useTasks = true)
+    private IEnumerator UploadREST(string localFilePath, string serverFilePath, UploadRESTOptions options = UploadRESTOptions.DotNetWebRequest, bool useTasks = false)
     {
             if (string.IsNullOrEmpty(localFilePath))
             {
@@ -142,8 +142,6 @@ namespace MECM
                         Debug.Log($"Upload succeeded! {response.StatusDescription}");
                     // releases resources of response
                     response.Close();
-
-
                     break;
 
 
@@ -189,7 +187,7 @@ namespace MECM
             {
                 if (isDirectory && Directory.Exists(localFilePath))
                 {
-                //Debug.Log("Attempting directory upload...");
+                Debug.Log("Attempting directory upload...");
                 await UploadFolderRESTAsync(localFilePath, serverFilePath);
                 }
                 else
@@ -208,13 +206,12 @@ namespace MECM
                 // Locate file
                 if (fileDetected && File.Exists(localFilePath))
                     {
-                    //Debug.Log("Attempting file upload...");
+                    Debug.Log("Attempting file upload...");
                     await UploadFileRESTAsync(localFilePath, serverFilePath);
                     }
                     else if (directoryDetected && Directory.Exists(localFilePath))
                     {
-                    //Debug.Log("Attempting directory upload...");
-
+                    Debug.Log("Attempting directory upload...");
                     await UploadFolderRESTAsync(localFilePath, serverFilePath);
                     }
 
@@ -264,7 +261,7 @@ namespace MECM
                     await SourceStream.ReadAsync(fileBinary, 0, (int)SourceStream.Length);
                     SourceStream.Close();
                 }
-            //Debug.Log("File read from disk, ready to upload...");
+            Debug.Log("File read from disk, ready to upload...");
 
             // HTTP
             // string firebaseProjectID = "fir-test-b6418.appspot.com";
@@ -282,7 +279,7 @@ namespace MECM
             Stream dataStream = await request.GetRequestStreamAsync();
                 await dataStream.WriteAsync(fileBinary, 0, fileBinary.Length);
                 dataStream.Close();
-            //Debug.Log("Uploading...");
+            Debug.Log("Uploading...");
             // Send request to server
             // We need to use task factory since "getresponseasync" is actually synchronous (as per https://stackoverflow.com/questions/65329127/unity-c-await-freeze-sync-process-which-should-be-executed-before-await-in-as)
             await Task.Factory.FromAsync(request.BeginGetResponse,

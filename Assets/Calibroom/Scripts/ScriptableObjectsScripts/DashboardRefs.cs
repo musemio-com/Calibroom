@@ -9,7 +9,7 @@ public class DashboardRefs : ScriptableObject
     public Controller rightHandController;
     public Controller leftHandController;
     public Controller headMountedDisplay;
-    public TrackingSettings trackingSettings;
+    public bool TrackOnSceneActive;
     public UploadSettings uploadSettings;
 }
 
@@ -40,19 +40,6 @@ public class AllowedAttributes
     public bool _RotationVelocity;
     public bool _RotationAcceleration;
     public bool GrabbedObject;
-}
-[Serializable]
-public class TrackingSettings
-{
-    public bool TrackOnSceneStart;
-    public TrackingObjectsTriggers TrackTriggerManually;
-}
-[Serializable]
-public class TrackingObjectsTriggers
-{
-    public bool enable;
-    public string StartTrackingObjectName;
-    public string StopTrackingObjectName;
 }
 [Serializable]
 public class UploadSettings
