@@ -5,39 +5,15 @@ using UnityEditor;
 
 public class RightHandSettingsEditorWindow : EditorWindow
 {
-    // #region Right Hand Settings
-    // bool R_Position_X;
-    // bool R_Position_Y;
-    // bool R_Position_Z;
-    // bool R_PositionVelocity_X;
-    // bool R_PositionVelocity_Y;
-    // bool R_PositionVelocity_Z;
-    // bool R_PositionAcceleration_X;
-    // bool R_PositionAcceleration_Y;
-    // bool R_PositionAcceleration_Z;
 
-    // bool R_Rotation_X;
-    // bool R_Rotation_Y;
-    // bool R_Rotation_Z;
-    // bool R_Rotation_W;
-    // bool R_RotationVelocity_X;
-    // bool R_RotationVelocity_Y;
-    // bool R_RotationVelocity_Z;
-    // bool R_RotationVelocity_W;
-    // bool R_RotationAcceleration_X;
-    // bool R_RotationAcceleration_Y;
-    // bool R_RotationAcceleration_Z;
-    // bool R_RotationAcceleration_W;
-    // bool R_UseGrabbedObject;
-    // #endregion
     #region Right Hand Settings
-    bool R_UsePos;
-    bool R_UsePositionVelocity;
-    bool R_UsePositionAcceleration;
-    bool R_UseRot;
-    bool R_UseRotationVelocity;
-    bool R_UseRotationAcceleration;
-    bool R_UseGrabbedObject;
+    bool R_UsePos = true;
+    bool R_UsePositionVelocity = true;
+    bool R_UsePositionAcceleration = true;
+    bool R_UseRot = true;
+    bool R_UseRotationVelocity = true;
+    bool R_UseRotationAcceleration = true;
+    bool R_UseGrabbedObject = true;
     #endregion
     public static void ShowWindow()
     {
@@ -80,23 +56,17 @@ public class RightHandSettingsEditorWindow : EditorWindow
 
         if(GUILayout.Button("SAVE"))
         {
-            TrackersInfoScriptableObject trackersInfo = Resources.Load<TrackersInfoScriptableObject>("TrackersInfoObject");
-            if(trackersInfo == null)
-            {
-                trackersInfo = ScriptableObject.CreateInstance<TrackersInfoScriptableObject>();
-                AssetDatabase.CreateAsset(trackersInfo,"Assets/MECM/Resources/TrackersInfoObject.asset");
-                AssetDatabase.SaveAssets();
-            }
-            trackersInfo.rightHandAllowedCoord = new AllowedCoord();
-            trackersInfo.rightHandAllowedCoord._Postion = R_UsePos;
-            trackersInfo.rightHandAllowedCoord._PositionVelocity = R_UsePositionVelocity;
-            trackersInfo.rightHandAllowedCoord._PositionAcceleration = R_UsePositionAcceleration;
-
-            trackersInfo.rightHandAllowedCoord._Rotation = R_UseRot;
-            trackersInfo.rightHandAllowedCoord._RotationVelocity = R_UseRotationVelocity;
-            trackersInfo.rightHandAllowedCoord._RotationAcceleration = R_UseRotationAcceleration;
-
-            trackersInfo.rightHandAllowedCoord.GrabbedObject = R_UseGrabbedObject;
+            DashboardRefs _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
+            _ref.rightHandController.allowedAttributes._Postion = R_UsePos;
+            _ref.headMountedDisplay.allowedAttributes._PositionVelocity = R_UsePositionVelocity;
+            _ref.rightHandController.allowedAttributes._PositionAcceleration = R_UsePositionAcceleration;
+            _ref.rightHandController.allowedAttributes._Rotation = R_UseRot;
+            _ref.rightHandController.allowedAttributes._RotationVelocity = R_UseRotationVelocity;
+            _ref.rightHandController.allowedAttributes._RotationAcceleration = R_UseRotationAcceleration;
+            _ref.rightHandController.allowedAttributes.GrabbedObject = R_UseGrabbedObject;
+            if (R_UsePos && R_UsePositionVelocity && R_UsePositionAcceleration && R_UseRot && R_UseRotationVelocity && R_UseRotationAcceleration && R_UseGrabbedObject)
+                _ref.rightHandController.AllowAllAttributes = true;
         }
+
     }
 }

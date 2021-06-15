@@ -17,6 +17,7 @@ public class DashboardRefs : ScriptableObject
 public class Controller
 {
     public string ControllerNameRef;
+    public bool AllowAllAttributes;
     public AllowedAttributes allowedAttributes;
 }
 [Serializable]

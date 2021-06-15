@@ -5,37 +5,13 @@ using UnityEditor;
 
 public class HMDSettingsEditorWindow : EditorWindow
 {
-    // #region Head Mounted Display Settings
-    // bool HMD_Position_X;
-    // bool HMD_Position_Y;
-    // bool HMD_Position_Z;
-    // bool HMD_PositionVelocity_X;
-    // bool HMD_PositionVelocity_Y;
-    // bool HMD_PositionVelocity_Z;
-    // bool HMD_PositionAcceleration_X;
-    // bool HMD_PositionAcceleration_Y;
-    // bool HMD_PositionAcceleration_Z;
-
-    // bool HMD_Rotation_X;
-    // bool HMD_Rotation_Y;
-    // bool HMD_Rotation_Z;
-    // bool HMD_Rotation_W;
-    // bool HMD_RotationVelocity_X;
-    // bool HMD_RotationVelocity_Y;
-    // bool HMD_RotationVelocity_Z;
-    // bool HMD_RotationVelocity_W;
-    // bool HMD_RotationAcceleration_X;
-    // bool HMD_RotationAcceleration_Y;
-    // bool HMD_RotationAcceleration_Z;
-    // bool HMD_RotationAcceleration_W;
-    // #endregion
     #region HMD Settings
-    bool HMD_UsePos;
-    bool HMD_UsePositionVelocity;
-    bool HMD_UsePositionAcceleration;
-    bool HMD_UseRot;
-    bool HMD_UseRotationVelocity;
-    bool HMD_UseRotationAcceleration;
+    bool HMD_UsePos = true;
+    bool HMD_UsePositionVelocity = true;
+    bool HMD_UsePositionAcceleration = true;
+    bool HMD_UseRot = true;
+    bool HMD_UseRotationVelocity = true;
+    bool HMD_UseRotationAcceleration = true;
     #endregion
 
     public static void ShowWindow()
@@ -46,7 +22,8 @@ public class HMDSettingsEditorWindow : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.Space();
-        GUILayout.Label("Position Data", EditorStyles.boldLabel);
+        var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+        GUILayout.Label("Position Data", style,GUILayout.ExpandWidth(true));
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
         EditorGUI.indentLevel++;
@@ -56,14 +33,12 @@ public class HMDSettingsEditorWindow : EditorWindow
         HMD_UsePositionAcceleration = GUILayout.Toggle(HMD_UsePositionAcceleration,"Position Acceleration");
 
         EditorGUILayout.Space();
-        GUILayout.Label("Rotation Data", EditorStyles.boldLabel);
+        GUILayout.Label("Rotation Data", style, GUILayout.ExpandWidth(true));
         EditorGUILayout.Space();
 
         HMD_UseRot = GUILayout.Toggle(HMD_UseRot,"Rotation");
         HMD_UseRotationVelocity = GUILayout.Toggle(HMD_UseRotationVelocity,"Rotation Velocity");
         HMD_UseRotationAcceleration = GUILayout.Toggle(HMD_UseRotationAcceleration,"Rotation Acceleration");
-
-
         EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
         
@@ -71,20 +46,14 @@ public class HMDSettingsEditorWindow : EditorWindow
         if(GUILayout.Button("SAVE"))
         {
             DashboardRefs _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
-            if (_ref == null)
-            {
-                _ref = ScriptableObject.CreateInstance<DashboardRefs>();
-                AssetDatabase.CreateAsset(_ref, "Assets/MECM/Resources/ScriptableObjects/DashboardRefs.asset");
-                EditorApplication.delayCall += AssetDatabase.SaveAssets;
-            }
-            //_ref.HeadMountedDisplayAllowedCoord = new AllowedCoord();
-            //trackersInfo.HeadMountedDisplayAllowedCoord._Postion = HMD_UsePos;
-            //trackersInfo.HeadMountedDisplayAllowedCoord._PositionVelocity = HMD_UsePositionVelocity;
-            //trackersInfo.HeadMountedDisplayAllowedCoord._PositionAcceleration = HMD_UsePositionAcceleration;
-
-            //trackersInfo.HeadMountedDisplayAllowedCoord._Rotation = HMD_UseRot;
-            //trackersInfo.HeadMountedDisplayAllowedCoord._RotationVelocity = HMD_UseRotationVelocity;
-            //trackersInfo.HeadMountedDisplayAllowedCoord._RotationAcceleration = HMD_UseRotationAcceleration;
+            _ref.headMountedDisplay.allowedAttributes._Postion = HMD_UsePos;
+            _ref.headMountedDisplay.allowedAttributes._PositionVelocity = HMD_UsePositionVelocity;
+            _ref.headMountedDisplay.allowedAttributes._PositionAcceleration = HMD_UsePositionAcceleration;
+            _ref.headMountedDisplay.allowedAttributes._Rotation = HMD_UseRot;
+            _ref.headMountedDisplay.allowedAttributes._RotationVelocity = HMD_UseRotationVelocity;
+            _ref.headMountedDisplay.allowedAttributes._RotationAcceleration = HMD_UseRotationAcceleration;
+            if (HMD_UsePos && HMD_UsePositionVelocity && HMD_UsePositionAcceleration && HMD_UseRot && HMD_UseRotationVelocity && HMD_UseRotationAcceleration)
+                _ref.headMountedDisplay.AllowAllAttributes = true;
         }
     }
 }

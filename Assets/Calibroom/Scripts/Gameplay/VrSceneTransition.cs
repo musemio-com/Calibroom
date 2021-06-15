@@ -16,7 +16,7 @@ public class VrSceneTransition : MonoBehaviour
         if (dashboardRefs == null)
         {
             dashboardRefs = ScriptableObject.CreateInstance<DashboardRefs>();
-            AssetDatabase.CreateAsset(dashboardRefs, "Assets/MECM/Resources/ScriptableObjects/DashboardRefs.asset");
+            AssetDatabase.CreateAsset(dashboardRefs, "Assets/Calibroom/Resources/ScriptableObjects/DashboardRefs.asset");
             EditorApplication.delayCall += AssetDatabase.SaveAssets;
         }
         FindObjectOfType<LoadingOverlay>().FadeIn();

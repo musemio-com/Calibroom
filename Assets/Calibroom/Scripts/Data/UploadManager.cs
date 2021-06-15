@@ -106,7 +106,6 @@ namespace MECM
             byte[] fileBinary = File.ReadAllBytes(fileToUpload);
             
             // HTTP
-            //string firebaseProjectID = "fir-test-b6418.appspot.com"; // this'll be retrieved from a scriptable object
             string firebaseProjectID = _ref.uploadSettings.firebaseStorageID;
             string urlFirebase = "https://firebasestorage.googleapis.com/v0/b/" +
                 firebaseProjectID + "/o/" + serverFilePathEscaped + fileNameEscaped;

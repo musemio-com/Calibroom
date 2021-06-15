@@ -231,7 +231,7 @@ namespace MECM
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
-                ToggleCollectingData();
+                
             }
             if (ToggleTrainModel)
             {

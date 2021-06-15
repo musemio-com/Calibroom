@@ -18,6 +18,7 @@ public class DashboardEditorWindow : EditorWindow
     GameObject HMD;
     AnimBool trackOnSceneStart;
     AnimBool UploadData;
+    Vector2 scrollPos;
 
     DataCollectionController dataController;
 
@@ -33,6 +34,7 @@ public class DashboardEditorWindow : EditorWindow
     string FirebaseID;
     float taskCompletionTime;
     bool UploadWhenCollectingDone;
+    static GUIStyle SuggestionButtonsStyle;
 
     static DashboardRefs _ref;
 
@@ -70,6 +72,22 @@ public class DashboardEditorWindow : EditorWindow
 
     private void OnGUI()
     {
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
+        var HeadersStyle = new GUIStyle(GUI.skin.label)
+        {
+            alignment = TextAnchor.MiddleLeft,
+            fontSize = 15,
+            fontStyle = FontStyle.Bold,
+            normal = new GUIStyleState() { background = Texture2D.whiteTexture }
+        };
+        SuggestionButtonsStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontSize = 15,
+            fontStyle = FontStyle.Bold,
+        };
+        EditorGUILayout.LabelField("Settings", HeadersStyle);
+
         EditorGUILayout.Space();
 
         GUILayout.Label("User ID", EditorStyles.boldLabel);
@@ -136,24 +154,39 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.EndFadeGroup();
         EditorGUI.indentLevel--;
         EditorGUILayout.Space();
-        if (GUILayout.Button("Setup") && (RightController != null && LeftController != null && HMD != null))
+        var SetupButtonStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontSize = 15,
+            fontStyle = FontStyle.Bold,
+        };
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUI.indentLevel++;
+        if (GUILayout.Button("Setup",SetupButtonStyle,GUILayout.Height(30),GUILayout.Width(120)) && (RightController != null && LeftController != null && HMD != null))
         {
             DashboardSetup();        
         }
-        if(RightController == null)
+        EditorGUI.indentLevel--;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+        if (RightController == null)
         {
             EditorGUILayout.HelpBox("Right Controller is missing",MessageType.Warning);
         }
-        if(LeftController == null)
+        if (LeftController == null)
         {
             EditorGUILayout.HelpBox("Left Controller is missing",MessageType.Warning);
         }
-        if(HMD == null)
+        if (HMD == null)
         {
             EditorGUILayout.HelpBox("HMD Controller is missing",MessageType.Warning);
         }
         EditorGUILayout.Space();
-        GUILayout.Label("OUTPUT", EditorStyles.boldLabel);
+        //var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter};
+
+        EditorGUILayout.LabelField("Score", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUI.indentLevel++;
         GUILayout.Label("Task Completion Time : 0", EditorStyles.boldLabel);
@@ -177,10 +210,44 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.EndVertical();
 
         EditorGUI.indentLevel--;
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Suggestions", HeadersStyle);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.BeginHorizontal();
+
+        EditorGUI.indentLevel++;
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Easier", SuggestionButtonsStyle, GUILayout.Height(30),GUILayout.Width(80)))
+        {
+            
+        }
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Harder", SuggestionButtonsStyle, GUILayout.Height(30), GUILayout.Width(80)))
+        {
+
+        }
+        EditorGUI.indentLevel--;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndScrollView();
     }
+
+    public static void changeSuggButtonColors()
+    {
+        SuggestionButtonsStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontSize = 15,
+            fontStyle = FontStyle.Bold,
+            normal = new GUIStyleState() { background = Texture2D.redTexture }
+        };
+    }
+
     void DashboardSetup()
     {
-
         EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(IMLDataSetupCouroutine(),this);
         if(!RightController.GetComponent<GrabbingPieceFeatureExtractor>())
             RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
@@ -192,10 +259,6 @@ public class DashboardEditorWindow : EditorWindow
             _uploadManager.name = "UploadManager";
         }
         SaveDashboardData();
-    }
-    void ToggleCollectOnGrab(XRBaseInteractor interactor)
-    {
-        dataController.GetComponent<DataCollectionController>().ToggleCollectingData();
     }
 
     void SaveDashboardData()
@@ -233,11 +296,10 @@ public class DashboardEditorWindow : EditorWindow
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
         dataController = DataController.GetComponent<DataCollectionController>();
-        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
-        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
 
         yield return new EditorWaitForSeconds(4f);
-
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
+        IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
         ScriptNode goNode = (ScriptNode)IMLGraph.AddNode(typeof(ScriptNode));
         if (goNode != null)
@@ -254,6 +316,7 @@ public class DashboardEditorWindow : EditorWindow
 
             goNode.position.x = 424;
             goNode.position.y = 104;
+
             var ToggleDataCollectionOutPort = goNode.GetOutputPort("ToggleDataCollection");
             var userIdOutPort = goNode.GetPort("UserIDInt");
             var leftGrabOutPort = goNode.GetPort("LeftHandGrabbing");
@@ -313,7 +376,6 @@ public class DashboardEditorWindow : EditorWindow
 
             leftGrabOutPort.Connect(LeftBoolGrabPort);
             rightGrabOutPort.Connect(RightBoolGrabPort);
-
         }
 
         GameObjectNode _CamNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(HMD);
@@ -350,5 +412,21 @@ public class DashboardEditorWindow : EditorWindow
         var rightRotationPort = rightHandRotationNode.GetPort("GameObjectDataIn");
         RightOutPort.Connect(rightPositionPort);
         RightOutPort.Connect(rightRotationPort);
+    }
+
+    void CheckCustomConnections()
+    {
+        if (!_ref.rightHandController.AllowAllAttributes)
+        {
+            
+        }
+        if (!_ref.leftHandController.AllowAllAttributes)
+        {
+            
+        }
+        if (!_ref.headMountedDisplay.AllowAllAttributes)
+        {
+            
+        }
     }
 }
