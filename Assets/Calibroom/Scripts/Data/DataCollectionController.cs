@@ -58,81 +58,83 @@ namespace MECM
         /// <summary>
         /// User ID that we are collecting data from
         /// </summary>
-        [SendToIMLGraph,HideInInspector]
+        [SendToIMLGraph, HideInInspector]
         public int UserIDInt;
 
         /// <summary>
         /// Contains the ID + Scene as a directory where to store data
         /// </summary>
-        [SendToIMLGraph,HideInInspector]
+        [SendToIMLGraph, HideInInspector]
         public string UserIDString;
 
-    #region Right Hand Settings
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UsePosition;
+        #region Right Hand Settings
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UsePosition;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UsePostionVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UsePostionVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UsePositionAcceleration;
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UsePositionAcceleration;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UseRotation;
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UseRotation;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UseRotationVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UseRotationVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UseRotationAcceleration;
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UseRotationAcceleration;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _R_UseGrabbedObject;
-    #endregion
+        [SendToIMLGraph, HideInInspector]
+        public bool _R_UseGrabbedObject;
+        #endregion
 
-    #region Left Hand Settings
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UsePosition;
+        #region Left Hand Settings
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UsePosition;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UsePostionVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UsePostionVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UsePositionAcceleration;
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UsePositionAcceleration;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UseRotation;
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UseRotation;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UseRotationVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UseRotationVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UseRotationAcceleration;
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UseRotationAcceleration;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _L_UseGrabbedObject;
-    #endregion
+        [SendToIMLGraph, HideInInspector]
+        public bool _L_UseGrabbedObject;
+        #endregion
 
-    #region HMD Settings
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UsePosition;
+        #region HMD Settings
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UsePosition;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UsePostionVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UsePostionVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UsePositionAcceleration;
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UsePositionAcceleration;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UseRotation;
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UseRotation;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UseRotationVelocity;
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UseRotationVelocity;
 
-    [SendToIMLGraph,HideInInspector]
-    public bool _HMD_UseRotationAcceleration;
-    #endregion
+        [SendToIMLGraph, HideInInspector]
+        public bool _HMD_UseRotationAcceleration;
+        #endregion
 
+        [HideInInspector]
+        float CompletionTime = 0f;
         /// <summary>
         /// Used to interface with the user details SO (get persistent userID)
         /// </summary>
@@ -148,11 +150,13 @@ namespace MECM
 
         /// <summary>
         /// Extractor for grabbing info left hand
-        /// </summary>
+        /// </summary>   
+        [HideInInspector]
         public GrabbingPieceFeatureExtractor LeftHandGrabbingExtractor;
         /// <summary>
         /// Extractor for grabbing info right hand
         /// </summary>
+        [HideInInspector]
         public GrabbingPieceFeatureExtractor RightHandGrabbingExtractor;
 
         /// <summary>
@@ -171,7 +175,7 @@ namespace MECM
         /// </summary>
         //[SerializeField, Header("Upload Options")]
         private bool m_UploadData = false;
-        [SerializeField]
+        [SerializeField,HideInInspector]
         private bool m_UseTasksOnUpload = true;
 
         private string FirebaseProjectID;
@@ -231,7 +235,7 @@ namespace MECM
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
-                
+                ToggleCollectingData();
             }
             if (ToggleTrainModel)
             {
@@ -246,6 +250,7 @@ namespace MECM
             if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
                 ToggleDataCollection = true;
+                CompletionTime += Time.deltaTime;
             }
             if (!CollectingData)
                 ToggleDataCollection = false;
@@ -277,6 +282,7 @@ namespace MECM
                 LeftHandGrabbing = LeftHandGrabbingExtractor.GrabbingPiece;
             if (RightHandGrabbingExtractor != null)
                 RightHandGrabbing = RightHandGrabbingExtractor.GrabbingPiece;
+
         }
         void OnDisable()
         {
@@ -298,12 +304,19 @@ namespace MECM
         {
             CollectingData = !CollectingData;
             if (CollectingData)
+            {
                 Debug.Log("Starting data collection!");
+                Debug.Log("Task Started");
+            }
+                
             else
             {
                 isUploading = true;
+                UpdateEditorData._OnTaskTimeDelegate(CompletionTime);
                 Debug.Log("Stopping data collection!");
+                
             }
+            UpdateEditorData._OnCollectingDelegate();
                 
         }
         /// <summary>
@@ -329,5 +342,31 @@ namespace MECM
 
     }
 
+    public class UpdateEditorData
+    {
+        public delegate void DataCollectionStatus();
+        public delegate void RightHandGrabStatus();
+        public delegate void LeftHandGrabStatus();
+        public delegate void TaskCompletionTimeStatus(float _t);
+        public static DataCollectionStatus _OnCollectingDelegate;
+        public static RightHandGrabStatus _OnRightHandDelegate;
+        public static LeftHandGrabStatus _OnLeftHandDelegate;
+        public static TaskCompletionTimeStatus _OnTaskTimeDelegate;
+        void DisplayDataCollectionStatus()
+        {
+            if (_OnCollectingDelegate != null)
+                _OnCollectingDelegate();
+        }
+        void DisplayRightHandGrabStatus()
+        {
+            if (_OnRightHandDelegate != null)
+                _OnRightHandDelegate();
+        }
+        void DisplayLeftHandGrabStatus()
+        {
+            if (_OnLeftHandDelegate != null)
+                _OnLeftHandDelegate();
+        }
+    }
 
 }

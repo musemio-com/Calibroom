@@ -20,23 +20,40 @@ public class DashboardEditorWindow : EditorWindow
     AnimBool UploadData;
     Vector2 scrollPos;
 
+    static bool OnCollectionStatus;
+    static string OnCollectionStatusString = "OFF";
+    static bool IsRightHandGrabbing;
+    static string IsRightHandGrabbingString = "OFF";
+    static bool IsLeftHandGrabbing;
+    static string IsLeftHandGrabbingString = "OFF";
+    private static Texture2D DataCollectionButtonTex;
+    private static Texture2D RightHandButtonTex;
+    private static Texture2D LeftHandButtonTex;
+
     DataCollectionController dataController;
 
-
-
-    string OverallScore = "Overal Score";
-    string VisuoSpatial = "Visuo-Spatial";
-    string SpeedProcessing = "Speed Processing";
-    string CycleTime = "Cycle Time";
-
-
-
     string FirebaseID;
-    float taskCompletionTime;
-    bool UploadWhenCollectingDone;
-    static GUIStyle SuggestionButtonsStyle;
+    GUIStyle SuggestionButtonsStyle;
+    static GUIStyle CollectionButtonStyle;
+    static GUIStyle RightHandButtonStyle;
+    static GUIStyle LeftHandButtonStyle;
+
+    static float taskCompletionTimeScale = 0.0f;
+    static float OverallScoreScale = 0.0f;
+    static float VisuoSpatialScale = 0.0f;
+    static float SpeedProcessingScale = 0.0f;
+    static float CycleTimeScale = 0.0f;
 
     static DashboardRefs _ref;
+
+    [InitializeOnLoadMethod]
+    static void Init()
+    {
+        UpdateEditorData._OnCollectingDelegate = RefreshCollectionStauts;
+        UpdateEditorData._OnRightHandDelegate = RefreshRightHandStatus;
+        UpdateEditorData._OnLeftHandDelegate = RefreshLeftHandStatus;
+        UpdateEditorData._OnTaskTimeDelegate = RefreshCompletionTimeStatus;
+    }
 
     [MenuItem("Calibroom/Dashboard")]
     public static void ShowWindow()
@@ -44,7 +61,10 @@ public class DashboardEditorWindow : EditorWindow
         GetWindow(typeof(DashboardEditorWindow),false,"Calibroom Dashboard");
     }
     private void OnEnable()
-    {   
+    {
+        DataCollectionButtonTex = Make1x1Texture(Color.red);
+        RightHandButtonTex = Make1x1Texture(Color.red);
+        LeftHandButtonTex = Make1x1Texture(Color.red);
         trackOnSceneStart = new AnimBool(false);
         trackOnSceneStart.valueChanged.AddListener(Repaint);
         UploadData = new AnimBool(false);
@@ -52,7 +72,26 @@ public class DashboardEditorWindow : EditorWindow
 
         loadAllRefs();
     }
-
+    private void OnDisable()
+    {
+        DataCollectionButtonTex = Make1x1Texture(Color.red);
+        RightHandButtonTex = Make1x1Texture(Color.red);
+        LeftHandButtonTex = Make1x1Texture(Color.red);
+    }
+    static Texture2D Make1x1Texture(Color _color)
+    {
+        Texture2D tex = new Texture2D(1, 1);
+        for (int y = 0; y < tex.height; y++)
+        {
+            for (int x = 0; x < tex.width; x++)
+            {
+                Color color = ((x & y) != 0 ? _color : _color);
+                tex.SetPixel(x, y, color);
+            }
+        }
+        tex.Apply();
+        return tex;
+    }
     void loadAllRefs()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
@@ -85,6 +124,27 @@ public class DashboardEditorWindow : EditorWindow
             alignment = TextAnchor.MiddleCenter,
             fontSize = 15,
             fontStyle = FontStyle.Bold,
+        };
+        CollectionButtonStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontStyle = FontStyle.Bold,
+            fontSize = 13,
+            normal = new GUIStyleState() { background = DataCollectionButtonTex }
+        };
+        RightHandButtonStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontStyle = FontStyle.Bold,
+            fontSize = 13,
+            normal = new GUIStyleState() { background = RightHandButtonTex }
+        };
+        LeftHandButtonStyle = new GUIStyle(GUI.skin.button)
+        {
+            alignment = TextAnchor.MiddleCenter,
+            fontStyle = FontStyle.Bold,
+            fontSize = 13,
+            normal = new GUIStyleState() { background = LeftHandButtonTex }
         };
         EditorGUILayout.LabelField("Settings", HeadersStyle);
 
@@ -184,36 +244,45 @@ public class DashboardEditorWindow : EditorWindow
             EditorGUILayout.HelpBox("HMD Controller is missing",MessageType.Warning);
         }
         EditorGUILayout.Space();
-        //var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter};
+
+        EditorGUILayout.LabelField("Overview", HeadersStyle);
+        EditorGUILayout.Space();
+        EditorGUILayout.BeginVertical();
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Data Collection Status");
+        GUILayout.Button(OnCollectionStatusString, CollectionButtonStyle, GUILayout.Height(20), GUILayout.Width(40));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Is RightHand Grabbing");
+        GUILayout.Button(IsRightHandGrabbingString, RightHandButtonStyle, GUILayout.Height(20), GUILayout.Width(40));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Is LeftHand Grabbing");
+        GUILayout.Button(IsLeftHandGrabbingString, LeftHandButtonStyle, GUILayout.Height(20), GUILayout.Width(40));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space();
 
         EditorGUILayout.LabelField("Score", HeadersStyle);
         EditorGUILayout.Space();
-        EditorGUI.indentLevel++;
-        GUILayout.Label("Task Completion Time : 0", EditorStyles.boldLabel);
         EditorGUILayout.BeginVertical();
-        if(GUILayout.Button(OverallScore))
-        {
-            OverallScore = "Overall Score: " + Random.Range(0,1000);
-        }
-        if(GUILayout.Button(VisuoSpatial))
-        {
-            VisuoSpatial = "Visuo-Spatial: " + Random.Range(0,1000);
-        }
-        if(GUILayout.Button(SpeedProcessing))
-        {
-            SpeedProcessing = "Speed Processing: " + Random.Range(0,1000);
-        }
-        if(GUILayout.Button(CycleTime))
-        {
-            CycleTime = "Cycle Time: " + Random.Range(0,1000);
-        }
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time", taskCompletionTimeScale, 1f, 100f);
+        OverallScoreScale = EditorGUILayout.Slider("Overall Score", OverallScoreScale, 1f, 100f);
+        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 100f);
+        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 100f);
+        CycleTimeScale = EditorGUILayout.Slider("Cycle Time", CycleTimeScale, 1f, 100f);
         EditorGUILayout.EndVertical();
-
-        EditorGUI.indentLevel--;
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.LabelField("Suggestions", HeadersStyle);
+        EditorGUILayout.LabelField("Mode Suggestions", HeadersStyle);
 
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
@@ -227,23 +296,60 @@ public class DashboardEditorWindow : EditorWindow
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("Harder", SuggestionButtonsStyle, GUILayout.Height(30), GUILayout.Width(80)))
         {
-
+            
         }
         EditorGUI.indentLevel--;
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndScrollView();
+        Repaint();
     }
-
-    public static void changeSuggButtonColors()
+    public static void RefreshCompletionTimeStatus(float _t)
     {
-        SuggestionButtonsStyle = new GUIStyle(GUI.skin.button)
+        taskCompletionTimeScale = _t;
+    }
+    public static void RefreshCollectionStauts()
+    {
+        OnCollectionStatus = !OnCollectionStatus;
+        if (OnCollectionStatus)
         {
-            alignment = TextAnchor.MiddleCenter,
-            fontSize = 15,
-            fontStyle = FontStyle.Bold,
-            normal = new GUIStyleState() { background = Texture2D.redTexture }
-        };
+            DataCollectionButtonTex = Make1x1Texture(Color.green);
+            OnCollectionStatusString = "ON";
+        }
+        else
+        {
+            DataCollectionButtonTex = Make1x1Texture(Color.red);
+            OnCollectionStatusString = "OFF";
+        }
+    }
+    public static void RefreshRightHandStatus()
+    {
+        IsRightHandGrabbing = !IsRightHandGrabbing;
+        if (IsRightHandGrabbing)
+        {
+            RightHandButtonTex = Make1x1Texture(Color.green);
+            IsRightHandGrabbingString = "ON";
+        }
+        else
+        {
+            RightHandButtonTex = Make1x1Texture(Color.red);
+            IsRightHandGrabbingString = "OFF";
+        }    
+    }
+    public static void RefreshLeftHandStatus()
+    {
+        IsLeftHandGrabbing = !IsLeftHandGrabbing;
+        if (IsLeftHandGrabbing)
+        {
+            LeftHandButtonTex = Make1x1Texture(Color.green);
+            IsLeftHandGrabbingString = "ON";
+        }    
+        else
+        {
+            LeftHandButtonTex = Make1x1Texture(Color.red);
+            IsLeftHandGrabbingString = "OFF";
+        }
+            
     }
 
     void DashboardSetup()
@@ -258,6 +364,7 @@ public class DashboardEditorWindow : EditorWindow
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
+
         SaveDashboardData();
     }
 
@@ -401,7 +508,6 @@ public class DashboardEditorWindow : EditorWindow
         LeftOutPort.Connect(leftPositionPort);
         LeftOutPort.Connect(leftRotationPort);
 
-
         GameObjectNode _RightHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(RightController);
         _RightHandNode.position.x = -456;
         _RightHandNode.position.y = -504;
@@ -414,19 +520,19 @@ public class DashboardEditorWindow : EditorWindow
         RightOutPort.Connect(rightRotationPort);
     }
 
-    void CheckCustomConnections()
-    {
-        if (!_ref.rightHandController.AllowAllAttributes)
-        {
+    //void CheckCustomConnections()
+    //{
+    //    if (!_ref.rightHandController.AllowAllAttributes)
+    //    {
             
-        }
-        if (!_ref.leftHandController.AllowAllAttributes)
-        {
+    //    }
+    //    if (!_ref.leftHandController.AllowAllAttributes)
+    //    {
             
-        }
-        if (!_ref.headMountedDisplay.AllowAllAttributes)
-        {
+    //    }
+    //    if (!_ref.headMountedDisplay.AllowAllAttributes)
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }
