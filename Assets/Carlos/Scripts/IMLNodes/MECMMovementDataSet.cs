@@ -11,10 +11,10 @@ using System.Linq;
 namespace MECM
 {
     /// <summary>
-    /// Holds a Training Data Set for MECM purposes
+    /// Holds a Movement Data Set (in windows of N size)
     /// </summary>
     [NodeWidth(400)]
-    public class MECMTrainingDataSet : TrainingExamplesNode
+    public class MECMMovementDataSet : IMLNode, IDataSetIML, IFeatureIML
     {
         #region Variables
 
@@ -24,12 +24,21 @@ namespace MECM
         [Input]
         public List<List<IMLTrainingExample>> MovementData;
 
-        /// <summary>
-        /// BrainHQData to use as labels per input
-        /// </summary>
-        [Input]
-        public List<BrainHQUserData> BrainHQDataSet;
-        
+        public List<IMLTrainingExample> TrainingExamplesVector { get { return m_TrainingExamplesVector; } }
+        private List<IMLTrainingExample> m_TrainingExamplesVector;
+
+        public List<IMLTrainingSeries> TrainingSeriesCollection => throw new NotImplementedException();
+
+        public IMLBaseDataType FeatureValues { get { return m_FeatureValues; } }
+        [Output, SerializeField]
+        private IMLBaseDataType m_FeatureValues;
+
+        public bool isExternallyUpdatable;
+
+        public bool isUpdated { get; set; }
+
+        bool IFeatureIML.isExternallyUpdatable { get; }
+
         public int NumDataSetsProcessed;
         public bool ProcessingStarted;
         public bool ProcessingFinished;
@@ -49,45 +58,56 @@ namespace MECM
 
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
-        {
-            return this; // Replace this
+        {            
+            return UpdateFeature(); 
         }
 
         #endregion
 
-        #region TrainingExamples Overrides
 
-        /// <summary>
-        /// Sets Data Collection Type 
-        /// </summary>
-        protected override void SetDataCollection()
+        #region IFeatureIML Method Overrides
+
+        public object UpdateFeature()
         {
-            ModeOfCollection = CollectionMode.SingleExample;
-        }
-        /// <summary>
-        /// Save IML Training Data to Disk 
-        /// </summary>
-        public override void SaveDataToDisk()
-        {
-            IMLDataSerialization.SaveTrainingSetToDisk(m_TrainingExamplesVector, GetJSONFileName());
-        }
-        /// <summary>
-        /// Returns the file name we want for the regular training examples list in JSON format, both for read and write
-        /// </summary>
-        /// <returns></returns>
-        public override string GetJSONFileName()
-        {
-            if (this.graph != null)
+            if (m_TrainingExamplesVector != null && m_TrainingExamplesVector.Count > 0)
             {
-                string fileName = "MECMTrainingDataSet" + this.id;
+                // Pick random window to output
+                System.Random rnd = new System.Random();
+                int windowIndex = rnd.Next(0, m_TrainingExamplesVector.Count-1 );
+                
+                // Add all data from window into flattened list
+                if (m_TrainingExamplesVector[windowIndex].Inputs != null)
+                {
+                    List<float> flattenedInputs = new List<float>();
+                    foreach (var input in m_TrainingExamplesVector[windowIndex].Inputs)
+                    {
+                        if (input == null || input.InputData == null)
+                        {
+                            NodeDebug.LogWarning("Null entry in dataset! It can't output a feature", this, true);
+                            return null;
 
-                // If we have a subfolder specified for the data...
-                if (!String.IsNullOrEmpty(SubFolderDataPath))
-                    fileName = String.Concat(SubFolderDataPath, "/", fileName);
+                        }
+                        foreach (var value in input.InputData.Values)
+                        {
+                            flattenedInputs.Add(value);
+                        }
+                    }
 
-                return fileName;
+                    // Output flattened array of all values in window
+                    m_FeatureValues = new IMLArray(flattenedInputs.ToArray());                    
+                    return this;
+                }
+                else
+                {
+                    NodeDebug.LogWarning("Null entry in dataset! It can't output a feature", this, true);
+                    return null;
+                }
             }
-            return null;
+            else
+            {
+                NodeDebug.LogWarning("Data is not processed! It can't output a feature", this, true);
+                return null;
+            }
         }
 
         #endregion
@@ -95,7 +115,7 @@ namespace MECM
         #region Public Methods
 
         /// <summary>
-        /// Chunks a list of trainingDataSets + BrainHQData into windows of given size 
+        /// Chunks a list of trainingDataSets into windows of given size 
         /// Assumes by default that one window is 10 samples (10 samples per sec, 1 window = 1 sec)
         /// </summary>
         /// <param name="inputData"></param>
@@ -103,16 +123,14 @@ namespace MECM
         public void DataToWindows()
         {
             MovementData = GetInputValue<List<List<IMLTrainingExample>>>("MovementData");
-            BrainHQDataSet = GetInputValue<List<BrainHQUserData>>("BrainHQDataSet");
-            Task.Run(async () => 
+            Task.Run(async () =>
             {
                 // Load training data
                 m_TrainingExamplesVector = new List<IMLTrainingExample>();
-                m_TrainingExamplesVector = await DataToWindowsAsync(MovementData, BrainHQDataSet);
-                // Force to update dataset configuration for model
-                UpdateDesiredInputOutputConfigFromDataVector(updateDesiredFeatures: true);                
+                m_TrainingExamplesVector = await DataToWindowsAsync(MovementData);
             });
         }
+
 
         #endregion
 
@@ -124,16 +142,11 @@ namespace MECM
         /// </summary>
         /// <param name="inputData"></param>
         /// <param name="lengthWindow"></param>
-        private async Task<List<IMLTrainingExample>> DataToWindowsAsync(List<List<IMLTrainingExample>> inputData, List<BrainHQUserData> outputData, int lengthWindow = 10)
+        private async Task<List<IMLTrainingExample>> DataToWindowsAsync(List<List<IMLTrainingExample>> inputData, int lengthWindow = 10)
         {
             if (inputData == null)
             {
                 NodeDebug.LogWarning("Input Data is null!", this);
-                return null;
-            }
-            if (outputData == null)
-            {
-                NodeDebug.LogWarning("Output Data is null!", this);
                 return null;
             }
             //if (ProcessingStarted)
@@ -160,10 +173,7 @@ namespace MECM
                     return null;
                 }
 
-                // Select the BrainHQ dataset that matches the user ID of this dataset
-                var brainHQLabel = outputData.First(x => x.ID == trainingExamples[0].Outputs[0].OutputData.Values[0]);
-
-                Debug.Log($"Processing dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} and ID {brainHQLabel.ID}...");
+                Debug.Log($"Processing dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]}...");
 
                 int numWindowsCreated = 0;
                 // We chunk N examples together in one window (newExampleWindow). Move the index up the size of the window 
@@ -175,7 +185,7 @@ namespace MECM
                     // Check that there are enough inputs left for window (in case this is the last window). If not, we skip this window
                     if (localLengthWindow > trainingExamples.Count)
                     {
-                        Debug.Log($"Window for dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} and ID {brainHQLabel.ID} is too big, skipping a total of {localLengthWindow - trainingExamples.Count} examples and moving to next dataSet...");
+                        Debug.Log($"Window for dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} is too big, skipping a total of {localLengthWindow - trainingExamples.Count} examples and moving to next dataSet...");
                         continue;
                     }
 
@@ -200,29 +210,25 @@ namespace MECM
                         }
 
                         // If it is the last input added to window...
-                        if (j == localLengthWindow - 1)
+                        if (example != null && j == localLengthWindow - 1)
                         {
-                            // Add the BrainHQ data as the output for the entire window
-                            // User ID
-                            newExampleWindow.AddOutputExample(new IMLInteger(brainHQLabel.ID));
-                            // Speed/Processing Task //   
-                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.DoubleDecisionScore));
-                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.MindBenderScore));
-                            // Visuo-Spatial Processing //
-                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.RightTurnScore));
-                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.MentalMapScore));
-                            newExampleWindow.AddOutputExample(new IMLFloat(brainHQLabel.TargetTracker));
+                            // Add the output data as the output for the entire window
+                            foreach (var output in example.Outputs)
+                            {
+                                newExampleWindow.AddOutputExample(output.OutputData);
+                            }
+
                         }
                     }
 
                     // Add window to training data set
                     windowedDataSet.Add(newExampleWindow);
                     numWindowsCreated++;
-                    Debug.Log($"Added window with ID {brainHQLabel.ID}. Examples in window = {newExampleWindow.Inputs.Count}.");
+                    Debug.Log($"Added window. Examples in window = {newExampleWindow.Inputs.Count}.");
 
                 }
 
-                Debug.Log($"Processed dataset with ID {brainHQLabel.ID}. Created {numWindowsCreated} windows!");
+                Debug.Log($"Processed dataset. Created {numWindowsCreated} windows!");
                 NumDataSetsProcessed++;
 
             }
@@ -235,4 +241,5 @@ namespace MECM
         #endregion
 
     }
+
 }
