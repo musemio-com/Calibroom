@@ -56,6 +56,13 @@ namespace MECM
 
         }
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            // Attempt to load saved data
+            m_TrainingExamplesVector = IMLDataSerialization.LoadTrainingSetFromDisk(GetJSONFileName()); 
+        }
+
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
         {            
@@ -128,9 +135,29 @@ namespace MECM
                 // Load training data
                 m_TrainingExamplesVector = new List<IMLTrainingExample>();
                 m_TrainingExamplesVector = await DataToWindowsAsync(MovementData);
+                // Trigger saving data
+                IMLDataSerialization.SaveTrainingSetToDisk(m_TrainingExamplesVector, GetJSONFileName());
             });
         }
 
+        /// <summary>
+        /// Returns the file name we want for the regular training examples list in JSON format, both for read and write
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetJSONFileName(string subFolderDataPath = "")
+        {
+            if (this.graph != null)
+            {
+                string fileName = "MECMMovementDataSet" + this.id;
+
+                // If we have a subfolder specified for the data...
+                if (!String.IsNullOrEmpty(subFolderDataPath))
+                    fileName = String.Concat(subFolderDataPath, "/", fileName);
+
+                return fileName;
+            }
+            return null;
+        }
 
         #endregion
 
