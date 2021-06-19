@@ -105,13 +105,16 @@ namespace MECM
             MovementData = GetInputValue<List<List<IMLTrainingExample>>>("MovementData");
             BrainHQDataSet = GetInputValue<List<BrainHQUserData>>("BrainHQDataSet");
             Task.Run(async () => 
-            {
+            {                
                 // Load training data
                 m_TrainingExamplesVector = new List<IMLTrainingExample>();
                 m_TrainingExamplesVector = await DataToWindowsAsync(MovementData, BrainHQDataSet);
                 // Force to update dataset configuration for model
-                UpdateDesiredInputOutputConfigFromDataVector(updateDesiredFeatures: true);                
+                UpdateDesiredInputOutputConfigFromDataVector(updateDesiredFeatures: true);
+                // Trigger save
+                SaveDataToDisk();
             });
+
         }
 
         #endregion
@@ -232,6 +235,18 @@ namespace MECM
             return windowedDataSet;
         }
 
+        /// <summary>
+        /// Coroutine to save data to disk
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator SaveDataCoroutine()
+        {
+            // Wait between frames until processing is finished
+            while (!ProcessingFinished) yield return null;
+            // Save data once processing is finished
+            SaveDataToDisk();
+
+        }
         #endregion
 
     }

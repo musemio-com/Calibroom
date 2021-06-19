@@ -250,80 +250,84 @@ namespace MECM
                     {
                         EditorGUILayout.LabelField($"User Training Data Set {i}", m_ScrollViewStyle);
 
-                        var trainingExample = m_NodeDataSet.TrainingExamplesVector[i];
-
-                        EditorGUI.indentLevel++;
-
-                        int numInputs = trainingExample.Inputs == null ? 0 : trainingExample.Inputs.Count;
-                        string inputsName = $"Inputs ({numInputs})";
-
-                        m_DataDropdowns[i] = EditorGUILayout.Foldout(m_DataDropdowns[i], inputsName, m_FoldoutStyle);
-
-                        // DRAW INPUTS 
-                        if (m_DataDropdowns[i])
+                        if (m_NodeDataSet.TrainingExamplesVector[i] != null)
                         {
+                            var trainingExample = m_NodeDataSet.TrainingExamplesVector[i];
 
                             EditorGUI.indentLevel++;
-                            // Are there any examples in series?
-                            if (trainingExample.Inputs == null)
+
+                            int numInputs = trainingExample.Inputs == null ? 0 : trainingExample.Inputs.Count;
+                            string inputsName = $"Inputs ({numInputs})";
+
+                            m_DataDropdowns[i] = EditorGUILayout.Foldout(m_DataDropdowns[i], inputsName, m_FoldoutStyle);
+
+                            // DRAW INPUTS 
+                            if (m_DataDropdowns[i])
                             {
-                                EditorGUILayout.LabelField("Inputs are null ", m_ScrollViewStyle);
-                                break;
-                            }
 
-                            EditorGUI.indentLevel++;
-                            for (int j = 0; j < trainingExample.Inputs.Count; j++)
-                            {
-                                // init dropdowns
-                                if (m_DataDropdownsLvl0 == null || m_DataDropdownsLvl0.Length != trainingExample.Inputs.Count)
-                                    m_DataDropdownsLvl0 = new bool[trainingExample.Inputs.Count];
-
-                                m_DataDropdownsLvl0[j] = EditorGUILayout.Foldout(m_DataDropdownsLvl0[j], $"Input Feature {j}", m_FoldoutStyle);
-
-                                if (m_DataDropdownsLvl0[j])
+                                EditorGUI.indentLevel++;
+                                // Are there any examples in series?
+                                if (trainingExample.Inputs == null)
                                 {
-                                    // Check for null
-                                    if (trainingExample.Inputs[j] == null || trainingExample.Inputs[j].InputData == null || trainingExample.Inputs[j].InputData.Values == null)
-                                    {
-                                        EditorGUI.indentLevel++;
-                                        EditorGUILayout.LabelField($"Input {j} is null", m_ScrollViewStyle);
-                                        EditorGUI.indentLevel--;
-                                        continue;
-                                    }
-
-                                    // Each input feature in training examples
-                                    for (int k = 0; k < trainingExample.Inputs[j].InputData.Values.Length; k++)
-                                    {
-
-                                        // init dropdowns
-                                        if (m_DataDropdownsLvl1 == null || m_DataDropdownsLvl1.Length != trainingExample.Inputs[j].InputData.Values.Length)
-                                            m_DataDropdownsLvl1 = new bool[trainingExample.Inputs[j].InputData.Values.Length];
-
-                                        m_DataDropdownsLvl1[k] = EditorGUILayout.Foldout(m_DataDropdownsLvl1[k], $"Input {k} ({trainingExample.Inputs[k].InputData.DataType})", m_FoldoutStyle);
-
-                                        if (m_DataDropdownsLvl1[k])
-                                        {
-                                            for (int w = 0; w < trainingExample.Inputs[k].InputData.Values.Length; w++)
-                                            {
-                                                EditorGUI.indentLevel++;
-
-                                                EditorGUILayout.LabelField(trainingExample.Inputs[k].InputData.Values[w].ToString(), m_ScrollViewStyle);
-
-                                                EditorGUI.indentLevel--;
-                                            }
-                                        }
-                                    }
-
+                                    EditorGUILayout.LabelField("Inputs are null ", m_ScrollViewStyle);
+                                    break;
                                 }
 
+                                EditorGUI.indentLevel++;
+                                for (int j = 0; j < trainingExample.Inputs.Count; j++)
+                                {
+                                    // init dropdowns
+                                    if (m_DataDropdownsLvl0 == null || m_DataDropdownsLvl0.Length != trainingExample.Inputs.Count)
+                                        m_DataDropdownsLvl0 = new bool[trainingExample.Inputs.Count];
+
+                                    m_DataDropdownsLvl0[j] = EditorGUILayout.Foldout(m_DataDropdownsLvl0[j], $"Input Feature {j}", m_FoldoutStyle);
+
+                                    if (m_DataDropdownsLvl0[j])
+                                    {
+                                        // Check for null
+                                        if (trainingExample.Inputs[j] == null || trainingExample.Inputs[j].InputData == null || trainingExample.Inputs[j].InputData.Values == null)
+                                        {
+                                            EditorGUI.indentLevel++;
+                                            EditorGUILayout.LabelField($"Input {j} is null", m_ScrollViewStyle);
+                                            EditorGUI.indentLevel--;
+                                            continue;
+                                        }
+
+                                        // Each input feature in training examples
+                                        for (int k = 0; k < trainingExample.Inputs[j].InputData.Values.Length; k++)
+                                        {
+
+                                            // init dropdowns
+                                            if (m_DataDropdownsLvl1 == null || m_DataDropdownsLvl1.Length != trainingExample.Inputs[j].InputData.Values.Length)
+                                                m_DataDropdownsLvl1 = new bool[trainingExample.Inputs[j].InputData.Values.Length];
+
+                                            m_DataDropdownsLvl1[k] = EditorGUILayout.Foldout(m_DataDropdownsLvl1[k], $"Input {k} ({trainingExample.Inputs[k].InputData.DataType})", m_FoldoutStyle);
+
+                                            if (m_DataDropdownsLvl1[k])
+                                            {
+                                                for (int w = 0; w < trainingExample.Inputs[k].InputData.Values.Length; w++)
+                                                {
+                                                    EditorGUI.indentLevel++;
+
+                                                    EditorGUILayout.LabelField(trainingExample.Inputs[k].InputData.Values[w].ToString(), m_ScrollViewStyle);
+
+                                                    EditorGUI.indentLevel--;
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+
+                                }
+                                EditorGUI.indentLevel--;
 
                             }
+
                             EditorGUI.indentLevel--;
 
+
                         }
-
-                        EditorGUI.indentLevel--;
-
                     }
 
                     // Ends Vertical Scroll
