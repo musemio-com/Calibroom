@@ -44,6 +44,8 @@ namespace MECM
             base.Init();
             // Init code for training examples
             Initialize();
+            // Force to update dataset configuration for model
+            UpdateDesiredInputOutputConfigFromDataVector(updateDesiredFeatures: true);
 
         }
 
