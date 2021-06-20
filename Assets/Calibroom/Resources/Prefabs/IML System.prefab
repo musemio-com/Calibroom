@@ -51,11 +51,15 @@ MonoBehaviour:
     m_values:
     - {fileID: 0}
   m_GameObjectNodeList:
-  - {fileID: 4115194967964565487, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 2562823951026057604, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
-  - {fileID: 1339954925723542877, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: -5872222543903008294, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -7693258933965296474, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 1486958675585287591, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_ScriptNodesList:
-  - {fileID: 982299838143633962, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 0}
+  - {fileID: -6979846350868300075, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData: []

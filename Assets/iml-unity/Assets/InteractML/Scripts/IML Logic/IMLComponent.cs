@@ -8,16 +8,14 @@ using UnityEngine.Serialization;
 using ReusableMethods;
 using XNode.Examples.MathNodes;
 using UnityEngine.SceneManagement;
-
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
-#if UNITY_EDITOR
+#if MECM
 using Unity.EditorCoroutines.Editor;
 #endif
 using InteractML.ControllerCustomisers;
-
+#endif
 
 namespace InteractML
 {
@@ -1771,7 +1769,7 @@ namespace InteractML
                 EditorCoroutineUtility.StartCoroutine(coroutine, this);
 #endif
 #if !UNITY_EDITOR
-                StartCoroutine(coroutine);
+StartCoroutine(coroutine);
 #endif
 
                 //                // There will be waits for things to init. Take into account
@@ -1866,14 +1864,13 @@ namespace InteractML
                 EditorCoroutineUtility.StartCoroutine(coroutine, this);
 #endif
 #if !UNITY_EDITOR
-                StartCoroutine(coroutine);
+StartCoroutine(coroutine);
 #endif
-
                 //                // There will be waits for things to init. Take into account
                 //                IEnumerator coroutine = RunModelsOnPlayCoroutine();
                 //                try
                 //                {
-                //                    StartCoroutine(coroutine);
+                //                    
 
                 //                }
                 //                catch (UnityException e)
@@ -2582,7 +2579,7 @@ namespace InteractML
             
             foreach (GameObjectNode GONode in m_GameObjectNodeList)
             {
-                GONode.state = true;
+                if (GONode != null) GONode.state = true;
             }
         }
 

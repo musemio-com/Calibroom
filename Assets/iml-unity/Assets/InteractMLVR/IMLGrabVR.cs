@@ -16,7 +16,7 @@ namespace InteractML
 #if MECM
             onSelectEnter.AddListener(Selected); // Using an older version of XR Interaction Toolkit
 #else
-            onSelectEnter.AddListener(Selected);
+            onSelectEntered.AddListener(Selected);
 #endif
         }
 
