@@ -224,6 +224,7 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUI.indentLevel++;
         if (GUILayout.Button("Setup",SetupButtonStyle,GUILayout.Height(30),GUILayout.Width(120)) && (RightController != null && LeftController != null && HMD != null))
         {
+            Debug.Log("1");
             DashboardSetup();        
         }
         EditorGUI.indentLevel--;
@@ -404,10 +405,6 @@ public class DashboardEditorWindow : EditorWindow
         dataController = DataController.GetComponent<DataCollectionController>();
 
         yield return new EditorWaitForSeconds(4f);
-        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse = new List<GameObject>();
-        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(HMD);
-        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(LeftController);
-        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(RightController);
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;

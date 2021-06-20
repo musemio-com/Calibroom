@@ -13,7 +13,11 @@ namespace InteractML
         public void Start()
         {
             imlgrab = GetComponent<IMLGrab>();
+#if MECM
+            onSelectEnter.AddListener(Selected); // Using an older version of XR Interaction Toolkit
+#else
             onSelectEnter.AddListener(Selected);
+#endif
         }
 
         private void Selected(XRBaseInteractor interactable)

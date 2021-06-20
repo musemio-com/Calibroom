@@ -69,13 +69,13 @@ public class IMLBuildManager
         {
             Directory.CreateDirectory(buildDataPath + "/InteractML/Data");
             Directory.CreateDirectory(buildDataPath + "/InteractML/Data/Models");
-            Directory.CreateDirectory(buildDataPath + "/InteractML/Data/Tracking_Data");
+            Directory.CreateDirectory(buildDataPath + "/InteractML/Data/Training_Examples");
             Directory.CreateDirectory(buildDataPath + "/InteractML/Data/InputSetUp");
 
         }
         // Calculate target paths
         string targetPathModels = buildDataPath + "/InteractML/Data/Models";
-        string targetPathTrainingExamples = buildDataPath + "/InteractML/Data/Tracking_Data";
+        string targetPathTrainingExamples = buildDataPath + "/InteractML/Data/Training_Examples";
         string targetPathInputSettings = buildDataPath + "InteractML/Data/InputSetUp";
 
         // If the Models folder exists in current project...
@@ -94,10 +94,10 @@ public class IMLBuildManager
         }
 
         // If the Training Examples folder exists in current project...
-        if (Directory.Exists("Assets/InteractML/Data/Tracking_Data") && Directory.Exists(targetPathTrainingExamples))
+        if (Directory.Exists("Assets/InteractML/Data/Training_Examples") && Directory.Exists(targetPathTrainingExamples))
         {
             // Get all trainingExamplesPaths
-            string[] trainingExamplesNames = Directory.GetFiles("Assets/InteractML/Data/Tracking_Data");
+            string[] trainingExamplesNames = Directory.GetFiles("Assets/InteractML/Data/Training_Examples");
             // Copy the models and overwrite destination files if they already exist.
             foreach (string tExamplesName in trainingExamplesNames)
             {
