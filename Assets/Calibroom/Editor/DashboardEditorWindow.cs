@@ -416,12 +416,12 @@ public class DashboardEditorWindow : EditorWindow
         {
             goNode.SetScript(dataController);
             goNode.graph = IMLGraph;
-            IMLSystem.GetComponent<IMLComponent>().m_ScriptNodesList = new List<ScriptNode>();
-            if (!IMLSystem.GetComponent<IMLComponent>().m_ScriptNodesList.Contains(goNode))
-                IMLSystem.GetComponent<IMLComponent>().m_ScriptNodesList.Add(goNode);
-            IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode = new MonobehaviourScriptNodeDictionary();
-            if (!IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode.Contains(goNode))
-                IMLSystem.GetComponent<IMLComponent>().m_MonoBehavioursPerScriptNode.Add(dataController,goNode);
+            IMLSystem.GetComponent<IMLComponent>().ScriptNodesList = new List<ScriptNode>();
+            if (!IMLSystem.GetComponent<IMLComponent>().ScriptNodesList.Contains(goNode))
+                IMLSystem.GetComponent<IMLComponent>().ScriptNodesList.Add(goNode);
+            IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode = new MonobehaviourScriptNodeDictionary();
+            if (!IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode.Contains(goNode))
+                IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode.Add(dataController,goNode);
             IMLSystem.GetComponent<IMLComponent>().FetchDataFromMonobehavioursSubscribed();
 
             goNode.position.x = 424;
