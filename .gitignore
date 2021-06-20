@@ -59,7 +59,11 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Traininig Data and Models from InteractML
-/[Aa]ssets/InteractML/Data/Training_Examples
-/[Aa]ssets/InteractML/Data/Models
+/[Aa]ssets/InteractML/Data/Training_Examples/*
+/[Aa]ssets/InteractML/Data/Models/*
 
+# Except MECM or calibroom models or training data
+!/[Aa]ssets/InteractML/Data/Training_Examples/MECM*.json
+!/[Aa]ssets/InteractML/Data/Models/MECM*.json
+!/[Aa]ssets/InteractML/Data/Models/Calibroom*.json
 
