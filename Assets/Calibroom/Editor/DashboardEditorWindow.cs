@@ -273,11 +273,11 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Score", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time", taskCompletionTimeScale, 1f, 100f);
-        OverallScoreScale = EditorGUILayout.Slider("Overall Score", OverallScoreScale, 1f, 100f);
-        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 100f);
-        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 100f);
-        CycleTimeScale = EditorGUILayout.Slider("Cycle Time", CycleTimeScale, 1f, 100f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time", taskCompletionTimeScale, 1f, 1000f);
+        OverallScoreScale = EditorGUILayout.Slider("Overall Score", OverallScoreScale, 1f, 1000f);
+        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 1000f);
+        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 1000f);
+        CycleTimeScale = EditorGUILayout.Slider("Cycle Time", CycleTimeScale, 1f, 1000f);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space();
@@ -307,6 +307,13 @@ public class DashboardEditorWindow : EditorWindow
     public static void RefreshCompletionTimeStatus(float _t)
     {
         taskCompletionTimeScale = _t;
+    }
+    public static void SetupScore(float _overallScore, float _visuoSpatial, float _speedProcessing, float _cycleTime)
+    {
+        OverallScoreScale = _overallScore;
+        VisuoSpatialScale = _visuoSpatial;
+        SpeedProcessingScale = _speedProcessing;
+        CycleTimeScale = _cycleTime;
     }
     public static void RefreshCollectionStauts()
     {
