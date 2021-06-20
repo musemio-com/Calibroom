@@ -1763,9 +1763,8 @@ namespace InteractML
                 // There will be waits for things to init. Take into account
                 if (this.gameObject.activeSelf)
                 {
-                    EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(LoadDataForModelsCoroutine(), this);
-                    //IEnumerator coroutine = LoadDataForModelsCoroutine();
-                    //StartCoroutine(coroutine);
+                    IEnumerator coroutine = LoadDataForModelsCoroutine();
+                    StartCoroutine(coroutine);
                 }
             }
             
@@ -1839,10 +1838,9 @@ namespace InteractML
             {
                 if (this.gameObject.activeSelf)
                 {
-                    EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(RunModelsOnPlayCoroutine(), this);
                     // There will be waits for things to init. Take into account
-                    //IEnumerator coroutine = RunModelsOnPlayCoroutine();
-                    //StartCoroutine(coroutine);
+                    IEnumerator coroutine = RunModelsOnPlayCoroutine();
+                    StartCoroutine(coroutine);
                 }
             }
             

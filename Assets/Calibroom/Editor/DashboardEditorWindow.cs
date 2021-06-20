@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using MECM;
-using UnityEngine.XR.Interaction.Toolkit;
 using InteractML;
 using XNode;
 using System.Linq;
@@ -405,6 +404,10 @@ public class DashboardEditorWindow : EditorWindow
         dataController = DataController.GetComponent<DataCollectionController>();
 
         yield return new EditorWaitForSeconds(4f);
+        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse = new List<GameObject>();
+        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(HMD);
+        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(LeftController);
+        //IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(RightController);
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
         var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
@@ -484,6 +487,7 @@ public class DashboardEditorWindow : EditorWindow
             leftGrabOutPort.Connect(LeftBoolGrabPort);
             rightGrabOutPort.Connect(RightBoolGrabPort);
         }
+
 
         GameObjectNode _CamNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(HMD);
         _CamNode.position.x = -456;
