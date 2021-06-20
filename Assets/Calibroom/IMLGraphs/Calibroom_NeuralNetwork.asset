@@ -192,19 +192,19 @@ MonoBehaviour:
   ToggleTrainInputBool: 0
   ToggleRunInputBool: 0
   PredictedRapidlibOutput:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 65.11425781318088
+  - 1410.1317013601702
+  - 9325.394445549799
+  - 2102.7868480469706
+  - 1.2822444044808012
+  - 1.9016138476616238
   DelayedPredictedOutput:
-  - 64.24238149113796
-  - 1007.9374984492858
-  - 13382.375198706091
-  - 1630.9027070491102
-  - 0.008705018382057617
-  - 1.500582449044923
+  - 64.90124275220062
+  - 1243.5813667940872
+  - 9812.223709225735
+  - 2503.6272221788527
+  - 1.509081665247261
+  - 2.0054141797434246
   m_NumExamplesTrainedOn: 2429
   m_ExpectedInputList: 05000000
   m_ExpectedOutputList: 010000000000000000000000000000000000000000000000
@@ -220,6 +220,81 @@ MonoBehaviour:
   warning: You are in edit mode live data in from objects will only workin play mode
   error: 1
   trainOnLoad: 1
+--- !u!114 &-6206050627982096732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f958aec04050664caf0a081d2e69a5a, type: 3}
+  m_Name: MECM Set Dashboard Values
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2728, y: -328}
+  ports:
+    keys:
+    - OverallScore
+    - VisuoSpatial
+    - SpeedProcessing
+    - CycleTime
+    values:
+    - _fieldName: OverallScore
+      _node: {fileID: -6206050627982096732}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_Out
+        node: {fileID: -4997694620253465783}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: VisuoSpatial
+      _node: {fileID: -6206050627982096732}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_Out
+        node: {fileID: 3023240985059747064}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: SpeedProcessing
+      _node: {fileID: -6206050627982096732}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_Out
+        node: {fileID: -1947331298123092856}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: CycleTime
+      _node: {fileID: -6206050627982096732}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_Out
+        node: {fileID: -2269804938390372467}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  id: a4524018-1ab4-4ff6-aba4-53b2c01ab76c
+  numberInComponentList: -1
+  OverallScore: 1243.5814
+  VisuoSpatial: 9812.224
+  SpeedProcessing: 2503.6272
+  CycleTime: 1.5090817
 --- !u!114 &-5956783821960213138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +344,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -309,7 +384,10 @@ MonoBehaviour:
       _node: {fileID: -4997694620253465783}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: OverallScore
+        node: {fileID: -6206050627982096732}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -318,16 +396,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
+  m_Value: 1243.5814
+  m_Out: 1243.5814
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 1243.5814
 --- !u!114 &-4900322899204207368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,194 +494,194 @@ MonoBehaviour:
   ValueName: 
   m_In: []
   m_Value:
-  - -0.6586292
-  - 0.68384254
-  - 0.66877604
-  - -0.49454975
-  - 0.565511
-  - 0.26568222
-  - -0.56537247
-  - 0.1748085
-  - 0.7402029
-  - -0.6599946
-  - 0.6741587
-  - 0.6733804
-  - -0.49160433
-  - 0.5649049
-  - 0.2717309
-  - -0.5713539
-  - 0.17022145
-  - 0.7363317
-  - -0.6631324
-  - 0.671844
-  - 0.6819992
-  - -0.49301147
-  - 0.56551886
-  - 0.27938175
-  - -0.5704694
-  - 0.16712809
-  - 0.7350879
-  - -0.66614604
-  - 0.6733819
-  - 0.68678904
-  - -0.4948809
-  - 0.5650792
-  - 0.2836609
-  - -0.5721159
-  - 0.16996992
-  - 0.7366042
-  - -0.66855335
-  - 0.6769166
-  - 0.68749905
-  - -0.4984212
-  - 0.5643816
-  - 0.28583765
-  - -0.5687337
-  - 0.17748809
-  - 0.74060106
-  - -0.6701143
-  - 0.7044833
-  - 0.68465424
-  - -0.5034888
-  - 0.56992155
-  - 0.28893518
-  - -0.5582557
-  - 0.21285677
-  - 0.73407316
-  - -0.6753521
-  - 0.7811407
-  - 0.6846609
-  - -0.51579785
-  - 0.58698183
-  - 0.2909689
-  - -0.5584552
-  - 0.30163538
-  - 0.70590353
-  - -0.6732755
-  - 0.911348
-  - 0.67458963
-  - -0.5602436
-  - 0.6214228
-  - 0.28742313
-  - -0.55577445
-  - 0.44542825
-  - 0.6826148
-  - -0.6607611
-  - 1.0849237
-  - 0.66006136
-  - -0.620471
-  - 0.68929803
-  - 0.29859352
-  - -0.5370288
-  - 0.6465547
-  - 0.69394684
-  - -0.6327901
-  - 1.2379704
-  - 0.62408304
-  - -0.66887903
-  - 0.7577449
-  - 0.3208704
-  - -0.4975834
-  - 0.8175709
-  - 0.72360253
+  - 0.6277387
+  - 1.4504763
+  - 0.7226306
+  - 0.64361787
+  - 0.8556805
+  - 0.8596645
+  - 0.54369587
+  - 1.0158312
+  - 0.5884728
+  - 0.61101913
+  - 1.4601021
+  - 0.730566
+  - 0.5529432
+  - 0.8641511
+  - 0.88201714
+  - 0.58998156
+  - 0.99853694
+  - 0.6618539
+  - 0.59588796
+  - 1.4679723
+  - 0.7427474
+  - 0.47473678
+  - 0.86243653
+  - 0.8885445
+  - 0.65797913
+  - 0.94773364
+  - 0.7318386
+  - 0.5895632
+  - 1.4657483
+  - 0.7590088
+  - 0.4325956
+  - 0.8645475
+  - 0.8942094
+  - 0.71818554
+  - 0.88852715
+  - 0.7780814
+  - 0.5885824
+  - 1.4564795
+  - 0.7761997
+  - 0.41307816
+  - 0.8646511
+  - 0.89327765
+  - 0.7589842
+  - 0.8566721
+  - 0.8067039
+  - 0.59182227
+  - 1.4491024
+  - 0.7925218
+  - 0.4022347
+  - 0.86418074
+  - 0.88772464
+  - 0.78713226
+  - 0.8523786
+  - 0.81966585
+  - 0.59792507
+  - 1.4428871
+  - 0.799953
+  - 0.3909487
+  - 0.8591244
+  - 0.8780267
+  - 0.80250746
+  - 0.81818306
+  - 0.8136497
+  - 0.60734004
+  - 1.4354792
+  - 0.8003595
+  - 0.38371134
+  - 0.85953045
+  - 0.8763193
+  - 0.8160353
+  - 0.8062154
+  - 0.80806863
+  - 0.6137197
+  - 1.4318944
+  - 0.7937584
+  - 0.37962264
+  - 0.85556877
+  - 0.8723507
+  - 0.8157449
+  - 0.79555535
+  - 0.80549246
+  - 0.6172709
+  - 1.4353709
+  - 0.78549916
+  - 0.3879327
+  - 0.8541231
+  - 0.86827177
+  - 0.8151338
+  - 0.8070067
+  - 0.80306554
   m_Out: []
   ReceivingData: 1
-  FeatureValueReceivingData: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  FeatureValueReceivingData: 010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   InputConnected: 0
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
   ReceivedValue:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.6277387
+  - 1.4504763
+  - 0.7226306
+  - 0.64361787
+  - 0.8556805
+  - 0.8596645
+  - 0.54369587
+  - 1.0158312
+  - 0.5884728
+  - 0.61101913
+  - 1.4601021
+  - 0.730566
+  - 0.5529432
+  - 0.8641511
+  - 0.88201714
+  - 0.58998156
+  - 0.99853694
+  - 0.6618539
+  - 0.59588796
+  - 1.4679723
+  - 0.7427474
+  - 0.47473678
+  - 0.86243653
+  - 0.8885445
+  - 0.65797913
+  - 0.94773364
+  - 0.7318386
+  - 0.5895632
+  - 1.4657483
+  - 0.7590088
+  - 0.4325956
+  - 0.8645475
+  - 0.8942094
+  - 0.71818554
+  - 0.88852715
+  - 0.7780814
+  - 0.5885824
+  - 1.4564795
+  - 0.7761997
+  - 0.41307816
+  - 0.8646511
+  - 0.89327765
+  - 0.7589842
+  - 0.8566721
+  - 0.8067039
+  - 0.59182227
+  - 1.4491024
+  - 0.7925218
+  - 0.4022347
+  - 0.86418074
+  - 0.88772464
+  - 0.78713226
+  - 0.8523786
+  - 0.81966585
+  - 0.59792507
+  - 1.4428871
+  - 0.799953
+  - 0.3909487
+  - 0.8591244
+  - 0.8780267
+  - 0.80250746
+  - 0.81818306
+  - 0.8136497
+  - 0.60734004
+  - 1.4354792
+  - 0.8003595
+  - 0.38371134
+  - 0.85953045
+  - 0.8763193
+  - 0.8160353
+  - 0.8062154
+  - 0.80806863
+  - 0.6137197
+  - 1.4318944
+  - 0.7937584
+  - 0.37962264
+  - 0.85556877
+  - 0.8723507
+  - 0.8157449
+  - 0.79555535
+  - 0.80549246
+  - 0.6172709
+  - 1.4353709
+  - 0.78549916
+  - 0.3879327
+  - 0.8541231
+  - 0.86827177
+  - 0.8151338
+  - 0.8070067
+  - 0.80306554
   m_MaximumArraySize: 150
 --- !u!114 &-3949645877236460788
 MonoBehaviour:
@@ -691,7 +769,10 @@ MonoBehaviour:
       _node: {fileID: -2269804938390372467}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: CycleTime
+        node: {fileID: -6206050627982096732}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -700,16 +781,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
+  m_Value: 1.5090817
+  m_Out: 1.5090817
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 1.5090817
 --- !u!114 &-1947331298123092856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +826,10 @@ MonoBehaviour:
       _node: {fileID: -1947331298123092856}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: SpeedProcessing
+        node: {fileID: -6206050627982096732}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -754,16 +838,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
+  m_Value: 2503.6272
+  m_Out: 2503.6272
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 2503.6272
 --- !u!114 &-1040273551520178872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,7 +897,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1030,6 +1114,7 @@ MonoBehaviour:
   - {fileID: -1947331298123092856}
   - {fileID: -2269804938390372467}
   - {fileID: -1040273551520178872}
+  - {fileID: -6206050627982096732}
   SceneComponent: {fileID: 0}
 --- !u!114 &3023240985059747064
 MonoBehaviour:
@@ -1066,7 +1151,10 @@ MonoBehaviour:
       _node: {fileID: 3023240985059747064}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: VisuoSpatial
+        node: {fileID: -6206050627982096732}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1075,16 +1163,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
+  m_Value: 9812.224
+  m_Out: 9812.224
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
   InputConnected: 1
-  Counter: 0
+  Counter: 3
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 9812.224
 --- !u!114 &8645510986479290885
 MonoBehaviour:
   m_ObjectHideFlags: 0

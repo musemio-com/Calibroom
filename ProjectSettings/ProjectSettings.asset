@@ -695,6 +695,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
+    1: MECM
     7: MECM
   platformArchitecture: {}
   scriptingBackend: {}

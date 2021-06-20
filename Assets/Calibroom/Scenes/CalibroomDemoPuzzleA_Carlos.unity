@@ -268,7 +268,8 @@ MonoBehaviour:
     - {fileID: 0}
   m_GameObjectNodeList: []
   m_ScriptNodesList:
-  - {fileID: -4625870367660312304, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 5652443844713675774, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 262840173139066163, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -278,7 +279,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 780051671}
     m_values:
-    - {fileID: -4625870367660312304, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 262840173139066163, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &403606442
