@@ -15,7 +15,7 @@ namespace MECM
     /// </summary>
     [NodeWidth(300)]
 
-    public class BrainHQDataSetNode : IMLNode
+    public class BrainHQDataSetNode : IMLNode, IUpdatableIML
     {
 
         #region Variables
@@ -36,8 +36,14 @@ namespace MECM
         [System.NonSerialized]
         private bool m_LoadingStarted;
         public bool LoadingFinished { get { return m_LoadingFinished; } }
+
         [System.NonSerialized]
         private bool m_LoadingFinished;
+
+        public bool isExternallyUpdatable => true;
+
+        public bool isUpdated { get => m_isUpdated; set => m_isUpdated = value; }
+        private bool m_isUpdated;
 
 
         #endregion
@@ -46,6 +52,10 @@ namespace MECM
         protected override void Init()
         {
             base.Init();
+
+            // Add all required dynamic ports
+            // ToggleProcessData           
+            this.GetOrCreateDynamicPort("LoadDataPort", typeof(bool), NodePort.IO.Input);
 
         }
 
@@ -214,6 +224,16 @@ namespace MECM
             }
 
             return value;
+        }
+
+        #endregion
+
+        #region IUpdatableIML
+
+        public void Update()
+        {
+            // Pull inputs from bool event nodeports
+            if (GetInputValue<bool>("LoadDataPort")) LoadDataSets(FolderPath);
         }
 
         #endregion

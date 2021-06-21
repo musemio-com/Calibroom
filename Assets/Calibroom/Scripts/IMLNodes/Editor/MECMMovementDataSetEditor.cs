@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using InteractML;
 using MECM;
+using XNode;
 #if UNITY_EDITOR
 using UnityEditor;
 using XNodeEditor;
@@ -61,6 +62,16 @@ namespace MECM
         GUIStyle m_FoldoutEmptyStyle;
         GUIStyle m_ScrollViewStyle;
 
+        /// <summary>
+        /// The label to show on the button port labels
+        /// </summary>
+        protected GUIContent m_ButtonPortLabel;
+        /// <summary>
+        /// NodePort for button. Loaded in OnHeaderHUI()
+        /// </summary>
+        protected NodePort m_ButtonPortProcessData;
+
+
         public override void OnHeaderGUI()
         {
             base.OnHeaderGUI();
@@ -74,6 +85,13 @@ namespace MECM
                 m_FoldoutEmptyStyle = Resources.Load<GUISkin>("GUIStyles/InteractMLGUISkin").GetStyle("foldoutempty");
             if (m_ScrollViewStyle == null)
                 m_ScrollViewStyle = Resources.Load<GUISkin>("GUIStyles/InteractMLGUISkin").GetStyle("scrollview");
+            // Get button port
+            if (m_ButtonPortProcessData == null)
+                m_ButtonPortProcessData = m_NodeDataSet.GetPort("ProcessDataPort");
+            // Create inputport button label
+            if (m_ButtonPortLabel == null)
+                m_ButtonPortLabel = new GUIContent("");
+
         }
 
         public override void OnBodyGUI()
@@ -110,6 +128,10 @@ namespace MECM
                     //EditorGUI.indentLevel++;
                     
                     GUILayout.Space(40);
+                    // Port ProcessData
+                    GUILayout.BeginHorizontal();
+                    // Draw port
+                    IMLNodeEditor.PortField(m_ButtonPortLabel, m_ButtonPortProcessData, m_NodeSkin.GetStyle("Port Label"), GUILayout.MaxWidth(10));
                     // Button ProcessData
                     string buttonText = "";
                     if (m_NodeDataSet.ProcessingStarted)
@@ -120,6 +142,7 @@ namespace MECM
                     {
                         m_NodeDataSet.DataToWindows();
                     }
+                    GUILayout.EndHorizontal();
 
                     // Show data sets dropdown
                     ShowDataSetsDropdown();
