@@ -21,22 +21,29 @@ namespace MECM
         public override void Initialize()
         {
             base.Initialize();
-            UpdateEditorData._OnCollectingDelegate += UpdateDataCollectionFinished;
+            UpdateEditorData._OnTaskCompletion = UpdateDataCollectionFinished;
         }
 
         public void Update()
         {
+            // Make sure that static delegate uses our UpdateDataCollection
+            if (UpdateEditorData._OnTaskCompletion == null) UpdateEditorData._OnTaskCompletion = UpdateDataCollectionFinished;
             // Only allow the flag to stay true for a frame, emulating an event
             if (DataCollectionFinished) DataCollectionFinished = false;
+        }
+
+        public void OnDisable()
+        {
+            UpdateEditorData._OnTaskCompletion -= UpdateDataCollectionFinished;
         }
 
         /// <summary>
         /// Updates data collection finished flag to true
         /// </summary>
         /// <param name="emptyTime">It does nothing. Just declaring to comply with delegate</param>
-        public void UpdateDataCollectionFinished(bool state)
+        public void UpdateDataCollectionFinished()
         {
-            DataCollectionFinished = state;
+            DataCollectionFinished = true;
             Debug.Log("DATA COLLECTION FINISHED IN IML GRAPH!!");
         }
     }

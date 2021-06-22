@@ -22,14 +22,6 @@ MonoBehaviour:
     - ToggleRunInputBool
     - ToggleTrainInputBoolPort
     - ToggleRunInputBoolPort
-    - Out 0 (Int)
-    - Out 1 (Float)
-    - Out 2 (Float)
-    - Out 3 (Float)
-    - Out 4 (Float)
-    - Out 5 (Float)
-    - Out 0 (Float)
-    - Out 5 (Int)
     values:
     - _fieldName: IMLTrainingExamplesNodes
       _node: {fileID: -8679924695841327057}
@@ -93,96 +85,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-    - _fieldName: Out 0 (Int)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -5956783821960213138}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 1 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -4997694620253465783}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 2 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: 3023240985059747064}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 3 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -1947331298123092856}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 4 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -2269804938390372467}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 5 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: m_In
-        node: {fileID: -1040273551520178872}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 0 (Float)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
-    - _fieldName: Out 5 (Int)
-      _node: {fileID: -8679924695841327057}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
   id: 3b0ede1a-e703-4f62-bd92-fc5e05d07f9d
   numberInComponentList: -1
   IMLTrainingExamplesNodes:
@@ -191,13 +93,7 @@ MonoBehaviour:
   - {fileID: -4104957749876450966}
   ToggleTrainInputBool: 0
   ToggleRunInputBool: 0
-  PredictedRapidlibOutput:
-  - 65.09040295727694
-  - 1949.9491509132802
-  - 2598.7671297227625
-  - 5512.350373868918
-  - 2.520616097255604
-  - 1.5562246876906336
+  PredictedRapidlibOutput: []
   DelayedPredictedOutput:
   - 65.04299183867137
   - 1244.601099965132
@@ -205,9 +101,9 @@ MonoBehaviour:
   - 2311.192569048011
   - 1.423588921234586
   - 1.9670204020322766
-  m_NumExamplesTrainedOn: 2429
+  m_NumExamplesTrainedOn: 0
   m_ExpectedInputList: 05000000
-  m_ExpectedOutputList: 010000000000000000000000000000000000000000000000
+  m_ExpectedOutputList: 
   m_trainingType: 0
   m_LearningType: 1
   EnableKeyboardControl: 1
@@ -215,9 +111,9 @@ MonoBehaviour:
   RunningKey: 0
   TrainOnPlaymodeChange: 0
   RunOnAwake: 0
-  matchLiveDataInputs: 1
-  matchVectorLength: 1
-  warning: You are in edit mode live data in from objects will only workin play mode
+  matchLiveDataInputs: 0
+  matchVectorLength: 0
+  warning: Live data in does not match the trained examples
   error: 1
   trainOnLoad: 1
 --- !u!114 &-6206050627982096732
@@ -318,10 +214,7 @@ MonoBehaviour:
       _node: {fileID: -5956783821960213138}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 0 (Int)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -343,8 +236,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -372,10 +265,7 @@ MonoBehaviour:
       _node: {fileID: -4997694620253465783}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 1 (Float)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -400,8 +290,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -423,6 +313,7 @@ MonoBehaviour:
   ports:
     keys:
     - TrainingDataSets
+    - LoadDataPort
     values:
     - _fieldName: TrainingDataSets
       _node: {fileID: -4900322899204207368}
@@ -441,6 +332,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: LoadDataPort
+      _node: {fileID: -4900322899204207368}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: d259e798-2871-41b4-851e-8d4e5b92d192
   numberInComponentList: -1
   FolderPath: C:\Users\carlo.LAPTOP-UJR5JBB1\Documents\Unity_Projects\PF_Data\Group01_RoomCD_ID51-65_complete
@@ -585,10 +485,10 @@ MonoBehaviour:
   - 0.92251754
   - 0.7848108
   m_Out: []
-  ReceivingData: 1
-  FeatureValueReceivingData: 010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  ReceivingData: 0
+  FeatureValueReceivingData: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   InputConnected: 0
-  Counter: 4
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
   ReceivedValue:
@@ -701,6 +601,7 @@ MonoBehaviour:
     keys:
     - MovementData
     - m_FeatureValues
+    - ProcessDataPort
     values:
     - _fieldName: MovementData
       _node: {fileID: -3949645877236460788}
@@ -728,6 +629,15 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: ProcessDataPort
+      _node: {fileID: -3949645877236460788}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: b72ff3bc-8c4c-4818-ae33-f5f4e20d54bd
   numberInComponentList: -1
   isExternallyUpdatable: 0
@@ -757,10 +667,7 @@ MonoBehaviour:
       _node: {fileID: -2269804938390372467}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 4 (Float)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -785,8 +692,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -814,10 +721,7 @@ MonoBehaviour:
       _node: {fileID: -1947331298123092856}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 3 (Float)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -842,8 +746,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -871,10 +775,7 @@ MonoBehaviour:
       _node: {fileID: -1040273551520178872}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 5 (Float)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -896,8 +797,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -931,6 +832,7 @@ MonoBehaviour:
     - ToggleRecordingInputBoolPort
     - DeleteAllExamplesBoolPort
     - SubFolderDataPathStringPort
+    - ToggleProcessDataPort
     values:
     - _fieldName: MovementData
       _node: {fileID: -723613321504457751}
@@ -1063,6 +965,15 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 1
       _dynamic: 1
+    - _fieldName: ToggleProcessDataPort
+      _node: {fileID: -723613321504457751}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: 5e17be5f-a9c1-41d3-82d9-ea1ddb9c26a9
   numberInComponentList: -1
   InputFeatures: []
@@ -1073,8 +984,8 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: 0}
   ModeOfCollection: 0
-  m_DesiredInputsConfig: 030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000
-  m_DesiredOutputsConfig: 010000000000000000000000000000000000000000000000
+  m_DesiredInputsConfig: 
+  m_DesiredOutputsConfig: 
   MLSystemNodesConnected:
   - {fileID: -8679924695841327057}
   StartDelay: 0
@@ -1082,7 +993,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 0
   listNo: 0
   SubFolderDataPath: 
@@ -1115,7 +1026,66 @@ MonoBehaviour:
   - {fileID: -2269804938390372467}
   - {fileID: -1040273551520178872}
   - {fileID: -6206050627982096732}
+  - {fileID: 5157310864440827955}
+  - {fileID: 1751917521551349516}
   SceneComponent: {fileID: 0}
+--- !u!114 &1751917521551349516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f852e779cc4b3e048bbf793021e49884, type: 3}
+  m_Name: Boolean
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -232, y: 248}
+  ports:
+    keys:
+    - m_In
+    - m_Out
+    values:
+    - _fieldName: m_In
+      _node: {fileID: 1751917521551349516}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: DataCollectionFinished
+        node: {fileID: 5157310864440827955}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_Out
+      _node: {fileID: 1751917521551349516}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: LoadDataPort
+        node: {fileID: 8645510986479290885}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  id: 27216604-b4c0-422d-ab7d-23b156542db5
+  numberInComponentList: -1
+  ValueName: 
+  m_In: 0
+  m_Value: 0
+  m_Out: 0
+  ReceivingData: 0
+  FeatureValueReceivingData: 00
+  InputConnected: 1
+  Counter: 2
+  Count: 5
+  ToggleSwitches: 01
+  ReceivedValue:
+  - 0
 --- !u!114 &3023240985059747064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,10 +1109,7 @@ MonoBehaviour:
       _node: {fileID: 3023240985059747064}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Out 2 (Float)
-        node: {fileID: -8679924695841327057}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1167,12 +1134,45 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 1
-  Counter: 4
+  InputConnected: 0
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
   - 0
+--- !u!114 &5157310864440827955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c962b86dddf0010409f55d0641abee09, type: 3}
+  m_Name: Get Data Collection Finished
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -536, y: 216}
+  ports:
+    keys:
+    - DataCollectionFinished
+    values:
+    - _fieldName: DataCollectionFinished
+      _node: {fileID: 5157310864440827955}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 1751917521551349516}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  id: 2b7ec0ca-3591-4574-9cd1-4b83818cc6e3
+  numberInComponentList: -1
+  DataCollectionFinished: 0
 --- !u!114 &8645510986479290885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   ports:
     keys:
     - BrainHQDataSet
+    - LoadDataPort
     values:
     - _fieldName: BrainHQDataSet
       _node: {fileID: 8645510986479290885}
@@ -1204,6 +1205,18 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: LoadDataPort
+      _node: {fileID: 8645510986479290885}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_Out
+        node: {fileID: 1751917521551349516}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: 900bbeef-8d2c-467a-9516-c9bc2a801394
   numberInComponentList: -1
   FolderPath: C:\Users\carlo.LAPTOP-UJR5JBB1\Documents\Unity_Projects\PF_Data\Group01_RoomCD_ID51-65_complete

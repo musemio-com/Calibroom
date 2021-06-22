@@ -28,7 +28,7 @@ namespace MECM
         /// <summary>
         /// Toggles data collection on/off (used in IMLGraph)
         /// </summary>
-        [SendToIMLGraph, HideInInspector]
+        [SendToIMLGraph]
         public bool ToggleDataCollection;
 
 
@@ -245,16 +245,23 @@ namespace MECM
             {
                 ToggleRunModel = false;
             }
+            if (ToggleDataCollection)
+            {
+                ToggleCollectingData();
+                ToggleDataCollection = false;
+            }
 
             // If the event was fired, flag data collection toggle to true
             if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
-                ToggleDataCollection = true;
+                //ToggleDataCollection = true;
                 CompletionTime += Time.deltaTime;
             }
             if (!CollectingData)
-                ToggleDataCollection = false;
-                
+            {
+                //ToggleDataCollection = false;
+            }
+
 
             if (!CollectingData && m_UploadData && isUploading)
             {
@@ -299,7 +306,6 @@ namespace MECM
         /// Fires the collect data event (toggles on/off collecting data)
         /// </summary>
         /// <returns></returns>
-
         public void ToggleCollectingData()
         {
             CollectingData = !CollectingData;
@@ -312,6 +318,7 @@ namespace MECM
             {
                 isUploading = true;
                 UpdateEditorData._OnTaskTimeDelegate(CompletionTime);
+                if (UpdateEditorData._OnTaskCompletion != null) UpdateEditorData._OnTaskCompletion();
                 Debug.Log("Stopping data collection!");
                 
             }
@@ -346,10 +353,13 @@ namespace MECM
         public delegate void RightHandGrabStatus();
         public delegate void LeftHandGrabStatus();
         public delegate void TaskCompletionTimeStatus(float _t);
+        public delegate void TaskCompletion();
         public static DataCollectionStatus _OnCollectingDelegate;
         public static RightHandGrabStatus _OnRightHandDelegate;
         public static LeftHandGrabStatus _OnLeftHandDelegate;
         public static TaskCompletionTimeStatus _OnTaskTimeDelegate;
+        public static TaskCompletion _OnTaskCompletion;
+
         void DisplayDataCollectionStatus()
         {
             if (_OnCollectingDelegate != null)
