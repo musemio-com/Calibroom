@@ -47,6 +47,10 @@ namespace MECM
             // Force to update dataset configuration for model
             UpdateDesiredInputOutputConfigFromDataVector(updateDesiredFeatures: true);
 
+            // Add all required dynamic ports
+            // ToggleProcessData           
+            this.GetOrCreateDynamicPort("ToggleProcessDataPort", typeof(bool), NodePort.IO.Input);
+
         }
 
         // Return the correct value of an output port when requested
@@ -90,6 +94,15 @@ namespace MECM
                 return fileName;
             }
             return null;
+        }
+
+        public override void UpdateLogic()
+        {
+            base.UpdateLogic();
+
+            // Pull inputs from bool event nodeports
+            if (GetInputValue<bool>("ToggleProcessDataPort")) DataToWindows();
+
         }
 
         #endregion

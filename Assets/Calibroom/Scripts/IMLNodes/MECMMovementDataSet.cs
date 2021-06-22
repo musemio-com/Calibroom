@@ -60,7 +60,10 @@ namespace MECM
         {
             base.Initialize();
             // Attempt to load saved data
-            m_TrainingExamplesVector = IMLDataSerialization.LoadTrainingSetFromDisk(GetJSONFileName()); 
+            m_TrainingExamplesVector = IMLDataSerialization.LoadTrainingSetFromDisk(GetJSONFileName());
+            // Add all required dynamic ports
+            // ToggleProcessData           
+            this.GetOrCreateDynamicPort("ProcessDataPort", typeof(bool), NodePort.IO.Input);
         }
 
         // Return the correct value of an output port when requested
@@ -76,6 +79,10 @@ namespace MECM
 
         public object UpdateFeature()
         {
+            // Pull inputs from bool event nodeports
+            if (GetInputValue<bool>("ProcessDataPort")) DataToWindows();
+            
+            // Attempt to output feature values from processed data
             if (m_TrainingExamplesVector != null && m_TrainingExamplesVector.Count > 0)
             {
                 // Pick random window to output
