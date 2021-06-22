@@ -262,7 +262,7 @@ namespace MECM
                 Debug.Log("UPLOADING...");
                 //string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath() + "/" + UserIDString;
                 string userDataSetPath = IMLDataSerialization.GetTrainingExamplesDataPath();
-                _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/", useTasks: m_UseTasksOnUpload);
+                _UploadManager.UploadToServer(userDataSetPath, UserIDString + "/");
             }
             if (m_ToggleTrainModelEvent || ToggleTrainModel)
             {

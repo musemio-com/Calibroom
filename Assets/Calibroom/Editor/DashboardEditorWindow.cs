@@ -48,7 +48,7 @@ public class DashboardEditorWindow : EditorWindow
     [InitializeOnLoadMethod]
     static void Init()
     {
-        UpdateEditorData._OnCollectingDelegate = RefreshCollectionStauts;
+        UpdateEditorData._OnCollectingDelegate += RefreshCollectionStauts;
         UpdateEditorData._OnRightHandDelegate = RefreshRightHandStatus;
         UpdateEditorData._OnLeftHandDelegate = RefreshLeftHandStatus;
         UpdateEditorData._OnTaskTimeDelegate = RefreshCompletionTimeStatus;
@@ -225,7 +225,6 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUI.indentLevel++;
         if (GUILayout.Button("Setup",SetupButtonStyle,GUILayout.Height(30),GUILayout.Width(120)) && (RightController != null && LeftController != null && HMD != null))
         {
-            Debug.Log("1");
             DashboardSetup();        
         }
         EditorGUI.indentLevel--;
@@ -408,8 +407,10 @@ public class DashboardEditorWindow : EditorWindow
 
         GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));
         GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
+        GameObject IMLNeuralNetwork = Instantiate(Resources.Load<GameObject>("Prefabs/IML System_NeuralNetwork"));
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
+        IMLNeuralNetwork.name = "IML NeuralNetwork";
         dataController = DataController.GetComponent<DataCollectionController>();
 
         yield return new EditorWaitForSeconds(4f);

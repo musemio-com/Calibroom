@@ -21,7 +21,7 @@ namespace MECM
         public override void Initialize()
         {
             base.Initialize();
-            UpdateEditorData._OnTaskTimeDelegate += UpdateDataCollectionFinished;
+            UpdateEditorData._OnCollectingDelegate += UpdateDataCollectionFinished;
         }
 
         public void Update()
@@ -34,9 +34,9 @@ namespace MECM
         /// Updates data collection finished flag to true
         /// </summary>
         /// <param name="emptyTime">It does nothing. Just declaring to comply with delegate</param>
-        public void UpdateDataCollectionFinished(float emptyTime)
+        public void UpdateDataCollectionFinished(bool state)
         {
-            DataCollectionFinished = true;
+            DataCollectionFinished = state;
             Debug.Log("DATA COLLECTION FINISHED IN IML GRAPH!!");
         }
     }
