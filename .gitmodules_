@@ -1,8 +1,0 @@
-[submodule "Assets/iml-unity"]
-	path = Assets/iml-unity
-	url = https://github.com/Interactml/iml-unity.git
-	branch = VRInterface
-[submodule "iml-unity"]
-	path = iml-unity
-	url = https://github.com/Interactml/iml-unity.git
-	branch = VRInterface

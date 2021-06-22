@@ -306,7 +306,6 @@ namespace MECM
             if (CollectingData)
             {
                 Debug.Log("Starting data collection!");
-                Debug.Log("Task Started");
             }
                 
             else
@@ -316,8 +315,7 @@ namespace MECM
                 Debug.Log("Stopping data collection!");
                 
             }
-            UpdateEditorData._OnCollectingDelegate();
-                
+            UpdateEditorData._OnCollectingDelegate(CollectingData);       
         }
         /// <summary>
         /// Fires the Train model event (toggles on/off model inference)
@@ -344,7 +342,7 @@ namespace MECM
 
     public class UpdateEditorData
     {
-        public delegate void DataCollectionStatus();
+        public delegate void DataCollectionStatus(bool b);
         public delegate void RightHandGrabStatus();
         public delegate void LeftHandGrabStatus();
         public delegate void TaskCompletionTimeStatus(float _t);
@@ -355,7 +353,7 @@ namespace MECM
         void DisplayDataCollectionStatus()
         {
             if (_OnCollectingDelegate != null)
-                _OnCollectingDelegate();
+                _OnCollectingDelegate(true);
         }
         void DisplayRightHandGrabStatus()
         {
