@@ -61,5 +61,4 @@ crashlytics-build.properties
 # Traininig Data and Models from InteractML
 /[Aa]ssets/InteractML/Data/Training_Examples
 /[Aa]ssets/InteractML/Data/Models
-#IML submodule
-[Aa]ssets/iml-unity
+
