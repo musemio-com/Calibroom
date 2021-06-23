@@ -234,6 +234,11 @@ namespace MECM
         {
             // Pull inputs from bool event nodeports
             if (GetInputValue<bool>("LoadDataPort")) LoadDataSets(FolderPath);
+            //Debug.Log($"LoadDataPort is: {GetInputValue<bool>("LoadDataPort")}");
+        }
+
+        public void LateUpdate()
+        {
         }
 
         #endregion

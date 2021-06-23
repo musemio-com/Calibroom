@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InteractML;
+using XNode;
 
 namespace MECM
 {
@@ -24,13 +25,24 @@ namespace MECM
             UpdateEditorData._OnTaskCompletion = UpdateDataCollectionFinished;
         }
 
+        public override object GetValue(NodePort port)
+        {
+            return DataCollectionFinished;
+        }
+
         public void Update()
         {
             // Make sure that static delegate uses our UpdateDataCollection
             if (UpdateEditorData._OnTaskCompletion == null) UpdateEditorData._OnTaskCompletion = UpdateDataCollectionFinished;
-            // Only allow the flag to stay true for a frame, emulating an event
-            if (DataCollectionFinished) DataCollectionFinished = false;
         }
+
+        public void LateUpdate()
+        {
+            // Only allow the flag to stay true for a frame, emulating an event
+            if (DataCollectionFinished) 
+                DataCollectionFinished = false;
+        }
+
 
         public void OnDisable()
         {
@@ -46,6 +58,7 @@ namespace MECM
             DataCollectionFinished = true;
             Debug.Log("DATA COLLECTION FINISHED IN IML GRAPH!!");
         }
+
     }
 
 }
