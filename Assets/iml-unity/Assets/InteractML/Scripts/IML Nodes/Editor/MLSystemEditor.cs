@@ -186,7 +186,7 @@ namespace InteractML
             else
                 nameButton = "Train Model";
 
-            if (m_MLSystem.Model != null && m_MLSystem.TotalNumTrainingDataConnected > 0 && !m_MLSystem.Running && !m_MLSystem.Training)
+            if (m_MLSystem.Model != null && !m_MLSystem.Running && !m_MLSystem.Training)
             {
                 // Enable UI
                 GUI.enabled = true;

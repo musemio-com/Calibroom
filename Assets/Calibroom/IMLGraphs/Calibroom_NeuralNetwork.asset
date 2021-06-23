@@ -22,6 +22,12 @@ MonoBehaviour:
     - ToggleRunInputBool
     - ToggleTrainInputBoolPort
     - ToggleRunInputBoolPort
+    - Out 5 (Int)
+    - Out 4 (Float)
+    - Out 3 (Float)
+    - Out 2 (Float)
+    - Out 1 (Float)
+    - Out 0 (Float)
     values:
     - _fieldName: IMLTrainingExamplesNodes
       _node: {fileID: -8679924695841327057}
@@ -85,6 +91,78 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+    - _fieldName: Out 5 (Int)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -5956783821960213138}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Out 4 (Float)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -4997694620253465783}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Out 3 (Float)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: 3023240985059747064}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Out 2 (Float)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -1947331298123092856}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Out 1 (Float)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -2269804938390372467}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Out 0 (Float)
+      _node: {fileID: -8679924695841327057}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -1040273551520178872}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: 3b0ede1a-e703-4f62-bd92-fc5e05d07f9d
   numberInComponentList: -1
   IMLTrainingExamplesNodes:
@@ -93,17 +171,23 @@ MonoBehaviour:
   - {fileID: -4104957749876450966}
   ToggleTrainInputBool: 0
   ToggleRunInputBool: 0
-  PredictedRapidlibOutput: []
+  PredictedRapidlibOutput:
+  - 64.82943551419382
+  - 1249.0821469439074
+  - 11051.619574962839
+  - 2030.5155505873217
+  - 1.2145709152614277
+  - 2.0883814863855106
   DelayedPredictedOutput:
-  - 65.04299183867137
-  - 1244.601099965132
-  - 11112.96743168526
-  - 2311.192569048011
-  - 1.423588921234586
-  - 1.9670204020322766
-  m_NumExamplesTrainedOn: 0
+  - 64.80413101158861
+  - 1140.2245891874065
+  - 12358.824174483037
+  - 344.01512460143203
+  - 0.6444348495681878
+  - 2.066782205191565
+  m_NumExamplesTrainedOn: 2429
   m_ExpectedInputList: 05000000
-  m_ExpectedOutputList: 
+  m_ExpectedOutputList: 010000000000000000000000000000000000000000000000
   m_trainingType: 0
   m_LearningType: 1
   EnableKeyboardControl: 1
@@ -111,8 +195,8 @@ MonoBehaviour:
   RunningKey: 0
   TrainOnPlaymodeChange: 0
   RunOnAwake: 0
-  matchLiveDataInputs: 0
-  matchVectorLength: 0
+  matchLiveDataInputs: 1
+  matchVectorLength: 1
   warning: Live data in does not match the trained examples
   error: 1
   trainOnLoad: 1
@@ -187,10 +271,10 @@ MonoBehaviour:
       _dynamic: 0
   id: a4524018-1ab4-4ff6-aba4-53b2c01ab76c
   numberInComponentList: -1
-  OverallScore: 0
-  VisuoSpatial: 0
-  SpeedProcessing: 0
-  CycleTime: 0
+  OverallScore: 0.64443487
+  VisuoSpatial: 344.01514
+  SpeedProcessing: 12358.824
+  CycleTime: 1140.2246
 --- !u!114 &-5956783821960213138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +298,10 @@ MonoBehaviour:
       _node: {fileID: -5956783821960213138}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 5 (Int)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -236,8 +323,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -265,7 +352,10 @@ MonoBehaviour:
       _node: {fileID: -4997694620253465783}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 4 (Float)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -286,16 +376,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  m_Value: 0.64443487
+  m_Out: 0.64443487
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 0.64443487
 --- !u!114 &-4900322899204207368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,194 +484,194 @@ MonoBehaviour:
   ValueName: 
   m_In: []
   m_Value:
-  - 0.53475213
-  - 1.256727
-  - 0.60601383
-  - 0.33717126
-  - 0.9354869
-  - 0.29114604
-  - 0.5325223
-  - 0.8028373
-  - 0.8010419
-  - 0.5396335
-  - 1.2513053
-  - 0.608412
-  - 0.33687505
-  - 0.9346454
-  - 0.28927144
-  - 0.53271097
-  - 0.7880969
-  - 0.79875195
-  - 0.54285645
-  - 1.243071
-  - 0.61057305
-  - 0.33692548
-  - 0.9334389
-  - 0.28728887
-  - 0.5344689
-  - 0.7794018
-  - 0.8037206
-  - 0.5453547
-  - 1.230696
-  - 0.6136493
-  - 0.3394816
-  - 0.93182033
-  - 0.28341076
-  - 0.52784866
-  - 0.78099686
-  - 0.7942227
-  - 0.5481161
-  - 1.2180965
-  - 0.6134958
-  - 0.34161854
-  - 0.9299319
-  - 0.27817172
-  - 0.52748954
-  - 0.77238524
-  - 0.78550845
-  - 0.55174583
-  - 1.2146897
-  - 0.6118593
-  - 0.3400207
-  - 0.9305544
-  - 0.2743545
-  - 0.5288277
-  - 0.762847
-  - 0.7802891
-  - 0.5540867
-  - 1.2233593
-  - 0.6084197
-  - 0.3356581
-  - 0.9348745
-  - 0.2740731
-  - 0.5308171
-  - 0.7754599
-  - 0.7789895
-  - 0.559229
-  - 1.2378106
-  - 0.59895414
-  - 0.33054912
-  - 0.9406737
-  - 0.27960292
-  - 0.5288928
-  - 0.80960155
-  - 0.782091
-  - 0.5705844
-  - 1.2579607
-  - 0.58509517
-  - 0.32644975
-  - 0.94840384
-  - 0.2889804
-  - 0.5210666
-  - 0.8585158
-  - 0.78731704
-  - 0.58703166
-  - 1.2782953
-  - 0.5608539
-  - 0.32039985
-  - 0.96382093
-  - 0.31618387
-  - 0.5157319
-  - 0.92251754
-  - 0.7848108
+  - 0.6015935
+  - 1.3868753
+  - 0.41242483
+  - 0.44491732
+  - 0.87013626
+  - 0.51568884
+  - 0.7856349
+  - 0.97082186
+  - 0.7072612
+  - 0.6179008
+  - 1.38755
+  - 0.4252068
+  - 0.44707066
+  - 0.86408895
+  - 0.5075758
+  - 0.8572959
+  - 0.97863656
+  - 0.76902944
+  - 0.6388791
+  - 1.382383
+  - 0.44765314
+  - 0.4465574
+  - 0.86182153
+  - 0.5013687
+  - 0.89452744
+  - 0.939774
+  - 0.81159294
+  - 0.65908325
+  - 1.3722217
+  - 0.47475684
+  - 0.44875067
+  - 0.8621101
+  - 0.49132666
+  - 0.9112011
+  - 0.87478596
+  - 0.82672274
+  - 0.67173463
+  - 1.3614149
+  - 0.49600732
+  - 0.44853765
+  - 0.8608966
+  - 0.47998607
+  - 0.92035973
+  - 0.82046264
+  - 0.82119256
+  - 0.6783694
+  - 1.3534576
+  - 0.50685525
+  - 0.44769472
+  - 0.860662
+  - 0.47604942
+  - 0.9274936
+  - 0.7894269
+  - 0.81163484
+  - 0.6834366
+  - 1.3508514
+  - 0.5086762
+  - 0.4500354
+  - 0.8616783
+  - 0.48057318
+  - 0.9235765
+  - 0.79065883
+  - 0.8121228
+  - 0.68582374
+  - 1.3524879
+  - 0.5050343
+  - 0.45557863
+  - 0.86235124
+  - 0.48946103
+  - 0.92840254
+  - 0.78834474
+  - 0.8073206
+  - 0.6825989
+  - 1.35682
+  - 0.49735808
+  - 0.4611072
+  - 0.8693211
+  - 0.5017899
+  - 0.92009044
+  - 0.8132435
+  - 0.80989766
+  - 0.6654293
+  - 1.3589903
+  - 0.48200232
+  - 0.46175903
+  - 0.87592375
+  - 0.51584554
+  - 0.9111916
+  - 0.8682635
+  - 0.8051706
   m_Out: []
-  ReceivingData: 0
-  FeatureValueReceivingData: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  ReceivingData: 1
+  FeatureValueReceivingData: 010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   InputConnected: 0
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
   ReceivedValue:
-  - 0.53475213
-  - 1.256727
-  - 0.60601383
-  - 0.33717126
-  - 0.9354869
-  - 0.29114604
-  - 0.5325223
-  - 0.8028373
-  - 0.8010419
-  - 0.5396335
-  - 1.2513053
-  - 0.608412
-  - 0.33687505
-  - 0.9346454
-  - 0.28927144
-  - 0.53271097
-  - 0.7880969
-  - 0.79875195
-  - 0.54285645
-  - 1.243071
-  - 0.61057305
-  - 0.33692548
-  - 0.9334389
-  - 0.28728887
-  - 0.5344689
-  - 0.7794018
-  - 0.8037206
-  - 0.5453547
-  - 1.230696
-  - 0.6136493
-  - 0.3394816
-  - 0.93182033
-  - 0.28341076
-  - 0.52784866
-  - 0.78099686
-  - 0.7942227
-  - 0.5481161
-  - 1.2180965
-  - 0.6134958
-  - 0.34161854
-  - 0.9299319
-  - 0.27817172
-  - 0.52748954
-  - 0.77238524
-  - 0.78550845
-  - 0.55174583
-  - 1.2146897
-  - 0.6118593
-  - 0.3400207
-  - 0.9305544
-  - 0.2743545
-  - 0.5288277
-  - 0.762847
-  - 0.7802891
-  - 0.5540867
-  - 1.2233593
-  - 0.6084197
-  - 0.3356581
-  - 0.9348745
-  - 0.2740731
-  - 0.5308171
-  - 0.7754599
-  - 0.7789895
-  - 0.559229
-  - 1.2378106
-  - 0.59895414
-  - 0.33054912
-  - 0.9406737
-  - 0.27960292
-  - 0.5288928
-  - 0.80960155
-  - 0.782091
-  - 0.5705844
-  - 1.2579607
-  - 0.58509517
-  - 0.32644975
-  - 0.94840384
-  - 0.2889804
-  - 0.5210666
-  - 0.8585158
-  - 0.78731704
-  - 0.58703166
-  - 1.2782953
-  - 0.5608539
-  - 0.32039985
-  - 0.96382093
-  - 0.31618387
-  - 0.5157319
-  - 0.92251754
-  - 0.7848108
+  - 0.6015935
+  - 1.3868753
+  - 0.41242483
+  - 0.44491732
+  - 0.87013626
+  - 0.51568884
+  - 0.7856349
+  - 0.97082186
+  - 0.7072612
+  - 0.6179008
+  - 1.38755
+  - 0.4252068
+  - 0.44707066
+  - 0.86408895
+  - 0.5075758
+  - 0.8572959
+  - 0.97863656
+  - 0.76902944
+  - 0.6388791
+  - 1.382383
+  - 0.44765314
+  - 0.4465574
+  - 0.86182153
+  - 0.5013687
+  - 0.89452744
+  - 0.939774
+  - 0.81159294
+  - 0.65908325
+  - 1.3722217
+  - 0.47475684
+  - 0.44875067
+  - 0.8621101
+  - 0.49132666
+  - 0.9112011
+  - 0.87478596
+  - 0.82672274
+  - 0.67173463
+  - 1.3614149
+  - 0.49600732
+  - 0.44853765
+  - 0.8608966
+  - 0.47998607
+  - 0.92035973
+  - 0.82046264
+  - 0.82119256
+  - 0.6783694
+  - 1.3534576
+  - 0.50685525
+  - 0.44769472
+  - 0.860662
+  - 0.47604942
+  - 0.9274936
+  - 0.7894269
+  - 0.81163484
+  - 0.6834366
+  - 1.3508514
+  - 0.5086762
+  - 0.4500354
+  - 0.8616783
+  - 0.48057318
+  - 0.9235765
+  - 0.79065883
+  - 0.8121228
+  - 0.68582374
+  - 1.3524879
+  - 0.5050343
+  - 0.45557863
+  - 0.86235124
+  - 0.48946103
+  - 0.92840254
+  - 0.78834474
+  - 0.8073206
+  - 0.6825989
+  - 1.35682
+  - 0.49735808
+  - 0.4611072
+  - 0.8693211
+  - 0.5017899
+  - 0.92009044
+  - 0.8132435
+  - 0.80989766
+  - 0.6654293
+  - 1.3589903
+  - 0.48200232
+  - 0.46175903
+  - 0.87592375
+  - 0.51584554
+  - 0.9111916
+  - 0.8682635
+  - 0.8051706
   m_MaximumArraySize: 150
 --- !u!114 &-3949645877236460788
 MonoBehaviour:
@@ -667,7 +757,10 @@ MonoBehaviour:
       _node: {fileID: -2269804938390372467}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 1 (Float)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -688,16 +781,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  m_Value: 1140.2246
+  m_Out: 1140.2246
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 1140.2246
 --- !u!114 &-1947331298123092856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,7 +814,10 @@ MonoBehaviour:
       _node: {fileID: -1947331298123092856}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 2 (Float)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -742,16 +838,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  m_Value: 12358.824
+  m_Out: 12358.824
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 12358.824
 --- !u!114 &-1040273551520178872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,7 +871,10 @@ MonoBehaviour:
       _node: {fileID: -1040273551520178872}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 0 (Float)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -797,8 +896,8 @@ MonoBehaviour:
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -984,8 +1083,8 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: 0}
   ModeOfCollection: 0
-  m_DesiredInputsConfig: 
-  m_DesiredOutputsConfig: 
+  m_DesiredInputsConfig: 030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000
+  m_DesiredOutputsConfig: 010000000000000000000000000000000000000000000000
   MLSystemNodesConnected:
   - {fileID: -8679924695841327057}
   StartDelay: 0
@@ -993,7 +1092,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 0
+  showWarning: 1
   canCollect: 0
   listNo: 0
   SubFolderDataPath: 
@@ -1081,7 +1180,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1109,7 +1208,10 @@ MonoBehaviour:
       _node: {fileID: 3023240985059747064}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: Out 3 (Float)
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -1130,16 +1232,16 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0
-  m_Out: 0
-  ReceivingData: 0
-  FeatureValueReceivingData: 00
-  InputConnected: 0
-  Counter: 3
+  m_Value: 344.01514
+  m_Out: 344.01514
+  ReceivingData: 1
+  FeatureValueReceivingData: 01
+  InputConnected: 1
+  Counter: 5
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0
+  - 344.01514
 --- !u!114 &5157310864440827955
 MonoBehaviour:
   m_ObjectHideFlags: 0

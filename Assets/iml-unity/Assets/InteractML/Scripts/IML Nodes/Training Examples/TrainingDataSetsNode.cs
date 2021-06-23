@@ -143,7 +143,7 @@ namespace InteractML
 
                     if (TrainingDataSets.Count == 0)
                     {
-                        NodeDebug.LogWarning("Couldn't load folder!", this);
+                        NodeDebug.LogWarning("Couldn't load folder!", this, debugToConsole: true);
 
                     }
                     else
