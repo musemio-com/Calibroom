@@ -1879,8 +1879,6 @@ namespace InteractML
 
             //yield return new WaitForSeconds(0.05f);
 
-            Debug.Log("RESET AND RETRAIN CALLED FROM IML COMPONENT");
-
             // Reset all models
             //ResetAllModels();
             // if there are training examples nodes
@@ -1981,7 +1979,6 @@ namespace InteractML
         /// </summary>
         public bool LoadAllTrainingExamples()
         {
-            Debug.Log("loading data");
             bool success = false;
             // Only run if we got trainnig examples
             if (m_TrainingExamplesNodesList == null && m_TrainingExamplesNodesList.Count == 0)
@@ -2126,7 +2123,6 @@ namespace InteractML
         /// </summary>
         public void RunAllModels()
         {
-            Debug.Log("run all models");
             foreach (var MLSystemNode in m_MLSystemNodeList)
             {
                 if (MLSystemNode)
