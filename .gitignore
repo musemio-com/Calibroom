@@ -59,6 +59,10 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Traininig Data and Models from InteractML
-/[Aa]ssets/InteractML/Data/Training_Examples
-/[Aa]ssets/InteractML/Data/Models
+/[Aa]ssets/InteractML/Data/Training_Examples/*
+/[Aa]ssets/InteractML/Data/Models/*
+# Still include NeuralNetwork and MECM training files
+!/[Aa]ssets/InteractML/Data/Training_Examples/MECM*
+!/[Aa]ssets/InteractML/Data/Models/Calibroom_NeuralNetwork*
+
 
