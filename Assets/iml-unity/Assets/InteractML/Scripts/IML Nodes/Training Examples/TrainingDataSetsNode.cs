@@ -125,8 +125,10 @@ namespace InteractML
                             if (!string.IsNullOrEmpty(specificID))
                             {
                                 // skip if the file doesn't contain the ID we want
-                                if (!file.Contains(specificID))
+                                if (!file.ToLower().Contains(specificID))// te
                                     continue;
+                                else
+                                    Debug.Log($"Starting to load file {file}...");
                             }
 
                             // Load training data set
@@ -143,8 +145,9 @@ namespace InteractML
 
                     if (TrainingDataSets.Count == 0)
                     {
+                        m_LoadingFinished = false;
+                        m_LoadingStarted = false; // allow to re-load if user wants to
                         NodeDebug.LogWarning("Couldn't load folder!", this, debugToConsole: true);
-
                     }
                     else
                     {
