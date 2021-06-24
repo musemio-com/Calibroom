@@ -1186,6 +1186,9 @@ namespace InteractML
                         case IMLSpecifications.OutputsEnum.Array:
                             PredictedOutput.Add(new IMLArray());
                             break;
+                        case IMLSpecifications.OutputsEnum.Boolean:
+                            PredictedOutput.Add(new IMLBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -1434,6 +1437,9 @@ namespace InteractML
                 case IMLSpecifications.OutputsEnum.Array:
                     dynamicOutputPort = AddDynamicOutput(typeof(float[]), fieldName: $"Out {outputPorts.Count} (Array)");
                     break;
+                case IMLSpecifications.OutputsEnum.Boolean:
+                    dynamicOutputPort = AddDynamicOutput(typeof(bool), fieldName: $"Out {outputPorts.Count} (Bool)");
+                    break;
                 default:
                     dynamicOutputPort = null;
                     break;
@@ -1613,6 +1619,10 @@ namespace InteractML
                 case IMLSpecifications.OutputsEnum.Array:
                     if (outputPort.ValueType != typeof(float[]))
                         outputPort.ValueType = typeof(float[]);
+                    break;
+                case IMLSpecifications.OutputsEnum.Boolean:
+                    if (outputPort.ValueType != typeof(bool))
+                        outputPort.ValueType = typeof(bool);
                     break;
                 default:
                     break;
@@ -2107,7 +2117,7 @@ namespace InteractML
             } else if (!Application.isPlaying)
             {
                 if (tooltips.BottomError != null)
-                    warning = tooltips.BottomError[4];
+                    if (tooltips.BottomError.Length > 3) warning = tooltips.BottomError[4];
                 error = true;
             }
             else

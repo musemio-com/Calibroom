@@ -187,12 +187,8 @@ namespace InteractML
             IMLEditorManager.SubscribeIMLComponent(this);
 
             IMLControllerOwnershipLogic();
-            //SubscribeToDelegates();
-            if (IMLEventDispatcher.TrainMLSCallback == null)
-            {
-                SubscribeToDelegates();
-                
-            }
+            SubscribeToDelegates();
+            //if (IMLEventDispatcher.TrainMLSCallback == null) SubscribeToDelegates();        
             Initialize();
             
 #endif
@@ -483,7 +479,7 @@ namespace InteractML
             //Debug.Log("subscribe");
             // DIRTY CODE
             // I am unsubscribing from all delegates first since there are issue with ToggleRecordCallback having the same method twice
-           // UnsubscribeToDelegates();
+            UnsubscribeToDelegates();
             
             // dispatchers for MLSystem node events
             IMLEventDispatcher.TrainMLSCallback += Train;
@@ -2728,6 +2724,8 @@ namespace InteractML
         private bool ToggleRunning(string nodeID)
         {
             bool success = false;
+            // if this method has been called, but the list is empty, try to update list of nodes
+            if (MLSystemNodeList == null || MLSystemNodeList.Count == 0) GetAllNodes();
             //iterate through all mls nodes
             foreach (MLSystem MLSNode in MLSystemNodeList)
             {
