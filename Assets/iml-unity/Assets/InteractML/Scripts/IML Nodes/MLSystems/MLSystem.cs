@@ -289,7 +289,6 @@ namespace InteractML
         /// <param name="to"></param>
         public override void OnCreateConnection(XNode.NodePort from, XNode.NodePort to)
         {
-            Debug.Log(from.GetType().ToString());
             base.OnCreateConnection(from, to);
 
             // If there is a connection to any of the button ports...
