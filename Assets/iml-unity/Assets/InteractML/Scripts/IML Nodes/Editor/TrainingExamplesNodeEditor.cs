@@ -191,8 +191,7 @@ namespace InteractML
             }
             
             // Added an option to specify a subfolder to save/load the data
-            // commented out for UAL students 
-            //ShowSubFolderDataField();
+            ShowSubFolderDataField();
 
             ShowTrainingExamplesDropdown();
         }
