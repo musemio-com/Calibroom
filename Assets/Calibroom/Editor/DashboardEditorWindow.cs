@@ -7,6 +7,7 @@ using MECM;
 using InteractML;
 using XNode;
 using System.Linq;
+using System;
 using Unity.EditorCoroutines.Editor;
 
 public class DashboardEditorWindow : EditorWindow
@@ -150,13 +151,13 @@ public class DashboardEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        GUILayout.Label("User ID", EditorStyles.boldLabel);
-        EditorGUI.indentLevel++;
+        //GUILayout.Label("User ID", EditorStyles.boldLabel);
+        //EditorGUI.indentLevel++;
         userID = EditorGUILayout.IntField("User ID", userID);
-        EditorGUI.indentLevel--;
+        //EditorGUI.indentLevel--;
         EditorGUILayout.Space();
 
-        GUILayout.Label("Controllers To Track",EditorStyles.boldLabel);
+        GUILayout.Label("Components To Track",EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
 
         EditorGUILayout.BeginHorizontal();
@@ -235,6 +236,7 @@ public class DashboardEditorWindow : EditorWindow
         {
             EditorGUILayout.HelpBox("Right Controller is missing",MessageType.Warning);
         }
+
         if (LeftController == null)
         {
             EditorGUILayout.HelpBox("Left Controller is missing",MessageType.Warning);
@@ -245,11 +247,11 @@ public class DashboardEditorWindow : EditorWindow
         }
         EditorGUILayout.Space();
 
-        EditorGUILayout.LabelField("Overview", HeadersStyle);
+        EditorGUILayout.LabelField("Status Overview", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("Data Collection Status");
+        GUILayout.Label("Data Collection");
         GUILayout.Button(OnCollectionStatusString, CollectionButtonStyle, GUILayout.Height(20), GUILayout.Width(40));
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
@@ -270,14 +272,12 @@ public class DashboardEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.LabelField("Score", HeadersStyle);
+        EditorGUILayout.LabelField("Scoring", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time", taskCompletionTimeScale, 1f, 1000f);
-        OverallScoreScale = EditorGUILayout.Slider("Overall Score", OverallScoreScale, 1f, 100000f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time (S)", taskCompletionTimeScale, 1f, 1000f);
         VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 100000f);
         SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 100000f);
-        CycleTimeScale = EditorGUILayout.Slider("Cycle Time", CycleTimeScale, 1f, 100000f);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space();
@@ -306,14 +306,16 @@ public class DashboardEditorWindow : EditorWindow
     }
     public static void RefreshCompletionTimeStatus(float _t)
     {
-        taskCompletionTimeScale = _t;
+        taskCompletionTimeScale = Mathf.Round(_t * 100) / 100;
     }
-    public static void SetupScore(float _overallScore, float _visuoSpatial, float _speedProcessing, float _cycleTime)
+    public static void SetupScore(float _visuoSpatial, float _speedProcessing)
     {
-        OverallScoreScale = _overallScore;
+        Debug.Log("++++ : " + _visuoSpatial);
+        Debug.Log("++++ : " + _speedProcessing);
+        //OverallScoreScale = _overallScore;
         VisuoSpatialScale = _visuoSpatial;
         SpeedProcessingScale = _speedProcessing;
-        CycleTimeScale = _cycleTime;
+        //CycleTimeScale = _cycleTime;
     }
     public static void RefreshCollectionStauts(bool _state)
     {
@@ -329,9 +331,9 @@ public class DashboardEditorWindow : EditorWindow
             OnCollectionStatusString = "OFF";
         }
     }
-    public static void RefreshRightHandStatus()
+    public static void RefreshRightHandStatus(bool state)
     {
-        IsRightHandGrabbing = !IsRightHandGrabbing;
+        IsRightHandGrabbing = state;
         if (IsRightHandGrabbing)
         {
             RightHandButtonTex = Make1x1Texture(Color.green);
@@ -343,9 +345,9 @@ public class DashboardEditorWindow : EditorWindow
             IsRightHandGrabbingString = "OFF";
         }    
     }
-    public static void RefreshLeftHandStatus()
+    public static void RefreshLeftHandStatus(bool state)
     {
-        IsLeftHandGrabbing = !IsLeftHandGrabbing;
+        IsLeftHandGrabbing = state;
         if (IsLeftHandGrabbing)
         {
             LeftHandButtonTex = Make1x1Texture(Color.green);
@@ -437,21 +439,29 @@ public class DashboardEditorWindow : EditorWindow
             var userIdOutPort = goNode.GetPort("UserIDInt");
             var leftGrabOutPort = goNode.GetPort("LeftHandGrabbing");
             var rightGrabOutPort = goNode.GetPort("RightHandGrabbing");
+            var UserIDStringOurPort = goNode.GetPort("UserIDString");
 
             var ml_GrabDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "50740dc4-667d-43d3-8c8b-7812d605ecc9");
             var GrabToggleRectPort = ml_GrabDataNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortOne = ml_GrabDataNode.GetPort("SubFolderDataPathStringPort");
             var ml_PosDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "b2accf43-eb94-4f24-be68-bffa39e2ea08");
             var PosToggleRecPort = ml_PosDataNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortTwo = ml_PosDataNode.GetPort("SubFolderDataPathStringPort");
             var ml_PosVelNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "59188512-88bb-4f3b-a661-e904a1d7bfb1");
             var PostVelToggleRecPort = ml_PosVelNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortThree = ml_PosVelNode.GetPort("SubFolderDataPathStringPort");
             var ml_PosAccNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "d1b74749-7cfd-4c68-85e2-6c4cbf758ad1");
             var PosAccToggleRecPort = ml_PosAccNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortFour = ml_PosAccNode.GetPort("SubFolderDataPathStringPort");
             var ml_RotDataNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "194dccce-2f98-419b-807f-d01c74767790");
             var RotToggleRecPort = ml_RotDataNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortFive = ml_RotDataNode.GetPort("SubFolderDataPathStringPort");
             var ml_RotVelNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "57469dcc-ac0f-4a14-8c85-29c2019db115");
             var RotVelToggleRecPort = ml_RotVelNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortSix = ml_RotVelNode.GetPort("SubFolderDataPathStringPort");
             var ml_RotAccNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "efe83634-706e-4f18-b909-9982df9c2cc1");
             var RotAccToggleRecPort = ml_RotAccNode.GetPort("ToggleRecordingInputBoolPort");
+            var userIDStringPathPortSeven = ml_RotAccNode.GetPort("SubFolderDataPathStringPort");
 
             ToggleDataCollectionOutPort.Connect(PosToggleRecPort);
             ToggleDataCollectionOutPort.Connect(PostVelToggleRecPort);
@@ -460,6 +470,14 @@ public class DashboardEditorWindow : EditorWindow
             ToggleDataCollectionOutPort.Connect(RotVelToggleRecPort);
             ToggleDataCollectionOutPort.Connect(RotAccToggleRecPort);
             ToggleDataCollectionOutPort.Connect(GrabToggleRectPort);
+
+            UserIDStringOurPort.Connect(userIDStringPathPortOne);
+            UserIDStringOurPort.Connect(userIDStringPathPortTwo);
+            UserIDStringOurPort.Connect(userIDStringPathPortThree);
+            UserIDStringOurPort.Connect(userIDStringPathPortFour);
+            UserIDStringOurPort.Connect(userIDStringPathPortFive);
+            UserIDStringOurPort.Connect(userIDStringPathPortSix);
+            UserIDStringOurPort.Connect(userIDStringPathPortSeven);
 
 
             var IntGrabNode = IMLGraph.nodes.First(x => (x as IMLNode).id == "6b9b45a4-413e-48e7-bdd2-418ad5778fe6");

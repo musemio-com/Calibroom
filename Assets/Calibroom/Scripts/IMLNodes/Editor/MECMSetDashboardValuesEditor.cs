@@ -20,10 +20,8 @@ namespace MECM
             if (setValuesNode != null)
                 DashboardEditorWindow.SetupScore
                     (
-                    setValuesNode.OverallScore, 
                     setValuesNode.VisuoSpatial, 
-                    setValuesNode.SpeedProcessing, 
-                    setValuesNode.CycleTime
+                    setValuesNode.SpeedProcessing
                     );
         }
     }

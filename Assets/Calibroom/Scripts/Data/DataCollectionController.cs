@@ -199,9 +199,9 @@ namespace MECM
                 CollectingData = dashboardRefs.TrackOnSceneActive;
                 if (CollectingData)
                     Debug.Log("Collecting Data OnSceneStart");
-                // UserIDInt = userDetails.UserID;
+                //UserIDInt = userDetails.UserID;
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
-                // UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
             // Get reference to firebase controller
             // m_FirebaseController = FindObjectOfType<FirebaseController>();
@@ -245,21 +245,21 @@ namespace MECM
             {
                 ToggleRunModel = false;
             }
-            if (ToggleDataCollection)
-            {
-                ToggleCollectingData();
-                ToggleDataCollection = false;
-            }
+            //if (ToggleDataCollection)
+            //{
+            //    ToggleCollectingData();
+            //    ToggleDataCollection = false;
+            //}
 
             // If the event was fired, flag data collection toggle to true
             if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
-                //ToggleDataCollection = true;
+                ToggleDataCollection = true;
                 CompletionTime += Time.deltaTime;
             }
             if (!CollectingData)
             {
-                //ToggleDataCollection = false;
+                ToggleDataCollection = false;
             }
 
 
@@ -286,9 +286,16 @@ namespace MECM
 
             // Pull grabbing feature extractors
             if (LeftHandGrabbingExtractor != null)
+            {
                 LeftHandGrabbing = LeftHandGrabbingExtractor.GrabbingPiece;
+                UpdateEditorData._OnLeftHandDelegate(LeftHandGrabbingExtractor.GrabbingPiece);
+            }
             if (RightHandGrabbingExtractor != null)
+            {
                 RightHandGrabbing = RightHandGrabbingExtractor.GrabbingPiece;
+                UpdateEditorData._OnRightHandDelegate(RightHandGrabbingExtractor.GrabbingPiece);
+            }
+                
 
         }
         void OnDisable()
@@ -311,12 +318,14 @@ namespace MECM
             CollectingData = !CollectingData;
             if (CollectingData)
             {
+                //ToggleDataCollection = true;
                 Debug.Log("Starting data collection!");
             }
                 
             else
             {
                 isUploading = true;
+                //ToggleDataCollection = false;
                 UpdateEditorData._OnTaskTimeDelegate(CompletionTime);
                 if (UpdateEditorData._OnTaskCompletion != null) UpdateEditorData._OnTaskCompletion();
                 Debug.Log("Stopping data collection!");
@@ -350,8 +359,8 @@ namespace MECM
     public class UpdateEditorData
     {
         public delegate void DataCollectionStatus(bool b);
-        public delegate void RightHandGrabStatus();
-        public delegate void LeftHandGrabStatus();
+        public delegate void RightHandGrabStatus(bool state);
+        public delegate void LeftHandGrabStatus(bool state);
         public delegate void TaskCompletionTimeStatus(float _t);
         public delegate void TaskCompletion();
         public static DataCollectionStatus _OnCollectingDelegate;
@@ -368,12 +377,12 @@ namespace MECM
         void DisplayRightHandGrabStatus()
         {
             if (_OnRightHandDelegate != null)
-                _OnRightHandDelegate();
+                _OnRightHandDelegate(true);
         }
         void DisplayLeftHandGrabStatus()
         {
             if (_OnLeftHandDelegate != null)
-                _OnLeftHandDelegate();
+                _OnLeftHandDelegate(true);
         }
     }
 
