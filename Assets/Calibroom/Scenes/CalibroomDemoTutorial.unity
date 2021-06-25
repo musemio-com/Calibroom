@@ -1500,6 +1500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OnGrabLoadNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 7237679687771049812, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
       propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

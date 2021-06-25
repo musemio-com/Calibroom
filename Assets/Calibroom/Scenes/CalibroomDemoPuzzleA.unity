@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1028,6 +1028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OnGrabLoadNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 7237679687771049812, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7237679687771049813, guid: cdd0d10dcda95b642a6e2d2655ea3439, type: 3}
       propertyPath: m_OnSelectEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1261,9 +1265,13 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  m_GameObjectNodeList: []
+  m_GameObjectNodeList:
+  - {fileID: -3974519590576941002, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 2929226612309993096, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -4676482080714173291, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_ScriptNodesList:
-  - {fileID: 262840173139066163, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: -107960120529305298, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+  - {fileID: 6630212464045051421, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_CustomControllerList: []
   FeaturesUpdated: 0
   ComponentsWithIMLData:
@@ -1273,7 +1281,7 @@ MonoBehaviour:
     m_keys:
     - {fileID: 182812457}
     m_values:
-    - {fileID: 262840173139066163, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
+    - {fileID: 6630212464045051421, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_MonobehaviourClones: []
   universalInputActive: 0
 --- !u!4 &1577645564
