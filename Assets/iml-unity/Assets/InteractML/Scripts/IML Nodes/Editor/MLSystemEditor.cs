@@ -246,16 +246,18 @@ namespace InteractML
                     nameButton = "Run";
             }
             // If rapidlib reference is null we draw a disabled button
-            if ((m_MLSystem.Model == null || m_MLSystem.Model.ModelAddress == (IntPtr)0 || m_MLSystem.Training || m_MLSystem.Untrained || !m_MLSystem.matchLiveDataInputs || !m_MLSystem.matchVectorLength) && !m_MLSystem.Running)
+            if ((m_MLSystem.Model == null || m_MLSystem.Model.ModelAddress == (IntPtr)0 || m_MLSystem.Training || m_MLSystem.Untrained) && !m_MLSystem.Running)
             {
-               /* Debug.Log(m_MLSystem.Model == null);
-                Debug.Log(m_MLSystem.Model.ModelAddress != (IntPtr)0);
-                Debug.Log(m_MLSystem.Training);
-                Debug.Log(m_MLSystem.Untrained);
-                Debug.Log(!m_MLSystem.matchLiveDataInputs);
-                Debug.Log(!m_MLSystem.matchVectorLength);*/
+                /* Debug.Log(m_MLSystem.Model == null);
+                 Debug.Log(m_MLSystem.Model.ModelAddress != (IntPtr)0);
+                 Debug.Log(m_MLSystem.Training);
+                 Debug.Log(m_MLSystem.Untrained);
+                 Debug.Log(!m_MLSystem.matchLiveDataInputs);
+                 Debug.Log(!m_MLSystem.matchVectorLength);*/
+
                 // Disable button if model is Trainig OR Untrained 
                 GUI.enabled = false;
+
             }
             else
             {
@@ -264,10 +266,24 @@ namespace InteractML
 
             if (GUILayout.Button(nameButton, Resources.Load<GUISkin>("GUIStyles/InteractMLGUISkin").GetStyle("Run")))
             {
-                IMLEventDispatcher.ToggleRunCallback(m_MLSystem.id);
+                // If there seems to be a misconfiguration flagged...
+                if (!m_MLSystem.matchLiveDataInputs || !m_MLSystem.matchVectorLength)
+                {
+                    // Attempt to force an update on the data checks
+                    m_MLSystem.OnDataInChanged();
+                    // If it didn't work
+                    if (!m_MLSystem.matchLiveDataInputs || !m_MLSystem.matchVectorLength)
+                    {
+                        Debug.LogError($"Misconfiguration present on MLSystem with ID {m_MLSystem.id}! Couldn't repair... Try entering/leaving playmode, reconnecting nodes to MLSystem and/or checking that there are no null references in input data");
+                        return;
+                    }
+
+                }
+                //IMLEventDispatcher.ToggleRunCallback(m_MLSystem.id);
+                m_MLSystem.ToggleRunning();
             }
 
-            
+
             if (GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
             {
                 buttonTipHelper = true;

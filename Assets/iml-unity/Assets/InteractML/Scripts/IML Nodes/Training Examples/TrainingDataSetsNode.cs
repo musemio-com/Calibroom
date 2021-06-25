@@ -115,7 +115,7 @@ namespace InteractML
                     // First, find all the folders
                     // Iterate to upload all files in folder, including subdirectories
                     string[] files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
-                    Debug.Log($"{files.Length + 1} files found. Loading data sets, please wait...");
+                    //Debug.Log($"{files.Length + 1} files found. Loading data sets, please wait...");
                     foreach (string file in files)
                     {
                         // If there is a json file, attempt to load
@@ -125,8 +125,10 @@ namespace InteractML
                             if (!string.IsNullOrEmpty(specificID))
                             {
                                 // skip if the file doesn't contain the ID we want
-                                if (!file.Contains(specificID))
+                                if (!file.ToLower().Contains(specificID))// te
                                     continue;
+                                //else
+                                //    Debug.Log($"Starting to load file {file}...");
                             }
 
                             // Load training data set
@@ -143,15 +145,16 @@ namespace InteractML
 
                     if (TrainingDataSets.Count == 0)
                     {
+                        m_LoadingFinished = false;
+                        m_LoadingStarted = false; // allow to re-load if user wants to
                         NodeDebug.LogWarning("Couldn't load folder!", this, debugToConsole: true);
-
                     }
                     else
                     {
                         m_DataSetSize = TrainingDataSets.Count;
                         m_LoadingFinished = true;
                         m_LoadingStarted = false; // allow to re-load if user wants to
-                        Debug.Log($"{TrainingDataSets.Count + 1} Data Sets Loaded!");
+                        //Debug.Log($"{TrainingDataSets.Count + 1} Data Sets Loaded!");
                     }
 
 

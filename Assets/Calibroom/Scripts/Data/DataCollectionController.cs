@@ -181,6 +181,12 @@ namespace MECM
         private string FirebaseProjectID;
 
 
+        /// <summary>
+        /// Show/hide debug buttons on editor
+        /// </summary>
+        [SerializeField]
+        public bool DebugMode;
+
         #endregion
 
         #region Unity Messages
