@@ -273,9 +273,9 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Scoring", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time (sec)", taskCompletionTimeScale, 1f, 1000f);
-        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 100000f);
-        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 100000f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time(sec)", taskCompletionTimeScale, 1f, 1000f);
+        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 0f, 100f);
+        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 0f, 100f);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space();
