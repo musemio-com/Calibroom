@@ -14,7 +14,7 @@ namespace MECM
     /// Holds a Movement Data Set (in windows of N size)
     /// </summary>
     [NodeWidth(400)]
-    public class MECMMovementDataSet : IMLNode, IDataSetIML, IFeatureIML
+    public class MECMMovementDataSet : IMLNode, IDataSetIML, IFeatureIML, IUpdatableIML
     {
         #region Variables
 
@@ -33,11 +33,14 @@ namespace MECM
         [Output, SerializeField]
         private IMLBaseDataType m_FeatureValues;
 
-        public bool isExternallyUpdatable;
+        bool IFeatureIML.isExternallyUpdatable { get => m_isExternallyUpdatable; }
+        private bool m_isExternallyUpdatable = true;
 
-        public bool isUpdated { get; set; }
+        public bool isUpdated { get => m_isUpdated; set => m_isUpdated = value; }
 
-        bool IFeatureIML.isExternallyUpdatable { get; }
+        public bool isExternallyUpdatable => m_isExternallyUpdatable;
+
+        private bool m_isUpdated;
 
         public int NumDataSetsProcessed;
         public bool ProcessingStarted;
@@ -64,18 +67,26 @@ namespace MECM
             // Add all required dynamic ports
             // ToggleProcessData           
             this.GetOrCreateDynamicPort("ProcessDataPort", typeof(bool), NodePort.IO.Input);
+            // DataProcessedPort        
+            this.GetOrCreateDynamicPort("DataProcessedPort", typeof(bool), NodePort.IO.Output);
+
         }
 
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
-        {            
-            return UpdateFeature(); 
+        {
+            if (port.Equals(GetOutputPort("DataProcessedPort"))) return ProcessingFinished;
+            else return UpdateFeature();
         }
 
         #endregion
 
 
-        #region IFeatureIML Method Overrides
+        #region Method Overrides
+        public void Update()
+        {
+            // do nothing
+        }
 
         public object UpdateFeature()
         {
@@ -119,9 +130,15 @@ namespace MECM
             }
             else
             {
-                NodeDebug.LogWarning("Data is not processed! It can't output a feature", this, true);
+                //NodeDebug.LogWarning("Data is not processed! It can't output a feature", this, true);
                 return null;
             }
+        }
+
+        public void LateUpdate()
+        {
+            // Allow flag only for a frame
+            if (ProcessingFinished) ProcessingFinished = false;
         }
 
         #endregion

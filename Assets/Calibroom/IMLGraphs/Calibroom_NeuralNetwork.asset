@@ -88,7 +88,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: m_Out
-        node: {fileID: 1751917521551349516}
+        node: {fileID: -5495191550341231855}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -182,12 +182,12 @@ MonoBehaviour:
   - 0
   - 0
   DelayedPredictedOutput:
-  - 64.83456828088376
-  - 1129.6583069898031
-  - 11539.94257807705
-  - 1961.8280790607291
-  - 0.8649316880672231
-  - 2.001503256469974
+  - 64.871313254852
+  - 1394.1098238206323
+  - 10321.306267904827
+  - 2254.145184670396
+  - 1.2075153342890417
+  - 2.0752259990138007
   m_NumExamplesTrainedOn: 2429
   m_ExpectedInputList: 05000000
   m_ExpectedOutputList: 010000000000000000000000000000000000000000000000
@@ -327,7 +327,64 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
+  Count: 5
+  ToggleSwitches: 01
+  ReceivedValue:
+  - 0
+--- !u!114 &-5495191550341231855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f852e779cc4b3e048bbf793021e49884, type: 3}
+  m_Name: Boolean
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 856, y: 152}
+  ports:
+    keys:
+    - m_In
+    - m_Out
+    values:
+    - _fieldName: m_In
+      _node: {fileID: -5495191550341231855}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: DataProcessedPort
+        node: {fileID: -3949645877236460788}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: m_Out
+      _node: {fileID: -5495191550341231855}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: ToggleRunInputBoolPort
+        node: {fileID: -8679924695841327057}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  id: 7d8bcee1-68d5-44fc-a5f2-15f3a4892a2a
+  numberInComponentList: -1
+  ValueName: 
+  m_In: 0
+  m_Value: 0
+  m_Out: 0
+  ReceivingData: 0
+  FeatureValueReceivingData: 00
+  InputConnected: 1
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -384,7 +441,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -407,6 +464,7 @@ MonoBehaviour:
     keys:
     - TrainingDataSets
     - LoadDataPort
+    - DataLoadedPort
     values:
     - _fieldName: TrainingDataSets
       _node: {fileID: -4900322899204207368}
@@ -437,6 +495,18 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+    - _fieldName: DataLoadedPort
+      _node: {fileID: -4900322899204207368}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: ProcessDataPort
+        node: {fileID: -3949645877236460788}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   id: d259e798-2871-41b4-851e-8d4e5b92d192
   numberInComponentList: -1
   FolderPath: Assets/InteractML/Data/Training_Examples
@@ -455,7 +525,7 @@ MonoBehaviour:
   m_Name: Array
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 664.16534, y: 524.9203}
+  position: {x: 792, y: 488}
   ports:
     keys:
     - m_In
@@ -490,194 +560,194 @@ MonoBehaviour:
   ValueName: 
   m_In: []
   m_Value:
-  - 0.76125586
-  - 1.3973851
-  - 0.65284383
-  - 0.7993115
-  - 0.75880563
-  - 0.7546632
-  - 0.810544
-  - 0.72852236
-  - 0.5743441
-  - 0.7671
-  - 1.3971387
-  - 0.6547464
-  - 0.7827066
-  - 0.7618121
-  - 0.7420174
-  - 0.79425395
-  - 0.7314364
-  - 0.5822905
-  - 0.77046293
-  - 1.3989928
-  - 0.6545267
-  - 0.76750374
-  - 0.7616097
-  - 0.74117804
-  - 0.77708775
-  - 0.7360714
-  - 0.5903282
-  - 0.77379966
-  - 1.3985064
-  - 0.6532346
-  - 0.77567196
-  - 0.7570769
-  - 0.74686474
-  - 0.77829015
-  - 0.7300505
-  - 0.58732086
-  - 0.77947396
-  - 1.3893826
-  - 0.6535656
-  - 0.7858043
-  - 0.74794304
-  - 0.7412185
-  - 0.7893492
-  - 0.71620667
-  - 0.59650457
-  - 0.78402424
-  - 1.3830004
-  - 0.6531049
-  - 0.8035636
-  - 0.73850316
-  - 0.74220526
-  - 0.807191
-  - 0.7108025
-  - 0.58933914
-  - 0.78722984
-  - 1.387292
-  - 0.6510936
-  - 0.8148423
-  - 0.73802733
-  - 0.7448056
-  - 0.81980747
-  - 0.7126773
-  - 0.58538556
-  - 0.78603435
-  - 1.3972486
-  - 0.64868814
-  - 0.8146039
-  - 0.74825203
-  - 0.74767876
-  - 0.82329684
-  - 0.72674364
-  - 0.5863553
-  - 0.78045344
-  - 1.4127079
-  - 0.6481566
-  - 0.79665124
-  - 0.7655582
-  - 0.75671315
-  - 0.8016708
-  - 0.748764
-  - 0.5855855
-  - 0.7718853
-  - 1.4284863
-  - 0.64642084
-  - 0.74850416
-  - 0.7818259
-  - 0.7709297
-  - 0.7670346
-  - 0.7726588
-  - 0.5884049
+  - 0.34876308
+  - 1.0491128
+  - 0.22749922
+  - 0.5445889
+  - 0.521478
+  - 0.0040158033
+  - 0.59394157
+  - 0.37207067
+  - 0.17391604
+  - 0.32944694
+  - 0.94481313
+  - 0.21798071
+  - 0.55629575
+  - 0.4775809
+  - -0.008911133
+  - 0.6245667
+  - 0.26867628
+  - 0.2001684
+  - 0.3237318
+  - 0.8513037
+  - 0.20362407
+  - 0.5520184
+  - 0.45125842
+  - -0.02155739
+  - 0.64881253
+  - 0.18377078
+  - 0.2216571
+  - 0.32335266
+  - 0.78322625
+  - 0.1958636
+  - 0.54910195
+  - 0.43982935
+  - -0.028161705
+  - 0.67633927
+  - 0.118689656
+  - 0.22761029
+  - 0.32815626
+  - 0.74617946
+  - 0.19607738
+  - 0.554675
+  - 0.4469248
+  - -0.026522994
+  - 0.68304586
+  - 0.07997191
+  - 0.22606528
+  - 0.33612236
+  - 0.74515367
+  - 0.19826722
+  - 0.5570729
+  - 0.45099998
+  - -0.029970825
+  - 0.6770364
+  - 0.07070315
+  - 0.22332793
+  - 0.34249857
+  - 0.78116333
+  - 0.20684463
+  - 0.54978657
+  - 0.4474312
+  - -0.029103935
+  - 0.6517327
+  - 0.10225344
+  - 0.22368562
+  - 0.34836575
+  - 0.85420537
+  - 0.21227998
+  - 0.54273283
+  - 0.45072246
+  - -0.036227465
+  - 0.6109096
+  - 0.18811321
+  - 0.21937984
+  - 0.3521308
+  - 0.957949
+  - 0.21316466
+  - 0.5240475
+  - 0.47419608
+  - -0.050491273
+  - 0.57693934
+  - 0.32630968
+  - 0.1906242
+  - 0.36314657
+  - 1.0758575
+  - 0.2014499
+  - 0.49022487
+  - 0.52738386
+  - -0.054609597
+  - 0.56511533
+  - 0.48753476
+  - 0.15530634
   m_Out: []
   ReceivingData: 1
-  FeatureValueReceivingData: 010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  FeatureValueReceivingData: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   InputConnected: 0
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101
   ReceivedValue:
-  - 0.76125586
-  - 1.3973851
-  - 0.65284383
-  - 0.7993115
-  - 0.75880563
-  - 0.7546632
-  - 0.810544
-  - 0.72852236
-  - 0.5743441
-  - 0.7671
-  - 1.3971387
-  - 0.6547464
-  - 0.7827066
-  - 0.7618121
-  - 0.7420174
-  - 0.79425395
-  - 0.7314364
-  - 0.5822905
-  - 0.77046293
-  - 1.3989928
-  - 0.6545267
-  - 0.76750374
-  - 0.7616097
-  - 0.74117804
-  - 0.77708775
-  - 0.7360714
-  - 0.5903282
-  - 0.77379966
-  - 1.3985064
-  - 0.6532346
-  - 0.77567196
-  - 0.7570769
-  - 0.74686474
-  - 0.77829015
-  - 0.7300505
-  - 0.58732086
-  - 0.77947396
-  - 1.3893826
-  - 0.6535656
-  - 0.7858043
-  - 0.74794304
-  - 0.7412185
-  - 0.7893492
-  - 0.71620667
-  - 0.59650457
-  - 0.78402424
-  - 1.3830004
-  - 0.6531049
-  - 0.8035636
-  - 0.73850316
-  - 0.74220526
-  - 0.807191
-  - 0.7108025
-  - 0.58933914
-  - 0.78722984
-  - 1.387292
-  - 0.6510936
-  - 0.8148423
-  - 0.73802733
-  - 0.7448056
-  - 0.81980747
-  - 0.7126773
-  - 0.58538556
-  - 0.78603435
-  - 1.3972486
-  - 0.64868814
-  - 0.8146039
-  - 0.74825203
-  - 0.74767876
-  - 0.82329684
-  - 0.72674364
-  - 0.5863553
-  - 0.78045344
-  - 1.4127079
-  - 0.6481566
-  - 0.79665124
-  - 0.7655582
-  - 0.75671315
-  - 0.8016708
-  - 0.748764
-  - 0.5855855
-  - 0.7718853
-  - 1.4284863
-  - 0.64642084
-  - 0.74850416
-  - 0.7818259
-  - 0.7709297
-  - 0.7670346
-  - 0.7726588
-  - 0.5884049
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   m_MaximumArraySize: 150
 --- !u!114 &-3949645877236460788
 MonoBehaviour:
@@ -692,12 +762,13 @@ MonoBehaviour:
   m_Name: MECM Movement Data Set
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 104, y: 552}
+  position: {x: 216, y: 504}
   ports:
     keys:
     - MovementData
     - m_FeatureValues
     - ProcessDataPort
+    - DataProcessedPort
     values:
     - _fieldName: MovementData
       _node: {fileID: -3949645877236460788}
@@ -729,17 +800,31 @@ MonoBehaviour:
       _node: {fileID: -3949645877236460788}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: DataLoadedPort
+        node: {fileID: -4900322899204207368}
+        reroutePoints: []
       _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: DataProcessedPort
+      _node: {fileID: -3949645877236460788}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: m_In
+        node: {fileID: -5495191550341231855}
+        reroutePoints: []
+      _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
   id: b72ff3bc-8c4c-4818-ae33-f5f4e20d54bd
   numberInComponentList: -1
-  isExternallyUpdatable: 0
   NumDataSetsProcessed: 30
   ProcessingStarted: 0
-  ProcessingFinished: 1
+  ProcessingFinished: 0
 --- !u!114 &-2269804938390372467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +877,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -849,7 +934,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -903,7 +988,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -921,7 +1006,7 @@ MonoBehaviour:
   m_Name: MECM Training Data Set
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 520, y: -280}
+  position: {x: 600, y: -472}
   ports:
     keys:
     - MovementData
@@ -1133,6 +1218,7 @@ MonoBehaviour:
   - {fileID: -6206050627982096732}
   - {fileID: 5157310864440827955}
   - {fileID: 1751917521551349516}
+  - {fileID: -5495191550341231855}
   SceneComponent: {fileID: 0}
 --- !u!114 &1751917521551349516
 MonoBehaviour:
@@ -1173,10 +1259,6 @@ MonoBehaviour:
       - fieldName: LoadDataPort
         node: {fileID: -4900322899204207368}
         reroutePoints: []
-      - fieldName: ToggleRunInputBoolPort
-        node: {fileID: -8679924695841327057}
-        reroutePoints:
-        - {x: 742.2616, y: 357.346}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1190,7 +1272,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1247,7 +1329,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 3
+  Counter: 0
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1298,7 +1380,7 @@ MonoBehaviour:
   m_Name: Brain HQ Data Set
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 168, y: -24}
+  position: {x: 248, y: -216}
   ports:
     keys:
     - BrainHQDataSet

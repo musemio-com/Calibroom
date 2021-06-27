@@ -15,7 +15,7 @@ namespace InteractML
     [CreateNodeMenuAttribute("Interact ML/DataSets/TrainingDataSets")]
     [NodeWidth(350)]
 
-    public class TrainingDataSetsNode : IMLNode, IFeatureIML
+    public class TrainingDataSetsNode : IMLNode, IFeatureIML, IUpdatableIML
     {
         #region Variables
         /// <summary>
@@ -42,9 +42,11 @@ namespace InteractML
         private int m_DataSetSize;
 
         // Flags for loading
-        public bool LoadingStarted { get { return m_LoadingStarted; } }
         [System.NonSerialized]
         private bool m_LoadingStarted;
+        public bool LoadingStarted { get { return m_LoadingStarted; } }
+        [System.NonSerialized]
+        private bool m_LoadingFinished;
         public bool LoadingFinished { get { return m_LoadingFinished; } }
 
         public IMLBaseDataType FeatureValues => default(IMLBaseDataType);
@@ -54,8 +56,6 @@ namespace InteractML
         public bool isUpdated { get => m_isUpdated; set => m_isUpdated = value; }
         private bool m_isUpdated;
 
-        [System.NonSerialized]
-        private bool m_LoadingFinished;
 
         #endregion
 
@@ -71,14 +71,23 @@ namespace InteractML
             // Add all required dynamic ports
             // LoadData          
             this.GetOrCreateDynamicPort("LoadDataPort", typeof(bool), NodePort.IO.Input);
+            // DataLoadedPort        
+            this.GetOrCreateDynamicPort("DataLoadedPort", typeof(bool), NodePort.IO.Output);
 
         }
 
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
         {
-            // Returns the list of training examples
-            return TrainingDataSets;
+            // Returns the list of training examples 
+            if (port.Equals(GetOutputPort("TrainingDataSets"))) return TrainingDataSets;
+            // Data loading finished
+            else if (port.Equals(GetOutputPort("DataLoadedPort"))) 
+            {
+                //Debug.Log($"DataLoadedPort: {LoadingFinished}");
+                return LoadingFinished; 
+            }
+            else return null;
         }
 
         #endregion
@@ -153,6 +162,7 @@ namespace InteractML
                     {
                         m_DataSetSize = TrainingDataSets.Count;
                         m_LoadingFinished = true;
+                        //Debug.Log($"Setting loading finished to: {LoadingFinished}");
                         m_LoadingStarted = false; // allow to re-load if user wants to
                         //Debug.Log($"{TrainingDataSets.Count + 1} Data Sets Loaded!");
                     }
@@ -170,9 +180,19 @@ namespace InteractML
         public object UpdateFeature()
         {
             // Pull inputs from bool event nodeports
-            if (GetInputValue<bool>("LoadDataPort")) LoadDataSets(FolderPath, SpecificNodeID);
-
+            if (GetInputValue<bool>("LoadDataPort")) LoadDataSets(FolderPath, SpecificNodeID);            
             return this;
+        }
+
+        public void Update()
+        {
+            // Do nothing
+        }
+
+        public void LateUpdate()
+        {
+            // Allow flag data loaded only for a frame emulating an event
+            if (m_LoadingFinished) {  m_LoadingFinished = false; }
         }
 
         #endregion

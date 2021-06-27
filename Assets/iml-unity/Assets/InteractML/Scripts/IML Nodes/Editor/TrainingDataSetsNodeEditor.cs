@@ -59,6 +59,10 @@ namespace InteractML
         /// NodePort for button. Loaded in OnHeaderHUI()
         /// </summary>
         protected NodePort m_ButtonPortLoadData;
+        /// <summary>
+        /// NodePort for button. Loaded in OnHeaderHUI()
+        /// </summary>
+        protected NodePort m_ButtonPortDataLoaded;
 
 
 
@@ -78,6 +82,8 @@ namespace InteractML
             // Get button port
             if (m_ButtonPortLoadData == null)
                 m_ButtonPortLoadData = m_NodeDataSet.GetPort("LoadDataPort");
+            if (m_ButtonPortDataLoaded == null)
+                m_ButtonPortDataLoaded = m_NodeDataSet.GetPort("DataLoadedPort");
             // Create inputport button label
             if (m_ButtonPortLabel == null)
                 m_ButtonPortLabel = new GUIContent("");
@@ -103,6 +109,8 @@ namespace InteractML
                 m_NodeDataSet.LoadDataSets(m_NodeDataSet.FolderPath, specificID: m_NodeDataSet.SpecificNodeID);
 
             }
+            // Draw port data loaded
+            IMLNodeEditor.PortField(m_ButtonPortLabel, m_ButtonPortDataLoaded, m_NodeSkin.GetStyle("Port Label"), GUILayout.MaxWidth(10));
             GUILayout.EndHorizontal();
 
             // Show data sets dropdown

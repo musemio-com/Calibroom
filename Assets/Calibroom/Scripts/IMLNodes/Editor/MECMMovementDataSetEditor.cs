@@ -70,6 +70,10 @@ namespace MECM
         /// NodePort for button. Loaded in OnHeaderHUI()
         /// </summary>
         protected NodePort m_ButtonPortProcessData;
+        /// <summary>
+        /// NodePort for button. Loaded in OnHeaderHUI()
+        /// </summary>
+        protected NodePort m_ButtonPortDataProcessed;
 
 
         public override void OnHeaderGUI()
@@ -88,6 +92,8 @@ namespace MECM
             // Get button port
             if (m_ButtonPortProcessData == null)
                 m_ButtonPortProcessData = m_NodeDataSet.GetPort("ProcessDataPort");
+            if (m_ButtonPortDataProcessed == null)
+                m_ButtonPortDataProcessed = m_NodeDataSet.GetPort("DataProcessedPort");
             // Create inputport button label
             if (m_ButtonPortLabel == null)
                 m_ButtonPortLabel = new GUIContent("");
@@ -142,6 +148,8 @@ namespace MECM
                     {
                         m_NodeDataSet.DataToWindows();
                     }
+                    // Draw output port dataProcessed
+                    IMLNodeEditor.PortField(m_ButtonPortLabel, m_ButtonPortDataProcessed, m_NodeSkin.GetStyle("Port Label"), GUILayout.MaxWidth(10));
                     GUILayout.EndHorizontal();
 
                     // Show data sets dropdown
