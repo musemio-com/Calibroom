@@ -39,10 +39,8 @@ public class DashboardEditorWindow : EditorWindow
     static GUIStyle LeftHandButtonStyle;
 
     static float taskCompletionTimeScale = 0.0f;
-    static float OverallScoreScale = 0.0f;
     static float VisuoSpatialScale = 0.0f;
     static float SpeedProcessingScale = 0.0f;
-    static float CycleTimeScale = 0.0f;
 
     static DashboardRefs _ref;
 
@@ -275,7 +273,7 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Scoring", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time (S)", taskCompletionTimeScale, 1f, 1000f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time (sec)", taskCompletionTimeScale, 1f, 1000f);
         VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 1f, 100000f);
         SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 1f, 100000f);
         EditorGUILayout.EndVertical();
@@ -310,12 +308,10 @@ public class DashboardEditorWindow : EditorWindow
     }
     public static void SetupScore(float _visuoSpatial, float _speedProcessing)
     {
-        Debug.Log("++++ : " + _visuoSpatial);
-        Debug.Log("++++ : " + _speedProcessing);
-        //OverallScoreScale = _overallScore;
+        Debug.Log("++Visuo Spatial value : " + _visuoSpatial);
+        Debug.Log("++Speed Processing  : " + _speedProcessing);
         VisuoSpatialScale = _visuoSpatial;
         SpeedProcessingScale = _speedProcessing;
-        //CycleTimeScale = _cycleTime;
     }
     public static void RefreshCollectionStauts(bool _state)
     {
