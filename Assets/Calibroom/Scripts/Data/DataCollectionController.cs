@@ -202,9 +202,12 @@ namespace MECM
                 m_UploadData = dashboardRefs.uploadSettings.enable;
                 FirebaseProjectID = dashboardRefs.uploadSettings.firebaseStorageID;
 
-                CollectingData = dashboardRefs.TrackOnSceneActive;
-                if (CollectingData)
-                    Debug.Log("Collecting Data OnSceneStart");
+                //CollectingData = dashboardRefs.TrackOnSceneActive;
+                if (dashboardRefs.TrackOnSceneActive)
+                    ToggleCollectingData();
+
+                //if (CollectingData)
+                //    Debug.Log("Collecting Data OnSceneStart");
                 //UserIDInt = userDetails.UserID;
                 // We store the path to the directory where to store data here (each teach the machine node reads this value in the IML graph)
                 UserIDString = UserIDInt.ToString() + "/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -234,6 +237,7 @@ namespace MECM
         {
             // Make sure to delete all training examples, but don't delete from disk to avoid data loss
             IMLEventDispatcher.DeleteAllTrainingExamplesInGraphCallback(deleteFromDisk: false);
+
         }
 
         // Update is called once per frame
