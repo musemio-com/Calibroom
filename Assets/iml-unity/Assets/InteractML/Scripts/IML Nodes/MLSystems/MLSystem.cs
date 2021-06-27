@@ -2157,13 +2157,11 @@ namespace InteractML
             //Debug.Log(Trained);
             //Debug.Log(m_trainingType);
             //Debug.Log(m_Model.TypeOfModel);
-            
+
             //UpdateDynamicOutputPorts(IMLTrainingExamplesNodes, m_ExpectedOutputList, ref m_DynamicOutputPorts);
             // Pull inputs from bool event nodeports
-            if (GetInputValue<bool>("ToggleTrainInputBoolPort"))
-                IMLEventDispatcher.TrainMLSCallback(this.id);
-            if (GetInputValue<bool>("ToggleRunInputBoolPort"))
-                IMLEventDispatcher.ToggleRunCallback(this.id);
+            if (GetInputValue<bool>("ToggleTrainInputBoolPort")) TrainModel();
+            if (GetInputValue<bool>("ToggleRunInputBoolPort")) ToggleRunning();
 
             // Perform running logic (it will account for DTW and Classification/Regression) only if there is a predicted output            
             RunningLogic();
