@@ -1082,7 +1082,7 @@ namespace InteractML
 
         
 
-        private void LoadDataFromDisk()
+        protected void LoadDataFromDisk()
         {
             if (this is SeriesTrainingExamplesNode)
             {

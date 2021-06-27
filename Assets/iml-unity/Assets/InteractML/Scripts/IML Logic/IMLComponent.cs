@@ -2904,7 +2904,11 @@ namespace InteractML
         private bool DeleteAllTrainingExamplesInGraph(bool deleteFromDisk = true)
         {
             foreach (TrainingExamplesNode TENode in TrainingExamplesNodesList)
-            {                
+            {
+#if MECM
+                // Not do this on MECM classes
+                if (TENode is MECM.MECMTrainingDataSet) continue;
+#endif
                 // clear training examples from this node 
                 TENode.ClearTrainingExamples(deleteFromDisk: deleteFromDisk);
             }
