@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 using InteractML;
+using UnityEditor;
+using MECM;
 
 namespace MECM
 {
@@ -27,8 +29,15 @@ namespace MECM
             VisuoSpatial = GetInputValue<float>("VisuoSpatial");
             SpeedProcessing = GetInputValue<float>("SpeedProcessing");
             CycleTime = GetInputValue<float>("CycleTime");
+            UpdateScore._OnUpdateScore(OverallScore, SpeedProcessing, CycleTime);
+
             return this;
         }
     }
 
+    public class UpdateScore
+    {
+        public delegate void UpdateScoreDelegate(float t, float t2, float t3);
+        public static UpdateScoreDelegate _OnUpdateScore;
+    }
 }

@@ -24,11 +24,7 @@ namespace MECM
             //    setValuesNode.SpeedProcessing
             //    );
             {
-                float visuoSpacialScore = (setValuesNode.OverallScore / 7132f) * 10f;
-                float SpeedProcessingScore = ((setValuesNode.SpeedProcessing + setValuesNode.CycleTime) / (2812f + 9410f)) * 10f;
-                Debug.Log("visuoSpacial value is : " + visuoSpacialScore);
-                Debug.Log("Speed Processing value is : " + SpeedProcessingScore);
-                DashboardEditorWindow.SetupScore(visuoSpacialScore, SpeedProcessingScore);
+                //DashboardEditorWindow.SetupScore(visuoSpacialScore, SpeedProcessingScore);
             }
         }
     }

@@ -9,15 +9,16 @@ using XNode;
 using System.Linq;
 using System;
 using Unity.EditorCoroutines.Editor;
+using UnityEditor.SceneManagement;
 
 public class DashboardEditorWindow : EditorWindow
 {
-    int userID;
-    GameObject LeftController;
-    GameObject RightController;
-    GameObject HMD;
-    AnimBool trackOnSceneStart;
-    AnimBool UploadData;
+    static int userID;
+    static GameObject LeftController;
+    static GameObject RightController;
+    static GameObject HMD;
+    static AnimBool trackOnSceneStart;
+    static AnimBool UploadData;
     Vector2 scrollPos;
 
     static bool OnCollectionStatus;
@@ -32,7 +33,7 @@ public class DashboardEditorWindow : EditorWindow
 
     DataCollectionController dataController;
 
-    string FirebaseID;
+    static string FirebaseID;
     GUIStyle SuggestionButtonsStyle;
     static GUIStyle CollectionButtonStyle;
     static GUIStyle RightHandButtonStyle;
@@ -51,6 +52,7 @@ public class DashboardEditorWindow : EditorWindow
         UpdateEditorData._OnRightHandDelegate = RefreshRightHandStatus;
         UpdateEditorData._OnLeftHandDelegate = RefreshLeftHandStatus;
         UpdateEditorData._OnTaskTimeDelegate = RefreshCompletionTimeStatus;
+        UpdateScore._OnUpdateScore = SetupScore;
 
     }
 
@@ -76,6 +78,9 @@ public class DashboardEditorWindow : EditorWindow
         DataCollectionButtonTex = Make1x1Texture(Color.red);
         RightHandButtonTex = Make1x1Texture(Color.red);
         LeftHandButtonTex = Make1x1Texture(Color.red);
+        taskCompletionTimeScale = 0;
+        SpeedProcessingScale = 0;
+        VisuoSpatialScale = 0;
     }
     static Texture2D Make1x1Texture(Color _color)
     {
@@ -91,7 +96,7 @@ public class DashboardEditorWindow : EditorWindow
         tex.Apply();
         return tex;
     }
-    void loadAllRefs()
+    static void loadAllRefs()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
         if(_ref == null)
@@ -110,7 +115,6 @@ public class DashboardEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
         var HeadersStyle = new GUIStyle(GUI.skin.label)
         {
             alignment = TextAnchor.MiddleLeft,
@@ -145,14 +149,14 @@ public class DashboardEditorWindow : EditorWindow
             fontSize = 13,
             normal = new GUIStyleState() { background = LeftHandButtonTex }
         };
+
+
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
         EditorGUILayout.LabelField("Settings", HeadersStyle);
 
         EditorGUILayout.Space();
 
-        //GUILayout.Label("User ID", EditorStyles.boldLabel);
-        //EditorGUI.indentLevel++;
         userID = EditorGUILayout.IntField("User ID", userID);
-        //EditorGUI.indentLevel--;
         EditorGUILayout.Space();
 
         GUILayout.Label("Components To Track",EditorStyles.boldLabel);
@@ -306,12 +310,12 @@ public class DashboardEditorWindow : EditorWindow
     {
         taskCompletionTimeScale = Mathf.Round(_t * 100) / 100;
     }
-    public static void SetupScore(float _visuoSpatial, float _speedProcessing)
+    public static void SetupScore(float _score1,float _score2, float _score3)
     {
-        Debug.Log("++Visuo Spatial value : " + _visuoSpatial);
-        Debug.Log("++Speed Processing  : " + _speedProcessing);
-        VisuoSpatialScale = _visuoSpatial;
-        SpeedProcessingScale = _speedProcessing;
+        float visuoSpacialScore = (_score1 / 7132f) * 10f;
+        float SpeedProcessingScore = ((_score2 + _score3) / (2812f + 9410f)) * 10f;
+        VisuoSpatialScale = (float)Math.Round(visuoSpacialScore * 1000f) / 1000f;
+        SpeedProcessingScale = Mathf.Round(SpeedProcessingScore * 100) / 100;
     }
     public static void RefreshCollectionStauts(bool _state)
     {
@@ -402,7 +406,6 @@ public class DashboardEditorWindow : EditorWindow
             DestroyImmediate(FindObjectOfType<DataCollectionController>().gameObject);
         if (FindObjectOfType<IMLComponent>())
             DestroyImmediate(FindObjectOfType<IMLComponent>().gameObject);
-
         GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));
         GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
         GameObject IMLNeuralNetwork = Instantiate(Resources.Load<GameObject>("Prefabs/IML System_NeuralNetwork"));
@@ -410,11 +413,15 @@ public class DashboardEditorWindow : EditorWindow
         IMLSystem.name = "IML System";
         IMLNeuralNetwork.name = "IML NeuralNetwork";
         dataController = DataController.GetComponent<DataCollectionController>();
-
-        yield return new EditorWaitForSeconds(4f);
+        IMLGraph IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(IMLGraph));
+        EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+        
+        yield return new EditorWaitForSeconds(2f);
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
-        var IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+
+        
         ScriptNode goNode = (ScriptNode)IMLGraph.AddNode(typeof(ScriptNode));
         if (goNode != null)
         {
@@ -507,7 +514,7 @@ public class DashboardEditorWindow : EditorWindow
             leftGrabOutPort.Connect(LeftBoolGrabPort);
             rightGrabOutPort.Connect(RightBoolGrabPort);
         }
-
+        
 
         GameObjectNode _CamNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(HMD);
         _CamNode.position.x = -456;
@@ -519,7 +526,7 @@ public class DashboardEditorWindow : EditorWindow
         var _CamPositionPort = mainCameraPositionNode.GetPort("GameObjectDataIn");
         _CamOutPort.Connect(_CamPositionPort);
         _CamOutPort.Connect(_CamRotationPort);
-
+        IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_CamNode);
 
         GameObjectNode _LeftHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(LeftController);
         _LeftHandNode.position.x = -456;
@@ -531,6 +538,7 @@ public class DashboardEditorWindow : EditorWindow
         var leftRotationPort = leftHandRotationNode.GetPort("GameObjectDataIn");
         LeftOutPort.Connect(leftPositionPort);
         LeftOutPort.Connect(leftRotationPort);
+        IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_LeftHandNode);
 
         GameObjectNode _RightHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(RightController);
         _RightHandNode.position.x = -456;
@@ -542,21 +550,6 @@ public class DashboardEditorWindow : EditorWindow
         var rightRotationPort = rightHandRotationNode.GetPort("GameObjectDataIn");
         RightOutPort.Connect(rightPositionPort);
         RightOutPort.Connect(rightRotationPort);
+        IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_RightHandNode);
     }
-
-    //void CheckCustomConnections()
-    //{
-    //    if (!_ref.rightHandController.AllowAllAttributes)
-    //    {
-
-    //    }
-    //    if (!_ref.leftHandController.AllowAllAttributes)
-    //    {
-
-    //    }
-    //    if (!_ref.headMountedDisplay.AllowAllAttributes)
-    //    {
-
-    //    }
-    //}
 }
