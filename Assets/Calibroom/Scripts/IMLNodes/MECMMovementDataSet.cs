@@ -24,6 +24,12 @@ namespace MECM
         [Input]
         public List<List<IMLTrainingExample>> MovementData;
 
+        /// <summary>
+        /// Processed movement training examples
+        /// </summary>
+        [Output]
+        public List<IMLTrainingExample> ProcessedMovementData;
+
         public List<IMLTrainingExample> TrainingExamplesVector { get { return m_TrainingExamplesVector; } }
         private List<IMLTrainingExample> m_TrainingExamplesVector;
 
@@ -45,6 +51,16 @@ namespace MECM
         public int NumDataSetsProcessed;
         public bool ProcessingStarted;
         public bool ProcessingFinished;
+
+        /// <summary>
+        /// Where are we in flatenning output?
+        /// </summary>
+        private int currentWindow; 
+        /// <summary>
+        /// When to stop flatenning output?
+        /// </summary>
+        private int maxWindow;
+        private bool m_StartFlattening;        
 
         #endregion
 
@@ -76,6 +92,11 @@ namespace MECM
         public override object GetValue(NodePort port)
         {
             if (port.Equals(GetOutputPort("DataProcessedPort"))) return ProcessingFinished;
+            if (port.Equals(GetOutputPort("ProcessedMovementData"))) 
+            {
+                ProcessedMovementData = m_TrainingExamplesVector; 
+                return ProcessedMovementData; 
+            }
             else return UpdateFeature();
         }
 
@@ -93,40 +114,72 @@ namespace MECM
             // Pull inputs from bool event nodeports
             if (GetInputValue<bool>("ProcessDataPort")) DataToWindows();
             
-            // Attempt to output feature values from processed data
+            // Attempt to output feature values from processed data when requested
             if (m_TrainingExamplesVector != null && m_TrainingExamplesVector.Count > 0)
             {
-                // Pick random window to output
-                System.Random rnd = new System.Random();
-                int windowIndex = rnd.Next(0, m_TrainingExamplesVector.Count-1 );
-                
-                // Add all data from window into flattened list
-                if (m_TrainingExamplesVector[windowIndex].Inputs != null)
+                //// Pick random window to output
+                //System.Random rnd = new System.Random();
+                //int windowIndex = rnd.Next(0, m_TrainingExamplesVector.Count-1 );
+
+                // Iterate window by window
+                maxWindow = m_TrainingExamplesVector.Count;
+                int windowIndex = currentWindow;
+
+
+                if (m_StartFlattening) // this is set to true once processingFinished is reset on lateUpdaate
                 {
-                    List<float> flattenedInputs = new List<float>();
-                    foreach (var input in m_TrainingExamplesVector[windowIndex].Inputs)
+                    if (windowIndex < maxWindow)
                     {
-                        if (input == null || input.InputData == null)
+
+                        // Add all data from window into flattened list
+                        if (m_TrainingExamplesVector[windowIndex].Inputs != null)
+                        {
+                            List<float> flattenedInputs = new List<float>();
+                            foreach (var input in m_TrainingExamplesVector[windowIndex].Inputs)
+                            {
+                                if (input == null || input.InputData == null)
+                                {
+                                    NodeDebug.LogWarning("Null entry in dataset! It can't output a feature", this, true);
+                                    return null;
+
+                                }
+                                foreach (var value in input.InputData.Values)
+                                {
+                                    flattenedInputs.Add(value);
+                                }
+                            }
+
+                            // Output flattened array of all values in window
+                            m_FeatureValues = new IMLArray(flattenedInputs.ToArray());
+                            // increase counter
+                            currentWindow++;
+
+
+                            return this;
+
+                        }
+                        else
                         {
                             NodeDebug.LogWarning("Null entry in dataset! It can't output a feature", this, true);
                             return null;
+                        }
 
-                        }
-                        foreach (var value in input.InputData.Values)
-                        {
-                            flattenedInputs.Add(value);
-                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log($"Finished flattening {currentWindow} movement data windows and sent to model!");
+                        // reset flag and counter since we are done flattening all the processed data
+                        currentWindow = 0;
+                        m_StartFlattening = false;
+
+                        return this;
                     }
 
-                    // Output flattened array of all values in window
-                    m_FeatureValues = new IMLArray(flattenedInputs.ToArray());                    
-                    return this;
                 }
-                else
-                {
-                    NodeDebug.LogWarning("Null entry in dataset! It can't output a feature", this, true);
-                    return null;
-                }
+
+                return this;
+
             }
             else
             {
@@ -138,7 +191,12 @@ namespace MECM
         public void LateUpdate()
         {
             // Allow flag only for a frame
-            if (ProcessingFinished) ProcessingFinished = false;
+            if (ProcessingFinished) 
+            { 
+                ProcessingFinished = false;
+                // Start flatenning output frame by frame
+                m_StartFlattening = true;
+            }
         }
 
         #endregion
