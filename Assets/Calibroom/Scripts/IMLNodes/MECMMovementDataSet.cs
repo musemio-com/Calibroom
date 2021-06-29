@@ -294,7 +294,7 @@ namespace MECM
                     // Check that there are enough inputs left for window (in case this is the last window). If not, we skip this window
                     if (localLengthWindow > trainingExamples.Count)
                     {
-                        Debug.Log($"Window for dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} is too big, skipping a total of {localLengthWindow - trainingExamples.Count} examples and moving to next dataSet...");
+                        //Debug.Log($"Window for dataset with labels {trainingExamples[0].Outputs[0].OutputData.Values[0]} is too big, skipping a total of {localLengthWindow - trainingExamples.Count} examples and moving to next dataSet...");
                         continue;
                     }
 
@@ -333,7 +333,7 @@ namespace MECM
                     // Add window to training data set
                     windowedDataSet.Add(newExampleWindow);
                     numWindowsCreated++;
-                    Debug.Log($"Added window. Examples in window = {newExampleWindow.Inputs.Count}.");
+                    //Debug.Log($"Added window. Examples in window = {newExampleWindow.Inputs.Count}.");
 
                 }
 

@@ -56,7 +56,7 @@ namespace MECM
         public void UpdateDataCollectionFinished()
         {
             DataCollectionFinished = true;
-            Debug.Log("DATA COLLECTION FINISHED IN IML GRAPH!!");
+            //Debug.Log("DATA COLLECTION FINISHED IN IML GRAPH!!");
         }
 
     }

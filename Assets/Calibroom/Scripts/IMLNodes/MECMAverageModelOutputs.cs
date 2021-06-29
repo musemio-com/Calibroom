@@ -89,7 +89,7 @@ namespace MECM
             // Average score when requested
             if (StartProcessing)
             {
-                Debug.Log("Processing Average Model Score...");
+                //Debug.Log("Processing Average Model Score...");
                 // Pull processed movement data if needed
                 if (ProcessedMovementData == null || ProcessedMovementData.Count == 0) 
                     ProcessedMovementData = GetInputValue<List<IMLTrainingExample>>("ProcessedMovementData");
