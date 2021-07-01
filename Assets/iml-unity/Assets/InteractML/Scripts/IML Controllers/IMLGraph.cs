@@ -76,6 +76,7 @@ namespace InteractML
                     }
 
                 }
+                Debug.Log("SCRIPT NODE ADDED");
             }
             // If this graph is not attached to an IML Component...
             else

@@ -25,11 +25,11 @@ namespace MECM
 
         public object UpdateFeature()
         {
-            OverallScore = GetInputValue<float>("OverallScore");
+            //OverallScore = GetInputValue<float>("OverallScore");
             VisuoSpatial = GetInputValue<float>("VisuoSpatial");
             SpeedProcessing = GetInputValue<float>("SpeedProcessing");
-            CycleTime = GetInputValue<float>("CycleTime");
-            UpdateScore._OnUpdateScore(OverallScore, SpeedProcessing, CycleTime);
+            //CycleTime = GetInputValue<float>("CycleTime");
+            UpdateScore._OnUpdateScore(VisuoSpatial, SpeedProcessing, CycleTime);
 
             return this;
         }

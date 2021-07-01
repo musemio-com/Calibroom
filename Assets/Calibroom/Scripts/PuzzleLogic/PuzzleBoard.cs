@@ -108,7 +108,9 @@ public class PuzzleBoard : MonoBehaviour
         // Load Level
         //if (m_LevelFader != null)
         //    m_LevelFader.FadeToBlackLoadNextLevelStopDataCollection();
-        m_DataCtrlr.ToggleCollectingData();
+        if (m_DataCtrlr != null)
+            m_DataCtrlr.ToggleCollectingData();
+
         FindObjectOfType<VrSceneTransition>().loadNextScene();
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once

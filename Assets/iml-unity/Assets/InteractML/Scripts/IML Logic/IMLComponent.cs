@@ -602,7 +602,7 @@ namespace InteractML
                     CheckNodeIsTraining(node, ref m_TrainingExamplesNodesList);
 
                     // MLSystem Node
-                    CheckNodeIsMLSystem(node, ref m_MLSystemNodeList);
+                    //CheckNodeIsMLSystem(node, ref m_MLSystemNodeList);
 
                     // ScriptNodes
                     CheckTypeAddNodeToList(node, ref m_ScriptNodesList);
@@ -2505,7 +2505,7 @@ namespace InteractML
                     return goNode;
 
                 }
-
+                Debug.Log("GAMEOBJECT NODE ADDED");
                 return goNode;
 
                 //// Add goNode to graph                
@@ -2518,7 +2518,7 @@ namespace InteractML
                 //    Debug.LogError($"Failed to add GameObject {GO.name}!");
                 //    return null;
                 //}
-
+                
             }
             else
             {

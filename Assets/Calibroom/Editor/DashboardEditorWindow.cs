@@ -78,9 +78,6 @@ public class DashboardEditorWindow : EditorWindow
         DataCollectionButtonTex = Make1x1Texture(Color.red);
         RightHandButtonTex = Make1x1Texture(Color.red);
         LeftHandButtonTex = Make1x1Texture(Color.red);
-        taskCompletionTimeScale = 0;
-        SpeedProcessingScale = 0;
-        VisuoSpatialScale = 0;
     }
     static Texture2D Make1x1Texture(Color _color)
     {
@@ -96,6 +93,11 @@ public class DashboardEditorWindow : EditorWindow
         tex.Apply();
         return tex;
     }
+    void OnInspectorUpdate()
+    {
+        Repaint();
+    }
+
     static void loadAllRefs()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
@@ -273,11 +275,10 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space();
-
         EditorGUILayout.LabelField("Scoring", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task Completion Time(sec)", taskCompletionTimeScale, 1f, 1000f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task completion time(sec)", taskCompletionTimeScale, 1f, 1000f);
         VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 0f, 100f);
         SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 0f, 100f);
         EditorGUILayout.EndVertical();
@@ -304,7 +305,6 @@ public class DashboardEditorWindow : EditorWindow
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndScrollView();
-        Repaint();
     }
     public static void RefreshCompletionTimeStatus(float _t)
     {
@@ -314,8 +314,10 @@ public class DashboardEditorWindow : EditorWindow
     {
         float visuoSpacialScore = (_score1 / 7132f) * 10f;
         float SpeedProcessingScore = ((_score2 + _score3) / (2812f + 9410f)) * 10f;
-        VisuoSpatialScale = (float)Math.Round(visuoSpacialScore * 1000f) / 1000f;
-        SpeedProcessingScale = Mathf.Round(SpeedProcessingScore * 100) / 100;
+        //Debug.Log("VISUO SPACIAL : " + visuoSpacialScore);
+        //Debug.Log("SPEED PROCESSING : " + SpeedProcessingScore);
+        VisuoSpatialScale = (float)Math.Round(visuoSpacialScore * 10f) / 10f;
+        SpeedProcessingScale = Mathf.Round(SpeedProcessingScore * 10) / 10;
     }
     public static void RefreshCollectionStauts(bool _state)
     {
@@ -357,12 +359,12 @@ public class DashboardEditorWindow : EditorWindow
         {
             LeftHandButtonTex = Make1x1Texture(Color.red);
             IsLeftHandGrabbingString = "OFF";
-        }
-            
+        }    
     }
 
     void DashboardSetup()
     {
+        taskCompletionTimeScale = 0f;
         EditorCoroutine coroutine = EditorCoroutineUtility.StartCoroutine(IMLDataSetupCouroutine(),this);
         if(!RightController.GetComponent<GrabbingPieceFeatureExtractor>())
             RightController.AddComponent<GrabbingPieceFeatureExtractor>().m_XRControllerType = GrabbingPieceFeatureExtractor.ControllerType.RightHand;
@@ -373,10 +375,8 @@ public class DashboardEditorWindow : EditorWindow
             GameObject _uploadManager = Instantiate(Resources.Load<GameObject>("Prefabs/UploadManager"));
             _uploadManager.name = "UploadManager";
         }
-
         SaveDashboardData();
     }
-
     void SaveDashboardData()
     {
         _ref = Resources.Load<DashboardRefs>("ScriptableObjects/DashboardRefs");
@@ -406,23 +406,43 @@ public class DashboardEditorWindow : EditorWindow
             DestroyImmediate(FindObjectOfType<DataCollectionController>().gameObject);
         if (FindObjectOfType<IMLComponent>())
             DestroyImmediate(FindObjectOfType<IMLComponent>().gameObject);
-        GameObject DataController = Instantiate(Resources.Load<GameObject>("Prefabs/DataCollection"));
-        GameObject IMLSystem = Instantiate(Resources.Load<GameObject>("Prefabs/IML System"));
-        GameObject IMLNeuralNetwork = Instantiate(Resources.Load<GameObject>("Prefabs/IML System_NeuralNetwork"));
+        GameObject dataControllerObj = Resources.Load<GameObject>("Prefabs/DataCollection");
+        GameObject imlObj = Resources.Load<GameObject>("Prefabs/IML System");
+        GameObject neuralNetworkObj = Resources.Load<GameObject>("Prefabs/IML System_NeuralNetwork");
+
+
+        GameObject IMLSystem = Instantiate(imlObj);
+        GameObject IMLNeuralNetwork = Instantiate(neuralNetworkObj);
+        GameObject DataController = Instantiate(dataControllerObj);
         DataController.name = "DataCollection";
         IMLSystem.name = "IML System";
         IMLNeuralNetwork.name = "IML NeuralNetwork";
         dataController = DataController.GetComponent<DataCollectionController>();
+
         IMLGraph IMLGraph = IMLSystem.GetComponent<IMLComponent>().graph;
+        IMLGraph neuralNetworkGraph = IMLNeuralNetwork.GetComponent<IMLComponent>().graph;
+
+        //if (IMLGraph.SceneComponent == null || IMLGraph.SceneComponent != IMLSystem.GetComponent<IMLComponent>())
+        //    IMLGraph.SceneComponent = IMLSystem.GetComponent<IMLComponent>();
+
+        //if (neuralNetworkGraph.SceneComponent == null || neuralNetworkGraph.SceneComponent != IMLNeuralNetwork.GetComponent<IMLComponent>())
+        //    neuralNetworkGraph.SceneComponent = IMLNeuralNetwork.GetComponent<IMLComponent>();
+        if (IMLGraph.SceneComponent == null)
+            IMLGraph.SceneComponent = IMLSystem.GetComponent<IMLComponent>();
+
+        yield return new EditorWaitForSeconds(3f);
+
         AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(IMLGraph));
         EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
-        
-        yield return new EditorWaitForSeconds(2f);
+
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData = new List<IMLMonoBehaviourContainer>();
         IMLSystem.GetComponent<IMLComponent>().ComponentsWithIMLData.Add(new IMLMonoBehaviourContainer(dataController));
+        //ScriptNode goNode = new ScriptNode();
+        //goNode = IMLSystem.GetComponent<IMLComponent>().ScriptNodesList[0];
 
-        
+
         ScriptNode goNode = (ScriptNode)IMLGraph.AddNode(typeof(ScriptNode));
+
         if (goNode != null)
         {
             goNode.SetScript(dataController);
@@ -432,7 +452,7 @@ public class DashboardEditorWindow : EditorWindow
                 IMLSystem.GetComponent<IMLComponent>().ScriptNodesList.Add(goNode);
             IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode = new MonobehaviourScriptNodeDictionary();
             if (!IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode.Contains(goNode))
-                IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode.Add(dataController,goNode);
+                IMLSystem.GetComponent<IMLComponent>().MonoBehavioursPerScriptNode.Add(dataController, goNode);
             IMLSystem.GetComponent<IMLComponent>().FetchDataFromMonobehavioursSubscribed();
 
             goNode.position.x = 424;
@@ -514,7 +534,8 @@ public class DashboardEditorWindow : EditorWindow
             leftGrabOutPort.Connect(LeftBoolGrabPort);
             rightGrabOutPort.Connect(RightBoolGrabPort);
         }
-        
+
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse = new List<GameObject>();
 
         GameObjectNode _CamNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(HMD);
         _CamNode.position.x = -456;
@@ -527,6 +548,8 @@ public class DashboardEditorWindow : EditorWindow
         _CamOutPort.Connect(_CamPositionPort);
         _CamOutPort.Connect(_CamRotationPort);
         IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_CamNode);
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(HMD);
+
 
         GameObjectNode _LeftHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(LeftController);
         _LeftHandNode.position.x = -456;
@@ -539,6 +562,7 @@ public class DashboardEditorWindow : EditorWindow
         LeftOutPort.Connect(leftPositionPort);
         LeftOutPort.Connect(leftRotationPort);
         IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_LeftHandNode);
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(LeftController);
 
         GameObjectNode _RightHandNode = IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(RightController);
         _RightHandNode.position.x = -456;
@@ -551,5 +575,6 @@ public class DashboardEditorWindow : EditorWindow
         RightOutPort.Connect(rightPositionPort);
         RightOutPort.Connect(rightRotationPort);
         IMLSystem.GetComponent<IMLComponent>().AddGameObjectNode(_RightHandNode);
+        IMLSystem.GetComponent<IMLComponent>().GameObjectsToUse.Add(RightController);
     }
 }

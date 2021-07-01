@@ -110,98 +110,103 @@ public class IMLEditorManager
     /// <param name="playModeStatus"></param>
     private static void PlayModeStateChangedLogic(PlayModeStateChange playModeStatus)
     {
-        // Repair list of known iml components if any of them is null
-        if (NullIMLComponents()) RepairIMLComponents();
-
-        foreach (IMLComponent MLComp in m_IMLComponents) 
+        if (MonoBehaviour.FindObjectOfType<IMLComponent>())
         {
-            foreach (MLSystem MLS in MLComp.MLSystemNodeList) {
-                if (MLS != null)
-                    MLS.UIErrors();
-                else
-                    Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic()");
-            }
-        }
-        #region Enter Events
+            // Repair list of known iml components if any of them is null
+            if (NullIMLComponents()) RepairIMLComponents();
 
-        // We load models if we are entering a playmode (not required when leaving playmode)
-        if (playModeStatus == PlayModeStateChange.EnteredPlayMode)
-        {
-            // Reload all models (if we can) when we enter playmode or when we come back to the editor
-            foreach (var MLComponent in m_IMLComponents)
+            foreach (IMLComponent MLComp in m_IMLComponents)
             {
-                if (MLComponent != null)
+                foreach (MLSystem MLS in MLComp.MLSystemNodeList)
                 {
-                    //Debug.Log("Play mode state changed");
-                    //MLComponent.LoadDataAndRunOnAwakeModels();
-                    MLComponent.RunModelsOnPlay();
-                    //// Reload models
-                    //MLComponent.LoadAllModelsFromDisk(reCreateModels: true);
-                    //// Run them (if marked with RunOnAwake)
-                    //MLComponent.RunAllModels();
-                }
-                else
-                {
-                    Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when EnteredPlayMode");
+                    if (MLS != null)
+                        MLS.UIErrors();
+                    else
+                        Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic()");
                 }
             }
-            //Debug.Log("**Models reconfigured in editor status: " + playModeStatus + "**");
-        }
+            #region Enter Events
 
-        if (playModeStatus == PlayModeStateChange.EnteredEditMode)
-        {
-            foreach (var MLComponent in m_IMLComponents)
+            // We load models if we are entering a playmode (not required when leaving playmode)
+            if (playModeStatus == PlayModeStateChange.EnteredPlayMode)
             {
-                if (MLComponent != null)
+                // Reload all models (if we can) when we enter playmode or when we come back to the editor
+                foreach (var MLComponent in m_IMLComponents)
                 {
-                    MLComponent.updateGameObjectImage();
-                    MLComponent.GetAllNodes();
-                    MLComponent.UpdateGameObjectNodes(changingPlayMode: true);
-                    MLComponent.UpdateScriptNodes(changingPlayMode: true);
+                    if (MLComponent != null)
+                    {
+                        //Debug.Log("Play mode state changed");
+                        //MLComponent.LoadDataAndRunOnAwakeModels();
+                        MLComponent.RunModelsOnPlay();
+                        //// Reload models
+                        //MLComponent.LoadAllModelsFromDisk(reCreateModels: true);
+                        //// Run them (if marked with RunOnAwake)
+                        //MLComponent.RunAllModels();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when EnteredPlayMode");
+                    }
                 }
-                else
-                {
-                    Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when EnteredEditMode");
-                }
-
+                //Debug.Log("**Models reconfigured in editor status: " + playModeStatus + "**");
             }
-        }
 
-        #endregion
-
-        #region Exit Events
-
-        // Remove any scriptNodes added during playtime when leaving playMode
-        if (playModeStatus == PlayModeStateChange.ExitingPlayMode)
-        {
-            foreach (var MLComponent in m_IMLComponents)
+            if (playModeStatus == PlayModeStateChange.EnteredEditMode)
             {
-                if (MLComponent != null)
+                foreach (var MLComponent in m_IMLComponents)
                 {
-                    MLComponent.UpdateGameObjectNodes(changingPlayMode: true);
-                    MLComponent.UpdateScriptNodes(changingPlayMode: true);
-                }
-                else
-                {
-                    Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when ExitingPlayMode");
-                }
+                    if (MLComponent != null)
+                    {
+                        MLComponent.updateGameObjectImage();
+                        MLComponent.GetAllNodes();
+                        MLComponent.UpdateGameObjectNodes(changingPlayMode: true);
+                        MLComponent.UpdateScriptNodes(changingPlayMode: true);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when EnteredEditMode");
+                    }
 
+                }
             }
-        }
 
-        // We stop models if we are leaving a playmode or editormode
-        if (playModeStatus == PlayModeStateChange.ExitingEditMode || playModeStatus == PlayModeStateChange.ExitingPlayMode)
-        {
-            foreach (var MLComponent in m_IMLComponents)
+            #endregion
+
+            #region Exit Events
+
+            // Remove any scriptNodes added during playtime when leaving playMode
+            if (playModeStatus == PlayModeStateChange.ExitingPlayMode)
             {
-                if (MLComponent != null)
-                    MLComponent.StopAllModels();
-                else
-                    Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when leaving a playmode or editormode");
-            }
-        }
+                foreach (var MLComponent in m_IMLComponents)
+                {
+                    if (MLComponent != null)
+                    {
+                        MLComponent.UpdateGameObjectNodes(changingPlayMode: true);
+                        MLComponent.UpdateScriptNodes(changingPlayMode: true);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when ExitingPlayMode");
+                    }
 
-        #endregion
+                }
+            }
+
+            // We stop models if we are leaving a playmode or editormode
+            if (playModeStatus == PlayModeStateChange.ExitingEditMode || playModeStatus == PlayModeStateChange.ExitingPlayMode)
+            {
+                foreach (var MLComponent in m_IMLComponents)
+                {
+                    if (MLComponent != null)
+                        MLComponent.StopAllModels();
+                    else
+                        Debug.LogWarning("Null reference to a MLComponent in IMLEditorManager.PlayModeStateChangedLogic() when leaving a playmode or editormode");
+                }
+            }
+
+            #endregion
+        }
+        //Debug.Log("NO IML FOUND");
 
     }
 

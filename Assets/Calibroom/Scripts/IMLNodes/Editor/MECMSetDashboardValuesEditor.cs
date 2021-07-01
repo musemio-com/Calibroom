@@ -8,25 +8,25 @@ using XNodeEditor;
 
 namespace MECM
 {
-    [CustomNodeEditor(typeof(MECMSetDashboardValues))]
-    public class MECMSetDashboardValuesEditor : IMLNodeEditor
-    {
-        public override void OnBodyGUI()
-        {
-            base.OnBodyGUI();
+    //[CustomNodeEditor(typeof(MECMSetDashboardValues))]
+    //public class MECMSetDashboardValuesEditor : IMLNodeEditor
+    //{
+    //    public override void OnBodyGUI()
+    //    {
+    //        base.OnBodyGUI();
 
-            var setValuesNode = target as MECMSetDashboardValues;
-            // Set values on dashboard window
-            if (setValuesNode != null)
-            //DashboardEditorWindow.SetupScore
-            //    (
-            //    setValuesNode.VisuoSpatial, 
-            //    setValuesNode.SpeedProcessing
-            //    );
-            {
-                //DashboardEditorWindow.SetupScore(visuoSpacialScore, SpeedProcessingScore);
-            }
-        }
-    }
+    //        var setValuesNode = target as MECMSetDashboardValues;
+    //        // Set values on dashboard window
+    //        if (setValuesNode != null)
+    //        //DashboardEditorWindow.SetupScore
+    //        //    (
+    //        //    setValuesNode.VisuoSpatial, 
+    //        //    setValuesNode.SpeedProcessing
+    //        //    );
+    //        {
+    //            //DashboardEditorWindow.SetupScore(visuoSpacialScore, SpeedProcessingScore);
+    //        }
+    //    }
+    //}
 
 }
