@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7849c6e3c82c14bbc300fe168ff7d9, type: 3}
   m_Name: DashboardRefs
   m_EditorClassIdentifier: 
-  userID: 50
+  userID: 1
   rightHandController:
     ControllerNameRef: RightHand Controller
     AllowAllAttributes: 0

@@ -255,6 +255,7 @@ namespace MECM
             {
                 ToggleRunModel = false;
             }
+
             //if (ToggleDataCollection)
             //{
             //    ToggleCollectingData();
@@ -264,13 +265,13 @@ namespace MECM
             // If the event was fired, flag data collection toggle to true
             if (CollectingData)//if (m_ToggleCollectDataEvent || ToggleDataCollection)
             {
-                ToggleDataCollection = true;
+                //ToggleDataCollection = true;
                 CompletionTime += Time.deltaTime;
             }
-            if (!CollectingData)
-            {
-                ToggleDataCollection = false;
-            }
+            //if (!CollectingData)
+            //{
+            //    ToggleDataCollection = false;
+            //}
 
 
             if (!CollectingData && m_UploadData && isUploading)
@@ -328,14 +329,14 @@ namespace MECM
             CollectingData = !CollectingData;
             if (CollectingData)
             {
-                //ToggleDataCollection = true;
+                ToggleDataCollection = true;
                 Debug.Log("Starting data collection!");
             }
                 
             else
             {
                 isUploading = true;
-                //ToggleDataCollection = false;
+                ToggleDataCollection = false;
                 UpdateEditorData._OnTaskTimeDelegate(CompletionTime);
                 if (UpdateEditorData._OnTaskCompletion != null) UpdateEditorData._OnTaskCompletion();
                 Debug.Log("Stopping data collection!");

@@ -2817,8 +2817,8 @@ namespace InteractML
                 {
                     if (TENode.CollectingData)
                     {
-                       // Debug.Log("stop");
-                        success = TENode.StopCollecting();
+                        //Debug.Log("stop");
+                        //success = TENode.StopCollecting();
                         if (success)
                         {
                             if (icon != null)

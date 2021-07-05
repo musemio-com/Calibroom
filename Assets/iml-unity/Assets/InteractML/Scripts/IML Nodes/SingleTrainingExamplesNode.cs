@@ -32,6 +32,7 @@ namespace InteractML
         /// </summary>
         public override void SaveDataToDisk()
         {
+            Debug.Log("Save to disk Triggered");
            IMLDataSerialization.SaveTrainingSetToDisk(m_TrainingExamplesVector, GetJSONFileName());
         }
         

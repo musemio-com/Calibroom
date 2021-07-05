@@ -337,7 +337,7 @@
         "OutputType": 0,
         "OutputData": {
           "Values": [
-            0.0
+            50.0
           ],
           "DataType": 1
         }
@@ -682,7 +682,7 @@
         "OutputType": 0,
         "OutputData": {
           "Values": [
-            0.0
+            50.0
           ],
           "DataType": 1
         }

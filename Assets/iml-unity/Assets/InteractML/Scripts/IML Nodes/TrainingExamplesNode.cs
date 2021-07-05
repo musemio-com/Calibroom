@@ -666,7 +666,7 @@ namespace InteractML
                 default:
                     break;
             }
-            
+
             if (deleteFromDisk)
                 // clear data on disk
                 SaveDataToDisk();
@@ -1069,7 +1069,6 @@ namespace InteractML
                 UpdateConnectMLSystems();
 
             }
-
             // Save data to disk
             SaveDataToDisk();
         }
