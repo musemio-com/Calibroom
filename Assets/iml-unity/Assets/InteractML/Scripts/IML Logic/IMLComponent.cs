@@ -2018,7 +2018,8 @@ namespace InteractML
                 // Only stop it if it is collecting data
                 if (trainingExamplesNode.CollectingData)
                 {
-                    trainingExamplesNode.StopCollecting();
+                    //trainingExamplesNode.StopCollecting(); // changed by saif
+                    trainingExamplesNode.StopDataCollecting();
                 }
             }
         }
@@ -2818,7 +2819,7 @@ namespace InteractML
                     if (TENode.CollectingData)
                     {
                         //Debug.Log("stop");
-                        //success = TENode.StopCollecting();
+                        success = TENode.StopCollecting(); 
                         if (success)
                         {
                             if (icon != null)

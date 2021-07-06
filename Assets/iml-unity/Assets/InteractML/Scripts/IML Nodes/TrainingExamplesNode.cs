@@ -594,12 +594,16 @@ namespace InteractML
             // if it is collecting data stop collecting data 
             if (m_CollectingData)
             {
-                StopCollectingData();
+                //StopCollectingData();
                 return true;
             } else
             {
                 return false;
             }
+        }
+        public void StopDataCollecting() // added by saif
+        {
+            StopCollectingData();
         }
 
 
