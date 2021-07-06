@@ -63,8 +63,15 @@ public class VrSceneTransition : MonoBehaviour
     {
         FindObjectOfType<LoadingOverlay>().FadeOut(() =>
         {
-            Debug.Log("FadedOut");
-            SceneManager.LoadScene(sceneName);
+            StartCoroutine(waitBeforeLoad(sceneName));
         });
+    }
+
+    IEnumerator waitBeforeLoad(string sceneName)
+    {
+        yield return new WaitForSeconds(4f);
+        Debug.Log("FadedOut");
+        SceneManager.LoadScene(sceneName);
+
     }
 }

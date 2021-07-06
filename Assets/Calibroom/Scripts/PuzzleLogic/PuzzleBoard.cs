@@ -111,10 +111,12 @@ public class PuzzleBoard : MonoBehaviour
         if (m_DataCtrlr != null)
             m_DataCtrlr.ToggleCollectingData();
 
+        m_PuzzleCompletedOnce = true;
+        PuzzleCompletedFX.SetActive(true);
+
         FindObjectOfType<VrSceneTransition>().loadNextScene();
 
         // Flag the puzzle as completed once to avoid the user accidentally completing it more than once and loading the next level more than once
-        m_PuzzleCompletedOnce = true;
-        PuzzleCompletedFX.SetActive(true);
+
     }
 }

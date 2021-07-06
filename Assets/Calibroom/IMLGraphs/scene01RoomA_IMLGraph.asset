@@ -93,7 +93,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -337,8 +337,8 @@ MonoBehaviour:
   id: ce6b0550-6553-4671-831d-12c9322bf5cc
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 19722
+  state: 1
+  GOHashCode: 26236
   CreatedDuringPlaymode: 0
 --- !u!114 &-7940001765640312504
 MonoBehaviour:
@@ -414,7 +414,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -554,7 +554,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -624,8 +624,8 @@ MonoBehaviour:
   id: 1caab8c7-63f8-49a6-9b9c-f7c4cd584060
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 19724
+  state: 1
+  GOHashCode: 26238
   CreatedDuringPlaymode: 0
 --- !u!114 &-5340486417022691672
 MonoBehaviour:
@@ -870,7 +870,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -927,7 +927,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -984,7 +984,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   id: 875eec22-49bc-42aa-8b54-36ac7c44209f
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: -28918
+  ScriptHashCode: 26214
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2060,7 +2060,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2123,7 +2123,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   - {fileID: 9195290002006123527}
   - {fileID: -6116578809934819479}
   - {fileID: -8169944953576818695}
-  SceneComponent: {fileID: 4630428434307941083, guid: c696dfbe45d4ce64c8ba573eb91c3240, type: 3}
+  SceneComponent: {fileID: 0}
 --- !u!114 &1032819020571496605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -3008,7 +3008,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -3068,7 +3068,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -3155,7 +3155,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 3
+  Counter: 5
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3453,7 +3453,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3645,7 +3645,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3699,7 +3699,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3867,7 +3867,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 2
+  Counter: 1
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -4141,6 +4141,6 @@ MonoBehaviour:
   id: 1cadc362-3ed4-4672-8937-219c93826f7d
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
-  state: 0
-  GOHashCode: 19752
+  state: 1
+  GOHashCode: 26260
   CreatedDuringPlaymode: 0
