@@ -534,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9031084238187771186, guid: 255fe6a4afcad11409f02376cf9c46ee, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1186,22 +1186,14 @@ MonoBehaviour:
   - {fileID: 793838390}
   m_GOsPerGONodes:
     m_keys:
-    - {fileID: 0}
     - {fileID: 1072350014}
     - {fileID: 793838391}
     - {fileID: 793838390}
     m_values:
-    - {fileID: 0}
     - {fileID: 9195290002006123527, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
     - {fileID: -6116578809934819479, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
     - {fileID: -8169944953576818695, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   m_GameObjectNodeList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 9195290002006123527, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   - {fileID: -6116578809934819479, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}
   - {fileID: -8169944953576818695, guid: 7a859f723ef0cc0408d05147c6f55aab, type: 2}

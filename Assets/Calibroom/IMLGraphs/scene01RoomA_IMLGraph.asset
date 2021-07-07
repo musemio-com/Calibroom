@@ -93,7 +93,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -275,9 +275,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 5
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &-8349807103427737781
 MonoBehaviour:
@@ -338,7 +338,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26236
+  GOHashCode: 18348
   CreatedDuringPlaymode: 0
 --- !u!114 &-7940001765640312504
 MonoBehaviour:
@@ -414,7 +414,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -554,7 +554,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -625,7 +625,7 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26238
+  GOHashCode: 18350
   CreatedDuringPlaymode: 0
 --- !u!114 &-5340486417022691672
 MonoBehaviour:
@@ -784,7 +784,7 @@ MonoBehaviour:
   DeleteAllInputBool: 0
   TrainingExamplesNodeToOutput: {fileID: 0}
   ModeOfCollection: 0
-  m_DesiredInputsConfig: 0000000000000000
+  m_DesiredInputsConfig: 0600000006000000
   m_DesiredOutputsConfig: 01000000
   MLSystemNodesConnected: []
   StartDelay: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
   listNo: 6
   SubFolderDataPath: 0/MECM Room
@@ -870,7 +870,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -927,7 +927,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -984,7 +984,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   id: 875eec22-49bc-42aa-8b54-36ac7c44209f
   numberInComponentList: -1
   m_ScriptInternal: {fileID: 0}
-  ScriptHashCode: 26214
+  ScriptHashCode: 18326
   m_PortsPerFieldInfo:
     m_keys:
     - _fieldName: ToggleDataCollection
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -2060,7 +2060,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2123,7 +2123,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -2609,9 +2609,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 0
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &2971309970561483842
 MonoBehaviour:
@@ -2782,9 +2782,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 1
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &3016547567234896727
 MonoBehaviour:
@@ -2955,9 +2955,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 4
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &3399067939314817978
 MonoBehaviour:
@@ -3008,7 +3008,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -3068,7 +3068,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 00000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01010101
   ReceivedValue: []
@@ -3155,7 +3155,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 5
+  Counter: 3
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3400,9 +3400,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 3
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &5194999953489358972
 MonoBehaviour:
@@ -3453,7 +3453,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3645,7 +3645,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3699,7 +3699,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3867,7 +3867,7 @@ MonoBehaviour:
   ReceivingData: 0
   FeatureValueReceivingData: 00
   InputConnected: 1
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ReceivingData: 0
   FeatureValueReceivingData: 000000
-  Counter: 1
+  Counter: 2
   Count: 5
   ToggleSwitches: 010101
   ReceivedValue: []
@@ -4101,9 +4101,9 @@ MonoBehaviour:
   RecordTime: -1
   EnableKeyboardControl: 0
   RecordDataKey: 0
-  showWarning: 1
+  showWarning: 0
   canCollect: 1
-  listNo: 6
+  listNo: 2
   SubFolderDataPath: 0/MECM Room
 --- !u!114 &9195290002006123527
 MonoBehaviour:
@@ -4142,5 +4142,5 @@ MonoBehaviour:
   numberInComponentList: -1
   GameObjectDataOut: {fileID: 0}
   state: 1
-  GOHashCode: 26260
+  GOHashCode: 18372
   CreatedDuringPlaymode: 0

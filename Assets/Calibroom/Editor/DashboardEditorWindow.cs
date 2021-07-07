@@ -278,9 +278,9 @@ public class DashboardEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Scoring", HeadersStyle);
         EditorGUILayout.Space();
         EditorGUILayout.BeginVertical();
-        taskCompletionTimeScale = EditorGUILayout.Slider("Task completion time(sec)", taskCompletionTimeScale, 1f, 1000f);
-        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 0f, 100f);
-        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 0f, 100f);
+        taskCompletionTimeScale = EditorGUILayout.Slider("Task completion time(sec)", taskCompletionTimeScale, 1f, 100f);
+        VisuoSpatialScale = EditorGUILayout.Slider("Visuo-Spatial", VisuoSpatialScale, 0f, 10f);
+        SpeedProcessingScale = EditorGUILayout.Slider("Speed Processing", SpeedProcessingScale, 0f, 10f);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space();
@@ -316,8 +316,8 @@ public class DashboardEditorWindow : EditorWindow
         float SpeedProcessingScore = ((_score2 + _score3) / (2812f + 9410f)) * 10f;
         //Debug.Log("VISUO SPACIAL : " + visuoSpacialScore);
         //Debug.Log("SPEED PROCESSING : " + SpeedProcessingScore);
-        VisuoSpatialScale = (float)Math.Round(visuoSpacialScore * 10f) / 10f;
-        SpeedProcessingScale = Mathf.Round(SpeedProcessingScore * 10) / 10;
+        VisuoSpatialScale = (float)Math.Round(visuoSpacialScore * 100f) / 100f;
+        SpeedProcessingScale = Mathf.Round(SpeedProcessingScore * 100) / 100;
     }
     public static void RefreshCollectionStauts(bool _state)
     {
