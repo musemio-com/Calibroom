@@ -371,6 +371,10 @@ MonoBehaviour:
         - {x: 3109.0415, y: 651.5715}
         - {x: 2384, y: 1232}
         - {x: 1136.5538, y: 1023.9993}
+      - fieldName: SetScore
+        node: {fileID: -6206050627982096732}
+        reroutePoints:
+        - {x: 3529.321, y: 244.85262}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -461,6 +465,7 @@ MonoBehaviour:
     - VisuoSpatial
     - SpeedProcessing
     - CycleTime
+    - SetScore
     values:
     - _fieldName: OverallScore
       _node: {fileID: -6206050627982096732}
@@ -504,12 +509,25 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: SetScore
+      _node: {fileID: -6206050627982096732}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: ProcessingFinished
+        node: {fileID: -7068308688691226316}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   id: a4524018-1ab4-4ff6-aba4-53b2c01ab76c
   numberInComponentList: -1
   OverallScore: 0
   VisuoSpatial: 3706.7742
   SpeedProcessing: 7743.0537
   CycleTime: 0
+  SetScore: 0
 --- !u!114 &-5956783821960213138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +626,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 0.7409939
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
@@ -617,7 +635,7 @@ MonoBehaviour:
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 0.7409939
+  - 0
 --- !u!114 &-4900322899204207368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +701,7 @@ MonoBehaviour:
   numberInComponentList: -1
   FolderPath: Assets/InteractML/Data/Training_Examples
   SpecificNodeID: b2accf43-eb94-4f24-be68-bffa39e2ea08
-  m_DataSetSize: 1
+  m_DataSetSize: 0
 --- !u!114 &-4325072033531778444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1138,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 1556.2666
+  m_Value: 0
   m_Out: 0
   ReceivingData: 0
   FeatureValueReceivingData: 00
@@ -1129,7 +1147,7 @@ MonoBehaviour:
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 1556.2666
+  - 0
 --- !u!114 &-1947331298123092856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1195,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 8547.24
+  m_Value: 0
   m_Out: 8547.24
   ReceivingData: 0
   FeatureValueReceivingData: 00
@@ -1186,7 +1204,7 @@ MonoBehaviour:
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 8547.24
+  - 0
 --- !u!114 &-1040273551520178872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,7 +1491,7 @@ MonoBehaviour:
   - {fileID: 7149660753711343731}
   - {fileID: -7968052960219755326}
   - {fileID: 8149823265624153252}
-  SceneComponent: {fileID: 0}
+  SceneComponent: {fileID: 398979702769003115, guid: 2b13360de1278c140bd029a77a0a34f8, type: 3}
 --- !u!114 &1751917521551349516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,7 +1596,7 @@ MonoBehaviour:
   numberInComponentList: -1
   ValueName: 
   m_In: 0
-  m_Value: 4311.2085
+  m_Value: 0
   m_Out: 4311.2085
   ReceivingData: 0
   FeatureValueReceivingData: 00
@@ -1587,7 +1605,7 @@ MonoBehaviour:
   Count: 5
   ToggleSwitches: 01
   ReceivedValue:
-  - 4311.2085
+  - 0
 --- !u!114 &3810294968389403904
 MonoBehaviour:
   m_ObjectHideFlags: 0

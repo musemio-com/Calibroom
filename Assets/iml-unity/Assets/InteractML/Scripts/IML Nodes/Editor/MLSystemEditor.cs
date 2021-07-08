@@ -208,7 +208,7 @@ namespace InteractML
                 if (GUI.enabled)
                 {
                     // Check for null
-                    if (m_MLSystem.tooltips != null && m_MLSystem.tooltips.BodyTooltip != null && m_MLSystem.tooltips.BodyTooltip.Tips != null)
+                    if (m_MLSystem.tooltips != null && m_MLSystem.tooltips.BodyTooltip != null && m_MLSystem.tooltips.BodyTooltip.Tips != null && m_MLSystem.tooltips.BodyTooltip.Tips.Length >= 1)
                         TooltipText = m_MLSystem.tooltips.BodyTooltip.Tips[1];
                 }
                 else
@@ -296,7 +296,7 @@ namespace InteractML
                 else
                 {
                     // Check for null
-                    if (m_MLSystem.tooltips != null && m_MLSystem.tooltips.BodyTooltip != null && m_MLSystem.tooltips.BodyTooltip.Tips != null)
+                    if (m_MLSystem.tooltips != null && m_MLSystem.tooltips.BodyTooltip != null && m_MLSystem.tooltips.BodyTooltip.Tips != null && m_MLSystem.tooltips.BodyTooltip.Error != null && m_MLSystem.tooltips.BodyTooltip.Error.Length >= 1) 
                         TooltipText = m_MLSystem.tooltips.BodyTooltip.Error[1];
                 }
             }
