@@ -602,7 +602,7 @@ namespace InteractML
                     CheckNodeIsTraining(node, ref m_TrainingExamplesNodesList);
 
                     // MLSystem Node
-                    //CheckNodeIsMLSystem(node, ref m_MLSystemNodeList);
+                    CheckNodeIsMLSystem(node, ref m_MLSystemNodeList);
 
                     // ScriptNodes
                     CheckTypeAddNodeToList(node, ref m_ScriptNodesList);
@@ -1844,7 +1844,7 @@ namespace InteractML
         /// </summary>
         private void LoadDataForModels()
         {
-            if(this != null && this.gameObject.activeInHierarchy)
+            if(this != null && (this.gameObject.activeInHierarchy || this.isActiveAndEnabled || this.gameObject.activeSelf || this.enabled))
             {
                 // There will be waits for things to init. Take into account
                 IEnumerator coroutine = LoadDataForModelsCoroutine();

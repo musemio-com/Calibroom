@@ -1108,7 +1108,7 @@ namespace InteractML
             }
             //Debug.Log(TrainingExamplesVector.Count);
 
-            if (m_TrainingExamplesVector.Count > 0 || m_TrainingSeriesCollection.Count > 0)
+            if ((m_TrainingExamplesVector != null && m_TrainingExamplesVector.Count > 0) || (m_TrainingSeriesCollection != null && m_TrainingSeriesCollection.Count > 0))
             {
                 UpdateDesiredInputOutputConfigFromDataVector();
             }
